@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Color Definitions -->
+    <color name="login_background">#EAF2E4</color>
+    <color name="logo_tint">#5C8848</color>
+    <color name="hint_text">#8FAF8F</color>
+    <color name="text_color">#293523</color>
+    <color name="button_bg">#4D7043</color>
+</resources>

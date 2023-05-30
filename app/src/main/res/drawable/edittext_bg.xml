@@ -1,0 +1,5 @@
+<!-- edittext_bg.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#D5E8D4" /> <!-- Light brown color -->
+    <corners android:radius="8dp" /> <!-- Rounded corners -->
+</shape>
