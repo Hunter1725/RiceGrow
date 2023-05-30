@@ -286,9 +286,9 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             //****Stages****
             StageDao stageDao = db.stageDao();
             ArrayList<Stages> stages = new ArrayList<>();
-            Stages stages1_OM18 = new Stages(cropDao.getIdByName("OM18"), "Land preparation", 24, "1st", "24th", "http://www.knowledgebank.irri.org/images/stories/landprep-wetpreparation-1.jpg");
+            Stages stages1_OM18 = new Stages(cropDao.getIdByName("OM18"), "Land preparation", 24, 1, "1st", "24th", "http://www.knowledgebank.irri.org/images/stories/landprep-wetpreparation-1.jpg");
             stages.add(stages1_OM18);
-            Stages stages2_OM18 = new Stages(cropDao.getIdByName("OM18"), "Seeding", 1, "25th", "25th", );
+            Stages stages2_OM18 = new Stages(cropDao.getIdByName("OM18"), "Seeding", 1, 2,  "25th", "25th", );
 
     });
     }

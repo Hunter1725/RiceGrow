@@ -15,6 +15,7 @@ public class Stages {
     private int cropId;
     private String name;
     private int duration;
+    private int order;
     @ColumnInfo(name = "start_date")
     private String startDate;
     @ColumnInfo(name = "end_date")
@@ -22,10 +23,11 @@ public class Stages {
     @ColumnInfo(name = "stage_image")
     private String stageImage;
 
-    public Stages(int cropId, String name, int duration, String startDate, String endDate, String stageImage) {
+    public Stages(int cropId, String name, int duration, int order, String startDate, String endDate, String stageImage) {
         this.cropId = cropId;
         this.name = name;
         this.duration = duration;
+        this.order = order;
         this.startDate = startDate;
         this.endDate = endDate;
         this.stageImage = stageImage;
@@ -65,6 +67,14 @@ public class Stages {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 
     public String getStartDate() {
