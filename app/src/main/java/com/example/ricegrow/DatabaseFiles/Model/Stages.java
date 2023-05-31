@@ -16,6 +16,7 @@ public class Stages {
     private String name;
     private int duration;
     private int order;
+    private boolean state;
     @ColumnInfo(name = "start_date")
     private String startDate;
     @ColumnInfo(name = "end_date")
@@ -23,11 +24,12 @@ public class Stages {
     @ColumnInfo(name = "stage_image")
     private String stageImage;
 
-    public Stages(int cropId, String name, int duration, int order, String startDate, String endDate, String stageImage) {
+    public Stages(int cropId, String name, int duration, int order, boolean state, String startDate, String endDate, String stageImage) {
         this.cropId = cropId;
         this.name = name;
         this.duration = duration;
         this.order = order;
+        this.state = state;
         this.startDate = startDate;
         this.endDate = endDate;
         this.stageImage = stageImage;
@@ -71,6 +73,14 @@ public class Stages {
 
     public int getOrder() {
         return order;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
     }
 
     public void setOrder(int order) {

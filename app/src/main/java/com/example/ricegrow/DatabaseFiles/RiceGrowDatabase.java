@@ -180,6 +180,26 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "Only apply insecticides to the seedbed, for BPH or WBPH, if all of these conditions are met: an average of more than one planthopper per stem, on average, more planthoppers than natural enemies,flooding the seedbed is not an option.",
                             "http://www.knowledgebank.irri.org/images/stories/factsheet-planthopper-1.jpg");
             pests.add(pests2);
+            Pests pests3 = new Pests("Stem borer", "The life cycle of stem borers consists of four stages: egg, larva, pupa and adult. After sunset, the male and female moths come together and after sexual union the eggs are fertilized internally. The eggs are laid in batches of 10-80 on the upperside and underside of leaf surfaces, usually close to the midrib. They hatch after 4-10 days. Younger larvae (caterpillars) feed on the leaf whorl. Older larvae tunnel into the stems, and it is within these tunnels that they feed and grow for about 2-3 weeks.",
+                            "Check the field for the following damage symptoms:\n" +
+                                    "Deadhearts or dead tillers that can be easily pulled from the base during the vegetative stages\n" +
+                                    "Whiteheads during reproductive stage where the emerging panicles are whitish and unfilled or empty\n" +
+                                    "Tiny holes on the stems and tillers\n" +
+                                    "Frass or fecal matters inside the damaged stems\n" +
+                                    "\n" +
+                                    "To confirm stem borer damage, visually inspect rice crop for deadhearts in the vegetative stages and whiteheads in reproductive stages. Stems can be pulled and dissected for larvae and pupae for confirmation of stem borer damage.",
+                            "Stem borers can destroy rice at any stage of the plant from seedling to maturity. They feed upon tillers and cause deadhearts or drying of the central tiller, during the vegetative stage; and cause whiteheads at reproductive stage.",
+                            "To manage the Stem borer:\n" +
+                                    "Use resistant varieties\n" +
+                                    "At seedbed and transplanting, handpick and destroy egg masses\n" +
+                                    "Raise level of irrigation water periodically to submerge the eggs deposited on the lower parts of the plant\n" +
+                                    "Before transplanting, cut the leaf-top to reduce carry-over of eggs from the seedbed to the field\n" +
+                                    "Ensure proper timing of planting and synchronous planting, harvest crops at ground level to remove the larvae in stubble, remove stubble and volunteer rice, plow and flood the field\n" +
+                                    "Encourage biological control agents: braconid, eulophid, mymarid, scelionid, chalcid, pteromalid and trichogrammatid wasps, ants, lady beetles, staphylinid beetles, gryllid, green meadow grasshopper, and mirid, phorid and platystomatid flies, bethylid, braconid, elasmid, eulophid, eurytomid and ichneumonid wasps, carabid and lady bird beetles, chloropid fly, gerrid and pentatomid bugs, ants, and mites,  earwigs, bird, asilid fly, vespid wasp, dragonflies, damselflies, and spiders\n" +
+                                    "Bacteria and fungi also infect the larvae: mermithid nematode, chalcid, elasmid and eulophid\n" +
+                                    "Apply nitrogen fertilizer in split following the recommended rate and time of application.",
+                                "http://www.knowledgebank.irri.org/images/stories/stem-borer-larvae.jpg");
+            pests.add(pests3);
             for (Pests p : pests){
                 pestDao.insert(p);
             }
@@ -188,8 +208,10 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             CropPestDao cropPestDao = db.cropPestDao();
             cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Rice leaffolder")));
             cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Planthopper")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Stem borer")));
             cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Rice leaffolder")));
             cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Planthopper")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Stem borer")));
 
             //****Diseases****
             DiseaseDao diseaseDao = db.diseaseDao();
@@ -199,7 +221,6 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Initial symptoms appear as white to gray-green lesions or spots, with dark green borders.\n" +
                     "Older lesions on the leaves are elliptical or spindle-shaped and whitish to gray centers with red to brownish or necrotic border.\n" +
                     "Check for other symptoms:\n" +
-                    "\n" +
                     "Some resemble diamond shape, wide in the center and pointed toward either ends.\n" +
                     "Lesions can enlarge and coalesce, growing together, to kill the entire leaves.",
                     "Blast is caused by the fungus Magnaporthe oryzae. It can affect all above ground parts of a rice plant: leaf, collar, node, neck, parts of panicle, and sometimes leaf sheath.",
@@ -230,6 +251,37 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "Plow under of rice stubbles.\n" +
                             "Remove infected rice ratoons.", "http://www.knowledgebank.irri.org/images/stories/leaf-scald.jpg");
             diseases.add(diseases2);
+            Diseases diseases3 = new Diseases("Sheath rot", "Although sheath rot can be observed in the field as a single disease on rice sheath, more often, it has become part of a complex of grain and leaf sheath discolouration commonly observed on wet-season rice.\n" +
+                    "Check for lesions: The typical sheath rot lesion starts at the uppermost leaf sheath enclosing the young panicles. It appears oblong or as irregular spot with dark reddish, brown margins, and gray center or brownish gray throughout.\n" +
+                    "Check for spots:Usually several spots are observed and these spots enlarge and combine or grow together and can cover most of the leaf sheath. Panicles remain within the sheath or may partially emerge. Affected leaf sheaths may have abundant whitish powdery fungal growth (mycelium) visible on the outer surface. Panicles that have not emerged rot and the florets turn red-brown to dark brown.\n",
+                    "Sheath rot is caused by Sarocladium oryzae. The disease reduces grain yield by retarding or aborting panicle emergence and producing unfilled seeds and sterile panicles. Sheath rot also reduces grain quality by causing panicles to rot and grains to become discoloured.",
+                    "To manage sheath rot:\n" +
+                            "Sheath rot is a seed-borne disease, use healthy seeds.\n" +
+                            "Minimize insect infestation in rice fields. Insects cause injuries to the plants that allow the fungi to enter the plant and cause infection.\n" +
+                            "The fungi survive on rice crop residue after harvest and can cause infection in the following seasons. Remove infected stubbles after harvest.\n" +
+                            "Use optimum plant spacing. Sow three plants per hill at 20 cm row spacing.\n" +
+                            "Apply potash at tillering stage.\n" +
+                            "Apply foliar spray of calcium sulfate and zinc sulfate.\n" +
+                            "Apply a seed treatment fungicide like carbendazim, edifenphos, or mancozeb as seed treatment and foliar spraying at the heading stage.\n" +
+                            "Apply a foliar fungicide like benomyl and copper oxychloride as foliar sprays.", "http://www.knowledgebank.irri.org/images/stories/sheath-rot-1.jpg");
+            diseases.add(diseases3);
+            Diseases diseases4 = new Diseases("Brown spot", "Check for lesions:\n" +
+                    "Infected seedlings have small, circular, yellow brown or brown lesions that may girdle the coleoptile and distort primary and secondary leaves.\n" +
+                    "Starting at tillering stage, lesions can be observed on the leaves. They are initially small, circular, and dark brown to purple-brown.\n" +
+                    "Fully developed lesions are circular to oval with a light brown to gray center, surrounded by a reddish brown margin caused by the toxin produced by the fungi.",
+                    "Brown spot has been historically largely ignored as one of the most common and most damaging rice diseases.",
+                    "Improving soil fertility is the first step in managing brown spot. To do this:\n" +
+                            "monitor soil nutrients regularly\n" +
+                            "apply required fertilizers\n" +
+                            "for soils that are low in silicon, apply calcium silicate slag before planting\n" +
+                            "Fertilizers, however, can be costly and may take many cropping seasons before becoming effective. More economical management options include:\n" +
+                            "\n" +
+                            "Use resistant varieties. \n" +
+                            "Contact your local agriculture office for up-to-date lists of varieties available.\n" +
+                            "Use fungicides (e.g., iprodione, propiconazole, azoxystrobin, trifloxystrobin, and carbendazim) as seed treatments.\n" +
+                            "Treat seeds with hot water (53−54°C) for 10−12 minutes before planting, to control primary infection at the seedling stage. To increase the effectiveness of treatment, pre-soak seeds in cold water for eight hours.",
+                    "http://www.knowledgebank.irri.org/images/stories/brown-spot-3.jpg");
+            diseases.add(diseases4);
             for (Diseases d : diseases){
                 diseaseDao.insert(d);
             }
@@ -238,8 +290,12 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             CropDiseaseDao cropDiseaseDao = db.cropDiseaseDao();
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Blast")));
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Leaf Scald")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Sheath rot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Brown spot")));
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Blast")));
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Leaf Scald")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Sheath rot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Brown spot")));
 
             //****Pesticides****
             PesticideDao pesticideDao = db.pesticideDao();
@@ -286,10 +342,70 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             //****Stages****
             StageDao stageDao = db.stageDao();
             ArrayList<Stages> stages = new ArrayList<>();
-            Stages stages1_OM18 = new Stages(cropDao.getIdByName("OM18"), "Land preparation", 24, 1, "1st", "24th", "http://www.knowledgebank.irri.org/images/stories/landprep-wetpreparation-1.jpg");
+            Stages stages1_OM18 = new Stages(cropDao.getIdByName("OM18"), "Land preparation", 24, 1, false, "1st", "24th", "http://www.knowledgebank.irri.org/images/stories/landprep-wetpreparation-1.jpg");
             stages.add(stages1_OM18);
-            Stages stages2_OM18 = new Stages(cropDao.getIdByName("OM18"), "Seeding", 1, 2,  "25th", "25th", );
+            Stages stages2_OM18 = new Stages(cropDao.getIdByName("OM18"), "Seeding", 1, 2, false, "25th", "25th", "http://www.knowledgebank.irri.org/images/stories/planting-broadcasting.jpg");
+            stages.add(stages2_OM18);
+            Stages stages3_OM18 = new Stages(cropDao.getIdByName("OM18"), "Seed germination", 10, 3, false, "26th", "35th", "http://www.knowledgebank.irri.org/images/stories/factsheet-seed_germination.jpg");
+            stages.add(stages3_OM18);
+            Stages stages4_OM18 = new Stages(cropDao.getIdByName("OM18"), "Tillering", 40, 4, false, "36th", "75th", "https://th.bing.com/th/id/OIP.s-LJu8ILykos3__FpU2T2QHaFj?pid=ImgDet&rs=1");
+            stages.add(stages4_OM18);
+            Stages stages5_OM18 = new Stages(cropDao.getIdByName("OM18"), "Panicle initiation", 18, 5, false, "76th", "93th", "https://assets.corteva.com/is/image/Corteva/IMG_0672_close-up_of_rice_plants");
+            stages.add(stages5_OM18);
+            Stages stages6_OM18 = new Stages(cropDao.getIdByName("OM18"), "Heading", 10, 6, false, "94th", "103th", "https://oba-shima.mito-city.com/wp/wp-content/uploads/2013/08/inenohana-8.jpg");
+            stages.add(stages6_OM18);
+            Stages stages7_OM18 = new Stages(cropDao.getIdByName("OM18"), "Flowering", 10, 7, false, "104th", "113th", "https://th.bing.com/th/id/R.624deda3b79e82c7eb20310bfadae590?rik=zUVfOL9WWyayWg&riu=http%3a%2f%2fimg.zhiwushuo.com%2fuploads%2fallimg%2f202149%2f20210609024642741.jpg&ehk=Xn4Q9nFs7rqVqTe29NZWmrlfcWVxDIuz84Si5FVwYIk%3d&risl=&pid=ImgRaw&r=0");
+            stages.add(stages7_OM18);
+            Stages stages8_OM18 = new Stages(cropDao.getIdByName("OM18"), "Milk", 10, 8, false, "114th", "123th", "https://th.bing.com/th/id/R.fa825926cfaa783b838e1c3298471843?rik=7ecRRwkUYy1Mlg&riu=http%3a%2f%2fagritech.tnau.ac.in%2fagriculture%2fphoto_bank%2frice%2fimages%2f033.+Paddy+field+%40+milking+stage.jpg&ehk=FXHMFODGyU4M%2bGZ2CLYLkYW%2fyFCMTvWXIXwEofY9d%2bs%3d&risl=&pid=ImgRaw&r=0");
+            stages.add(stages8_OM18);
+            Stages stages9_OM18 = new Stages(cropDao.getIdByName("OM18"), "Dough", 10, 9, false, "124th", "133th", "https://www.en.krishakjagat.org/wp-content/uploads/2020/12/trieu-tan-lua.jpg");
+            stages.add(stages9_OM18);
+            Stages stage10_OM18 = new Stages(cropDao.getIdByName("OM18"), "Mature", 10, 10, false, "134th", "143th", "https://qph.fs.quoracdn.net/main-qimg-e430ecabafc3856bb49038f999d57186");
+            stages.add(stage10_OM18);
+            Stages stages11_OM18 = new Stages(cropDao.getIdByName("OM18"), "Harvest", 1, 11, false, "144th", "144th", "https://th.bing.com/th/id/OIP.jK8a-oRAOY1A3uYJ1qm7MgAAAA?pid=ImgDet&rs=1");
+            stages.add(stages11_OM18);
+            for (Stages s : stages){
+                stageDao.insert(s);
+            }
 
+            //*****Stages-Pests****
+            PestStageDao pestStageDao = db.pestStageDao();
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Tillering"), pestDao.getIdByName("Stem borer")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Tillering"), pestDao.getIdByName("Rice leaffolder")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Panicle initiation"), pestDao.getIdByName("Rice leaffolder")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Heading"), pestDao.getIdByName("Rice leaffolder")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Heading"), pestDao.getIdByName("Planthopper")));
+
+            //****Stages-Diseases****
+            DiseaseStageDao diseaseStageDao = db.diseaseStageDao();
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Tillering"), diseaseDao.getIdByName("Blast")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Tillering"), diseaseDao.getIdByName("Leaf Scald")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Blast")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Brown spot")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Leaf Scald")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Leaf Scald")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Blast")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Sheath rot")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Flowering"), diseaseDao.getIdByName("Blast")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Flowering"), diseaseDao.getIdByName("Sheath rot")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Milk"), diseaseDao.getIdByName("Sheath rot")));
+
+            //****Activities****
+            ActivityDao activityDao = db.activityDao();
+            ArrayList<Activities> activities = new ArrayList<>();
+            Activities activities1 = new Activities(stageDao.getIdByName("Land preparation"), "Bunds or dikes", "Bunds or dikes enable the field to hold water. This is important especially in areas where water supply is not reliable.",1);
+            activities.add(activities1);
+            Activities activities2 = new Activities(stageDao.getIdByName("Land preparation"), "Irrigate the field", "Irrigate the field with 2−3 cm of water for about 3−7 days or until it is soft enough and suitable for an equipment to be used.", 7);
+            activities.add(activities2);
+            Activities activities3 = new Activities(stageDao.getIdByName("Land preparation"), "Perform primary tillage operations", "Primary tillage is normally undertaken when the soil is wet enough to allow the field to be plowed and strong enough to give reasonable levels of traction. This can be immediately after harvest or at the beginning of the next season, depending on soil moisture and water availability.", 2);
+            activities.add(activities3);
+            Activities activities4 = new Activities(stageDao.getIdByName("Land preparation"), "Flood the field", "Keep the field submerged for 10−14 days after plowing to soften clods and to decompose organic materials.", 10);
+            activities.add(activities4);
+            Activities activities5 = new Activities(stageDao.getIdByName("Land preparation"), "Perform secondary tillage operations", "Depending on climate and soil type, this should be done 10−14 days after primary workings.", 2);
+            activities.add(activities5);
+            Activities activities6 = new Activities(stageDao.getIdByName("Land preparation"), "Level the field", "Levelling should be done two (2) days before planting. A levelled and smooth soil surface provides for uniform germination and growth of the crops. A well-levelled field improves water coverage and is also proven to increase crop yield and quality.", 2);
+            activities.add(activities6);
+            Activities activities7 = new Activities();
     });
     }
 }
