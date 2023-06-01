@@ -14,6 +14,7 @@ import com.example.ricegrow.DatabaseFiles.Dao.ActivityPesticideDao;
 import com.example.ricegrow.DatabaseFiles.Dao.CropDao;
 import com.example.ricegrow.DatabaseFiles.Dao.CropDiseaseDao;
 import com.example.ricegrow.DatabaseFiles.Dao.CropPestDao;
+import com.example.ricegrow.DatabaseFiles.Dao.CropWeedDao;
 import com.example.ricegrow.DatabaseFiles.Dao.DiseaseDao;
 import com.example.ricegrow.DatabaseFiles.Dao.DiseasePesticideDao;
 import com.example.ricegrow.DatabaseFiles.Dao.DiseaseStageDao;
@@ -28,11 +29,14 @@ import com.example.ricegrow.DatabaseFiles.Dao.PlanStageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.StageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.UserCropDao;
 import com.example.ricegrow.DatabaseFiles.Dao.UserDao;
+import com.example.ricegrow.DatabaseFiles.Dao.WeedDao;
+import com.example.ricegrow.DatabaseFiles.Dao.WeedPesticideDao;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.ActivityFertilizers;
 import com.example.ricegrow.DatabaseFiles.Model.ActivityPesticides;
 import com.example.ricegrow.DatabaseFiles.Model.CropDiseases;
 import com.example.ricegrow.DatabaseFiles.Model.CropPests;
+import com.example.ricegrow.DatabaseFiles.Model.CropWeeds;
 import com.example.ricegrow.DatabaseFiles.Model.Crops;
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.DatabaseFiles.Model.DiseasesPesticides;
@@ -49,16 +53,18 @@ import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.Model.Users;
+import com.example.ricegrow.DatabaseFiles.Model.Weeds;
+import com.example.ricegrow.DatabaseFiles.Model.WeedsPesticides;
 
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Activities.class, ActivityFertilizers.class, ActivityPesticides.class, CropDiseases.class,
-                    CropPests.class, Crops.class, Diseases.class, DiseasesPesticides.class, DiseasesStages.class,
+                    CropPests.class, Crops.class, CropWeeds.class,Diseases.class, DiseasesPesticides.class, DiseasesStages.class,
                     Fertilizers.class, Pesticides.class, Pests.class, PestsPesticides.class, PestsStages.class,
                     PlanActivities.class, PlanFertilizers.class, PlanPesticides.class, PlanStages.class, Stages.class,
-                    UserCrops.class, Users.class}, version = 1)
+                    UserCrops.class, Users.class, Weeds.class, WeedsPesticides.class}, version = 1)
 public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract ActivityDao activityDao();
     public abstract ActivityFertilizerDao activityFertilizerDao();
@@ -66,6 +72,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract CropDao cropDao();
     public abstract CropDiseaseDao cropDiseaseDao();
     public abstract CropPestDao cropPestDao();
+    public abstract CropWeedDao cropWeedDao();
     public abstract DiseaseDao diseaseDao();
     public abstract DiseasePesticideDao diseasePesticideDao();
     public abstract DiseaseStageDao diseaseStageDao();
@@ -80,6 +87,8 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract StageDao stageDao();
     public abstract UserCropDao userCropDao();
     public abstract UserDao userDao();
+    public abstract WeedDao weedDao();
+    public abstract WeedPesticideDao weedPesticideDao();
 
 
     private static RiceGrowDatabase instance;
@@ -125,6 +134,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             }
 
             //****Pests****
+            // TODO: 6/1/2023 Add more pests
             PestDao pestDao = db.pestDao();
             ArrayList<Pests> pests = new ArrayList<>();
             Pests pests1 = new Pests("Rice leaffolder", "The life cycle of Rice leaffolder is about 1.5 months. The egg stage lasts for 5 days, the larval stage lasts for 25 days, the pupal stage lasts for 7 days, and the adult moth stage lasts for 10 days. During the larval stage, the leaffolder caterpillars fold the rice leaves around themselves and attach the leaf margins together with silk strands. Rice leaffolders occur in all rice environments and are more abundant during the rainy seasons. They are commonly found in shady areas and areas where rice is heavily fertilized. In tropical rice areas, they are active year-round, whereas, in temperate countries, they are active from May to October.",
@@ -214,6 +224,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Stem borer")));
 
             //****Diseases****
+            // TODO: 6/1/2023 Add more diseases
             DiseaseDao diseaseDao = db.diseaseDao();
             ArrayList<Diseases> diseases = new ArrayList<>();
             Diseases diseases1 = new Diseases("Blast", "Check the leaf and collar for lesions:\n" +
@@ -298,32 +309,52 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Brown spot")));
 
             //****Pesticides****
+            // TODO: 6/1/2023 Add more pesticides
             PesticideDao pesticideDao = db.pesticideDao();
             ArrayList<Pesticides> pesticides = new ArrayList<>();
-            Pesticides pesticides1 = new Pesticides("Padan 95SP", "Sumitomo Chemical", "Cartap (min 97%) : 950 g/kg", "Dosage: 0.5 – 0.7 kg/ha\n" +
+            Pesticides pesticides1 = new Pesticides("Padan 95SP", "Sumitomo Chemical", "Cartap (min 97%) : 950 g/kg", "Insecticide", "Dosage: 0.5 – 0.7 kg/ha\n" +
                     "PreHarvest Interval- PHI: 7 days (Time interval in days from last handling to harvest)\n" +
                     "How to use: The amount of water sprayed from 400 to 600 liters/ha." +
                     "It is not recommended to use alum water to mix with Padan 95SP insecticide.", 30, 400,
                     "https://vietnong.vn/wp-content/uploads/2022/04/PANDAN-95-01-768x768.jpg");
             pesticides.add(pesticides1);
 
-            Pesticides pesticides2 = new Pesticides("Regent 800WG", "Bayer", "Fipronil (min 95 %): 800g/kg",
+            Pesticides pesticides2 = new Pesticides("Regent 800WG", "Bayer", "Fipronil (min 95 %): 800g/kg", "Insecticide",
                     "Dosage: 32 g/ha\n" +
                             "Quarantine period (PreHarvest Interval- PHI): 15 days (Duration in days from last handling to harvest)\n" +
-                            "Usage: The amount of water sprayed is 210 - 600 liters/ha. Spray when pests appear", 32, 600,"https://vuonsaigon.vn/wp-content/uploads/2019/12/regent-1g-599x599.jpg");
+                            "Usage: The amount of water sprayed is 210 - 600 liters/ha. Spray when pests appear", 1.6, 600,"https://vuonsaigon.vn/wp-content/uploads/2019/12/regent-1g-599x599.jpg");
             pesticides.add(pesticides2);
 
-            Pesticides pesticides3 = new Pesticides("ANTRACOL 70WP", "Bayer", "Propineb (min 80%) : 700 g/kg",
+            Pesticides pesticides3 = new Pesticides("ANTRACOL 70WP", "Bayer", "Propineb (min 80%) : 700 g/kg", "Fungicide",
                     "Dosage: 1.5 kg/ha\n" +
                             "PreHarvest Interval- PHI: 7 days (Time interval in days from last handling to harvest)\n" +
-                            "Usage: The amount of water sprayed is 320 - 800 liters/ha. Spray when the disease appears", 64, 800, "https://www.cropscience.bayer.com.vn/-/media/Bayer%20CropScience/Country-Vietnam-Internet/2019/07/antracol_package.jpg");
+                            "Usage: The amount of water sprayed is 320 - 800 liters/ha. Spray when the disease appears", 64, 400, "https://www.cropscience.bayer.com.vn/-/media/Bayer%20CropScience/Country-Vietnam-Internet/2019/07/antracol_package.jpg");
             pesticides.add(pesticides3);
 
-            Pesticides pesticides4 = new Pesticides("Xantocin 40WP", "VFC", "Bronopol (min 99%) : 40% w/w", "Dosage: 0.2 – 0.25 kg/ha\n" +
+            Pesticides pesticides4 = new Pesticides("Xantocin 40WP", "VFC", "Bronopol (min 99%) : 40% w/w", "Fungicide", "Dosage: 0.2 – 0.25 kg/ha\n" +
                     "PreHarvest Interval- PHI: 1 day (Time interval in days from last handling to harvest)\n" +
                     "Usage: The amount of water sprayed 400 - 500 liters/ha. Spray when the disease rate is about 5-10%",
-                    10, 600, "https://vietnong.vn/wp-content/uploads/2022/12/thuoc-bvtv-xantocin-40wp-768x672.jpg");
+                    10, 400, "https://vietnong.vn/wp-content/uploads/2022/12/thuoc-bvtv-xantocin-40wp-768x672.jpg");
             pesticides.add(pesticides4);
+
+            Pesticides pesticides5 = new Pesticides("Hilton USA 320 EC", "HopTri Co", "Pretilachlor 300g/l + Pyribenzoxim 20g/l + Fenclorim 100g/l", "Herbicide",
+                                "Dosage: 1.0 – 1.25 liters/ha\n" +
+                                        "PreHarvest Interval- PHI: Unknown (Duration in days from last handling to harvest)\n" +
+                                        "Usage: The amount of water sprayed 400 liters/ha. Spraying after sowing 6-10 days",
+                                40, 400, "https://www.hoptri.com/media/k2/items/cache/08f61c52357dcc6d2503bfea790efe4d_M.jpg");
+            pesticides.add(pesticides5);
+
+            Pesticides pesticides6 = new Pesticides("Elano 20EC", "HopTri Co", "Cyhalofop-butyl (min 97 %) : 200 g/l", "Herbicide", "Dosage: 0.4 liters/ha\n" +
+                    "PreHarvest Interval (PHI): Unknown date (Time interval in days from last handling to harvest)\n" +
+                    "Usage: The amount of water sprayed is 320-400 liters/ha. Spraying after sowing 3-15 days",
+                        20, 320, "https://www.hoptri.com/media/k2/items/cache/0ef95987526970d668cbb7995fe36b10_M.jpg");
+            pesticides.add(pesticides6);
+
+            Pesticides pesticides7 = new Pesticides("Tilt Super 300EC", "Syngenta", "Difenoconazole 150g/l + Propiconazole 150g/l: 300g/l", "Fungicide","Dosage: 0.25 – 0.3 liters/ha\n" +
+                    "Quarantine period (PreHarvest Interval- PHI): 14 days (Duration in days from last handling to harvest)\n" +
+                    "Usage: Spray with 500-600 liters of water per hectare. Spray when the disease rate is about 8%",
+                        10, 500, "https://th.bing.com/th/id/R.71e6bb0376104ac186b5086f027a22dc?rik=3N3Ex%2bedKUCvDw&pid=ImgRaw&r=0");
+            pesticides.add(pesticides7);
             for (Pesticides p : pesticides){
                 pesticideDao.insert(p);
             }
@@ -338,15 +369,16 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             DiseasePesticideDao diseasePesticideDao = db.diseasePesticideDao();
             diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("ANTRACOL 70WP"), diseaseDao.getIdByName("Blast")));
             diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Xantocin 40WP"), diseaseDao.getIdByName("Leaf Scald")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Tilt Super 300EC"), diseaseDao.getIdByName("Sheath rot")));
 
             //****Stages****
             StageDao stageDao = db.stageDao();
             ArrayList<Stages> stages = new ArrayList<>();
             Stages stages1_OM18 = new Stages(cropDao.getIdByName("OM18"), "Land preparation", 24, 1, false, "1st", "24th", "http://www.knowledgebank.irri.org/images/stories/landprep-wetpreparation-1.jpg");
             stages.add(stages1_OM18);
-            Stages stages2_OM18 = new Stages(cropDao.getIdByName("OM18"), "Seeding", 1, 2, false, "25th", "25th", "http://www.knowledgebank.irri.org/images/stories/planting-broadcasting.jpg");
+            Stages stages2_OM18 = new Stages(cropDao.getIdByName("OM18"), "Planting", 1, 2, false, "25th", "25th", "http://www.knowledgebank.irri.org/images/stories/planting-broadcasting.jpg");
             stages.add(stages2_OM18);
-            Stages stages3_OM18 = new Stages(cropDao.getIdByName("OM18"), "Seed germination", 10, 3, false, "26th", "35th", "http://www.knowledgebank.irri.org/images/stories/factsheet-seed_germination.jpg");
+            Stages stages3_OM18 = new Stages(cropDao.getIdByName("OM18"), "Transplantation", 10, 3, false, "26th", "35th", "http://www.knowledgebank.irri.org/images/stories/factsheet-seed_germination.jpg");
             stages.add(stages3_OM18);
             Stages stages4_OM18 = new Stages(cropDao.getIdByName("OM18"), "Tillering", 40, 4, false, "36th", "75th", "https://th.bing.com/th/id/OIP.s-LJu8ILykos3__FpU2T2QHaFj?pid=ImgDet&rs=1");
             stages.add(stages4_OM18);
@@ -362,7 +394,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             stages.add(stages9_OM18);
             Stages stage10_OM18 = new Stages(cropDao.getIdByName("OM18"), "Mature", 10, 10, false, "134th", "143th", "https://qph.fs.quoracdn.net/main-qimg-e430ecabafc3856bb49038f999d57186");
             stages.add(stage10_OM18);
-            Stages stages11_OM18 = new Stages(cropDao.getIdByName("OM18"), "Harvest", 1, 11, false, "144th", "144th", "https://th.bing.com/th/id/OIP.jK8a-oRAOY1A3uYJ1qm7MgAAAA?pid=ImgDet&rs=1");
+            Stages stages11_OM18 = new Stages(cropDao.getIdByName("OM18"), "Harvesting", 1, 11, false, "144th", "144th", "https://th.bing.com/th/id/OIP.jK8a-oRAOY1A3uYJ1qm7MgAAAA?pid=ImgDet&rs=1");
             stages.add(stages11_OM18);
             for (Stages s : stages){
                 stageDao.insert(s);
@@ -393,19 +425,178 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             //****Activities****
             ActivityDao activityDao = db.activityDao();
             ArrayList<Activities> activities = new ArrayList<>();
-            Activities activities1 = new Activities(stageDao.getIdByName("Land preparation"), "Bunds or dikes", "Bunds or dikes enable the field to hold water. This is important especially in areas where water supply is not reliable.",1);
+            Activities activities1 = new Activities(stageDao.getIdByName("Land preparation"), "Bunds or dikes", "Bunds or dikes enable the field to hold water. This is important especially in areas where water supply is not reliable.",1, "http://www.knowledgebank.irri.org/images/stories/landprep-bunds.jpg");
             activities.add(activities1);
-            Activities activities2 = new Activities(stageDao.getIdByName("Land preparation"), "Irrigate the field", "Irrigate the field with 2−3 cm of water for about 3−7 days or until it is soft enough and suitable for an equipment to be used.", 7);
+            Activities activities2 = new Activities(stageDao.getIdByName("Land preparation"), "Irrigate the field", "Irrigate the field with 2−3 cm of water for about 3−7 days or until it is soft enough and suitable for an equipment to be used.", 7, "https://th.bing.com/th/id/R.fa0b048dceec885f0aec00cb097c429c?rik=ejInn0L4%2b5COMg&riu=http%3a%2f%2f2.bp.blogspot.com%2f-qhduk5WJAgU%2fTeAr1RjuMQI%2fAAAAAAAAATw%2f5m-sUHJGvBk%2fs1600%2frice%2bpaddies.jpg&ehk=jm1Ck2QQP%2f92%2fTVTJ5jugRztEjKAlT%2bNsvrk6xdux%2bg%3d&risl=&pid=ImgRaw&r=0");
             activities.add(activities2);
-            Activities activities3 = new Activities(stageDao.getIdByName("Land preparation"), "Perform primary tillage operations", "Primary tillage is normally undertaken when the soil is wet enough to allow the field to be plowed and strong enough to give reasonable levels of traction. This can be immediately after harvest or at the beginning of the next season, depending on soil moisture and water availability.", 2);
+            Activities activities3 = new Activities(stageDao.getIdByName("Land preparation"), "Perform primary tillage operations", "Primary tillage is normally undertaken when the soil is wet enough to allow the field to be plowed and strong enough to give reasonable levels of traction. This can be immediately after harvest or at the beginning of the next season, depending on soil moisture and water availability.", 2, "https://i.ytimg.com/vi/hh3lh1VzFgk/maxresdefault.jpg");
             activities.add(activities3);
-            Activities activities4 = new Activities(stageDao.getIdByName("Land preparation"), "Flood the field", "Keep the field submerged for 10−14 days after plowing to soften clods and to decompose organic materials.", 10);
+            Activities activities4 = new Activities(stageDao.getIdByName("Land preparation"), "Flood the field", "Keep the field submerged for 10−14 days after plowing to soften clods and to decompose organic materials.", 10, "https://th.bing.com/th/id/R.7704876989fec876a5c1d08efc3c20e3?rik=3qjXuDm%2bRhfFCg&riu=http%3a%2f%2fwww.duplisea.ca%2fphotos%2f2006-7.JPG&ehk=X9rEkkdop382JG4tUj6fhxHB%2bwwNOhznofbs48mx4CA%3d&risl=&pid=ImgRaw&r=0");
             activities.add(activities4);
-            Activities activities5 = new Activities(stageDao.getIdByName("Land preparation"), "Perform secondary tillage operations", "Depending on climate and soil type, this should be done 10−14 days after primary workings.", 2);
+            Activities activities5 = new Activities(stageDao.getIdByName("Land preparation"), "Perform secondary tillage operations", "Depending on climate and soil type, this should be done 10−14 days after primary workings.", 2, "https://i.ytimg.com/vi/IkUAaJ7f3t0/maxresdefault.jpg");
             activities.add(activities5);
-            Activities activities6 = new Activities(stageDao.getIdByName("Land preparation"), "Level the field", "Levelling should be done two (2) days before planting. A levelled and smooth soil surface provides for uniform germination and growth of the crops. A well-levelled field improves water coverage and is also proven to increase crop yield and quality.", 2);
+            Activities activities6 = new Activities(stageDao.getIdByName("Land preparation"), "Level the field", "Levelling should be done two (2) days before planting. A levelled and smooth soil surface provides for uniform germination and growth of the crops. A well-levelled field improves water coverage and is also proven to increase crop yield and quality.", 2, "https://mientaycogi.com/wp-content/uploads/2020/03/l%C3%A0m-ru%E1%BB%99ng-mi%E1%BB%81n-t%C3%A2y.jpg");
             activities.add(activities6);
-            Activities activities7 = new Activities();
-    });
+            Activities activities7 = new Activities(stageDao.getIdByName("Planting"), "Transplanting", "Transplanting is commonly practiced as a method of weed control for wet or puddled fields. It requires less seed but much more labor compared to direct seeding. Also, transplanted crops take longer to mature due to transplanting shock.", 1, "https://th.bing.com/th/id/R.49c3f04a3549cc5d5737ac488ee690ce?rik=jajTyg%2fmNGodew&riu=http%3a%2f%2fcamnangcaytrong.com%2fUploads%2fNews%2fcay-lua.jpg&ehk=iPHX2jQ1yd4mBn8bt8QTNgWdAa%2fbFCDR7IItuLC%2bbbg%3d&risl=&pid=ImgRaw&r=0");
+            activities.add(activities7);
+            Activities activities8 = new Activities(stageDao.getIdByName("Planting"), "Direct seeding", "Direct-seeded crops require less labour and tend to mature faster than transplanted crops. In this method, plants are not subjected to stresses such as being pulled from the soil and re-establishing fine rootlets. However, they have more competition from weeds.", 1, "https://i.ytimg.com/vi/qwyQQqG8DbI/maxresdefault.jpg");
+            activities.add(activities8);
+            Activities activities9 = new Activities(stageDao.getIdByName("Transplantation"), "Spraying herbicide", "Herbicides should be used in combination with other methods of weed control such as cultural (i.e., use of crop residues as mulches, stale seedbed technique) and manual and mechanical weeding. The choice of herbicide depends on the type of weeds. No single herbicide can control all weeds in the rice crop. For effective weed control, apply a pre-emergence herbicide, 1–3 DAS. While post-emergence application should be at 15–25 DAS.", 10, "https://th.bing.com/th/id/OIP.J3O4uhyxBFYpHO_9LTttwAHaE8?pid=ImgDet&rs=1");
+            activities.add(activities9);
+            Activities activities10 = new Activities(stageDao.getIdByName("Tillering"), "Irrigate the field", "The reason why water is pumped into the field about 1 - 3 cm before applying fertilizer is to prevent light from decomposing and evaporating manure. When fertilizer is applied to dry soil, it can cause a chemical reaction that releases ammonia gas. This gas can be harmful to plants and can cause root damage. By watering the soil before applying fertilizer, you can help prevent this reaction from occurring.", 1,"https://bomnuocdandung.vn/library/module_new/tim-hieu-may-bom-nuoc-dong-ruong-ntp_s1527.jpg");
+            activities.add(activities10);
+            Activities activities11 = new Activities(stageDao.getIdByName("Tillering"), "Primary fertilizing","Primary fertilizing tillering rice is the most critical step in the process of planting and caring for rice. Fertilizing to help tiller rice is the period of fertilizing after 15 to 20 days after transplanting rice. For the rice to grow well, and for high yield, in addition to applying fertilizer with the right technique, choosing the right fertilizer is also one of the decisive factors. Should spend 1/2 -2/3 of the remaining nitrogen to fertilize the tillering stage to help the rice to branch quickly, concentrate and also to reduce the amount of fertilizer and avoid loss of nitrogen.", 20, "https://th.bing.com/th/id/OIP.MgwfDZUYoWI6diQcdRL6DAHaEM?pid=ImgDet&rs=1");
+            activities.add(activities11);
+            Activities activities12 = new Activities(stageDao.getIdByName("Tillering"), "Secondary fertilizing", "Secondary fertilizing plays a very important role. It determines the yield as well as the efficiency of the entire rice crop. If we fertilize correctly, the rice yield will increase from 1 to 2 tons/ha. In contrast, the wrong fertilization will reduce rice yield from 1 to 2 tons/ha.", 20, "https://qph.fs.quoracdn.net/main-qimg-cdc47fc61921862a471f59807acb88e3");
+            activities.add(activities12);
+            Activities activities13 = new Activities(stageDao.getIdByName("Panicle initiation"), "Third fertilizing", "The third fertilizing is also one of the crucial stages contributing to determining rice yield. After the rice has fully bloomed, it is possible to fertilize the seeds by applying three types of Nitrogen (N), Phosphorus (P), and Potassium (K). This is the period when fertilizing is effective when planting rice, helping to limit falling and flattening seeds. Farmers should fertilize seedlings 25 days before harvest to reduce the amount of pesticide left on the seeds.", 3, "https://agri.vn/wp-content/uploads/2021/02/bon-phan-cho-lua-2-560x420.jpg");
+            activities.add(activities13);
+            Activities activities14 = new Activities(stageDao.getIdByName("Panicle initiation"), "First spraying pesticide", "Spraying pesticides in rice planting is a common practice to control pests and diseases that can affect the growth and yield of rice crops. Pesticides are chemical substances specifically formulated to target and eliminate or manage pests, including insects, weeds, and fungal or bacterial diseases.", 15, "https://www.in2greatkc.com/wp-content/uploads/2020/02/farmers-are-spraying-crops-in-a-green-field_t20_yX1joL-1200x686.jpg");
+            activities.add(activities14);
+            Activities activities15 = new Activities(stageDao.getIdByName("Heading"), "Second spraying pesticide", "Spraying pesticides in rice planting is a common practice to control pests and diseases that can affect the growth and yield of rice crops. Pesticides are chemical substances specifically formulated to target and eliminate or manage pests, including insects, weeds, and fungal or bacterial diseases.", 10, "https://www.in2greatkc.com/wp-content/uploads/2020/02/farmers-are-spraying-crops-in-a-green-field_t20_yX1joL-1200x686.jpg");
+            activities.add(activities15);
+            Activities activities16 = new Activities(stageDao.getIdByName("Flowering"), "Third spraying pesticide", "Spraying pesticides in rice planting is a common practice to control pests and diseases that can affect the growth and yield of rice crops. Pesticides are chemical substances specifically formulated to target and eliminate or manage pests, including insects, weeds, and fungal or bacterial diseases.", 10, "https://www.in2greatkc.com/wp-content/uploads/2020/02/farmers-are-spraying-crops-in-a-green-field_t20_yX1joL-1200x686.jpg");
+            activities.add(activities16);
+            Activities activities17 = new Activities(stageDao.getIdByName("Dough"), "Fourth spraying pesticide", "Spraying pesticides in rice planting is a common practice to control pests and diseases that can affect the growth and yield of rice crops. Pesticides are chemical substances specifically formulated to target and eliminate or manage pests, including insects, weeds, and fungal or bacterial diseases.", 20, "https://www.in2greatkc.com/wp-content/uploads/2020/02/farmers-are-spraying-crops-in-a-green-field_t20_yX1joL-1200x686.jpg");
+            activities.add(activities17);
+            for (Activities a : activities){
+                activityDao.insert(a);
+            }
+
+            //****Activities-Pesticides****
+            ActivityPesticideDao activityPesticideDao = db.activityPesticideDao();
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Spraying herbicide"), pesticideDao.getIdByName("Hilton USA 320 EC"), 1, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Spraying herbicide"), pesticideDao.getIdByName("Elano 20EC"), 0.4, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("First spraying pesticide"), pesticideDao.getIdByName("ANTRACOL 70WP"), 1.5, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("First spraying pesticide"), pesticideDao.getIdByName("Regent 800WG"), 0.032, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Second spraying pesticide"), pesticideDao.getIdByName("Regent 800WG"), 0.032, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Second spraying pesticide"), pesticideDao.getIdByName("ANTRACOL 70WP"), 1.5, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Second spraying pesticide"), pesticideDao.getIdByName("Padan 95SP"), 0.6, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Second spraying pesticide"), pesticideDao.getIdByName("Tilt Super 300EC"), 0.3, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Third spraying pesticide"), pesticideDao.getIdByName("ANTRACOL 70WP"), 1.5, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Third spraying pesticide"), pesticideDao.getIdByName("Tilt Super 300EC"), 0.3, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Fourth spraying pesticide"), pesticideDao.getIdByName("Tilt Super 300EC"), 0.3, "Once time"));
+
+            //****Fertilizers****
+            // TODO: 6/1/2023 Add more fertilizers
+            FertilizerDao fertilizerDao = db.fertilizerDao();
+            ArrayList<Fertilizers> fertilizers = new ArrayList<>();
+            Fertilizers fertilizers1 = new Fertilizers("DAP", "Ha Tay Fertilizer Import Export One Member Company Limited", "Ingredients %: Nts: 18%; P2O5hh: 46%; K2Ohh:0%", "Long-term industrial plants, fruit trees: apply 3-4 kg/tree/year.\n" +
+                    "Vegetable crops: 150 - 200kg/ha/time\n" +
+                    "Food crops: 120 - 200kg/ha/time\n" +
+                    "Short-term crops: 150 - 200kg/ha/time\n" +
+                    "Other crops: 200 - 300kg/ha/time\n" +
+                    "* The above guidelines are for reference only and should be adjusted depending on the region and cultivar.", 60, "https://th.bing.com/th/id/R.e20502f8dbb9df0485c7e3762ff3cb5c?rik=sQWCyJm3AGwm%2fg&riu=http%3a%2f%2fphanbonminhphat.vn%2fupload%2fhinhthem%2fdap-korea-18-7721.jpg&ehk=EcBDlefYdqq7%2fKQwbCJodyv1%2fp9xzp1usGceyhu6Gaw%3d&risl=&pid=ImgRaw&r=0");
+            fertilizers.add(fertilizers1);
+            Fertilizers fertilizers2 = new Fertilizers("Ure", "Petrovietnam Camau Fertilizer Joint stock company", "Ingredients %: N:46.3%; Biuret: 0.99%; Humidity: 0.5%",
+                    "Rice: 50-60 kg/ha/time (3 times/crop: 7-10 days after sowing/18-22 days after sowing/ 38-42 days after sowing)\n" +
+                    "Corn: 80-100 kg/ha/time (3 times/crop: 7-10 days after planting/20-30 days after planting/40-50 days after planting)\n" +
+                    "Sugarcane: 120-150 kg/ha/time (3 times/crop: 15-20 days after planting/2-3 months after planting/4-5 months after planting)", 60, "https://tapdoanvinasa.com/wp-content/uploads/2020/03/phan-ure-ca-mau-tapdoanvinasa-02.jpg");
+            fertilizers.add(fertilizers2);
+            Fertilizers fertilizers3 = new Fertilizers("KCl", "Petrovietnam Camau Fertilizer Joint stock company", "Ingredients %: Kali (K2O): 61%;Humidity: 0.5%",
+                    "Use potassium fertilizer to best fertilize rice in 2 stages: 1st time, 12-15 days after transplanting rice, depending on long or short-term rice varieties. At this time, it is necessary to fertilize on average each pole (500 m2) from 2-3 kg to make the rice plant healthy, hardy transplant, high effective branch. \n" +
+                            "The second fertilizer application is very important when the rice plant is standing female, preparing to make a spike.", 40, "https://th.bing.com/th/id/OIP.uh5Z9Uqifb46kRsiMH-xeQHaLA?pid=ImgDet&rs=1");
+            fertilizers.add(fertilizers3);
+            for (Fertilizers f : fertilizers){
+                fertilizerDao.insert(f);
+            }
+
+            //****Activities-Fertilizers****
+            ActivityFertilizerDao activityFertilizerDao = db.activityFertilizerDao();
+            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Primary fertilizing"), fertilizerDao.getIdByName("Ure"), 70, "Once time"));
+            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Secondary fertilizing"), fertilizerDao.getIdByName("DAP"), 60, "Once time"));
+            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Secondary fertilizing"), fertilizerDao.getIdByName("Ure"), 60, "Once time"));
+            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Secondary fertilizing"), fertilizerDao.getIdByName("KCl"), 30, "Once time"));
+            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Third fertilizing"), fertilizerDao.getIdByName("Ure"), 50, "Once time"));
+            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Third fertilizing"), fertilizerDao.getIdByName("KCl"), 50, "Once time"));
+
+            //****Weeds****
+            // TODO: 6/2/2023 Add more weeds
+            WeedDao weedDao = db.weedDao();
+            ArrayList<Weeds> weeds = new ArrayList<>();
+            Weeds weeds1 = new Weeds("Echinochloa crus-galli", "Asia: China, Japan, and Korea.\n" +
+                    "\n" +
+                    "South and Southeast Asia: India, Indonesia, Cambodia, Lao PDR, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
+                    "\n" +
+                    "Rest of the world: widespread in Africa, Europe, and America.",
+                    "Annual, erect, tufted or reclining at base; up to 200 cm tall.\n" +
+                    "\n" +
+                    "Stem: culms rooting at lower nodes, cylindrical, without hairs, and filled with white spongy pith.\n" +
+                    "\n" +
+                    "Leaf: linear with a broad round base and narrow top; blade 10−40 cm long; ligule absent.\n" +
+                    "\n" +
+                    "Inflorescence: loose green to purplish, 10−25 cm long comprising compound racemes; spikelets more or less elliptical and pointed, usually slightly hairy; awns, if present, green to purplish, 2−5 mm long.",
+                    "The common barnyard gas ropagates by seed. It flowers throughout the year and can produce seeds within 60 days.\n" +
+                            "\n" +
+                            "Echinochloa crus-galli prefers moist to wet land; easily grows in direct-seeded rice fields and wastelands. It is a common weed in swamps and aquatic places. ",
+                    "It is a serious serious weed of lowland rice due to its rapid growth, competitive ability, and capacity to multiply rapidly. The young shoots are eaten in Java and it is used for reclaiming saline lands in Egypt. The weed serves as feed for animals in grasslands and wastelands.",
+                    "Cultural control: Thorough land preparation for rice under wet or dry conditions can reduce infestations.It is difficult to distinguish the weed seedlings from rice at early stages, which makes hand weeding difficult.\n" +
+                            "\n" +
+                            "Biological control: the fungal pathogen Exserohilum monoceras shown to control this weed.\n" +
+                            "\n" +
+                            "Chemical control: Oxadiazon, pretilachlor, pendimethalin or cyhalofop, thiobencarb, butachlor, and propanil mixtures with quinclorac or fenoxaprop.",
+                    "http://www.knowledgebank.irri.org/images/stories/weeds-ecrus-galli.jpg");
+            weeds.add(weeds1);
+            Weeds weeds2 = new Weeds("Leptochloa chinensis", "Asia: Japan and Korea.\n" +
+                    "\n" +
+                    "South and Southeast Asia: Bangladesh, Cambodia, India, Indonesia, Lao PDR, Malaysia, Myanmar, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
+                    "\n" +
+                    "Rest of the world: Australia, Papua New Guinea, Swaziland, and West Africa.",
+                    "A tufted and smooth annual or perennial; up to 120 cm tall.\n" +
+                            "\n" +
+                            "Stem: slender, hollow, erect or ascending from a branching base, rooting at lower nodes, smooth and without hair, typically 10−20 nodes, and can reach as high as 50−100 cm.\n" +
+                            "\n" +
+                            "Leaf: smooth, linear, 10−30 cm long; ligule an inconspicuous membrane 1−2 mm long and deeply divided into hairlike segments.\n" +
+                            "\n" +
+                            "Inflorescence: narrowly ovate, loose panicle, main axis 10−40 cm long, and with many spike-like slender branches; racemes slender, each with two rows of spikelets, spikelets 2−3.2 mm long, purplish or green and 4−6 flowered.",
+                    "Red sprangletop propagates by seeds or vegetatively by rootstocks. Germination does not occur when seeds are submerged in water.",
+                    "Leptochola chinensis is a serious weed of rice. Its ability to withstand waterlogged conditions as well as drained, moist conditions makes it a problem weed in rice.",
+                    "Cultural control: rotovating and puddling of rice fields during land preparation; hand weeding can be effective during the early growth stages of the weed.\n" +
+                            "\n" +
+                            "Chemical control: Quinclorac, propanil, pendimethalin, fenoxaprop, pretilachlor, or benthiocarb.",
+                    "http://www.knowledgebank.irri.org/images/stories/weeds-lchinensis.jpg");
+            weeds.add(weeds2);
+            Weeds weeds3 = new Weeds("Echinochloa colona", "Asia: China and Japan.\n" +
+                    "\n" +
+                    "South and Southeast Asia: Bangladesh, Cambodia, India, Indonesia, Lao PDR, Malaysia, Myanmar, Nepal, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
+                    "\n" +
+                    "Rest of the world: Australia, Bolivia, Botswana, Costa Rica, Ecuador, El Salvador, France, Fiji, Guatemala, Honduras, Iraq, Italy, Kenya, Mexico, Nicaragua, Paraguay, Peru, Portugal, Senegal, Spain, Tanzania, Uganda, United States, Venezuela, West Africa, and Zambia.",
+                    "A tufted annual grass, up to 60 cm tall.\n" +
+                            "\n" +
+                            "Stem: reddish purple or green, ascending to erect, without hairs.\n" +
+                            "\n" +
+                            "Leaf: linear, 10−15 cm long, basal portion often tinged with red; ligule absent.\n" +
+                            "\n" +
+                            "Inflorescence: simple, ascending racemes, green to purple, about 5−15 cm long; spikelets subsessile 1−3 mm long.",
+                    "Echinochloa colona flowers throughout the year and is propagated by seeds. Seeds have a short dormancy period.\n" +
+                            "\n" +
+                            "It can be present in large numbers and responsive to nutrients. Prefers moist but unflooded conditions and is a problem mainly in upland and rainfed lowland rice fields rather than in flooded fields. ",
+                    "It closely \"mimics\" rice in the vegetative growth stage and is a severe competitor of rice. It is a host of diseases such as tungro and rice yellow dwarf. It can be used as a palatable fodder for milking animals and water buffalo. ",
+                    "Cultural control: flooding; hand weeding or use of a hoe during early growth stages.\n" +
+                            "\n" +
+                            "Chemical control: preemergence application of oxadiazon or pendimethalin or postemergence application of cyhalofop, butachlor, and fenoxaprop can be effective. ",
+                    "http://www.knowledgebank.irri.org/images/stories/weeds-ecolona.jpg");
+            weeds.add(weeds3);
+            for (Weeds w : weeds){
+                weedDao.insert(w);
+            }
+
+            //****Crops-Weeds****
+            CropWeedDao cropWeedDao = db.cropWeedDao();
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Echinochloa crus-galli")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Leptochloa chinensis")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Echinochloa colona")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Echinochloa crus-galli")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Leptochloa chinensis")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Echinochloa colona")));
+
+            //****Weeds-Pesticides****
+            WeedPesticideDao weedPesticideDao = db.weedPesticideDao();
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Elano 20EC"), weedDao.getIdByName("Echinochloa crus-galli")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Elano 20EC"), weedDao.getIdByName("Leptochloa chinensis")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Elano 20EC"), weedDao.getIdByName("Echinochloa colona")));
+
+
+        });
     }
 }

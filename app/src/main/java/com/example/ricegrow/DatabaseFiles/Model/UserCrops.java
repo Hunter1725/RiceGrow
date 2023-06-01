@@ -5,12 +5,16 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.ricegrow.DatabaseFiles.Converter.DateConverter;
 
 import java.sql.Date;
 
 @Entity(tableName = "user_crops",
         foreignKeys = {@ForeignKey(entity = Users.class, parentColumns = "id", childColumns = "user_id"),
                         @ForeignKey(entity =  Crops.class, parentColumns = "id", childColumns = "crop_id")})
+@TypeConverters(DateConverter.class)
 public class UserCrops {
     @PrimaryKey(autoGenerate = true)
     private int id;

@@ -16,12 +16,15 @@ public class Activities {
     private String name;
     private String description;
     private int duration;
+    @ColumnInfo(name = "activity_image")
+    private String activityImage;
 
-    public Activities(int stageId, String name, String description, int duration) {
+    public Activities(int stageId, String name, String description, int duration, String activityImage) {
         this.stageId = stageId;
         this.name = name;
         this.description = description;
         this.duration = duration;
+        this.activityImage = activityImage;
     }
 
     @Ignore
@@ -50,6 +53,14 @@ public class Activities {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getActivityImage() {
+        return activityImage;
+    }
+
+    public void setActivityImage(String activityImage) {
+        this.activityImage = activityImage;
     }
 
     public String getDescription() {

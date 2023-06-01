@@ -12,6 +12,7 @@ public class Pesticides {
     private String name;
     private String manufacturer;
     private String composition;
+    private String category;
     @ColumnInfo(name = "usage_instructions")
     private String usageInstructions;
     @ColumnInfo(name = "pesticide_per_bottle")
@@ -21,10 +22,11 @@ public class Pesticides {
     @ColumnInfo(name = "pesticide_image")
     private String pesticideImage;
 
-    public Pesticides(String name, String manufacturer, String composition, String usageInstructions, double pesticidePerBottle, double waterPerHectare, String pesticideImage) {
+    public Pesticides(String name, String manufacturer, String composition, String category, String usageInstructions, double pesticidePerBottle, double waterPerHectare, String pesticideImage) {
         this.name = name;
         this.manufacturer = manufacturer;
         this.composition = composition;
+        this.category = category;
         this.usageInstructions = usageInstructions;
         this.pesticidePerBottle = pesticidePerBottle;
         this.waterPerHectare = waterPerHectare;
@@ -65,6 +67,14 @@ public class Pesticides {
 
     public void setComposition(String composition) {
         this.composition = composition;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getUsageInstructions() {
