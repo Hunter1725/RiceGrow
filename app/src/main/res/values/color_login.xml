@@ -6,4 +6,5 @@
     <color name="hint_text">#8FAF8F</color>
     <color name="text_color">#293523</color>
     <color name="button_bg">#4D7043</color>
+    <color name="warning_text">#FA0000</color>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.ricegrow.DatabaseFiles.Model;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -9,8 +10,9 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "users")
 public class Users {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @PrimaryKey
+    @NonNull
+    private String id;
     private String name;
     private String password;
     private String email;
@@ -19,7 +21,8 @@ public class Users {
     @ColumnInfo(name = "contact_number")
     private String contactNumber;
 
-    public Users(String name, String password, String email, String address, String role, String contactNumber) {
+    public Users(String id, String name, String password, String email, String address, String role, String contactNumber) {
+        this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
@@ -33,11 +36,11 @@ public class Users {
     }
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

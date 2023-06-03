@@ -19,7 +19,7 @@ public class UserCrops {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "user_id")
-    private int userId;
+    private String userId;
     @ColumnInfo(name = "crop_id")
     private int cropId;
     @ColumnInfo(name = "planting_volume")
@@ -33,7 +33,7 @@ public class UserCrops {
     @ColumnInfo(name = "growth_period")
     private int growthPeriod;
 
-    public UserCrops(int userId, int cropId, double plantingVolume, Date sowingDate, double plantedArea, Date expectedHarvestDate, int growthPeriod) {
+    public UserCrops(String userId, int cropId, double plantingVolume, Date sowingDate, double plantedArea, Date expectedHarvestDate, int growthPeriod) {
         this.userId = userId;
         this.cropId = cropId;
         this.plantingVolume = plantingVolume;
@@ -55,11 +55,11 @@ public class UserCrops {
         this.id = id;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

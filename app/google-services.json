@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "623342135730",
+    "project_id": "ricegrow-a469b",
+    "storage_bucket": "ricegrow-a469b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623342135730:android:3b64108c79b3671f24dcab",
+        "android_client_info": {
+          "package_name": "com.example.ricegrow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "623342135730-cgt1uocklpirupb0sdui3btu32vamf7m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZV2oElUS0cahlwPlkLpV7TQgwcXzG8iE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "623342135730-cgt1uocklpirupb0sdui3btu32vamf7m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
