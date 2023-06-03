@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "623342135730-cgt1uocklpirupb0sdui3btu32vamf7m.apps.googleusercontent.com",
+          "client_id": "623342135730-u3uckodj8rbo7t8ialsh8rd0h28sa86b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ricegrow",
+            "certificate_hash": "458623412b07bf480c3c0bb3bfd04ebb7ff8e5bc"
+          }
+        },
+        {
+          "client_id": "623342135730-9n7tstm21e1c959ef2m8ln5t4mj7fi8b.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "623342135730-cgt1uocklpirupb0sdui3btu32vamf7m.apps.googleusercontent.com",
+              "client_id": "623342135730-9n7tstm21e1c959ef2m8ln5t4mj7fi8b.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

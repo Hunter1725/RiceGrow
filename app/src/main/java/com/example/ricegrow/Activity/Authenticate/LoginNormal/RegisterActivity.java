@@ -106,6 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
                             db.userDao().insert(new Users( FirebaseAuth.getInstance().getCurrentUser().getUid(),name, pass, email, address, "user", phone));
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(intent);
+                            finish();
                         } else {
                             Toast.makeText(RegisterActivity.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);

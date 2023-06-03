@@ -25,40 +25,44 @@
         android:id="@+id/edtEmailLogin"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Email"
-        android:textColorHint="@color/hint_text"
-        android:textColor="@color/text_color"
-        android:background="@drawable/edittext_bg"
-        android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/imageViewLogo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edittext_bg"
+        android:drawableLeft="@drawable/email"
+        android:drawablePadding="8dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/hint_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogo" />
 
     <EditText
         android:id="@+id/edtPasswordLogin"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Password"
-        android:textColorHint="@color/hint_text"
-        android:textColor="@color/text_color"
-        android:background="@drawable/edittext_bg"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/edtEmailLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edittext_bg"
+        android:drawableLeft="@drawable/pass"
+        android:drawablePadding="8dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/hint_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtEmailLogin" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/button_bg"
         android:text="Login"
@@ -73,37 +77,36 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
         android:text="Forgot Password?"
-        android:textColor="@color/text_color"
+        android:textColor="#4CAF50"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtPasswordLogin" />
+        app:layout_constraintTop_toBottomOf="@id/btnLogin" />
 
     <TextView
         android:id="@+id/txtLoginGuest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login as a Guest"
-        android:textSize="15sp"
-        android:textColor="@color/text_color"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
+        android:text="Login as a Guest"
+        android:textColor="#4CAF50"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin" />
 
     <TextView
         android:id="@+id/txtRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register new account"
+        android:text="Register"
+        android:textColor="#4CAF50"
         android:textSize="15sp"
-        android:textColor="@color/text_color"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
 
     <ProgressBar
         android:id="@+id/progressBarLogin"
@@ -114,5 +117,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="16dp"
+        android:text="Don't have an account? "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

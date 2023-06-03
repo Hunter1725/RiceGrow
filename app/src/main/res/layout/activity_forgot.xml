@@ -5,6 +5,77 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/login_background"
     tools:context=".Activity.Authenticate.LoginNormal.ForgotActivity">
+
+  <!-- Forgot Password Interface Components -->
+
+  <ImageView
+      android:id="@+id/imageViewLogo"
+      android:layout_width="120dp"
+      android:layout_height="120dp"
+      android:src="@drawable/logo"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginTop="64dp"
+      android:contentDescription="Logo" />
+
+  <EditText
+      android:id="@+id/edtEmailForgot"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="32dp"
+      android:layout_marginEnd="32dp"
+      android:background="@drawable/edittext_bg"
+      android:drawableLeft="@drawable/email"
+      android:drawablePadding="8dp"
+      android:hint="Email"
+      android:inputType="textEmailAddress"
+      android:textColor="@color/text_color"
+      android:textColorHint="@color/hint_text"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/imageViewLogo" />
+
+  <Button
+      android:id="@+id/btnResetPassword"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="32dp"
+      android:layout_marginEnd="32dp"
+      android:backgroundTint="@color/button_bg"
+      android:text="Reset Password"
+      android:textColor="@android:color/white"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/edtEmailForgot" />
+
+  <TextView
+      android:id="@+id/txtBackToLogin"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="16dp"
+      android:text="Back to Login"
+      android:textColor="#4CAF50"
+      android:textSize="15sp"
+      android:textStyle="bold"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/btnResetPassword" />
+
+
+  <ProgressBar
+      android:id="@+id/progressBarForgotPassword"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/btnResetPassword" />
+
 
   </androidx.constraintlayout.widget.ConstraintLayout>
