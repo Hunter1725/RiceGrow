@@ -16,4 +16,7 @@ public interface UserDao {
 
     @Query("UPDATE users SET password =:pass WHERE id=:id")
     void updatePass(String pass, String id);
+
+    @Query("SELECT avatar FROM users WHERE id=:id")
+    String getAvatarById(String id);
 }

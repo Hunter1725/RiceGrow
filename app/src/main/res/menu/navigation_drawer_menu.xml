@@ -83,6 +83,12 @@
                     android:title="Licences"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/logout"
+                    android:icon="@drawable/logout"
+                    android:title="Logout"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom"/>
             </menu>
         </item>
 

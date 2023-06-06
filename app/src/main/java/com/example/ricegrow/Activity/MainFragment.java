@@ -13,7 +13,6 @@ import com.example.ricegrow.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainFragment extends Fragment {
-    private BottomNavigationView bottomNavigationView;
 
     @Nullable
     @Override
@@ -32,6 +31,5 @@ public class MainFragment extends Fragment {
     }
 
     private void initView(View view) {
-        bottomNavigationView = view.findViewById(R.id.bottomNavView);
     }
 }

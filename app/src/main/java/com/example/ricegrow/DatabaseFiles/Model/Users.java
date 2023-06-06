@@ -20,8 +20,9 @@ public class Users {
     private String role;
     @ColumnInfo(name = "contact_number")
     private String contactNumber;
+    private String avatar;
 
-    public Users(String id, String name, String password, String email, String address, String role, String contactNumber) {
+    public Users(@NonNull String id, String name, String password, String email, String address, String role, String contactNumber, String avatar) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -29,6 +30,7 @@ public class Users {
         this.address = address;
         this.role = role;
         this.contactNumber = contactNumber;
+        this.avatar = avatar;
     }
 
     @Ignore
@@ -92,16 +94,25 @@ public class Users {
         this.contactNumber = contactNumber;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
+        return "Users{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", role='" + role + '\'' +
-                ", contact_number='" + contactNumber + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                ", avatar='" + avatar + '\'' +
                 '}';
     }
 }

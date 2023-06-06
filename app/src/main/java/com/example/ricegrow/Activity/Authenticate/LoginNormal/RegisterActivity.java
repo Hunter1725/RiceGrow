@@ -211,7 +211,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Toast.makeText(RegisterActivity.this, "User Created.", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
-                            db.userDao().insert(new Users( FirebaseAuth.getInstance().getCurrentUser().getUid(),name, pass, email, address, "user", phone));
+                            db.userDao().insert(new Users( FirebaseAuth.getInstance().getCurrentUser().getUid(),name, pass, email, address, "user", phone, "@drawable/default_avatar"));
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();

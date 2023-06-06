@@ -122,7 +122,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
 
             //****Guest User****
             UserDao userDao = db.userDao();
-            userDao.insert(new Users("qoF4h2xcXfOwFbCZPypG1hmwKPb2", "Guest", "1234567", "ricegrowguest@gmail.com", "The Earth", "guest", "123456789"));
+            userDao.insert(new Users("qoF4h2xcXfOwFbCZPypG1hmwKPb2", "Guest", "1234567", "ricegrowguest@gmail.com", "The Earth", "guest", "123456789", "default_avatar"));
 
             //****Crops****
             CropDao cropDao = db.cropDao();

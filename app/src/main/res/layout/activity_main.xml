@@ -31,7 +31,8 @@
                     app:titleCentered="true"
                     app:navigationIcon="@drawable/menu"
                     app:menu="@menu/top_app_bar"
-                    android:background="@color/login_background"/>
+                    android:background="@color/login_background"
+                    android:paddingEnd="8dp" />
 
             </com.google.android.material.appbar.AppBarLayout>
 
@@ -41,7 +42,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/coordinator"
-            android:id="@+id/container"/>
+            android:id="@+id/container"
+            android:layout_above="@+id/bottomNavView"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/bottom_navigation_menu"
+            style="@style/Widget.App.NavigationView"
+            app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
 
     </RelativeLayout>
 

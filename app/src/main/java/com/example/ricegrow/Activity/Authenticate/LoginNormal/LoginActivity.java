@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ricegrow.Activity.MainActivity;
+import com.example.ricegrow.DatabaseFiles.Model.Users;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -91,9 +92,12 @@ public class LoginActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
                             Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                             String userId = fb.getCurrentUser().getUid();
-                            String oldPass = db.userDao().getUserById(userId).getPassword();
-                            if(!pass.equals(oldPass)){
-                                db.userDao().updatePass(pass, userId);
+                            Users user = db.userDao().getUserById(userId);
+                            if(user != null){
+                                String oldPass = db.userDao().getUserById(userId).getPassword();
+                                if(!pass.equals(oldPass)){
+                                    db.userDao().updatePass(pass, userId);
+                                }
                             }
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             finish();
