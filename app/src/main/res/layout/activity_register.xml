@@ -17,116 +17,203 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="Logo" />
 
-    <EditText
-        android:id="@+id/edtName"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutName"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="66dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/edittext_bg"
-        android:drawableLeft="@drawable/name"
-        android:drawablePadding="8dp"
+        app:boxStrokeColor="@color/logo_tint"
+        app:hintTextColor="@color/logo_tint"
+        app:hintEnabled="true"
+        app:hintAnimationEnabled="true"
         android:hint="Name"
-        android:inputType="text"
-        android:textColor="@color/text_color"
-        android:textColorHint="@color/hint_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewLogo" />
+        app:startIconDrawable="@drawable/name"
+        app:startIconTint="@color/icon_color"
+        app:hintTextAppearance="@style/TextInputLayoutHint"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
+        app:errorTextAppearance="@style/TextInputLayoutError"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogo">
 
-    <EditText
-        android:id="@+id/edtEmail"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:inputType="text"
+            android:textStyle="bold"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEmailRegister"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="66dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/edittext_bg"
-        android:drawableLeft="@drawable/email"
-        android:drawablePadding="8dp"
+        app:boxStrokeColor="@color/logo_tint"
+        app:hintTextColor="@color/logo_tint"
+        app:hintEnabled="true"
+        app:hintAnimationEnabled="true"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/text_color"
-        android:textColorHint="@color/hint_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtName" />
+        app:startIconDrawable="@drawable/email"
+        app:startIconTint="@color/icon_color"
+        app:hintTextAppearance="@style/TextInputLayoutHint"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
+        app:errorTextAppearance="@style/TextInputLayoutError"
 
-    <EditText
-        android:id="@+id/edtPassword"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmailRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textStyle="bold"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPasswordRegister"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="66dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/edittext_bg"
-        android:drawableLeft="@drawable/pass"
-        android:drawablePadding="8dp"
+        app:boxStrokeColor="@color/logo_tint"
+        app:hintTextColor="@color/logo_tint"
+        app:hintEnabled="true"
+        app:hintAnimationEnabled="true"
         android:hint="Password"
-        android:inputType="textPassword"
-        android:textColor="@color/text_color"
-        android:textColorHint="@color/hint_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtEmail" />
+        app:startIconDrawable="@drawable/pass"
+        app:startIconTint="@color/icon_color"
+        app:endIconMode="password_toggle"
+        app:hintTextAppearance="@style/TextInputLayoutHint"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
+        app:errorTextAppearance="@style/TextInputLayoutError"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmailRegister">
 
-    <EditText
-        android:id="@+id/edtRePassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPasswordRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textStyle="bold"
+            android:inputType="textPassword"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutRePassword"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="66dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/edittext_bg"
-        android:drawableLeft="@drawable/pass"
-        android:drawablePadding="8dp"
+        app:boxStrokeColor="@color/logo_tint"
+        app:hintTextColor="@color/logo_tint"
+        app:hintEnabled="true"
+        app:hintAnimationEnabled="true"
         android:hint="Re-Password"
-        android:inputType="textPassword"
-        android:textColor="@color/text_color"
-        android:textColorHint="@color/hint_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtPassword" />
+        app:startIconDrawable="@drawable/pass"
+        app:startIconTint="@color/icon_color"
+        app:endIconMode="password_toggle"
+        app:hintTextAppearance="@style/TextInputLayoutHint"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
+        app:errorTextAppearance="@style/TextInputLayoutError"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutPasswordRegister">
 
-    <EditText
-        android:id="@+id/edtAddress"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtRePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textStyle="bold"
+            android:inputType="textPassword"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutAddress"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="66dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/edittext_bg"
-        android:drawableLeft="@drawable/home"
-        android:drawablePadding="8dp"
+        app:boxStrokeColor="@color/logo_tint"
+        app:hintTextColor="@color/logo_tint"
+        app:hintEnabled="true"
+        app:hintAnimationEnabled="true"
         android:hint="Address"
-        android:inputType="text"
-        android:textColor="@color/text_color"
-        android:textColorHint="@color/hint_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtRePassword" />
+        app:startIconDrawable="@drawable/home"
+        app:startIconTint="@color/icon_color"
+        app:hintTextAppearance="@style/TextInputLayoutHint"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
+        app:errorTextAppearance="@style/TextInputLayoutError"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutRePassword">
 
-    <EditText
-        android:id="@+id/edtPhoneNumber"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:inputType="text"
+            android:textStyle="bold"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPhoneNumber"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="66dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/edittext_bg"
-        android:drawableLeft="@drawable/phone"
-        android:drawablePadding="8dp"
+        app:boxStrokeColor="@color/logo_tint"
+        app:hintTextColor="@color/logo_tint"
+        app:hintEnabled="true"
+        app:hintAnimationEnabled="true"
         android:hint="Phone Number"
-        android:inputType="phone"
-        android:textColor="@color/text_color"
-        android:textColorHint="@color/hint_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtAddress" />
+        app:startIconDrawable="@drawable/phone"
+        app:startIconTint="@color/icon_color"
+        app:hintTextAppearance="@style/TextInputLayoutHint"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
+        app:errorTextAppearance="@style/TextInputLayoutError"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutAddress">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:inputType="phone"
+            android:textStyle="bold"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnRegister"
@@ -135,12 +222,13 @@
         android:text="Register"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/button_bg"
-        app:layout_constraintTop_toBottomOf="@id/edtPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutPhoneNumber"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp" />
+
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -150,7 +238,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnRegister"
         app:layout_constraintStart_toStartOf="@id/btnRegister"
         app:layout_constraintEnd_toEndOf="@id/btnRegister"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="1dp" />
 
     <TextView
         android:id="@+id/txtLogin"

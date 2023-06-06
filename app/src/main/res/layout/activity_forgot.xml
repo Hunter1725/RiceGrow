@@ -21,37 +21,50 @@
       android:layout_marginTop="64dp"
       android:contentDescription="Logo" />
 
-  <EditText
-      android:id="@+id/edtEmailForgot"
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/textInputLayoutEmailForgot"
       android:layout_width="match_parent"
-      android:layout_height="48dp"
+      android:layout_height="wrap_content"
       android:layout_marginStart="32dp"
       android:layout_marginTop="32dp"
       android:layout_marginEnd="32dp"
-      android:background="@drawable/edittext_bg"
-      android:drawableLeft="@drawable/email"
-      android:drawablePadding="8dp"
+      app:boxStrokeColor="@color/logo_tint"
+      app:hintTextColor="@color/logo_tint"
+      app:hintEnabled="true"
+      app:hintAnimationEnabled="true"
       android:hint="Email"
-      android:inputType="textEmailAddress"
-      android:textColor="@color/text_color"
-      android:textColorHint="@color/hint_text"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/imageViewLogo" />
+      app:startIconDrawable="@drawable/email"
+      app:startIconTint="@color/icon_color"
+      app:hintTextAppearance="@style/TextInputLayoutHint"
+      app:errorEnabled="true"
+      app:errorTextAppearance="@style/TextInputLayoutError"
+      app:layout_constraintTop_toBottomOf="@id/imageViewLogo">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edtEmailForgot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textStyle="bold"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/hint_text" />
+
+  </com.google.android.material.textfield.TextInputLayout>
 
   <Button
       android:id="@+id/btnResetPassword"
       android:layout_width="match_parent"
       android:layout_height="48dp"
       android:layout_marginStart="32dp"
-      android:layout_marginTop="32dp"
+      android:layout_marginTop="16dp"
       android:layout_marginEnd="32dp"
       android:backgroundTint="@color/button_bg"
       android:text="Reset Password"
       android:textColor="@android:color/white"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/edtEmailForgot" />
+      app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmailForgot" />
 
   <TextView
       android:id="@+id/txtBackToLogin"

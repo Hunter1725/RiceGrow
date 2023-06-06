@@ -2,8 +2,46 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.RiceGrow" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">@color/login_background</item>
+
     </style>
 
-    <style name="Theme.RiceGrow" parent="Base.Theme.RiceGrow" />
+    <style name="Theme.RiceGrow" parent="Base.Theme.RiceGrow">
+        <item name="navigationViewStyle">@style/Widget.App.NavigationView</item>
+    </style>
+
+    <!-- Style for the floating label -->
+    <style name="TextInputLayoutHint" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textColorLink">@color/hint_text</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <!-- Style for the error message -->
+    <style name="TextInputLayoutError" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textColor">@color/warning_text</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="CircleShapeImageView">
+        <item name="shapeAppearanceOverlay">@style/CircleShapeOverlay</item>
+    </style>
+
+    <style name="CircleShapeOverlay">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/login_background</item>
+    </style>
+
+    <style name="Widget.App.NavigationView" parent="Widget.Material3.NavigationView">
+        <item name="itemShapeFillColor">@color/navigation_item_background_color</item>
+    </style>
+
+
+
 </resources>

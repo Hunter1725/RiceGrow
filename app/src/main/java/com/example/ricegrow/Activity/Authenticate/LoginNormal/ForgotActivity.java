@@ -15,11 +15,14 @@ import android.widget.Toast;
 import com.example.ricegrow.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotActivity extends AppCompatActivity {
 
-    private EditText edtEmailForgot;
+    private TextInputLayout textInputLayoutEmail;
+    private TextInputEditText edtEmailForgot;
     private Button btnResetPassword;
     private TextView txtBackToLogin;
     private ProgressBar progressBarForgotPassword;
@@ -29,6 +32,7 @@ public class ForgotActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot);
 
+        textInputLayoutEmail = findViewById(R.id.textInputLayoutEmailForgot);
         edtEmailForgot = findViewById(R.id.edtEmailForgot);
         btnResetPassword = findViewById(R.id.btnResetPassword);
         txtBackToLogin = findViewById(R.id.txtBackToLogin);
@@ -39,7 +43,7 @@ public class ForgotActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = edtEmailForgot.getText().toString().trim();
                 if (email.isEmpty()) {
-                    edtEmailForgot.setError("Email entry required");
+                    textInputLayoutEmail.setError("Email entry required");
                     return;
                 }
                 progressBarForgotPassword.setVisibility(View.VISIBLE);

@@ -21,55 +21,86 @@
         android:layout_marginTop="64dp"
         android:contentDescription="Logo" />
 
-    <EditText
-        android:id="@+id/edtEmailLogin"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEmail"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/edittext_bg"
-        android:drawableLeft="@drawable/email"
-        android:drawablePadding="8dp"
+        app:boxStrokeColor="@color/logo_tint"
+        app:hintTextColor="@color/logo_tint"
+        app:hintEnabled="true"
+        app:hintAnimationEnabled="true"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/text_color"
-        android:textColorHint="@color/hint_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewLogo" />
+        app:startIconDrawable="@drawable/email"
+        app:startIconTint="@color/icon_color"
+        app:hintTextAppearance="@style/TextInputLayoutHint"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/TextInputLayoutError"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogo">
 
-    <EditText
-        android:id="@+id/edtPasswordLogin"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmailLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textStyle="bold"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPassword"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/edittext_bg"
-        android:drawableLeft="@drawable/pass"
-        android:drawablePadding="8dp"
+        app:boxStrokeColor="@color/logo_tint"
+        app:hintTextColor="@color/logo_tint"
+        app:hintEnabled="true"
+        app:hintAnimationEnabled="true"
         android:hint="Password"
-        android:inputType="textPassword"
-        android:textColor="@color/text_color"
-        android:textColorHint="@color/hint_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtEmailLogin" />
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/pass"
+        app:startIconTint="@color/icon_color"
+        app:hintTextAppearance="@style/TextInputLayoutHint"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/TextInputLayoutError"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPasswordLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textStyle="bold"
+            android:inputType="textPassword"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
+        style="@style/Widget.Material3.Button.ElevatedButton"
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/button_bg"
         android:text="Login"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtPasswordLogin" />
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword" />
 
     <TextView
         android:id="@+id/txtForgotPassword"
@@ -122,7 +153,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="44dp"
         android:layout_marginBottom="16dp"
         android:text="Don't have an account? "
         app:layout_constraintBottom_toBottomOf="parent"

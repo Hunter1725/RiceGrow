@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/search"
+        android:title="Searching"
+        android:contentDescription="This is searching"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/miniAvatar"
+        android:title="Mini avatar"
+        app:actionLayout="@layout/menu_item_avatar"
+        app:showAsAction="ifRoom"/>
+
+
+</menu>

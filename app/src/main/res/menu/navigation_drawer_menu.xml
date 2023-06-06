@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/planning_items"
+            android:title="Planning">
+            <menu>
+                <item
+                    android:id="@+id/allPlan"
+                    android:title="All plans"
+                    android:icon="@drawable/planning"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/newPlan"
+                    android:title="New plan"
+                    android:icon="@drawable/new_plan"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom" />
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/calculating"
+            android:title="Calculating">
+            <menu>
+                <item
+                    android:id="@+id/pesticide"
+                    android:icon="@drawable/pesticide"
+                    android:title="Pesticide"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/fertilizer"
+                    android:icon="@drawable/fertilizer"
+                    android:title="Fertilizer"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom" />
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/information"
+            android:title="Management">
+            <menu>
+                <item
+                    android:id="@+id/pest"
+                    android:icon="@drawable/pest"
+                    android:title="Pest"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/disease"
+                    android:icon="@drawable/disease"
+                    android:title="Disease"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/weed"
+                    android:icon="@drawable/weed"
+                    android:title="Weed"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom" />
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/others"
+            android:title="Other">
+            <menu>
+                <item
+                    android:id="@+id/term"
+                    android:icon="@drawable/term"
+                    android:title="Terms"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/licence"
+                    android:icon="@drawable/licence"
+                    android:title="Licences"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom" />
+            </menu>
+        </item>
+
+    </group>
+
+</menu>

@@ -120,6 +120,10 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
         executor.execute(() -> {
             RiceGrowDatabase db =RiceGrowDatabase.getInstance(appContext);
 
+            //****Guest User****
+            UserDao userDao = db.userDao();
+            userDao.insert(new Users("qoF4h2xcXfOwFbCZPypG1hmwKPb2", "Guest", "1234567", "ricegrowguest@gmail.com", "The Earth", "guest", "123456789"));
+
             //****Crops****
             CropDao cropDao = db.cropDao();
             ArrayList<Crops> crops = new ArrayList<>();

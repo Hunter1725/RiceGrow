@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +22,16 @@ import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText edtName, edtEmail, edtPassword, edtRePassword, edtAddress, edtPhoneNumber;
+    private TextInputLayout textInputLayoutName, textInputLayoutEmailRegister, textInputLayoutPasswordRegister, textInputLayoutRePassword,
+                            textInputLayoutAddress, textInputLayoutPhoneNumber;
+    private TextInputEditText edtName, edtEmail, edtPassword, edtRePassword, edtAddress, edtPhoneNumber;
     private Button btnRegister;
     private TextView txtLogin;
     private ProgressBar progressBar;
@@ -43,6 +50,94 @@ public class RegisterActivity extends AppCompatActivity {
             finish();
         }
 
+        edtName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    validateInput(textInputLayoutName, edtName);
+                }
+            }
+        });
+
+        edtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    validateInput(textInputLayoutEmailRegister, edtEmail);
+                }
+            }
+        });
+
+        edtPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    validateInput(textInputLayoutPasswordRegister, edtPassword);
+                }
+            }
+        });
+
+        edtRePassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    validateInput(textInputLayoutRePassword, edtRePassword);
+                }
+            }
+        });
+
+        edtAddress.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    validateInput(textInputLayoutAddress, edtAddress);
+                }
+            }
+        });
+
+        edtPhoneNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    validateInput(textInputLayoutPhoneNumber, edtPhoneNumber);
+                }
+            }
+        });
+
+        edtPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                textInputLayoutPasswordRegister.setEndIconVisible(true);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        edtRePassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                textInputLayoutRePassword.setEndIconVisible(true);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,43 +150,56 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (name.isEmpty()){
                     edtName.setError("Name is require");
+                    textInputLayoutName.setError("Name is require");
                     return;
                 }
 
                 if (email.isEmpty()){
                     edtEmail.setError("Email is require");
+                    textInputLayoutEmailRegister.setError("Email is require");
                     return;
                 }
 
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     edtEmail.setError("Invalid email format");
+                    textInputLayoutEmailRegister.setError("Invalid email format");
                     return;
                 }
 
                 if (pass.isEmpty()){
                     edtPassword.setError("Password is require");
+                    textInputLayoutPasswordRegister.setEndIconVisible(false);
+                    textInputLayoutPasswordRegister.setError("Password is require");
                     return;
                 }
                 if (pass.length()<6){
                     edtPassword.setError("Password must be >= 6");
+                    textInputLayoutPasswordRegister.setEndIconVisible(false);
+                    textInputLayoutPasswordRegister.setError("Password must be >= 6");
                     return;
                 }
 
                 if (rePass.isEmpty()){
                     edtRePassword.setError("Re-Password is require");
+                    textInputLayoutRePassword.setEndIconVisible(false);
+                    textInputLayoutRePassword.setError("Re-Password is require");
                     return;
                 } else if (!rePass.equals(pass)) {
                     edtRePassword.setError("Re-Password is not same with password");
+                    textInputLayoutRePassword.setEndIconVisible(false);
+                    textInputLayoutRePassword.setError("Re-Password is not same with password");
                     return;
                 }
 
                 if (address.isEmpty()){
                     edtAddress.setError("Address is require");
+                    textInputLayoutAddress.setError("Address is require");
                     return;
                 }
 
                 if (phone.isEmpty()){
                     edtPhoneNumber.setError("Phone number is require");
+                    textInputLayoutPhoneNumber.setError("Phone number is require");
                     return;
                 }
 
@@ -125,9 +233,15 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        textInputLayoutName = findViewById(R.id.textInputLayoutName);
+        textInputLayoutEmailRegister = findViewById(R.id.textInputLayoutEmailRegister);
+        textInputLayoutPasswordRegister = findViewById(R.id.textInputLayoutPasswordRegister);
+        textInputLayoutRePassword = findViewById(R.id.textInputLayoutRePassword);
+        textInputLayoutAddress = findViewById(R.id.textInputLayoutAddress);
+        textInputLayoutPhoneNumber = findViewById(R.id.textInputLayoutPhoneNumber);
         edtName = findViewById(R.id.edtName);
-        edtEmail = findViewById(R.id.edtEmail);
-        edtPassword = findViewById(R.id.edtPassword);
+        edtEmail = findViewById(R.id.edtEmailRegister);
+        edtPassword = findViewById(R.id.edtPasswordRegister);
         edtRePassword = findViewById(R.id.edtRePassword);
         edtAddress = findViewById(R.id.edtAddress);
         edtPhoneNumber = findViewById(R.id.edtPhoneNumber);
@@ -135,5 +249,15 @@ public class RegisterActivity extends AppCompatActivity {
         txtLogin = findViewById(R.id.txtLogin);
         progressBar = findViewById(R.id.progressBar);
         fb = FirebaseAuth.getInstance();
+    }
+
+    private void validateInput(TextInputLayout textInputLayout, TextInputEditText editText) {
+        String input = editText.getText().toString().trim();
+
+        if (TextUtils.isEmpty(input)) {
+            textInputLayout.setError("Input cannot be empty");
+        } else {
+            textInputLayout.setError(null);
+        }
     }
 }
