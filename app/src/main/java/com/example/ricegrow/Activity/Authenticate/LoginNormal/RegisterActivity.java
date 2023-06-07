@@ -11,12 +11,11 @@ import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ricegrow.Activity.MainActivity;
+import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.DatabaseFiles.Model.Users;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;

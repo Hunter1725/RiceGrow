@@ -5,7 +5,7 @@
     <color name="logo_tint">#5C8848</color>
     <color name="hint_text">#8FAF8F</color>
     <color name="text_color">#293523</color>
-    <color name="button_bg">#4D7043</color>
+    <color name="button_bg">#4CAF50</color>
     <color name="warning_text">#FA0000</color>
     <color name="icon_color">#0B5702</color>
     <color name="header_navigation">#008080</color>

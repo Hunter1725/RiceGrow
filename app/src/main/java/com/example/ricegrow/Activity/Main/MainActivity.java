@@ -1,4 +1,4 @@
-package com.example.ricegrow.Activity;
+package com.example.ricegrow.Activity.Main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -9,25 +9,24 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ricegrow.Activity.Authenticate.LoginNormal.LoginActivity;
+import com.example.ricegrow.Activity.Knowledge.MainKnowledge;
 import com.example.ricegrow.DatabaseFiles.Model.Users;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth fb;
     private RiceGrowDatabase db;
     private int selectItemDrawer;
+    private int selectItemBottom;
 
     private ShapeableImageView avatarUser;
 
@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        //Navigation drawer listener
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -129,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        //Toolbar listener
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -143,10 +146,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Bottom navigation listener
+        bottomNavigationView.setSelectedItemId(R.id.homeBottom);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // Handle item selection
+                int itemId = item.getItemId();
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, new MainFragment());
-        transaction.commit();
+                selectItemBottom = itemId;
+
+                // Set checked state for the selected item
+                item.setChecked(true);
+
+                if(itemId == R.id.homeBottom){
+                    Toast.makeText(MainActivity.this, "Home selected!", Toast.LENGTH_SHORT).show();
+                } else if(itemId == R.id.planBottom){
+                    Toast.makeText(MainActivity.this, "Plan selected!", Toast.LENGTH_SHORT).show();
+                } else if (itemId == R.id.calculatorBottom) {
+                    Toast.makeText(MainActivity.this, "Calculator selected!", Toast.LENGTH_SHORT).show();
+                } else if (itemId == R.id.knowledge) {
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, new MainKnowledge());
+                    transaction.commit();
+                }
+
+                return true;
+            }
+        });
+
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.container, new MainFragment());
+//        transaction.commit();
 
     }
 

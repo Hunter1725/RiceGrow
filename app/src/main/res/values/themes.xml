@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.RiceGrow" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">@color/login_background</item>
+<!--         <item name="colorPrimary">@color/login_background</item>-->
 
     </style>
 
@@ -40,6 +40,12 @@
 
     <style name="Widget.App.NavigationView" parent="Widget.Material3.NavigationView">
         <item name="itemShapeFillColor">@color/navigation_item_background_color</item>
+    </style>
+
+
+    <style name="RoundedImageViewShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
     </style>
 
 
