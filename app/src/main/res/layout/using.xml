@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="180dp"
+    android:layout_height="160dp"
+    android:layout_margin="5dp"
+    android:padding="8dp"
+    android:backgroundTint="@color/login_background"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp"
+    tools:context=".Activity.Knowledge.PesticideFertilizer.UsingAdapter">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image"
+            android:layout_width="150dp"
+            android:layout_height="210dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher_round"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewShape" />
+
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:text="Name"/>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

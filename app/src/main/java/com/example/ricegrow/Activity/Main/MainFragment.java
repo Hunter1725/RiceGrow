@@ -31,6 +31,8 @@ public class MainFragment extends Fragment {
 
 
 
+
+
     private void initView(View view) {
         cardStages = view.findViewById(R.id.cardStages);
         cardPestFer = view.findViewById(R.id.cardPestFer);

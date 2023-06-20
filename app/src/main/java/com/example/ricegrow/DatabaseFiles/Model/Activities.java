@@ -1,5 +1,9 @@
 package com.example.ricegrow.DatabaseFiles.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -8,7 +12,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "activities",
         foreignKeys = {@ForeignKey(entity = Stages.class, parentColumns = "id", childColumns = "stage_id")})
-public class Activities {
+public class Activities implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "stage_id")
@@ -30,6 +34,29 @@ public class Activities {
     @Ignore
     public Activities() {
     }
+
+    @Ignore
+    protected Activities(Parcel in) {
+        id = in.readInt();
+        stageId = in.readInt();
+        name = in.readString();
+        description = in.readString();
+        duration = in.readInt();
+        activityImage = in.readString();
+    }
+
+    @Ignore
+    public static final Creator<Activities> CREATOR = new Creator<Activities>() {
+        @Override
+        public Activities createFromParcel(Parcel in) {
+            return new Activities(in);
+        }
+
+        @Override
+        public Activities[] newArray(int size) {
+            return new Activities[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -77,5 +104,22 @@ public class Activities {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    @Ignore
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Ignore
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(stageId);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeInt(duration);
+        dest.writeString(activityImage);
     }
 }

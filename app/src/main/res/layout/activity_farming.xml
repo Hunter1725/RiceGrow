@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_marginBottom="30dp"
+    tools:context=".Activity.Knowledge.StageActivity.Activity.FarmingActivity">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:liftOnScroll="true"
+            android:fitsSystemWindows="true"
+            android:background="@color/login_background">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Rice Grow"
+                app:navigationIcon="@drawable/back"
+                android:background="@color/login_background"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                android:fitsSystemWindows="true"
+                app:menu="@menu/top_bar_management" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageActivity"
+                    android:layout_width="350dp"
+                    android:layout_height="300dp"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center_horizontal"
+                    app:strokeColor="@color/button_bg"
+                    app:strokeWidth="2dp"
+                    app:shapeAppearanceOverlay="@style/RoundedImageViewShape2"
+                    app:srcCompat="@drawable/ic_launcher_background"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:id="@+id/txtNameActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Name pesticide"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Description:"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Bayer"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Duration:"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="60kg/ha"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/inStage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="In stage:"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:id="@+id/stage"
+                    android:checkable="true"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="5dp"
+                    android:backgroundTint="@color/login_background">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/imageStage"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:scaleType="centerCrop"
+                            app:shapeAppearanceOverlay="@style/RoundedImageViewShape"
+                            app:srcCompat="@drawable/ic_launcher_background"
+                            android:contentDescription="Image of stage" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="16dp">
+
+                            <TextView
+                                android:id="@+id/txtNameStage"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Stage name"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginBottom="8dp" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp">
+
+                                <TextView
+                                    android:id="@+id/durationStage"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Duration:"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/black"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"/>
+
+                                <TextView
+                                    android:id="@+id/txtDurationStage"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Duration day"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/black"
+                                    app:layout_constraintStart_toEndOf="@+id/durationStage"
+                                    app:layout_constraintBottom_toBottomOf="@+id/durationStage"
+                                    android:layout_marginStart="5dp"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/startDate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Start date:"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/black"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"/>
+
+                                <TextView
+                                    android:id="@+id/txtStartDate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Compositions name "
+                                    android:textSize="16sp"
+                                    android:textColor="@color/black"
+                                    app:layout_constraintStart_toEndOf="@+id/startDate"
+                                    app:layout_constraintBottom_toBottomOf="@+id/startDate"
+                                    android:layout_marginStart="5dp"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:dividerThickness="3dp"
+                    app:dividerColor="#D9D9D9"/>
+
+                <TextView
+                    android:id="@+id/recommend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recommended pesticides or fertilizers:"
+                    android:layout_marginTop="15dp"
+                    android:textSize="18sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtEmpty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:text="Sorry, the information is being updated!"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
+                    android:visibility="gone"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recommendRecView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="9dp"/>
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabScrollToTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/up"
+            app:backgroundTint="@color/login_background"
+            app:elevation="6dp"
+            android:contentDescription="FAB up" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</RelativeLayout>

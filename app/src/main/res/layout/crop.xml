@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:id="@+id/parent"
+    android:checkable="true"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:backgroundTint="@color/login_background"
+    tools:context=".Activity.Knowledge.Management.Crop.CropAdapter">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageCrop"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewShape"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:contentDescription="Image of crop" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/txtNameCrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Crop variety's name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/txtGrowthPeriod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Growth period:"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/txtValueGrowth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About 100 days"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/txtGrowthPeriod"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtGrowthPeriod"
+                    android:layout_marginStart="5dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Retail price:"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/txtValuePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6000VND/kg "
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/txtPrice"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtPrice"
+                    android:layout_marginStart="5dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

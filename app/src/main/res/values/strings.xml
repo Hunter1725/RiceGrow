@@ -11,4 +11,12 @@
     <string name="login_failed">"Login failed"</string>
     <string name="drawer_open">drawer_open</string>
     <string name="drawer_close">drawer_close</string>
+
+    <string-array name="category_pesticide">
+        <item>All</item>
+        <item>Insecticide</item>
+        <item>Fungicide</item>
+        <item>Herbicide</item>
+    </string-array>
+
 </resources>

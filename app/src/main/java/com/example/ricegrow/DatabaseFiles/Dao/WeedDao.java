@@ -4,7 +4,11 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.example.ricegrow.DatabaseFiles.Model.Crops;
+import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.DatabaseFiles.Model.Weeds;
+
+import java.util.List;
 
 @Dao
 public interface WeedDao {
@@ -13,4 +17,16 @@ public interface WeedDao {
 
     @Query("SELECT id FROM weeds WHERE name =:name")
     int getIdByName (String name);
+
+    @Query("SELECT * FROM weeds")
+    List<Weeds> getAllWeeds();
+
+    @Query("SELECT * FROM weeds WHERE name LIKE :name")
+    List<Weeds> getWeedsByName(String name);
+
+    @Query("SELECT * FROM weeds WHERE id IN (SELECT weed_id FROM weeds_pesticides WHERE pesticide_id = :pesticideId)")
+    List<Weeds> getWeedByPesticideId (int pesticideId);
+
+    @Query("SELECT * FROM weeds WHERE id IN (SELECT weed_id FROM crop_weeds WHERE crop_id = :cropId)")
+    List<Weeds> getWeedByCropId (int cropId);
 }

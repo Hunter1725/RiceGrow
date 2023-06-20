@@ -1,12 +1,16 @@
 package com.example.ricegrow.DatabaseFiles.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "fertilizers")
-public class Fertilizers {
+public class Fertilizers implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
@@ -31,6 +35,30 @@ public class Fertilizers {
     @Ignore
     public Fertilizers() {
     }
+
+    @Ignore
+    protected Fertilizers(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        manufacturer = in.readString();
+        composition = in.readString();
+        usageInstructions = in.readString();
+        recommendedUsage = in.readDouble();
+        fertImage = in.readString();
+    }
+
+    @Ignore
+    public static final Creator<Fertilizers> CREATOR = new Creator<Fertilizers>() {
+        @Override
+        public Fertilizers createFromParcel(Parcel in) {
+            return new Fertilizers(in);
+        }
+
+        @Override
+        public Fertilizers[] newArray(int size) {
+            return new Fertilizers[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -86,5 +114,23 @@ public class Fertilizers {
 
     public void setFertImage(String fertImage) {
         this.fertImage = fertImage;
+    }
+
+    @Ignore
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Ignore
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(manufacturer);
+        dest.writeString(composition);
+        dest.writeString(usageInstructions);
+        dest.writeDouble(recommendedUsage);
+        dest.writeString(fertImage);
     }
 }

@@ -4,20 +4,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.ricegrow.Activity.Knowledge.Management.MainManagement;
+import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.MainPestFer;
+import com.example.ricegrow.Activity.Knowledge.StageActivity.MainStageActivity;
+import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 
 public class MainKnowledge extends Fragment {
 
-    private MaterialCardView cardStages, cardPestFer, cardManagement;
-    private MaterialButton btnCardStages, btnCardPestFer, btnCardManagement;
+    private MaterialCardView cardStageActivity, cardPestFer, cardManagement;
+    private MaterialButton btnCardStageActivity, btnCardPestFer, btnCardManagement;
 
     @Nullable
     @Override
@@ -32,24 +35,24 @@ public class MainKnowledge extends Fragment {
     }
 
     private void initListener() {
-        btnCardStages.setOnClickListener(new View.OnClickListener() {
+        btnCardStageActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Stages selected!", Toast.LENGTH_SHORT).show();
+                ((MainActivity) requireActivity()).replaceFragment(new MainStageActivity());
             }
         });
 
         btnCardPestFer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Pesticide - Fertilizer selected!", Toast.LENGTH_SHORT).show();
+                ((MainActivity) requireActivity()).replaceFragment(new MainPestFer());
             }
         });
 
         btnCardManagement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Management selected!", Toast.LENGTH_SHORT).show();
+                ((MainActivity) requireActivity()).replaceFragment(new MainManagement());
             }
         });
 
@@ -57,10 +60,10 @@ public class MainKnowledge extends Fragment {
 
 
     private void initView(View view) {
-        cardStages = view.findViewById(R.id.cardStages);
+        cardStageActivity = view.findViewById(R.id.cardStageActivity);
         cardPestFer = view.findViewById(R.id.cardPestFer);
         cardManagement = view.findViewById(R.id.cardManagement);
-        btnCardStages = view.findViewById(R.id.btnCardStages);
+        btnCardStageActivity = view.findViewById(R.id.btnCardStageActivity);
         btnCardPestFer = view.findViewById(R.id.btnCardPestFer);
         btnCardManagement = view.findViewById(R.id.btnCardManagement);
     }

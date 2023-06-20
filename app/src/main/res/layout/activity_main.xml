@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/login_background"
     tools:context=".Activity.Main.MainActivity"
     android:id="@+id/drawer"
     tools:openDrawer="">
@@ -22,8 +21,12 @@
             android:layout_above="@+id/bottomNavView">
 
             <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:liftOnScroll="true"
+                android:fitsSystemWindows="true"
+                android:background="@color/login_background">
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
@@ -34,13 +37,16 @@
                     app:navigationIcon="@drawable/menu"
                     app:menu="@menu/top_app_bar"
                     android:background="@color/login_background"
-                    android:paddingEnd="8dp" />
+                    android:paddingEnd="8dp"
+                    app:layout_scrollFlags="scroll|enterAlways|snap"
+                    android:fitsSystemWindows="true" />
 
             </com.google.android.material.appbar.AppBarLayout>
 
             <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                 <FrameLayout
@@ -60,7 +66,21 @@
             android:layout_alignParentBottom="true"
             app:menu="@menu/bottom_navigation_menu"
             style="@style/Widget.App.NavigationView"
-            app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
+            app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+            android:background="@color/login_background"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabScrollToTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/bottomNavView"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/up"
+            app:backgroundTint="@color/login_background"
+            app:elevation="6dp"
+            android:contentDescription="FAB up" />
 
     </RelativeLayout>
 
@@ -71,7 +91,8 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/header_navigation_drawer"
         app:menu="@menu/navigation_drawer_menu"
-        android:backgroundTint="@color/login_background"/>
+        android:backgroundTint="@color/login_background"
+        android:layout_marginTop="30dp"/>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

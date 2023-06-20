@@ -1,12 +1,16 @@
 package com.example.ricegrow.DatabaseFiles.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "weeds")
-public class Weeds {
+public class Weeds implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
@@ -32,6 +36,31 @@ public class Weeds {
     @Ignore
     public Weeds() {
     }
+
+    @Ignore
+    protected Weeds(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        geographicalDistribution = in.readString();
+        morphology = in.readString();
+        ecology = in.readString();
+        impact = in.readString();
+        controlMethods = in.readString();
+        weed_image = in.readString();
+    }
+
+    @Ignore
+    public static final Creator<Weeds> CREATOR = new Creator<Weeds>() {
+        @Override
+        public Weeds createFromParcel(Parcel in) {
+            return new Weeds(in);
+        }
+
+        @Override
+        public Weeds[] newArray(int size) {
+            return new Weeds[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -95,5 +124,24 @@ public class Weeds {
 
     public void setWeed_image(String weed_image) {
         this.weed_image = weed_image;
+    }
+
+    @Ignore
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Ignore
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(geographicalDistribution);
+        dest.writeString(morphology);
+        dest.writeString(ecology);
+        dest.writeString(impact);
+        dest.writeString(controlMethods);
+        dest.writeString(weed_image);
     }
 }

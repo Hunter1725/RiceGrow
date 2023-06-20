@@ -15,6 +15,54 @@
         android:theme="@style/Theme.RiceGrow"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.Knowledge.StageActivity.Stage.StageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.StageActivity.Stage.ListStage"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.StageActivity.Activity.FarmingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.StageActivity.Activity.ListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.Management.Weed.WeedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.Management.Pest.PestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.Management.Disease.DiseaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.Management.Crop.CropActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.Management.Weed.ListWeed"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.Management.Disease.ListDisease"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.Management.Pest.ListPest"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.Management.Crop.ListCrop"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.PesticideFertilizer.Fertilizer.ListFertilizer"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.PesticideFertilizer.Pesticide.ListPesticide"
+            android:exported="false" />
+        <activity
             android:name=".Activity.Authenticate.LoginNormal.ForgotActivity"
             android:exported="true" />
         <activity
@@ -28,7 +76,7 @@
         </activity>
         <activity
             android:name=".Activity.Authenticate.LoginNormal.RegisterActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Activity.Main.MainActivity"
             android:exported="true" />

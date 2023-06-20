@@ -17,7 +17,6 @@
         android:textColor="#4CAF50" />
 
 
-
         <GridLayout
             android:id="@+id/gridCategory"
             android:layout_width="match_parent"
@@ -26,7 +25,7 @@
             android:columnCount="1">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardStages"
+                android:id="@+id/cardStageActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -44,7 +43,7 @@
                         android:layout_height="140dp"
                         android:scaleType="centerCrop"
                         app:shapeAppearanceOverlay="@style/RoundedImageViewShape"
-                        app:srcCompat="@drawable/growth_stages_rice_stages"
+                        app:srcCompat="@drawable/stage_activity"
                         android:contentDescription="Stage card view" />
 
                     <LinearLayout
@@ -56,7 +55,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Stages of Rice Growth"
+                            android:text="Rice growth stages and farming activities"
                             android:textSize="18sp"
                             android:textColor="#000000"
                             android:textStyle="bold" />
@@ -65,7 +64,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Explore the various stages of rice growth"
+                            android:text="Explore the various stages of rice growth and farming activities"
                             android:textColor="#4CAF50"
                             android:textAppearance="?attr/textAppearanceBody1" />
 
@@ -79,7 +78,7 @@
                         android:layout_marginBottom="16dp"
                         android:orientation="horizontal">
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnCardStages"
+                            android:id="@+id/btnCardStageActivity"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Learn More"

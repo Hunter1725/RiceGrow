@@ -1,15 +1,21 @@
 package com.example.ricegrow.DatabaseFiles.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "pests")
-public class Pests {
+public class Pests implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
+    @ColumnInfo(name = "science_name")
+    private String scienceName;
     private String lifecycle;
     private String symptoms;
     private String description;
@@ -18,8 +24,9 @@ public class Pests {
     @ColumnInfo(name = "pest_image")
     private String pestImage;
 
-    public Pests(String name, String lifecycle, String symptoms, String description, String controlMethods, String pestImage) {
+    public Pests(String name, String scienceName, String lifecycle, String symptoms, String description, String controlMethods, String pestImage) {
         this.name = name;
+        this.scienceName = scienceName;
         this.lifecycle = lifecycle;
         this.symptoms = symptoms;
         this.description = description;
@@ -30,6 +37,31 @@ public class Pests {
     @Ignore
     public Pests() {
     }
+
+    @Ignore
+    protected Pests(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        scienceName = in.readString();
+        lifecycle = in.readString();
+        symptoms = in.readString();
+        description = in.readString();
+        controlMethods = in.readString();
+        pestImage = in.readString();
+    }
+
+    @Ignore
+    public static final Creator<Pests> CREATOR = new Creator<Pests>() {
+        @Override
+        public Pests createFromParcel(Parcel in) {
+            return new Pests(in);
+        }
+
+        @Override
+        public Pests[] newArray(int size) {
+            return new Pests[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -45,6 +77,14 @@ public class Pests {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getScienceName() {
+        return scienceName;
+    }
+
+    public void setScienceName(String scienceName) {
+        this.scienceName = scienceName;
     }
 
     public String getLifecycle() {
@@ -87,4 +127,23 @@ public class Pests {
         this.pestImage = pestImage;
     }
 
+
+    @Ignore
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Ignore
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(scienceName);
+        dest.writeString(lifecycle);
+        dest.writeString(symptoms);
+        dest.writeString(description);
+        dest.writeString(controlMethods);
+        dest.writeString(pestImage);
+    }
 }

@@ -8,6 +8,19 @@
 
     <style name="Theme.RiceGrow" parent="Base.Theme.RiceGrow">
         <item name="navigationViewStyle">@style/Widget.App.NavigationView</item>
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
+
+        <!-- Optional: set to transparent if your app is drawing behind the status bar. -->
+        <item name="android:statusBarColor">
+            @android:color/transparent
+        </item>
+
+        <!-- Optional: set the status bar light and content dark. -->
+        <item name="android:windowLightStatusBar">
+            true
+        </item>
     </style>
 
     <!-- Style for the floating label -->
@@ -35,7 +48,7 @@
     </style>
 
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/login_background</item>
+        <item name="android:color">#81C784</item>
     </style>
 
     <style name="Widget.App.NavigationView" parent="Widget.Material3.NavigationView">
@@ -46,6 +59,11 @@
     <style name="RoundedImageViewShape">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="RoundedImageViewShape2">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18dp</item>
     </style>
 
 

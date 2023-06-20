@@ -4,32 +4,51 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ricegrow.Activity.Authenticate.LoginNormal.LoginActivity;
 import com.example.ricegrow.Activity.Knowledge.MainKnowledge;
+import com.example.ricegrow.Activity.Knowledge.Management.Disease.ListDisease;
+import com.example.ricegrow.Activity.Knowledge.Management.Pest.ListPest;
+import com.example.ricegrow.Activity.Knowledge.Management.Weed.ListWeed;
+import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.MainPestFer;
 import com.example.ricegrow.DatabaseFiles.Model.Users;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.search.SearchBar;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
+    private FloatingActionButton fabScrollToTop;
+    private NestedScrollView nestedScrollView;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private MaterialToolbar toolbar;
@@ -45,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_main);
+
 
         initView();
 
@@ -79,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 // Handle item selection
                 int itemId = item.getItemId();
 
@@ -89,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
                 // Set checked state for the selected item
                 item.setChecked(true);
 
+                // Close the drawer
+                drawer.closeDrawers();
 
                 // Perform actions based on the selected item
                 if (itemId == R.id.allPlan) {
@@ -105,13 +127,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Fertilizer selected", Toast.LENGTH_SHORT).show();
                 } else if (itemId == R.id.pest) {
                     // Handle "Pest" item selection
-                    Toast.makeText(MainActivity.this, "Pest selected", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, ListPest.class));
                 } else if (itemId == R.id.disease) {
                     // Handle "Disease" item selection
-                    Toast.makeText(MainActivity.this, "Disease selected", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, ListDisease.class));
                 } else if (itemId == R.id.weed) {
                     // Handle "Weed" item selection
-                    Toast.makeText(MainActivity.this, "Weed selected", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, ListWeed.class));
                 } else if (itemId == R.id.term) {
                     // Handle "Terms" item selection
                     Toast.makeText(MainActivity.this, "Terms selected", Toast.LENGTH_SHORT).show();
@@ -124,12 +146,11 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 }
 
-                // Close the drawer
-                drawer.closeDrawers();
 
                 return true;
             }
         });
+
 
         //Toolbar listener
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -166,18 +187,42 @@ public class MainActivity extends AppCompatActivity {
                 } else if (itemId == R.id.calculatorBottom) {
                     Toast.makeText(MainActivity.this, "Calculator selected!", Toast.LENGTH_SHORT).show();
                 } else if (itemId == R.id.knowledge) {
-                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.container, new MainKnowledge());
-                    transaction.commit();
+                    //Inflate fragment
+                    replaceFragment(new MainKnowledge());
+
                 }
 
                 return true;
             }
         });
 
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.container, new MainFragment());
-//        transaction.commit();
+        fabScrollToTop.hide();
+        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                // Check the scroll position
+                if (scrollY == 0) {
+                    // Scroll is at the top, hide the FloatingActionButton
+                    fabScrollToTop.hide();
+                } else if (scrollY > oldScrollY) {
+                    // Scrolling downwards, hide the FloatingActionButton
+                    fabScrollToTop.hide();
+                } else {
+                    // Scrolling upwards, show the FloatingActionButton
+                    fabScrollToTop.show();
+                }
+            }
+        });
+
+        //FAB scroll up
+        // Set an OnClickListener for the FloatingActionButton
+        fabScrollToTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Scroll to the top of the NestedScrollView
+                nestedScrollView.smoothScrollTo(0, 0);
+            }
+        });
 
     }
 
@@ -212,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initView() {
+        nestedScrollView = findViewById(R.id.nestedScrollView);
         drawer = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
         toolbar = findViewById(R.id.toolbar);
@@ -222,5 +268,39 @@ public class MainActivity extends AppCompatActivity {
         avatarUser = headerView.findViewById(R.id.avatarUser);
         userName = headerView.findViewById(R.id.userName);
         userEmail = headerView.findViewById(R.id.userEmail);
+        fabScrollToTop = findViewById(R.id.fabScrollToTop);
     }
+
+    public void replaceFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+        nestedScrollView.smoothScrollTo(0, 0);
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if (fragmentManager.getBackStackEntryCount() > 0) {
+            fragmentManager.popBackStack();
+            nestedScrollView.smoothScrollTo(0, 0);
+        } else {
+            // No remaining fragments, show exit confirmation dialog
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle("Exit")
+                    .setMessage("Are you sure you want to exit the app?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Exit the app
+                            finishAffinity();
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+        }
+    }
+
+
 }

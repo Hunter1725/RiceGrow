@@ -1,12 +1,16 @@
 package com.example.ricegrow.DatabaseFiles.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "diseases")
-public class Diseases {
+public class Diseases implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
@@ -28,6 +32,29 @@ public class Diseases {
     @Ignore
     public Diseases() {
     }
+
+    @Ignore
+    protected Diseases(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        symptoms = in.readString();
+        description = in.readString();
+        preventionMethods = in.readString();
+        diseaseImage = in.readString();
+    }
+
+    @Ignore
+    public static final Creator<Diseases> CREATOR = new Creator<Diseases>() {
+        @Override
+        public Diseases createFromParcel(Parcel in) {
+            return new Diseases(in);
+        }
+
+        @Override
+        public Diseases[] newArray(int size) {
+            return new Diseases[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -75,5 +102,22 @@ public class Diseases {
 
     public void setDiseaseImage(String diseaseImage) {
         this.diseaseImage = diseaseImage;
+    }
+
+    @Ignore
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Ignore
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(symptoms);
+        dest.writeString(description);
+        dest.writeString(preventionMethods);
+        dest.writeString(diseaseImage);
     }
 }

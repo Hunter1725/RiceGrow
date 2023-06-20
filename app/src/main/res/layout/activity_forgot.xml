@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/login_background"
-    tools:context=".Activity.Authenticate.LoginNormal.ForgotActivity">
+    tools:context=".Activity.Authenticate.LoginNormal.ForgotActivity"
+    android:fitsSystemWindows="true">
 
   <!-- Forgot Password Interface Components -->
 

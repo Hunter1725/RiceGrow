@@ -2,6 +2,7 @@ package com.example.ricegrow.Activity.Authenticate.LoginNormal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_register);
         db = RiceGrowDatabase.getInstance(this);
         initView();

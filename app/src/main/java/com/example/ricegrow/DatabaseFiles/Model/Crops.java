@@ -1,12 +1,16 @@
 package com.example.ricegrow.DatabaseFiles.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "crops")
-public class Crops {
+public class Crops implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -33,6 +37,30 @@ public class Crops {
     @Ignore
     public Crops() {
     }
+
+    @Ignore
+    protected Crops(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        description = in.readString();
+        growthPeriod = in.readInt();
+        sellingPrice = in.readDouble();
+        saltTolerance = in.readDouble();
+        cropImage = in.readString();
+    }
+
+    @Ignore
+    public static final Creator<Crops> CREATOR = new Creator<Crops>() {
+        @Override
+        public Crops createFromParcel(Parcel in) {
+            return new Crops(in);
+        }
+
+        @Override
+        public Crops[] newArray(int size) {
+            return new Crops[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -101,5 +129,23 @@ public class Crops {
                 ", optimal_temperature=" + saltTolerance +
                 ", crop_image='" + cropImage + '\'' +
                 '}';
+    }
+
+    @Ignore
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Ignore
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeInt(growthPeriod);
+        dest.writeDouble(sellingPrice);
+        dest.writeDouble(saltTolerance);
+        dest.writeString(cropImage);
     }
 }

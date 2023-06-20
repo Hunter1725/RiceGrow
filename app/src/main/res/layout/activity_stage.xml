@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_marginBottom="30dp"
+    tools:context=".Activity.Knowledge.StageActivity.Stage.StageActivity">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:liftOnScroll="true"
+            android:fitsSystemWindows="true"
+            android:background="@color/login_background">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarStage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Rice Grow"
+                app:navigationIcon="@drawable/back"
+                android:background="@color/login_background"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                android:fitsSystemWindows="true"
+                app:menu="@menu/top_bar_management" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageStage"
+                    android:layout_width="350dp"
+                    android:layout_height="300dp"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center_horizontal"
+                    app:strokeColor="@color/button_bg"
+                    app:strokeWidth="2dp"
+                    app:shapeAppearanceOverlay="@style/RoundedImageViewShape2"
+                    app:srcCompat="@drawable/ic_launcher_background"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:id="@+id/txtNameStage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Name crop"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Descriptions:"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Bayer"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Duration:"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Antoxin silicat"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/startDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Start date:"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtStartDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="2 days a week"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/endDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="End date:"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtEndDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="60kg/ha"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:dividerThickness="3dp"
+                    app:dividerColor="#D9D9D9"/>
+
+                <TextView
+                    android:id="@+id/pests"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Harmful pests:"
+                    android:layout_marginTop="15dp"
+                    android:textSize="18sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtEmpty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:text="Sorry, the information is being updated!"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
+                    android:visibility="gone"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/pestsRecView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="9dp"/>
+
+                <TextView
+                    android:id="@+id/diseases"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Potential diseases:"
+                    android:layout_marginTop="15dp"
+                    android:textSize="18sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtEmpty2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:text="Sorry, the information is being updated!"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
+                    android:visibility="gone"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/diseasesRecView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="9dp"/>
+
+                <TextView
+                    android:id="@+id/activities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Relevant activities:"
+                    android:layout_marginTop="15dp"
+                    android:textSize="18sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtEmpty3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:text="Sorry, the information is being updated!"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
+                    android:visibility="gone"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/activityRecView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="9dp"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabScrollToTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/up"
+            app:backgroundTint="@color/login_background"
+            app:elevation="6dp"
+            android:contentDescription="FAB up" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</RelativeLayout>

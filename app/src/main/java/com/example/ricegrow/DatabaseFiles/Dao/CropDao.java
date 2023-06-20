@@ -5,6 +5,9 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.example.ricegrow.DatabaseFiles.Model.Crops;
+import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
+
+import java.util.List;
 
 @Dao
 public interface CropDao {
@@ -13,5 +16,14 @@ public interface CropDao {
 
     @Query("SELECT id FROM crops WHERE name =:name")
     int getIdByName (String name);
+
+    @Query("SELECT name FROM crops")
+    List<String> getAllCropNames();
+
+    @Query("SELECT * FROM crops")
+    List<Crops> getAllCrops();
+
+    @Query("SELECT * FROM crops WHERE name LIKE :name")
+    List<Crops> getCropsByName(String name);
 
 }

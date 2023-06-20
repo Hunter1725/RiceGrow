@@ -1,12 +1,16 @@
 package com.example.ricegrow.DatabaseFiles.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "pesticides")
-public class Pesticides {
+public class Pesticides implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
@@ -36,6 +40,32 @@ public class Pesticides {
     @Ignore
     public Pesticides() {
     }
+
+    @Ignore
+    protected Pesticides(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        manufacturer = in.readString();
+        composition = in.readString();
+        category = in.readString();
+        usageInstructions = in.readString();
+        pesticidePerBottle = in.readDouble();
+        waterPerHectare = in.readDouble();
+        pesticideImage = in.readString();
+    }
+
+    @Ignore
+    public static final Creator<Pesticides> CREATOR = new Creator<Pesticides>() {
+        @Override
+        public Pesticides createFromParcel(Parcel in) {
+            return new Pesticides(in);
+        }
+
+        @Override
+        public Pesticides[] newArray(int size) {
+            return new Pesticides[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -107,5 +137,25 @@ public class Pesticides {
 
     public void setPesticideImage(String pesticideImage) {
         this.pesticideImage = pesticideImage;
+    }
+
+    @Ignore
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Ignore
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(manufacturer);
+        dest.writeString(composition);
+        dest.writeString(category);
+        dest.writeString(usageInstructions);
+        dest.writeDouble(pesticidePerBottle);
+        dest.writeDouble(waterPerHectare);
+        dest.writeString(pesticideImage);
     }
 }
