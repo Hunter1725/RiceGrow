@@ -1,0 +1,16 @@
+package com.example.ricegrow.Activity.Calculating.PesticideCalculating;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.example.ricegrow.R;
+
+public class PesticideCalculate extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pesticide_calculate);
+    }
+}

@@ -31,6 +31,7 @@ import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.UsingAdapter;
 import com.example.ricegrow.Activity.Knowledge.StageActivity.Stage.StageActivity;
 import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
+import com.example.ricegrow.DatabaseFiles.Model.CropStage;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
@@ -121,6 +122,7 @@ public class FarmingActivity extends AppCompatActivity {
 
                 //Card stage
                 Stages stages = db.stageDao().getStageById(incomingActivity.getStageId());
+                CropStage cropStage = db.cropStageDao().getFirstCropStageByStageId(incomingActivity.getStageId());
                 Glide.with(FarmingActivity.this)
                         .asBitmap()
                         .load(stages.getStageImage())
@@ -128,9 +130,9 @@ public class FarmingActivity extends AppCompatActivity {
                         .error(R.drawable.baseline_error_outline_24)
                         .into(imageStage);
                 txtNameStage.setText(stages.getName());
-                String durationStage = String.valueOf(stages.getDuration()) + " days";
+                String durationStage = String.valueOf(cropStage.getDuration()) + " days";
                 txtDurationStage.setText(durationStage);
-                String startDate = String.valueOf(stages.getStartDate()) + " day";
+                String startDate = String.valueOf(cropStage.getStartDate()) + " day";
                 txtStartDate.setText(startDate);
 
 

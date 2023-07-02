@@ -1,5 +1,6 @@
 package com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide;
 
+import static com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.DeftoxActivity.DEFTOX_KEY;
 import static com.example.ricegrow.Activity.Knowledge.Management.Disease.DiseaseActivity.DISEASE_KEY;
 import static com.example.ricegrow.Activity.Knowledge.Management.Pest.PestActivity.PEST_KEY;
 import static com.example.ricegrow.Activity.Knowledge.Management.Weed.WeedActivity.WEED_KEY;
@@ -17,9 +18,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.DeftoxActivity;
 import com.example.ricegrow.Activity.Knowledge.Management.Disease.DiseaseActivity;
 import com.example.ricegrow.Activity.Knowledge.Management.Pest.PestActivity;
 import com.example.ricegrow.Activity.Knowledge.Management.Weed.WeedActivity;
+import com.example.ricegrow.DatabaseFiles.Model.DeficienciesToxicities;
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
 import com.example.ricegrow.DatabaseFiles.Model.Weeds;
@@ -34,6 +37,7 @@ public class TreatingAdapter extends RecyclerView.Adapter<TreatingAdapter.ViewHo
     private ArrayList<Pests> pests = new ArrayList<>();
     private ArrayList<Diseases> diseases = new ArrayList<>();
     private ArrayList<Weeds> weeds = new ArrayList<>();
+    private ArrayList<DeficienciesToxicities> deficienciesToxicities = new ArrayList<>();
 
     private Context context;
 
@@ -98,6 +102,22 @@ public class TreatingAdapter extends RecyclerView.Adapter<TreatingAdapter.ViewHo
                     context.startActivity(intent);
                 }
             });
+        } else if (deficienciesToxicities.size()!=0) {
+            holder.txtName.setText(deficienciesToxicities.get(position).getName());
+            Glide.with(context)
+                    .asBitmap()
+                    .load(deficienciesToxicities.get(position).getDeftoxImage())
+                    .placeholder(R.drawable.baseline_restart_alt_24)
+                    .error(R.drawable.baseline_error_outline_24)
+                    .into(holder.image);
+            holder.parent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, DeftoxActivity.class);
+                    intent.putExtra(DEFTOX_KEY, deficienciesToxicities.get(position));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -109,6 +129,8 @@ public class TreatingAdapter extends RecyclerView.Adapter<TreatingAdapter.ViewHo
             return diseases.size();
         } else if (weeds.size()!=0) {
             return weeds.size();
+        } else if (deficienciesToxicities.size()!=0) {
+            return deficienciesToxicities.size();
         }
         return 0;
     }
@@ -125,6 +147,11 @@ public class TreatingAdapter extends RecyclerView.Adapter<TreatingAdapter.ViewHo
 
     public void setWeeds(ArrayList<Weeds> weeds) {
         this.weeds = weeds;
+        notifyDataSetChanged();
+    }
+
+    public void setDeficienciesToxicities(ArrayList<DeficienciesToxicities> deficienciesToxicities) {
+        this.deficienciesToxicities = deficienciesToxicities;
         notifyDataSetChanged();
     }
 

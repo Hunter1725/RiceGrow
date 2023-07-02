@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="30dp"
+    tools:context=".Activity.Calculating.FertilizerCalculating.FertilizerCalculate">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/login_background"
+            android:fitsSystemWindows="true"
+            app:liftOnScroll="true">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarCalculate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/login_background"
+                app:menu="@menu/top_bar_management"
+                app:navigationIcon="@drawable/back"
+                app:title="Fertilizer calculator" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:elevation="8dp">
+
+                <TextView
+                    android:id="@+id/selectNutrient"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The amount of nutrients"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nutrientNInputLayout"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/selectNutrient"
+                    android:hint="N"
+                    app:boxStrokeColor="@color/logo_tint"
+                    app:hintTextColor="@color/logo_tint"
+                    app:hintEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextAppearance="@style/TextInputLayoutHint"
+                    app:errorEnabled="true"
+                    app:errorTextAppearance="@style/TextInputLayoutError">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nutrientNEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:maxLines="1"
+                        android:minLines="1"
+                        android:maxEms="2"
+                        android:minEms="1"
+                        android:text="80"
+                        android:imeOptions="actionDone"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nutrientPInputLayout"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/nutrientNInputLayout"
+                    android:layout_below="@+id/selectNutrient"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="P"
+                    app:boxStrokeColor="@color/logo_tint"
+                    app:hintTextColor="@color/logo_tint"
+                    app:hintEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextAppearance="@style/TextInputLayoutHint"
+                    app:errorEnabled="true"
+                    app:errorTextAppearance="@style/TextInputLayoutError">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nutrientPEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textSize="20sp"
+                        android:maxLength="3"
+                        android:maxLines="1"
+                        android:minLines="1"
+                        android:maxEms="2"
+                        android:minEms="1"
+                        android:text="30"
+                        android:imeOptions="actionDone"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nutrientKInputLayout"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/selectNutrient"
+                    android:layout_toEndOf="@+id/nutrientPInputLayout"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="K"
+                    app:boxStrokeColor="@color/logo_tint"
+                    app:hintTextColor="@color/logo_tint"
+                    app:hintEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextAppearance="@style/TextInputLayoutHint"
+                    app:errorEnabled="true"
+                    app:errorTextAppearance="@style/TextInputLayoutError">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nutrientKEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textSize="20sp"
+                        android:maxLength="3"
+                        android:maxLines="1"
+                        android:minLines="1"
+                        android:maxEms="2"
+                        android:minEms="1"
+                        android:text="40"
+                        android:imeOptions="actionDone"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/hint_text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:id="@+id/btnReset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reset"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/button_bg"
+                    android:layout_below="@+id/selectNutrient"
+                    android:layout_toEndOf="@+id/nutrientKInputLayout"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="22dp" />
+
+                <TextView
+                    android:id="@+id/defaultNutrients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Measured in kilograms (kg). Default is the recommended amount of nutrition from the experts for 1 ha (10000 m²)"
+                    android:layout_below="@+id/nutrientKInputLayout"
+                    android:textStyle="italic"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/selectArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Field area"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/defaultNutrients" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/selectArea"
+                    android:layout_marginTop="5dp">
+
+                    <Button
+                        android:id="@+id/btnDecrease"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        app:icon="@drawable/down"
+                        app:iconGravity="textStart"
+                        app:iconSize="35dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:cornerRadius="50dp"
+                        app:iconPadding="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="@color/login_background"
+                        android:layout_marginStart="20dp"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/fieldAreaInputLayout"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@+id/btnDecrease"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="30dp"
+                        app:boxStrokeColor="@color/logo_tint"
+                        app:hintTextAppearance="@style/TextInputLayoutHint"
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/TextInputLayoutError"
+                        app:suffixText="ha"
+                        app:suffixTextColor="@color/text_color"
+                        app:suffixTextAppearance="@style/SuffixTextAppearance">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/fieldAreaEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|numberDecimal"
+                            android:textSize="22sp"
+                            android:maxLines="1"
+                            android:minLines="1"
+                            android:maxEms="4"
+                            android:minEms="1"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/hint_text"
+                            app:layout_constraintStart_toEndOf="@+id/btnDecrease"
+                            app:layout_constraintBottom_toBottomOf="@+id/btnDecrease" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnIncrease"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:icon="@drawable/up"
+                        app:iconGravity="textStart"
+                        app:iconSize="35dp"
+                        app:cornerRadius="50dp"
+                        app:iconPadding="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/fieldAreaInputLayout"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="@color/login_background"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/selectUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Unit"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/layoutInput" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:checkedButton="@+id/radio_button_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layoutInput"
+                    android:layout_toEndOf="@+id/selectUnit"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="10dp">
+                    <RadioButton
+                        android:id="@+id/btnMeter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Square meters (m²)"
+                        android:textSize="16sp"
+                        style="@style/Widget.App.RadioButton" />
+                    <RadioButton
+                        android:id="@+id/btnHectare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hectare (ha)"
+                        android:layout_marginStart="20dp"
+                        android:textSize="16sp"
+                        style="@style/Widget.App.RadioButton"
+                        android:checked="true"/>
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/btnCalculating"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="32dp"
+                    android:backgroundTint="@color/button_bg"
+                    android:text="Calculate"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_below="@+id/radioGroup"/>
+                </RelativeLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:dividerThickness="3dp"
+                    app:dividerColor="#D9D9D9"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:src="@drawable/empty_content"
+                    android:visibility="gone"/>
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progressCalculate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    app:trackCornerRadius="5dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    app:indicatorColor="@color/button_bg"
+                    app:trackColor="@color/login_background"
+                    android:visibility="gone"/>
+
+                <RelativeLayout
+                    android:id="@+id/resultLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:elevation="8dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/textResult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="The amount of fertilizers recommended to use corresponds to the season:"
+                        android:textSize="19sp"
+                        android:textStyle="bold"/>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/resultCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textResult"
+                        android:layout_marginTop="10dp"
+                        android:padding="8dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@color/white">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:id="@+id/textRecommend"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Recommended amount"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="5dp"/>
+
+                            <TextView
+                                android:id="@+id/textUrea"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Urea"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textRecommend"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginStart="20dp"/>
+
+                            <TextView
+                                android:id="@+id/textDAP"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DAP"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textRecommend"
+                                app:layout_constraintStart_toEndOf="@+id/textUrea"
+                                android:layout_marginStart="75dp"
+                                android:layout_marginTop="15dp"/>
+
+                            <TextView
+                                android:id="@+id/textMOP"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="MOP"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textRecommend"
+                                app:layout_constraintStart_toEndOf="@+id/textDAP"
+                                android:layout_marginStart="75dp"
+                                android:layout_marginTop="15dp"/>
+
+                            <TextView
+                                android:id="@+id/txtUrea"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="150 Kg"
+                                android:textSize="22sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textUrea"
+                                app:layout_constraintStart_toStartOf="@+id/textUrea"
+                                android:layout_marginTop="10dp" />
+
+                            <TextView
+                                android:id="@+id/txtDAP"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="50 Kg"
+                                android:textSize="22sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textDAP"
+                                app:layout_constraintStart_toStartOf="@+id/textDAP"
+                                android:layout_marginTop="10dp" />
+
+                            <TextView
+                                android:id="@+id/txtMOP"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="50 Kg"
+                                android:textSize="22sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textMOP"
+                                app:layout_constraintStart_toStartOf="@+id/textMOP"
+                                android:layout_marginTop="10dp" />
+
+                            <Button
+                                android:id="@+id/btnViewDetail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="View detail"
+                                android:textSize="18sp"
+                                android:textColor="@color/button_bg"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textRecommend"
+                                android:layout_marginTop="100dp"
+                                android:layout_marginEnd="10dp"
+                                android:backgroundTint="@color/login_background"/>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </RelativeLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:dividerThickness="3dp"
+                    app:dividerColor="#D9D9D9"/>
+
+                <TextView
+                    android:id="@+id/recommend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Types of fertilizers:"
+                    android:layout_marginTop="15dp"
+                    android:textSize="18sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"/>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fertilizerRecView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="9dp"/>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:dividerThickness="3dp"
+                    app:dividerColor="#D9D9D9"/>
+
+                <TextView
+                    android:id="@+id/lackNutrients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Signs of a lack of nutrients:"
+                    android:layout_marginTop="15dp"
+                    android:textSize="18sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"/>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/lackingRecView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="9dp"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

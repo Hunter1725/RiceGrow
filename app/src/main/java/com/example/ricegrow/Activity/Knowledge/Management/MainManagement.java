@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.ricegrow.Activity.Knowledge.Management.Crop.ListCrop;
+import com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.ListDeftox;
 import com.example.ricegrow.Activity.Knowledge.Management.Disease.ListDisease;
 import com.example.ricegrow.Activity.Knowledge.Management.Pest.ListPest;
 import com.example.ricegrow.Activity.Knowledge.Management.Weed.ListWeed;
@@ -21,8 +22,8 @@ import com.google.android.material.card.MaterialCardView;
 
 public class MainManagement extends Fragment {
 
-    private MaterialCardView cardCrop,cardPest, cardDisease, cardWeed;
-    private MaterialButton btnCardCrop, btnCardPests, btnCardDisease, btnCardWeed;
+    private MaterialCardView cardCrop,cardPest, cardDisease, cardWeed, cardDeftox;
+    private MaterialButton btnCardCrop, btnCardPests, btnCardDisease, btnCardWeed, btnCardDeftox;
 
     @Nullable
     @Override
@@ -65,6 +66,13 @@ public class MainManagement extends Fragment {
                 startActivity(new Intent(getActivity(), ListWeed.class));
             }
         });
+
+        btnCardDeftox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListDeftox.class));
+            }
+        });
     }
 
     private void initView(View view) {
@@ -72,9 +80,11 @@ public class MainManagement extends Fragment {
         cardPest = view.findViewById(R.id.cardPest);
         cardDisease = view.findViewById(R.id.cardDisease);
         cardWeed = view.findViewById(R.id.cardWeed);
+        cardDeftox = view.findViewById(R.id.cardDeftox);
         btnCardCrop = view.findViewById(R.id.btnCardCrop);
         btnCardPests = view.findViewById(R.id.btnCardPests);
         btnCardDisease = view.findViewById(R.id.btnCardDisease);
         btnCardWeed = view.findViewById(R.id.btnCardWeed);
+        btnCardDeftox = view.findViewById(R.id.btnCardDeftox);
     }
 }

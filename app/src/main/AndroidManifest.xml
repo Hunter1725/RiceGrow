@@ -15,6 +15,22 @@
         android:theme="@style/Theme.RiceGrow"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.Calculating.PesticideCalculating.PesticideCalculate"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.Management.DeficienciesToxicities.DeftoxActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Knowledge.Management.DeficienciesToxicities.ListDeftox"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Calculating.FertilizerCalculating.ViewFerCalculate"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Calculating.FertilizerCalculating.FertilizerCalculate"
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
             android:name=".Activity.Knowledge.StageActivity.Stage.StageActivity"
             android:exported="false" />
         <activity

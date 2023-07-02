@@ -18,12 +18,14 @@ public interface StageDao {
     @Query("SELECT id FROM stages WHERE name =:name")
     int getIdByName (String name);
 
-    @Query("SELECT * FROM stages WHERE crop_id =:cropId ORDER BY `order`")
-    List<Stages> getAllStagesByCropId(int cropId);
+    @Query("SELECT * FROM stages")
+    List<Stages> getAllStages();
 
     @Query("SELECT * FROM stages WHERE id =:id")
     Stages getStageById(int id);
 
+    @Query("SELECT * FROM stages WHERE name =:name")
+    Stages getStageByName(String name);
     @Query("SELECT * FROM stages WHERE name LIKE :name")
     List<Stages> getStagesByName(String name);
 
@@ -32,4 +34,7 @@ public interface StageDao {
 
     @Query("SELECT * FROM stages WHERE id IN (SELECT stage_id FROM pests_stages WHERE pest_id = :pestId)")
     List<Stages> getStagesByPestId (int pestId);
+
+    @Query("SELECT * FROM stages WHERE id IN (SELECT stage_id FROM deftox_stage WHERE deftox_id = :deftoxId)")
+    List<Stages> getStagesByDeftoxId (int deftoxId);
 }

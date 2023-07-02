@@ -15,6 +15,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -27,6 +29,7 @@ import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.Tre
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.UsingAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
+import com.example.ricegrow.DatabaseFiles.Model.CropStage;
 import com.example.ricegrow.DatabaseFiles.Model.Crops;
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
@@ -39,6 +42,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StageActivity extends AppCompatActivity {
 
@@ -47,7 +51,7 @@ public class StageActivity extends AppCompatActivity {
     private FloatingActionButton fabScrollToTop;
     private NestedScrollView nestedScrollView;
     private ShapeableImageView imageStage;
-    private TextView txtNameStage, txtDescription, txtDuration, txtStartDate, txtEndDate, txtEmpty, txtEmpty2, txtEmpty3;
+    private TextView txtNameStage, txtDescription, txtStartDate, txtDuration, txtEndDate,txtEmpty, txtEmpty2, txtEmpty3;
     private RecyclerView pestsRecView, diseasesRecView, activityRecView;
     private TreatingAdapter pestAdapter, diseaseAdapter;
     private UsingAdapter activityAdapter;
@@ -112,12 +116,73 @@ public class StageActivity extends AppCompatActivity {
                 txtNameStage.setText(incomingStage.getName());
                 toolbarStage.setTitle(incomingStage.getName());
                 txtDescription.setText(incomingStage.getDescription());
-                String duration = "About " + String.valueOf(incomingStage.getDuration()) + " days";
-                txtDuration.setText(duration);
-                String start = String.valueOf(incomingStage.getStartDate()) + " day";
-                txtStartDate.setText(start);
-                String end = String.valueOf(incomingStage.getEndDate()) + " day";
-                txtEndDate.setText(end);
+                ArrayList<CropStage> cropStages = (ArrayList<CropStage>) db.cropStageDao().getCropStageByStageId(incomingStage.getId());
+                int cropStageCount = cropStages.size();
+                //Duration
+                List<String> listDuration = new ArrayList<>();
+                for (int i = 0; i < cropStageCount; i++) {
+                    CropStage cropStage = cropStages.get(i);
+                    Crops crop = db.cropDao().getCropById(cropStage.getCropId());
+                    String cropStageString = "- Rice variety " + crop.getName() + ": " + cropStage.getDuration() + " days";
+
+                    // Check if it's the last item in the list
+                    if (i == cropStageCount - 1) {
+                        listDuration.add(cropStageString);
+                    } else {
+                        listDuration.add(cropStageString + "\n\n");
+                    }
+                }
+                // Concatenate all strings in the list
+                StringBuilder stringBuilder = new StringBuilder();
+                for (String cropStageString : listDuration) {
+                    stringBuilder.append(cropStageString);
+                }
+                // Set the concatenated string as the text of the TextView
+                txtDuration.setText(stringBuilder.toString());
+
+                //Start date
+                List<String> listStartDate = new ArrayList<>();
+                for (int i = 0; i < cropStageCount; i++) {
+                    CropStage cropStage = cropStages.get(i);
+                    Crops crop = db.cropDao().getCropById(cropStage.getCropId());
+                    String cropStageString = "- Rice variety " + crop.getName() + ": " + cropStage.getStartDate() + " day";
+
+                    // Check if it's the last item in the list
+                    if (i == cropStageCount - 1) {
+                        listStartDate.add(cropStageString);
+                    } else {
+                        listStartDate.add(cropStageString + "\n\n");
+                    }
+                }
+                // Concatenate all strings in the list
+                StringBuilder stringBuilder2 = new StringBuilder();
+                for (String cropStageString : listStartDate) {
+                    stringBuilder2.append(cropStageString);
+                }
+                // Set the concatenated string as the text of the TextView
+                txtStartDate.setText(stringBuilder2.toString());
+
+                //End date
+                List<String> listEndDate = new ArrayList<>();
+                for (int i = 0; i < cropStageCount; i++) {
+                    CropStage cropStage = cropStages.get(i);
+                    Crops crop = db.cropDao().getCropById(cropStage.getCropId());
+                    String cropStageString = "- Rice variety " + crop.getName() + ": " + cropStage.getEndDate() + " day";
+
+                    // Check if it's the last item in the list
+                    if (i == cropStageCount - 1) {
+                        listEndDate.add(cropStageString);
+                    } else {
+                        listEndDate.add(cropStageString + "\n\n");
+                    }
+                }
+                // Concatenate all strings in the list
+                StringBuilder stringBuilder3 = new StringBuilder();
+                for (String cropStageString : listEndDate) {
+                    stringBuilder3.append(cropStageString);
+                }
+                // Set the concatenated string as the text of the TextView
+                txtEndDate.setText(stringBuilder3.toString());
 
                 pestAdapter = new TreatingAdapter(this);
                 pestsRecView.setAdapter(pestAdapter);
@@ -201,8 +266,8 @@ public class StageActivity extends AppCompatActivity {
         imageStage = findViewById(R.id.imageStage);
         txtNameStage = findViewById(R.id.txtNameStage);
         txtDescription = findViewById(R.id.txtDescription);
-        txtDuration = findViewById(R.id.txtDuration);
         txtStartDate = findViewById(R.id.txtStartDate);
+        txtDuration = findViewById(R.id.txtDuration);
         txtEndDate = findViewById(R.id.txtEndDate);
         txtEmpty = findViewById(R.id.txtEmpty);
         txtEmpty2 = findViewById(R.id.txtEmpty2);

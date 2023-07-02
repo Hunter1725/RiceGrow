@@ -64,6 +64,12 @@
                     android:title="Weed"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/deftox"
+                    android:icon="@drawable/deftox"
+                    android:title="Deficiencies and toxicities"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom" />
             </menu>
         </item>
 

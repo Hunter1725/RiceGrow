@@ -105,8 +105,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Antoxin silicat"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:text="Example"/>
 
                 <TextView
                     android:id="@+id/startDate"
@@ -124,8 +124,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="2 days a week"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:text="Example"/>
 
                 <TextView
                     android:id="@+id/endDate"
@@ -143,8 +143,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="60kg/ha"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:text="Example"/>
 
                 <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/divider"

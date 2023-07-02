@@ -88,7 +88,6 @@ public class PesticideActivity extends AppCompatActivity {
                 if (itemId == R.id.calculating) {
                     // Handle search item click here
                     // Apply click effect or perform any desired action
-                    // TODO: 6/13/2023 Navigate the user to Calculating activity
                     Toast.makeText(PesticideActivity.this, "Search clicked", Toast.LENGTH_SHORT).show();
                     return true; // Return true to indicate that the event has been handled
                 } else if (itemId == R.id.home) {

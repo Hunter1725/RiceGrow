@@ -35,8 +35,6 @@ public class ListStage extends AppCompatActivity {
     private NestedScrollView nestedScrollView;
     private FloatingActionButton fabScrollToTop;
     private TextView txtEmpty, txtEmpty2;
-    private TextInputLayout riceDropdown;
-    private AutoCompleteTextView riceAutoCompleteTextView;
     private RecyclerView stageRecView, resultRecView;
     private SearchBar search_bar;
     private SearchView search_view;
@@ -76,15 +74,8 @@ public class ListStage extends AppCompatActivity {
         stageAdapter = new StageAdapter(this);
         stageRecView.setAdapter(stageAdapter);
         stageRecView.setLayoutManager(new LinearLayoutManager(this));
-        stages = (ArrayList<Stages>) db.stageDao().getAllStagesByCropId(db.cropDao().getIdByName("OM18"));
-        if(stages.size() > 0){
-            stageRecView.setVisibility(View.VISIBLE);
-            txtEmpty2.setVisibility(View.GONE);
-            stageAdapter.setStages(stages);
-        } else {
-            stageRecView.setVisibility(View.GONE);
-            txtEmpty2.setVisibility(View.VISIBLE);
-        }
+        stages = (ArrayList<Stages>) db.stageDao().getAllStages();
+        stageAdapter.setStages(stages);
 
         //Search view
         stageAdapter2 = new StageAdapter(this);
@@ -113,39 +104,6 @@ public class ListStage extends AppCompatActivity {
         // Create an ArrayAdapter with the menu items
         List<String> riceVarieties = db.cropDao().getAllCropNames();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.pesticide_dropdown_menu, riceVarieties);
-
-        // Set the adapter to the AutoCompleteTextView
-        riceAutoCompleteTextView.setAdapter(adapter);
-        riceAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Get the selected category
-                String selectedCategory = (String) parent.getItemAtPosition(position);
-                // Handle the selected category
-                if (selectedCategory.equals("OM18")) {
-                    stages = (ArrayList<Stages>) db.stageDao().getAllStagesByCropId(db.cropDao().getIdByName("OM18"));
-                    if(stages.size() > 0){
-                        stageRecView.setVisibility(View.VISIBLE);
-                        txtEmpty2.setVisibility(View.GONE);
-                        stageAdapter.setStages(stages);
-                    } else {
-                        stageRecView.setVisibility(View.GONE);
-                        txtEmpty2.setVisibility(View.VISIBLE);
-                    }
-                } else if (selectedCategory.equals("DT08")) {
-                    stages = (ArrayList<Stages>) db.stageDao().getAllStagesByCropId(db.cropDao().getIdByName(selectedCategory));
-                    if(stages.size() > 0){
-                        stageRecView.setVisibility(View.VISIBLE);
-                        txtEmpty2.setVisibility(View.GONE);
-                        stageAdapter.setStages(stages);
-                    } else {
-                        stageRecView.setVisibility(View.GONE);
-                        txtEmpty2.setVisibility(View.VISIBLE);
-                    }
-                }
-            }
-        });
-
 
         fabScrollToTop.hide();
         nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
@@ -177,8 +135,6 @@ public class ListStage extends AppCompatActivity {
     }
 
     private void initView() {
-        riceDropdown = findViewById(R.id.riceDropdown);
-        riceAutoCompleteTextView = findViewById(R.id.riceAutoCompleteTextView);
         stageRecView = findViewById(R.id.stageRecView);
         resultRecView = findViewById(R.id.resultRecView);
         search_bar = findViewById(R.id.search_bar);

@@ -12,12 +12,18 @@ import com.example.ricegrow.DatabaseFiles.Dao.ActivityDao;
 import com.example.ricegrow.DatabaseFiles.Dao.ActivityFertilizerDao;
 import com.example.ricegrow.DatabaseFiles.Dao.ActivityPesticideDao;
 import com.example.ricegrow.DatabaseFiles.Dao.CropDao;
+import com.example.ricegrow.DatabaseFiles.Dao.CropDeftoxDao;
 import com.example.ricegrow.DatabaseFiles.Dao.CropDiseaseDao;
 import com.example.ricegrow.DatabaseFiles.Dao.CropPestDao;
+import com.example.ricegrow.DatabaseFiles.Dao.CropStageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.CropWeedDao;
+import com.example.ricegrow.DatabaseFiles.Dao.DeficienciesToxicitiesDao;
+import com.example.ricegrow.DatabaseFiles.Dao.DeftoxFertilizerDao;
+import com.example.ricegrow.DatabaseFiles.Dao.DeftoxStageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.DiseaseDao;
 import com.example.ricegrow.DatabaseFiles.Dao.DiseasePesticideDao;
 import com.example.ricegrow.DatabaseFiles.Dao.DiseaseStageDao;
+import com.example.ricegrow.DatabaseFiles.Dao.FertilizerCalculatingDao;
 import com.example.ricegrow.DatabaseFiles.Dao.FertilizerDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PestDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PestPesticideDao;
@@ -34,13 +40,19 @@ import com.example.ricegrow.DatabaseFiles.Dao.WeedPesticideDao;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.ActivityFertilizers;
 import com.example.ricegrow.DatabaseFiles.Model.ActivityPesticides;
+import com.example.ricegrow.DatabaseFiles.Model.CropDeftox;
 import com.example.ricegrow.DatabaseFiles.Model.CropDiseases;
 import com.example.ricegrow.DatabaseFiles.Model.CropPests;
+import com.example.ricegrow.DatabaseFiles.Model.CropStage;
 import com.example.ricegrow.DatabaseFiles.Model.CropWeeds;
 import com.example.ricegrow.DatabaseFiles.Model.Crops;
+import com.example.ricegrow.DatabaseFiles.Model.DeficienciesToxicities;
+import com.example.ricegrow.DatabaseFiles.Model.DeftoxFertilizer;
+import com.example.ricegrow.DatabaseFiles.Model.DeftoxStage;
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.DatabaseFiles.Model.DiseasesPesticides;
 import com.example.ricegrow.DatabaseFiles.Model.DiseasesStages;
+import com.example.ricegrow.DatabaseFiles.Model.FertilizerCalculating;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
@@ -61,10 +73,11 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Activities.class, ActivityFertilizers.class, ActivityPesticides.class, CropDiseases.class,
-                    CropPests.class, Crops.class, CropWeeds.class,Diseases.class, DiseasesPesticides.class, DiseasesStages.class,
+                    CropPests.class, Crops.class, CropWeeds.class, CropStage.class,Diseases.class, DiseasesPesticides.class, DiseasesStages.class,
                     Fertilizers.class, Pesticides.class, Pests.class, PestsPesticides.class, PestsStages.class,
                     PlanActivities.class, PlanFertilizers.class, PlanPesticides.class, PlanStages.class, Stages.class,
-                    UserCrops.class, Users.class, Weeds.class, WeedsPesticides.class}, version = 1)
+                    UserCrops.class, Users.class, Weeds.class, WeedsPesticides.class, FertilizerCalculating.class, DeficienciesToxicities.class, CropDeftox.class,
+                    DeftoxFertilizer.class, DeftoxStage.class}, version = 1)
 public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract ActivityDao activityDao();
     public abstract ActivityFertilizerDao activityFertilizerDao();
@@ -73,6 +86,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract CropDiseaseDao cropDiseaseDao();
     public abstract CropPestDao cropPestDao();
     public abstract CropWeedDao cropWeedDao();
+    public abstract CropStageDao cropStageDao();
     public abstract DiseaseDao diseaseDao();
     public abstract DiseasePesticideDao diseasePesticideDao();
     public abstract DiseaseStageDao diseaseStageDao();
@@ -89,6 +103,11 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract WeedDao weedDao();
     public abstract WeedPesticideDao weedPesticideDao();
+    public abstract FertilizerCalculatingDao fertilizerCalculatingDao();
+    public abstract DeficienciesToxicitiesDao deficienciesToxicitiesDao();
+    public abstract CropDeftoxDao cropDeftoxDao();
+    public abstract DeftoxFertilizerDao deftoxFertilizerDao();
+    public abstract DeftoxStageDao deftoxStageDao();
 
 
     private static RiceGrowDatabase instance;
@@ -332,6 +351,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Black bug")));
             cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Rice gall midge")));
             cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Green leafhopper")));
+
             cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Rice leaffolder")));
             cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Planthopper")));
             cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Stem borer")));
@@ -452,7 +472,8 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "\n" +
                     "The stunting and excessive tillering symptoms of rice grassy stunt can be confused for symptoms of rice yellow dwarf and rice dwarf disease. To confirm Rice grassy stunt virus, check for plants' grassy or rosette appearance and prominent rusty spots on the leaves.",
                     "Rice grassy stunt virus reduces yields by inhibiting panicle production. Generally, rice grassy stunt virus occurrence is not widespread. The disease can become a serious problem in limited rice-growing areas when there are brown planthopper outbreaks.",
-                    "To control rice grassy stunt virus the brown planthopper vectors need to be managed. This can be done either through the use of insecticides, brown plant hopper-resistant varieties, or synchronized crop establishment. Infected stubble needs to be plowed under after harvest to reduce the virus source.",
+                    "To control rice grassy stunt virus the brown planthopper vectors need to be managed. This can be done either through the use of insecticides, brown plant hopper-resistant varieties, or synchronized crop establishment. Infected stubble needs to be plowed under after harvest to reduce the virus source.\n" +
+                    "Rice grassy stunt disease often develops and causes severe damage after the area is heavily infected with planthoppers. There is currently no cure for this disease. The best way to prevent disease is to manage BPH well, choose the sowing time to \"avoid planthoppers\", when the field is sick, it is necessary to destroy the diseased plants, then prevent BPH and spray foliar fertilizers with high phosphorus and potassium content. to increase plant resistance.",
                     "https://th.bing.com/th/id/R.d144c7ca3ebfbc40372b8642e26a3e90?rik=CCnkAsmvE71OZQ&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2frice-grassy-stunt.jpg&ehk=D2kWKLkLFvMo0zPbsrdSyiaqEPWh0HIZKAbY8R0JKds%3d&risl=&pid=ImgRaw&r=0");
             diseases.add(diseases6);
             Diseases diseases7 = new Diseases("Rice ragged stunt", "To detect rice ragged stunt virus, check plants for:\n" +
@@ -476,7 +497,8 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Plant varieties resistant to brown planthopper.\n" +
                             "- Using resistant varieties for ragged stunt management is probably the most important control measure. Contact your local agriculture office for up-to-date lists of varieties available.\n" +
                             "- Practice synchronized planting.\n" +
-                            "- Plow infected stubbles under the field after harvest to reduce the virus source.",
+                            "- Plow infected stubbles under the field after harvest to reduce the virus source.\n" +
+                            "Rice ragged stunt disease often develops and causes severe damage after the area is heavily infected with planthoppers. There is currently no cure for this disease. The best way to prevent disease is to manage BPH well, choose the sowing time to \"avoid planthoppers\", when the field is sick, it is necessary to destroy the diseased plants, then prevent BPH and spray foliar fertilizers with high phosphorus and potassium content. to increase plant resistance.",
                     "https://th.bing.com/th/id/R.f5a2fa886ff852a1b15db472f2c0ce50?rik=0hyAHpnHbzaf%2bg&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fragged-stunt.jpg&ehk=iwf2VGTlPDWMfYmRUd3eBqR1V6Qzip%2bgKBCkQizEYdE%3d&risl=&pid=ImgRaw&r=0");
             diseases.add(diseases7);
             Diseases diseases8 = new Diseases("Tungro", "The yellow or orange-yellow discolouration is noticeable in tungro-infected plants. Discolouration begins from the leaf tip and extends down to the blade or the lower leaf portion. Infected leaves may also show a mottled or striped appearance, rust-coloured spots, and inter-veinal necrosis.\n" +
@@ -499,6 +521,66 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "https://th.bing.com/th/id/R.beae016d4bb5c5f00a4664e9c143b192?rik=E0gzsw7jMRWSNw&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2ftungro-1.jpg&ehk=XnMTeKKXMzaJML7uO%2bxU2aWQazaPzjoSg1sVZ85eACw%3d&risl=&pid=ImgRaw&r=0");
             diseases.add(diseases8);
 
+            Diseases diseases9 = new Diseases("Bacterial leaf streak", "Check for lesions:\n" +
+                    "- Symptoms initially appear as small, water-soaked, linear lesions between leaf veins. These streaks are initially dark green and later become light brown to yellowish grey.\n" +
+                    "- The lesions are translucent when held against the light.\n" +
+                    "- Entire leaves may become brown and die when the disease is very severe.\n" +
+                    "- Under humid conditions, yellow droplets of bacterial ooze, which contain masses of bacterial cells, may be observed on the surface of leaves.\n" +
+                    "\n" +
+                    "Bacterial leaf streak may be confused with narrow brown spot. To confirm:\n" +
+                    "- Leaf streak lesions are usually thinner than those of narrow brown spot\n" +
+                    "- Narrow brown spot lesions are not translucent, nor do they produce bacterial ooze\n" +
+                    "- When the advancing part of the streaks is cut and placed in a glass with water, a mass of bacterial cells can usually be seen oozing out of the leaf, which makes the water turbid after five minutes.",
+                    "Bacterial leaf streak is caused by Xanthomonas oryzae pv. oryzicola. Infected plants show browning and drying of leaves. Under severe conditions, this could lead to reduced grain weight due to loss of photosynthetic area.\n" +
+                            "Based on reported cases, yield loss caused by bacterial leaf streak can range from 8−17% in the wet season and 1−3 % in the dry season.",
+                    "To prevent and effectively manage bacterial leaf streak: \n" +
+                            "- Plant-resistant varieties.\n" +
+                            "- Treat seeds with hot water.\n" +
+                            "- Keep fields clean—remove weed hosts and plough under rice stubble, straw, rice ratoons, and volunteer seedlings, which the bacteria may infect.\n" +
+                            "- Use balanced amounts of plant nutrients, especially nitrogen.\n" +
+                            "- Ensure good drainage of fields (in conventionally flooded crops) and nurseries.\n" +
+                            "- Drain the field during a severe flood.\n" +
+                            "- Dry the field during the fallow period to kill the bacteria in the soil and plant residues.\n" +
+                            "- In cases of severe infection, when yield may be affected, a copper-based fungicide applied at the heading can be effective in controlling the disease.",
+                    "https://th.bing.com/th/id/R.efc604d42f1cd730459a6f6b9e2bfa86?rik=b1q9xQKZAyRlnw&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fbacterial-leaf-streak-1.jpg&ehk=OOUYUFe0%2bJQdWhnkdKdefuiTErw83ii086ICxgXC90c%3d&risl=&pid=ImgRaw&r=0");
+            diseases.add(diseases9);
+
+            Diseases diseases10 = new Diseases("Red stripe", "Check leaves for lesions and discolouration:\n" +
+                    "- Initial lesions are pin-sized and often yellow-green to light orange in colour. Older lesions appear as orange spots with an upward stripe.\n" +
+                    "- Lesions become necrotic and coalesce, forming a blight appearance on the leaves.\n" +
+                    "- Lesions can also appear on the sheaths but are less common.\n" +
+                    "- The disease can be confused with orange leaf blight disease. It is hardly distinguishable from bacterial leaf blight disease at severe and advanced stages of disease development.\n" +
+                    "To confirm the red stripe, check the shape, size and colour of the lesions. An advanced lesion is characterized by an orange spot with a stripe, advancing towards the leaf's tip.",
+                    "Red stripe causes the formation of lesions on leaves. The disease usually occurs when the plants reach the reproductive stage, starting from panicle initiation. High temperature, high relative humidity, high leaf wetness, and high nitrogen supply favour disease development.\n" +
+                            "Red stripe is a potential threat to rice production in Southeast Asia. The red stripe of rice is common in Indonesia, Malaysia, the Philippines, Thailand and Vietnam.",
+                    "To manage Red stripe:\n" +
+                            "- Use resistant varieties. \n" +
+                            "- Contact your local agriculture office for an up-to-date list of available varieties.\n" +
+                            "- Apply nitrogen based on actual crop requirements.\n" +
+                            "- Ensure optimum seeding rate and wider plant spacing also appear to reduce the disease.\n" +
+                            "- Ensure intermittent drainage during panicle initiation.\n" +
+                            "- Use benzimidazole fungicides (benomyl, carbendazim, and thiophanate methyl) to treat seeds.",
+                    "https://th.bing.com/th/id/R.ed396f3128da9b4f0d8d62edc08535a5?rik=IJL49wvb2%2bGCCw&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fred-stripe.jpg&ehk=GoPefIkPQBXtpxFYX%2bnyWzWLJvK7eqj6FkOB%2fTp2u3w%3d&risl=&pid=ImgRaw&r=0");
+            diseases.add(diseases10);
+
+            Diseases diseases11 = new Diseases("Stem rot", "Check the plant for the following symptoms:\n" +
+                    "- Visible numerous tiny white and black sclerotia and mycelium inside the infected culms\n" +
+                    "- Infected culm lodges and caused unfilled panicles and chalky grain\n" +
+                    "Initial symptoms are small, irregular black lesions on the outer leaf sheath near the water level. Lesions expand as the disease advances. Severe infection causes tiller death.",
+                    "Stem rot leads to the formation of lesions and the production of chalky grains and unfilled panicles. The infection bodies or sclerotia are found in the upper soil layer. They survive in air-dry soil, buried moist rice soil, and tap water. They can also survive on straw, which is buried in the soil. The sclerotia float on irrigation water, infecting newly planted rice during land preparation. Infection is high in plants with wounds due to lodging or insect attack. The panicle moisture content and nitrogen fertilizer also influence disease development.\n" +
+                            "\n" +
+                            "The infection is seen on the rice crop during early heading and grain filling. The leaf sheaths decay and cause lodging and lower grain filling. It can cause heavy losses in many countries. For example, in Japan, 51,000−122,000 hectares are infected and estimated annual losses of 16,000−35,000 due to this disease. In Vietnam, the Philippines, and India, 30% to 80% losses were recorded.",
+                    "To manage Stem rot:\n" +
+                            "- Use resistant cultivars.\n" +
+                            "- Contact your local agriculture office for an up-to-date list of available varieties.\n" +
+                            "- Burn straw and stubble or any crop residue after harvest or let the straw decompose.\n" +
+                            "- Drain the field to reduce sclerotia.\n" +
+                            "- Balance fertiliser use or perform split application with high potash and lime to increase soil pH.\n" +
+                            "- Chemicals such as fentin hydroxide sprayed at the mid-tillering stage, thiophanate-methyl sprayed during disease initiation can reduce stem rot incidence in the rice field.\n" +
+                            "- Other fungicides such as Ferimzone and validamycin A also show effectivity against the fungus.",
+                    "https://agriculturistmusa.com/wp-content/uploads/2018/05/Stem-rot-of-rice-management.jpg");
+            diseases.add(diseases11);
+
             for (Diseases d : diseases){
                 diseaseDao.insert(d);
             }
@@ -513,6 +595,10 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Rice grassy stunt")));
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Rice ragged stunt")));
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Tungro")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Bacterial leaf streak")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Red stripe")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Stem rot")));
+
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Blast")));
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Leaf Scald")));
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Sheath rot")));
@@ -521,54 +607,148 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Rice grassy stunt")));
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Rice ragged stunt")));
             cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Tungro")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Bacterial leaf streak")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Red stripe")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Stem rot")));
 
             //****Pesticides****
-            // TODO: 6/1/2023 Add more pesticides
             PesticideDao pesticideDao = db.pesticideDao();
             ArrayList<Pesticides> pesticides = new ArrayList<>();
-            Pesticides pesticides1 = new Pesticides("Padan 95SP", "Sumitomo Chemical", "Cartap (min 97%) : 950 g/kg", "Insecticide", "Dosage: 0.5 – 0.7 kg/ha\n" +
-                    "PreHarvest Interval- PHI: 7 days (Time interval in days from last handling to harvest)\n" +
+            Pesticides pesticides1 = new Pesticides("Padan 95SP", "Sumitomo Chemical", "Cartap (min 97%) : 950 g/kg", "Insecticide", "Dosage: 0.5 – 0.7 kg/ha\n\n" +
+                    "PreHarvest Interval- PHI: 7 days (Time interval in days from last handling to harvest)\n\n" +
                     "How to use: The amount of water sprayed from 400 to 600 liters/ha." +
                     "It is not recommended to use alum water to mix with Padan 95SP insecticide.", 30, 400,
                     "https://vietnong.vn/wp-content/uploads/2022/04/PANDAN-95-01-768x768.jpg");
             pesticides.add(pesticides1);
 
             Pesticides pesticides2 = new Pesticides("Regent 800WG", "Bayer", "Fipronil (min 95 %): 800g/kg", "Insecticide",
-                    "Dosage: 32 g/ha\n" +
-                            "Quarantine period (PreHarvest Interval- PHI): 15 days (Duration in days from last handling to harvest)\n" +
+                    "Dosage: 32 g/ha\n\n" +
+                            "Quarantine period (PreHarvest Interval- PHI): 15 days (Duration in days from last handling to harvest)\n\n" +
                             "Usage: The amount of water sprayed is 210 - 600 liters/ha. Spray when pests appear", 1.6, 600,"https://vuonsaigon.vn/wp-content/uploads/2019/12/regent-1g-599x599.jpg");
             pesticides.add(pesticides2);
 
             Pesticides pesticides3 = new Pesticides("ANTRACOL 70WP", "Bayer", "Propineb (min 80%) : 700 g/kg", "Fungicide",
-                    "Dosage: 1.5 kg/ha\n" +
-                            "PreHarvest Interval- PHI: 7 days (Time interval in days from last handling to harvest)\n" +
-                            "Usage: The amount of water sprayed is 320 - 800 liters/ha. Spray when the disease appears", 64, 400, "https://www.cropscience.bayer.com.vn/-/media/Bayer%20CropScience/Country-Vietnam-Internet/2019/07/antracol_package.jpg");
+                    "Dosage: 1.5 kg/ha\n\n" +
+                            "PreHarvest Interval- PHI: 7 days (Time interval in days from last handling to harvest)\n\n" +
+                            "Usage: The amount of water sprayed is 320 - 800 liters/ha. Spray when the disease appears", 64, 400, "https://www.phandoiso1.com/wp-content/uploads/2020/11/Antracol-70WP-1kg-1-610x610.jpg");
             pesticides.add(pesticides3);
 
-            Pesticides pesticides4 = new Pesticides("Xantocin 40WP", "VFC", "Bronopol (min 99%) : 40% w/w", "Fungicide", "Dosage: 0.2 – 0.25 kg/ha\n" +
-                    "PreHarvest Interval- PHI: 1 day (Time interval in days from last handling to harvest)\n" +
+            Pesticides pesticides4 = new Pesticides("Xantocin 40WP", "VFC", "Bronopol (min 99%) : 40% w/w", "Fungicide", "Dosage: 0.2 – 0.25 kg/ha\n\n" +
+                    "PreHarvest Interval- PHI: 1 day (Time interval in days from last handling to harvest)\n\n" +
                     "Usage: The amount of water sprayed 400 - 500 liters/ha. Spray when the disease rate is about 5-10%",
                     10, 400, "https://vietnong.vn/wp-content/uploads/2022/12/thuoc-bvtv-xantocin-40wp-768x672.jpg");
             pesticides.add(pesticides4);
 
             Pesticides pesticides5 = new Pesticides("Hilton USA 320 EC", "HopTri Co", "Pretilachlor 300g/l + Pyribenzoxim 20g/l + Fenclorim 100g/l", "Herbicide",
-                                "Dosage: 1.0 – 1.25 liters/ha\n" +
-                                        "PreHarvest Interval- PHI: Unknown (Duration in days from last handling to harvest)\n" +
+                                "Dosage: 1.0 – 1.25 liters/ha\n\n" +
+                                        "PreHarvest Interval- PHI: Unknown (Duration in days from last handling to harvest)\n\n" +
                                         "Usage: The amount of water sprayed 400 liters/ha. Spraying after sowing 6-10 days",
                                 40, 400, "https://www.hoptri.com/media/k2/items/cache/08f61c52357dcc6d2503bfea790efe4d_M.jpg");
             pesticides.add(pesticides5);
 
-            Pesticides pesticides6 = new Pesticides("Elano 20EC", "HopTri Co", "Cyhalofop-butyl (min 97 %) : 200 g/l", "Herbicide", "Dosage: 0.4 liters/ha\n" +
-                    "PreHarvest Interval (PHI): Unknown date (Time interval in days from last handling to harvest)\n" +
+            Pesticides pesticides6 = new Pesticides("Elano 20EC", "HopTri Co", "Cyhalofop-butyl (min 97 %) : 200 g/l", "Herbicide", "Dosage: 0.4 liters/ha\n\n" +
+                    "PreHarvest Interval (PHI): Unknown date (Time interval in days from last handling to harvest)\n\n" +
                     "Usage: The amount of water sprayed is 320-400 liters/ha. Spraying after sowing 3-15 days",
                         20, 320, "https://www.hoptri.com/media/k2/items/cache/0ef95987526970d668cbb7995fe36b10_M.jpg");
             pesticides.add(pesticides6);
 
-            Pesticides pesticides7 = new Pesticides("Tilt Super 300EC", "Syngenta", "Difenoconazole 150g/l + Propiconazole 150g/l: 300g/l", "Fungicide","Dosage: 0.25 – 0.3 liters/ha\n" +
-                    "Quarantine period (PreHarvest Interval- PHI): 14 days (Duration in days from last handling to harvest)\n" +
+            Pesticides pesticides7 = new Pesticides("Tilt Super 300EC", "Syngenta", "Difenoconazole 150g/l + Propiconazole 150g/l: 300g/l", "Fungicide","Dosage: 0.25 – 0.3 liters/ha\n\n" +
+                    "Quarantine period (PreHarvest Interval- PHI): 14 days (Duration in days from last handling to harvest)\n\n" +
                     "Usage: Spray with 500-600 liters of water per hectare. Spray when the disease rate is about 8%",
                         10, 500, "https://th.bing.com/th/id/R.71e6bb0376104ac186b5086f027a22dc?rik=3N3Ex%2bedKUCvDw&pid=ImgRaw&r=0");
             pesticides.add(pesticides7);
+
+            Pesticides pesticides8 = new Pesticides("Bassa 50EC", "PSC.1", "Fenobucarb (BPMC) (min 96 %) : 50% w/w", "Insecticide","Dosage: 1.0 – 1.5 litres/ha\n\n" +
+                    "PreHarvest Interval (PHI): 7 days (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: Spray, mix with 600 litres of water /ha",
+                    51, 600, "https://vietnong.vn/wp-content/uploads/2022/04/bassa-50ec_1620538912.jpg");
+            pesticides.add(pesticides8);
+
+            Pesticides pesticides9 = new Pesticides("Dupont™ Pexena™ 106SC", "Syngenta", "Triflumezopyrim (min 94%) : 106 g/l", "Insecticide","Dosage: 300 ml/ha\n\n" +
+                    "Quarantine period (PreHarvest Interval- PHI): 21 days (Duration in days from last handling to harvest)\n\n" +
+                    "Usage: The amount of water sprayed is 400-500 L/ha. Spray once when 1-2 year old planthoppers appear on the rice field.",
+                    10, 450, "https://vietnong.vn/wp-content/uploads/2022/12/thuoc-tru-ray-dupont-pexena-106sc.jpg");
+            pesticides.add(pesticides9);
+
+            Pesticides pesticides10 = new Pesticides("Sulfaron 250EC", "Golden Rice Co., Ltd", "Carbosulfan 200 g/l + Chlorfluazuron 50g/l : 250 g/l", "Insecticide","Dosage: 0.3-0.4 litres/ha\n\n" +
+                    "PreHarvest Interval (PHI): 7 days (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: The amount of water sprayed is 400 -500 litres/ha.",
+                    15, 400, "https://product.hstatic.net/1000220686/product/sulfaron-250ec-100ml_00d45c876f384c779ca5e91a86fc99e8_master.jpg");
+            pesticides.add(pesticides10);
+
+            Pesticides pesticides11 = new Pesticides("Virtako 40WG", "Syngenta", "Chlorantraniliprole 20% + Thiamethoxam 20% : 40% w/w", "Insecticide","Dosage: 37.5 – 75 g/ha\n\n" +
+                    "PreHarvest Interval (PHI): 7 days (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: The amount of water sprayed 400 - 500 litres/ha. Spray after butterflies are in full bloom, spray a second time after 15 days if necessary.",
+                    2.9, 500, "https://www.phandoiso1.com/wp-content/uploads/2021/03/Virtako-40WG-4.5g-1-768x768.jpg");
+            pesticides.add(pesticides11);
+
+            Pesticides pesticides12 = new Pesticides("Fanmax 350SC", "Phu Nong Co., Ltd", "Chlorfenapyr 250 g/l + Spirodiclofen 100 g/l : 350 g/l", "Insecticide","Dosage: 0.25 litres/ha\n\n" +
+                    "PreHarvest Interval (PHI): 7 days (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: The amount of water sprayed is 400-500 litres/ha. Spray when the density is about 10-20 individual/m2",
+                    9.5, 450, "https://th.bing.com/th/id/R.ff7aae5264b604079aa30cca77d5285c?rik=zSWBwLhA7Hxggg&pid=ImgRaw&r=0");
+            pesticides.add(pesticides12);
+
+            Pesticides pesticides13 = new Pesticides("Reasgant 5EC", "Shijiazhuang Xingbai Bioengineering Co., Ltd", "Abamectin: 50g/l", "Insecticide","Dosage: 100 – 200 ml/ha\n\n" +
+                    "PreHarvest Interval- PHI: 7 days (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: The amount of water sprayed from 500 to 600 litres/ha. Spray when new pests appear",
+                    6.5, 550, "https://sieuthinhanong.com/wp-content/uploads/2021/03/REASGANT-5EC-1-768x768-1.jpg");
+            pesticides.add(pesticides13);
+
+            Pesticides pesticides14 = new Pesticides("Chess 50WG", "Syngenta", "500g/kg Pymetrozine", "Insecticide","Dosage: 0.5 – 1.0 litre/ha\n\n" +
+                    "PreHarvest Interval (PHI): 7 days (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: The amount of water sprayed 400 liters/ha. Spray when new worms appear",
+                    13, 400, "https://azfarming.vn/wp-content/uploads/2021/09/thuoc-tru-sau-chess-50wg.jpg");
+            pesticides.add(pesticides14);
+
+            Pesticides pesticides15 = new Pesticides("Tasieu 5WG", "Viet Thang Co., Ltd", "Emamectin benzoate (Avermectin B1a 90 % + Avermectin B1b 10%) : 5% w/w", "Insecticide","Dosage: 150 – 250 g/ha\n\n" +
+                    "PreHarvest Interval (PHI): 7 days (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: The amount of water sprayed from 500 to 600 litres/ha. Spraying when the caterpillars are young",
+                    6.5, 550, "https://th.bing.com/th/id/OIP.iF3q8FYfdBw_xnWXhWtW_QHaHa?pid=ImgDet&rs=1");
+            pesticides.add(pesticides15);
+
+            Pesticides pesticides16 = new Pesticides("Sporekill 120SL", "VFC", "Didecyldimethylammonium chloride (min 76.6%) : 120 g/l", "Fungicide","Dosage: 0.5 litre/ha\n\n" +
+                    "PreHarvest Interval (PHI): 7 days (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: Amount of water sprayed: 320-400 l/ha. Spray twice, once before flowering and the second time after flowering. Spray in the early morning or late afternoon.",
+                    25, 350, "https://th.bing.com/th/id/R.c2001b1f257a8949fb6cabec0b91b24e?rik=jPyZ2iWcYwCqLQ&riu=http%3a%2f%2fproduct.hstatic.net%2f1000220686%2fproduct%2fsporekill_120sl_35b6f237723d4d43aec2635fa4387054_grande.jpg&ehk=KZEC5eJz%2fO8G95kX%2bPnFd19X8KqtBh1thIMxHBatJgE%3d&risl=&pid=ImgRaw&r=0");
+            pesticides.add(pesticides16);
+
+            Pesticides pesticides17 = new Pesticides("Carban 50SC", "Loc Troi Group Joint Stock Company", "Carbendazim (min 98%): 500g/l", "Fungicide","Dosage: 1.0 – 2.5 litres/ha\n\n" +
+                    "Quarantine period (PreHarvest Interval- PHI): 14 days (Duration in days from last handling to harvest)\n\n" +
+                    "Usage: Spray with 320-400 litres of water /ha. Spray when the disease appears",
+                    80, 400, "https://dangnhanh.com.vn/upload/images/watermark/2021-06-18-20-21-11/13-10.png?v=1");
+            pesticides.add(pesticides17);
+
+            Pesticides pesticides18 = new Pesticides("Amistar Top 325SC", "Syngenta", "200g/L Azoxystrobin + 125g/L Difenoconazole", "Fungicide","Dosage: 0.25 - 0.3 litre/ha\n\n" +
+                    "PreHarvest Interval (PHI): 10 days (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: The amount of water sprayed is 400 - 500 litres/ha. Spray when the disease rate is about 5-10%",
+                    12, 450, "https://th.bing.com/th/id/OIP.Q-kOXJmHrB-x-xgZi_O0SAHaHa?pid=ImgDet&rs=1");
+            pesticides.add(pesticides18);
+
+            Pesticides pesticides19 = new Pesticides("Sofit 300EC", "Syngenta", "300g/L Pretilachlor + 100g/L Fenclorim", "Herbicide","Dosage: 1.2 litre/ha\n\n" +
+                    "PreHarvest Interval (PHI): Unknown date (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: The amount of water sprayed is 300-400 litres/ha.",
+                    50, 400, "https://vietnamnongnghiepsach.com.vn/wp-content/uploads/2016/09/SOFIT-300EC.jpg");
+            pesticides.add(pesticides19);
+
+            Pesticides pesticides20 = new Pesticides("Dual Gold 96EC", "Syngenta", "960g/L S-Metolachlor", "Herbicide","Dosage: 0,75-1 litre/ha\n\n" +
+                    "PreHarvest Interval (PHI): Unknown date (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: Spray, mix with 320-400 litres of water/ha.",
+                    50, 320, "https://th.bing.com/th/id/R.07870815d5998072abc052019186d95d?rik=7UH4%2bor73dOGiw&pid=ImgRaw&r=0");
+            pesticides.add(pesticides20);
+
+            Pesticides pesticides21 = new Pesticides("Anvil 5SC", "Syngenta", "Hexaconazole 50 g/l : 50 g/l", "Fungicide","Dosage: 1 litre/ha\n\n" +
+                    "PreHarvest Interval- PHI: 14 days (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: Amount of water 320-600 litres/ha. Spray when the disease rate is about 5%",
+                    40, 500, "https://tapdoanvinasa.com/wp-content/uploads/2019/09/ANVIL-5SC-01.jpg");
+            pesticides.add(pesticides21);
+
+            Pesticides pesticides22 = new Pesticides("Nevo 330EC", "Syngenta", "80g/L Cyproconazole + 250g/L Propiconazole", "Fungicide","Dosage: 0.3 litre/ha\n\n" +
+                    "PreHarvest Interval- PHI: 15 days (Time interval in days from last handling to harvest)\n\n" +
+                    "Usage: Amount of water 400-500 litres/ha. Spray when the weather is favorable for disease development",
+                    14, 500, "https://product.hstatic.net/1000220686/product/nevo_330ec_250ml_fix_master.jpg");
+            pesticides.add(pesticides22);
+
+
             for (Pesticides p : pesticides){
                 pesticideDao.insert(p);
             }
@@ -576,85 +756,219 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             PestPesticideDao pestPesticideDao = db.pestPesticideDao();
             pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Padan 95SP"), pestDao.getIdByName("Rice leaffolder")));
             pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Padan 95SP"), pestDao.getIdByName("Planthopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Padan 95SP"), pestDao.getIdByName("Stem borer")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Padan 95SP"), pestDao.getIdByName("Green leafhopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Padan 95SP"), pestDao.getIdByName("Rice gall midge")));
             pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Regent 800WG"), pestDao.getIdByName("Planthopper")));
             pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Regent 800WG"), pestDao.getIdByName("Rice leaffolder")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Regent 800WG"), pestDao.getIdByName("Stem borer")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Regent 800WG"), pestDao.getIdByName("Green leafhopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Regent 800WG"), pestDao.getIdByName("Rice thrips")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Regent 800WG"), pestDao.getIdByName("Black bug")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Regent 800WG"), pestDao.getIdByName("Rice bug")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Bassa 50EC"), pestDao.getIdByName("Planthopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Bassa 50EC"), pestDao.getIdByName("Green leafhopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Bassa 50EC"), pestDao.getIdByName("Rice thrips")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Dupont™ Pexena™ 106SC"), pestDao.getIdByName("Planthopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Dupont™ Pexena™ 106SC"), pestDao.getIdByName("Green leafhopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Sulfaron 250EC"), pestDao.getIdByName("Stem borer")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Sulfaron 250EC"), pestDao.getIdByName("Rice leaffolder")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Sulfaron 250EC"), pestDao.getIdByName("Planthopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Virtako 40WG"), pestDao.getIdByName("Planthopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Virtako 40WG"), pestDao.getIdByName("Stem borer")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Virtako 40WG"), pestDao.getIdByName("Rice leaffolder")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Fanmax 350SC"), pestDao.getIdByName("Stem borer")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Fanmax 350SC"), pestDao.getIdByName("Rice leaffolder")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Reasgant 5EC"), pestDao.getIdByName("Rice leaffolder")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Reasgant 5EC"), pestDao.getIdByName("Stem borer")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Reasgant 5EC"), pestDao.getIdByName("Planthopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Reasgant 5EC"), pestDao.getIdByName("Rice thrips")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Reasgant 5EC"), pestDao.getIdByName("Black bug")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Reasgant 5EC"), pestDao.getIdByName("Rice bug")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Chess 50WG"), pestDao.getIdByName("Rice thrips")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Chess 50WG"), pestDao.getIdByName("Planthopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Chess 50WG"), pestDao.getIdByName("Green leafhopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Tasieu 5WG"), pestDao.getIdByName("Stem borer")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Tasieu 5WG"), pestDao.getIdByName("Rice leaffolder")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Tasieu 5WG"), pestDao.getIdByName("Planthopper")));
+            pestPesticideDao.insert(new PestsPesticides(pesticideDao.getIdByName("Tasieu 5WG"), pestDao.getIdByName("Rice thrips")));
 
             //****Diseases-Pesticides****
             DiseasePesticideDao diseasePesticideDao = db.diseasePesticideDao();
             diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("ANTRACOL 70WP"), diseaseDao.getIdByName("Blast")));
-            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Xantocin 40WP"), diseaseDao.getIdByName("Leaf Scald")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("ANTRACOL 70WP"), diseaseDao.getIdByName("Sheath blight")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Xantocin 40WP"), diseaseDao.getIdByName("Bacterial leaf streak")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Xantocin 40WP"), diseaseDao.getIdByName("Tungro")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Tilt Super 300EC"), diseaseDao.getIdByName("Sheath blight")));
             diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Tilt Super 300EC"), diseaseDao.getIdByName("Sheath rot")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Tilt Super 300EC"), diseaseDao.getIdByName("Leaf Scald")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Tilt Super 300EC"), diseaseDao.getIdByName("Brown spot")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Carban 50SC"), diseaseDao.getIdByName("Red stripe")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Amistar Top 325SC"), diseaseDao.getIdByName("Red stripe")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Amistar Top 325SC"), diseaseDao.getIdByName("Sheath blight")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Amistar Top 325SC"), diseaseDao.getIdByName("Blast")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Amistar Top 325SC"), diseaseDao.getIdByName("Sheath rot")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Anvil 5SC"), diseaseDao.getIdByName("Sheath rot")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Anvil 5SC"), diseaseDao.getIdByName("Sheath blight")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Nevo 330EC"), diseaseDao.getIdByName("Sheath blight")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Nevo 330EC"), diseaseDao.getIdByName("Red stripe")));
+            diseasePesticideDao.insert(new DiseasesPesticides(pesticideDao.getIdByName("Nevo 330EC"), diseaseDao.getIdByName("Stem rot")));
 
             //****Stages****
             StageDao stageDao = db.stageDao();
             ArrayList<Stages> stages = new ArrayList<>();
-            Stages stages1_OM18 = new Stages(cropDao.getIdByName("OM18"), "Land preparation", "Land preparation is an essential stage in rice planting that involves preparing the field before sowing or transplanting the rice seedlings. During this stage, the soil is carefully cultivated to create a favourable environment for the rice plants to grow. \n" +
+            Stages stages1 = new Stages("Land preparation", 1,"Land preparation is an essential stage in rice planting that involves preparing the field before sowing or transplanting the rice seedlings. During this stage, the soil is carefully cultivated to create a favourable environment for the rice plants to grow. \n" +
                     "The land is levelled, weeds and crop residues are removed, and the soil is loosened to facilitate root penetration. Proper land preparation helps improve water drainage, nutrient availability, and weed control, ensuring optimal conditions for the subsequent stages of rice growth.",
-                    24, 1, false, "1st", "24th", "https://th.bing.com/th/id/R.b928873958a4df004db23adba653e97b?rik=kGnyVrBQTTIF1g&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2flandprep-wetpreparation-1.jpg&ehk=oXMrExLT09ZhnuJpyqJQ72ty7ZOVtOYFu2druY5AFk0%3d&risl=&pid=ImgRaw&r=0");
-            stages.add(stages1_OM18);
-            Stages stages2_OM18 = new Stages(cropDao.getIdByName("OM18"), "Planting", "Planting is a crucial stage in rice cultivation, where the prepared seedlings are transplanted into the rice field. It involves carefully placing the young rice plants in evenly spaced rows or broadcasting the seeds directly into the soil. \n" +
+                    "https://th.bing.com/th/id/R.b928873958a4df004db23adba653e97b?rik=kGnyVrBQTTIF1g&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2flandprep-wetpreparation-1.jpg&ehk=oXMrExLT09ZhnuJpyqJQ72ty7ZOVtOYFu2druY5AFk0%3d&risl=&pid=ImgRaw&r=0");
+            stages.add(stages1);
+            Stages stages2 = new Stages("Planting", 2,"Planting is a crucial stage in rice cultivation, where the prepared seedlings are transplanted into the rice field. It involves carefully placing the young rice plants in evenly spaced rows or broadcasting the seeds directly into the soil. \n" +
                     "Proper planting ensures good establishment of the crop, allowing the roots to anchor in the soil and the shoots to emerge for further growth. This stage sets the foundation for the rice plants to develop and progress through subsequent growth stages.",
-                    1, 2, false, "25th", "25th", "https://th.bing.com/th/id/R.dfe2c1f4e31c156afbb2b8adc54549a5?rik=zw0az2vZVZdtYA&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fplanting-broadcasting.jpg&ehk=JU43RWaUyWxI%2f2VHzdv2zMExTYtfoqXpKGykMM6%2fJQQ%3d&risl=&pid=ImgRaw&r=0");
-            stages.add(stages2_OM18);
-            Stages stages3_OM18 = new Stages(cropDao.getIdByName("OM18"), "Seeding", "The seeding stage of the rice crop is when the seeds are planted in the field. They undergo germination, where the seed coat breaks open, and a root and shoot emerge. Seedlings rely on stored nutrients until they can photosynthesize. This stage is crucial for establishing a healthy crop stand and requires proper seedbed preparation, spacing, and weed control. Water supply and weed management are important factors for successful seedling growth.",
-                    10, 3, false, "26th", "35th", "https://th.bing.com/th/id/OIP.wNQXrTe-2YypjCvbzoq9owAAAA?pid=ImgDet&rs=1");
-            stages.add(stages3_OM18);
-            Stages stages4_OM18 = new Stages(cropDao.getIdByName("OM18"), "Tillering", "During the tillering stage of the rice crop, the seedlings grow and develop additional shoots called tillers. These tillers emerge from the base of the main plant and contribute to the overall plant density. Tillering is an important stage as it determines the potential number of panicles that the rice plant can produce.\n" +
+                    "https://th.bing.com/th/id/R.dfe2c1f4e31c156afbb2b8adc54549a5?rik=zw0az2vZVZdtYA&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fplanting-broadcasting.jpg&ehk=JU43RWaUyWxI%2f2VHzdv2zMExTYtfoqXpKGykMM6%2fJQQ%3d&risl=&pid=ImgRaw&r=0");
+            stages.add(stages2);
+            Stages stages3 = new Stages("Seeding", 3,"The seeding stage of the rice crop is when the seeds are planted in the field. They undergo germination, where the seed coat breaks open, and a root and shoot emerge. Seedlings rely on stored nutrients until they can photosynthesize. This stage is crucial for establishing a healthy crop stand and requires proper seedbed preparation, spacing, and weed control. Water supply and weed management are important factors for successful seedling growth.",
+                    "https://th.bing.com/th/id/OIP.wNQXrTe-2YypjCvbzoq9owAAAA?pid=ImgDet&rs=1");
+            stages.add(stages3);
+            Stages stages4 = new Stages("Tillering", 4,"During the tillering stage of the rice crop, the seedlings grow and develop additional shoots called tillers. These tillers emerge from the base of the main plant and contribute to the overall plant density. Tillering is an important stage as it determines the potential number of panicles that the rice plant can produce.\n" +
                     "Adequate spacing, nutrient availability, and water management during this stage are crucial for promoting tiller development and ensuring healthy plant growth. It is also a critical period for weed control and the application of fertilizers to support optimal tiller production and crop yield.",
-                    40, 4, false, "36th", "75th", "https://th.bing.com/th/id/OIP.s-LJu8ILykos3__FpU2T2QHaFj?pid=ImgDet&rs=1");
-            stages.add(stages4_OM18);
-            Stages stages5_OM18 = new Stages(cropDao.getIdByName("OM18"), "Panicle initiation", "During the panicle initiation stage of the rice crop, the plant transition from the vegetative phase to the reproductive phase. This stage is characterized by the formation of panicles, which are the reproductive structures that contain the rice flowers. Panicle initiation marks an important milestone in the rice crop's growth cycle as it signifies the beginning of flower development. \n" +
+                    "https://th.bing.com/th/id/R.2cc0f6bb6f01303f70e68df00c0995bd?rik=8y%2bBaemk26xERg&riu=http%3a%2f%2fwww.dronefromchina.com%2facademy%2fwp-content%2fuploads%2f2018%2f10%2fu21042416133353258809fm173app25fJPEG.jpg&ehk=Sb4eldaxliOHQqoxJ6D7CgCgCjc0ZOZ0XdMGd5kTDZ0%3d&risl=&pid=ImgRaw&r=0");
+            stages.add(stages4);
+            Stages stages5 = new Stages("Panicle initiation", 5,"During the panicle initiation stage of the rice crop, the plant transition from the vegetative phase to the reproductive phase. This stage is characterized by the formation of panicles, which are the reproductive structures that contain the rice flowers. Panicle initiation marks an important milestone in the rice crop's growth cycle as it signifies the beginning of flower development. \n" +
                     "The plants allocate more energy towards the panicles, and they start to grow and elongate. Adequate water supply and nutrient availability, particularly nitrogen, are crucial during this stage to support panicle development and ensure the formation of healthy and productive flowers. Proper management practices, such as weed control and pest management, are also important to minimize potential stressors that could affect panicle initiation and subsequent grain formation.",
-                    18, 5, false, "76th", "93th", "https://assets.corteva.com/is/image/Corteva/IMG_0672_close-up_of_rice_plants");
-            stages.add(stages5_OM18);
-            Stages stages6_OM18 = new Stages(cropDao.getIdByName("OM18"), "Heading", "The heading stage of the rice crop marks the transition from vegetative to reproductive growth. During this stage, the panicle, which bears the flowers and grains, emerges. Florets develop within the panicle, and their synchronized growth is crucial for optimal yield. \n" +
+                    "https://i.ytimg.com/vi/c3d9MzvcTTo/maxresdefault.jpg");
+            stages.add(stages5);
+            Stages stages6 = new Stages("Heading", 6,"The heading stage of the rice crop marks the transition from vegetative to reproductive growth. During this stage, the panicle, which bears the flowers and grains, emerges. Florets develop within the panicle, and their synchronized growth is crucial for optimal yield. \n" +
                     "Proper management practices, including irrigation, nutrient supply, and pest control, are essential during this stage. Farmers monitor indicators like panicle emergence and floret development to make informed decisions. The heading stage sets the foundation for flowering, grain development, and eventual harvest, impacting overall crop yield and quality.",
-                    10, 6, false, "94th", "103th", "https://oba-shima.mito-city.com/wp/wp-content/uploads/2013/08/inenohana-8.jpg");
-            stages.add(stages6_OM18);
-            Stages stages7_OM18 = new Stages(cropDao.getIdByName("OM18"), "Flowering", "The flowering stage of the rice crop is a crucial phase where the plant produces flowers containing male and female reproductive structures. Optimal environmental conditions and pollination are essential for successful fertilization. Monitoring and managing this stage ensures the production of viable grains. Factors such as timing, abundance of flowers, and proper management practices influence the outcome.\n" +
+                    "https://oba-shima.mito-city.com/wp/wp-content/uploads/2013/08/inenohana-8.jpg");
+            stages.add(stages6);
+            Stages stages7 = new Stages("Flowering", 7,"The flowering stage of the rice crop is a crucial phase where the plant produces flowers containing male and female reproductive structures. Optimal environmental conditions and pollination are essential for successful fertilization. Monitoring and managing this stage ensures the production of viable grains. Factors such as timing, abundance of flowers, and proper management practices influence the outcome.\n" +
                     "The flowering stage typically lasts around a week before the flowers transform into developing grains, leading to grain filling and maturation. Effective management during this stage enhances yield potential and contributes to food security and agricultural sustainability.",
-                    10, 7, false, "104th", "113th", "https://th.bing.com/th/id/R.624deda3b79e82c7eb20310bfadae590?rik=zUVfOL9WWyayWg&riu=http%3a%2f%2fimg.zhiwushuo.com%2fuploads%2fallimg%2f202149%2f20210609024642741.jpg&ehk=Xn4Q9nFs7rqVqTe29NZWmrlfcWVxDIuz84Si5FVwYIk%3d&risl=&pid=ImgRaw&r=0");
-            stages.add(stages7_OM18);
-            Stages stages8_OM18 = new Stages(cropDao.getIdByName("OM18"), "Milk", "The milk stage is a crucial phase in the growth of rice crops. It refers to the stage when the rice grains are in a soft dough state and appear milky due to the presence of a translucent liquid. During this stage, the grains accumulate starch and undergo significant physiological changes. It is a critical period for determining the optimal time for harvest, as the grains gradually harden and prepare for final ripening. \n" +
+                    "https://th.bing.com/th/id/R.624deda3b79e82c7eb20310bfadae590?rik=zUVfOL9WWyayWg&riu=http%3a%2f%2fimg.zhiwushuo.com%2fuploads%2fallimg%2f202149%2f20210609024642741.jpg&ehk=Xn4Q9nFs7rqVqTe29NZWmrlfcWVxDIuz84Si5FVwYIk%3d&risl=&pid=ImgRaw&r=0");
+            stages.add(stages7);
+            Stages stages8 = new Stages("Milk", 8,"The milk stage is a crucial phase in the growth of rice crops. It refers to the stage when the rice grains are in a soft dough state and appear milky due to the presence of a translucent liquid. During this stage, the grains accumulate starch and undergo significant physiological changes. It is a critical period for determining the optimal time for harvest, as the grains gradually harden and prepare for final ripening. \n" +
                     "Proper management practices, such as irrigation, nutrient supply, and pest control, are essential during this stage to support grain development and quality formation. Overall, the milk stage is vital for achieving high-quality rice grains with optimal yield and nutritional value.",
-                    10, 8, false, "114th", "123th", "https://th.bing.com/th/id/R.fa825926cfaa783b838e1c3298471843?rik=7ecRRwkUYy1Mlg&riu=http%3a%2f%2fagritech.tnau.ac.in%2fagriculture%2fphoto_bank%2frice%2fimages%2f033.+Paddy+field+%40+milking+stage.jpg&ehk=FXHMFODGyU4M%2bGZ2CLYLkYW%2fyFCMTvWXIXwEofY9d%2bs%3d&risl=&pid=ImgRaw&r=0");
-            stages.add(stages8_OM18);
-            Stages stages9_OM18 = new Stages(cropDao.getIdByName("OM18"), "Dough", "The dough stage is a significant phase in the growth of rice crops. It refers to the stage when the rice grains become firm and undergo a transition from a milky texture to a dough-like consistency. During this stage, the grains continue to accumulate starch, and their moisture content decreases. The grains become denser and more compact, and their color may change from translucent to a light yellowish hue. \n" +
+                    "https://th.bing.com/th/id/R.fa825926cfaa783b838e1c3298471843?rik=7ecRRwkUYy1Mlg&riu=http%3a%2f%2fagritech.tnau.ac.in%2fagriculture%2fphoto_bank%2frice%2fimages%2f033.+Paddy+field+%40+milking+stage.jpg&ehk=FXHMFODGyU4M%2bGZ2CLYLkYW%2fyFCMTvWXIXwEofY9d%2bs%3d&risl=&pid=ImgRaw&r=0");
+            stages.add(stages8);
+            Stages stages9 = new Stages("Dough", 9,"The dough stage is a significant phase in the growth of rice crops. It refers to the stage when the rice grains become firm and undergo a transition from a milky texture to a dough-like consistency. During this stage, the grains continue to accumulate starch, and their moisture content decreases. The grains become denser and more compact, and their color may change from translucent to a light yellowish hue. \n" +
                     "The dough stage is critical for determining the optimal time for harvest, as the grains reach their maximum size and develop their characteristic texture. It is important to closely monitor the crop during this stage to ensure that the grains mature properly and attain the desired quality. Adequate irrigation, nutrient management, and pest control are essential for supporting grain development and maximizing yield. Overall, the dough stage marks a crucial milestone in the rice crop's growth, indicating that the grains are nearing maturity and approaching harvest readiness.",
-                    10, 9, false, "124th", "133th", "https://www.en.krishakjagat.org/wp-content/uploads/2020/12/trieu-tan-lua.jpg");
-            stages.add(stages9_OM18);
-            Stages stage10_OM18 = new Stages(cropDao.getIdByName("OM18"), "Mature", "The mature stage is the final phase in the growth cycle of rice crops. It represents the culmination of the plant's development, where the rice grains reach their full maturity and are ready for harvest. During this stage, the rice plant undergoes physiological changes, such as the drying and yellowing of the leaves, indicating the completion of its life cycle. The rice grains attain their maximum size, weight, and colour, typically turning golden or brown, depending on the variety. \n" +
+                    "https://www.en.krishakjagat.org/wp-content/uploads/2020/12/trieu-tan-lua.jpg");
+            stages.add(stages9);
+            Stages stage10 = new Stages("Mature", 10,"The mature stage is the final phase in the growth cycle of rice crops. It represents the culmination of the plant's development, where the rice grains reach their full maturity and are ready for harvest. During this stage, the rice plant undergoes physiological changes, such as the drying and yellowing of the leaves, indicating the completion of its life cycle. The rice grains attain their maximum size, weight, and colour, typically turning golden or brown, depending on the variety. \n" +
                     "The plant's energy is primarily directed towards grain filling and maturation, as the nutrients and sugars produced by photosynthesis are allocated to the developing grains. It is crucial to harvest the rice crop at the right time during the mature stage to ensure optimal grain quality and yield. Delaying the harvest may result in grain shattering or susceptibility to pests and diseases. The mature stage is a critical period that signifies the readiness of the rice crop for harvest, marking the successful completion of the growth process and the transition to the next phase of processing and utilization.",
-                    10, 10, false, "134th", "143th", "https://qph.fs.quoracdn.net/main-qimg-e430ecabafc3856bb49038f999d57186");
-            stages.add(stage10_OM18);
-            Stages stages11_OM18 = new Stages(cropDao.getIdByName("OM18"), "Harvesting", "Harvesting is the final stage of rice planting where the mature rice crop is collected. It involves removing the mature panicles from the rice plants. The timing of the harvest is crucial for optimal grain quality. Harvesting methods include manual or mechanical techniques. Once harvested, the rice crop is dried, threshed, and processed to obtain the final polished rice product. Harvesting concludes the rice planting process, providing a plentiful yield of nutritious grains.",
-                    1, 11, false, "144th", "144th", "https://th.bing.com/th/id/OIP.jK8a-oRAOY1A3uYJ1qm7MgAAAA?pid=ImgDet&rs=1");
-            stages.add(stages11_OM18);
+                    "https://qph.fs.quoracdn.net/main-qimg-e430ecabafc3856bb49038f999d57186");
+            stages.add(stage10);
+            Stages stages11 = new Stages("Harvesting", 11,"Harvesting is the final stage of rice planting where the mature rice crop is collected. It involves removing the mature panicles from the rice plants. The timing of the harvest is crucial for optimal grain quality. Harvesting methods include manual or mechanical techniques. Once harvested, the rice crop is dried, threshed, and processed to obtain the final polished rice product. Harvesting concludes the rice planting process, providing a plentiful yield of nutritious grains.",
+                    "https://th.bing.com/th/id/OIP.jK8a-oRAOY1A3uYJ1qm7MgAAAA?pid=ImgDet&rs=1");
+            stages.add(stages11);
             for (Stages s : stages){
                 stageDao.insert(s);
             }
 
+            //*****Crops-Stages*****
+            CropStageDao cropStageDao = db.cropStageDao();
+            //***OM18***
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Seeding"), 10, false, "26th", "35th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Tillering"), 40, false, "36th", "75th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Panicle initiation"), 18, false, "76th", "93th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Heading"), 10,false, "94th", "103th" ));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Flowering"), 10, false, "104th", "113th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Milk"), 10, false, "114th", "123th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Dough"), 10, false, "124th", "133th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Mature"), 10,false, "134th", "143th" ));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Harvesting"), 1, false, "144th", "144th"));
+            //***DT08***
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Seeding"), 10, false, "26th", "35th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Tillering"), 40, false, "36th", "75th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Panicle initiation"), 18, false, "76th", "93th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Heading"), 10,false, "94th", "103th" ));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Flowering"), 11, false, "104th", "114th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Milk"), 11, false, "115th", "125th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Dough"), 11, false, "126th", "137th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Mature"), 10,false, "138th", "147th" ));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Harvesting"), 1, false, "148th", "148th"));
+
             //*****Stages-Pests****
             PestStageDao pestStageDao = db.pestStageDao();
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Seeding"), pestDao.getIdByName("Rice thrips")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Seeding"), pestDao.getIdByName("Stem borer")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Seeding"), pestDao.getIdByName("Rice gall midge")));
             pestStageDao.insert(new PestsStages(stageDao.getIdByName("Tillering"), pestDao.getIdByName("Stem borer")));
             pestStageDao.insert(new PestsStages(stageDao.getIdByName("Tillering"), pestDao.getIdByName("Rice leaffolder")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Tillering"), pestDao.getIdByName("Rice gall midge")));
             pestStageDao.insert(new PestsStages(stageDao.getIdByName("Panicle initiation"), pestDao.getIdByName("Rice leaffolder")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Panicle initiation"), pestDao.getIdByName("Planthopper")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Panicle initiation"), pestDao.getIdByName("Stem borer")));
             pestStageDao.insert(new PestsStages(stageDao.getIdByName("Heading"), pestDao.getIdByName("Rice leaffolder")));
             pestStageDao.insert(new PestsStages(stageDao.getIdByName("Heading"), pestDao.getIdByName("Planthopper")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Flowering"), pestDao.getIdByName("Rice leaffolder")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Flowering"), pestDao.getIdByName("Planthopper")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Flowering"), pestDao.getIdByName("Rice bug")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Flowering"), pestDao.getIdByName("Black bug")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Milk"), pestDao.getIdByName("Planthopper")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Milk"), pestDao.getIdByName("Rice bug")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Milk"), pestDao.getIdByName("Black bug")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Dough"), pestDao.getIdByName("Planthopper")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Dough"), pestDao.getIdByName("Rice bug")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Dough"), pestDao.getIdByName("Black bug")));
 
             //****Stages-Diseases****
             DiseaseStageDao diseaseStageDao = db.diseaseStageDao();
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Seeding"), diseaseDao.getIdByName("Blast")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Tillering"), diseaseDao.getIdByName("Blast")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Tillering"), diseaseDao.getIdByName("Leaf Scald")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Tillering"), diseaseDao.getIdByName("Brown spot")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Tillering"), diseaseDao.getIdByName("Sheath blight")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Tillering"), diseaseDao.getIdByName("Bacterial leaf streak")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Tillering"), diseaseDao.getIdByName("Stem rot")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Blast")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Brown spot")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Leaf Scald")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Sheath blight")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Rice grassy stunt")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Rice ragged stunt")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Tungro")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Bacterial leaf streak")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Red stripe")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Panicle initiation"), diseaseDao.getIdByName("Stem rot")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Leaf Scald")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Blast")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Sheath rot")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Brown spot")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Sheath blight")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Rice grassy stunt")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Rice ragged stunt")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Tungro")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Bacterial leaf streak")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Red stripe")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Heading"), diseaseDao.getIdByName("Stem rot")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Flowering"), diseaseDao.getIdByName("Blast")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Flowering"), diseaseDao.getIdByName("Sheath rot")));
-            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Milk"), diseaseDao.getIdByName("Sheath rot")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Flowering"), diseaseDao.getIdByName("Brown spot")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Flowering"), diseaseDao.getIdByName("Sheath blight")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Flowering"), diseaseDao.getIdByName("Rice grassy stunt")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Flowering"), diseaseDao.getIdByName("Rice ragged stunt")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Flowering"), diseaseDao.getIdByName("Red stripe")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Flowering"), diseaseDao.getIdByName("Tungro")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Flowering"), diseaseDao.getIdByName("Stem rot")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Milk"), diseaseDao.getIdByName("Blast")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Milk"), diseaseDao.getIdByName("Brown spot")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Milk"), diseaseDao.getIdByName("Sheath blight")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Milk"), diseaseDao.getIdByName("Rice grassy stunt")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Milk"), diseaseDao.getIdByName("Rice ragged stunt")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Milk"), diseaseDao.getIdByName("Tungro")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Milk"), diseaseDao.getIdByName("Red stripe")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Dough"), diseaseDao.getIdByName("Blast")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Dough"), diseaseDao.getIdByName("Brown spot")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Dough"), diseaseDao.getIdByName("Sheath blight")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Dough"), diseaseDao.getIdByName("Rice grassy stunt")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Dough"), diseaseDao.getIdByName("Rice ragged stunt")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Dough"), diseaseDao.getIdByName("Tungro")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Dough"), diseaseDao.getIdByName("Red stripe")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Mature"), diseaseDao.getIdByName("Blast")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Mature"), diseaseDao.getIdByName("Brown spot")));
 
             //****Activities****
             ActivityDao activityDao = db.activityDao();
@@ -693,7 +1007,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             activities.add(activities11);
             Activities activities12 = new Activities(stageDao.getIdByName("Tillering"), "Secondary fertilizing", "Secondary fertilizing plays a very important role. It determines the yield as well as the efficiency of the entire rice crop. If we fertilize correctly, the rice yield will increase from 1 to 2 tons/ha. In contrast, the wrong fertilization will reduce rice yield from 1 to 2 tons/ha.", 20, "https://qph.fs.quoracdn.net/main-qimg-cdc47fc61921862a471f59807acb88e3");
             activities.add(activities12);
-            Activities activities13 = new Activities(stageDao.getIdByName("Panicle initiation"), "Third fertilizing", "The third fertilizing is also one of the crucial stages contributing to determining rice yield. After the rice has fully bloomed, it is possible to fertilize the seeds by applying three types of Nitrogen (N), Phosphorus (P), and Potassium (K). This is the period when fertilizing is effective when planting rice, helping to limit falling and flattening seeds. Farmers should fertilize seedlings 25 days before harvest to reduce the amount of pesticide left on the seeds.", 3, "https://agri.vn/wp-content/uploads/2021/02/bon-phan-cho-lua-2-560x420.jpg");
+            Activities activities13 = new Activities(stageDao.getIdByName("Panicle initiation"), "Thirdly fertilizing", "Thirdly fertilizing is also one of the crucial stages contributing to determining rice yield. After the rice has fully bloomed, it is possible to fertilize the seeds by applying three types of Nitrogen (N), Phosphorus (P), and Potassium (K). This is the period when fertilizing is effective when planting rice, helping to limit falling and flattening seeds. Farmers should fertilize seedlings 25 days before harvest to reduce the amount of pesticide left on the seeds.", 3, "https://agri.vn/wp-content/uploads/2021/02/bon-phan-cho-lua-2-560x420.jpg");
             activities.add(activities13);
             Activities activities14 = new Activities(stageDao.getIdByName("Panicle initiation"), "First spraying pesticide", "Spraying pesticides during the panicle initiation stage of rice growth is crucial for effective pest management and promoting healthy crop development. By targeting this stage, the following benefits can be achieved:\n" +
                     "\n" +
@@ -751,18 +1065,17 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             ActivityPesticideDao activityPesticideDao = db.activityPesticideDao();
             activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Spraying herbicide"), pesticideDao.getIdByName("Hilton USA 320 EC"), 1, "Once time"));
             activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Spraying herbicide"), pesticideDao.getIdByName("Elano 20EC"), 0.4, "Once time"));
-            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("First spraying pesticide"), pesticideDao.getIdByName("ANTRACOL 70WP"), 1.5, "Once time"));
-            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("First spraying pesticide"), pesticideDao.getIdByName("Regent 800WG"), 0.032, "Once time"));
-            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Second spraying pesticide"), pesticideDao.getIdByName("Regent 800WG"), 0.032, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("First spraying pesticide"), pesticideDao.getIdByName("Amistar Top 325SC"), 1.5, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("First spraying pesticide"), pesticideDao.getIdByName("Dupont™ Pexena™ 106SC"), 0.032, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Second spraying pesticide"), pesticideDao.getIdByName("Dupont™ Pexena™ 106SC"), 0.032, "Once time"));
             activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Second spraying pesticide"), pesticideDao.getIdByName("ANTRACOL 70WP"), 1.5, "Once time"));
             activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Second spraying pesticide"), pesticideDao.getIdByName("Padan 95SP"), 0.6, "Once time"));
             activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Second spraying pesticide"), pesticideDao.getIdByName("Tilt Super 300EC"), 0.3, "Once time"));
             activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Third spraying pesticide"), pesticideDao.getIdByName("ANTRACOL 70WP"), 1.5, "Once time"));
             activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Third spraying pesticide"), pesticideDao.getIdByName("Tilt Super 300EC"), 0.3, "Once time"));
-            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Fourth spraying pesticide"), pesticideDao.getIdByName("Tilt Super 300EC"), 0.3, "Once time"));
+            activityPesticideDao.insert(new ActivityPesticides(activityDao.getIdByName("Fourth spraying pesticide"), pesticideDao.getIdByName("Amistar Top 325SC"), 0.3, "Once time"));
 
             //****Fertilizers****
-            // TODO: 6/1/2023 Add more fertilizers
             FertilizerDao fertilizerDao = db.fertilizerDao();
             ArrayList<Fertilizers> fertilizers = new ArrayList<>();
             Fertilizers fertilizers1 = new Fertilizers("DAP", "Ha Tay Fertilizer Import Export One Member Company Limited", "Ingredients %: Nts: 18%; P2O5hh: 46%; K2Ohh:0%", "Long-term industrial plants, fruit trees: apply 3-4 kg/tree/year.\n" +
@@ -772,12 +1085,12 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Other crops: 200 - 300kg/ha/time\n" +
                     "* The above guidelines are for reference only and should be adjusted depending on the region and cultivar.", 60, "https://th.bing.com/th/id/R.e20502f8dbb9df0485c7e3762ff3cb5c?rik=sQWCyJm3AGwm%2fg&riu=http%3a%2f%2fphanbonminhphat.vn%2fupload%2fhinhthem%2fdap-korea-18-7721.jpg&ehk=EcBDlefYdqq7%2fKQwbCJodyv1%2fp9xzp1usGceyhu6Gaw%3d&risl=&pid=ImgRaw&r=0");
             fertilizers.add(fertilizers1);
-            Fertilizers fertilizers2 = new Fertilizers("Ure", "Petrovietnam Camau Fertilizer Joint stock company", "Ingredients %: N:46.3%; Biuret: 0.99%; Humidity: 0.5%",
+            Fertilizers fertilizers2 = new Fertilizers("Urea", "Petrovietnam Camau Fertilizer Joint stock company", "Ingredients %: N:46.3%; Biuret: 0.99%; Humidity: 0.5%",
                     "Rice: 50-60 kg/ha/time (3 times/crop: 7-10 days after sowing/18-22 days after sowing/ 38-42 days after sowing)\n" +
                     "Corn: 80-100 kg/ha/time (3 times/crop: 7-10 days after planting/20-30 days after planting/40-50 days after planting)\n" +
                     "Sugarcane: 120-150 kg/ha/time (3 times/crop: 15-20 days after planting/2-3 months after planting/4-5 months after planting)", 60, "https://tapdoanvinasa.com/wp-content/uploads/2020/03/phan-ure-ca-mau-tapdoanvinasa-02.jpg");
             fertilizers.add(fertilizers2);
-            Fertilizers fertilizers3 = new Fertilizers("KCl", "Petrovietnam Camau Fertilizer Joint stock company", "Ingredients %: Kali (K2O): 61%;Humidity: 0.5%",
+            Fertilizers fertilizers3 = new Fertilizers("MOP", "Petrovietnam Camau Fertilizer Joint stock company", "Ingredients %: Kali (K2O): 61%;Humidity: 0.5%",
                     "Use potassium fertilizer to best fertilize rice in 2 stages: 1st time, 12-15 days after transplanting rice, depending on long or short-term rice varieties. At this time, it is necessary to fertilize on average each pole (500 m2) from 2-3 kg to make the rice plant healthy, hardy transplant, high effective branch. \n" +
                             "The second fertilizer application is very important when the rice plant is standing female, preparing to make a spike.", 40, "https://th.bing.com/th/id/OIP.uh5Z9Uqifb46kRsiMH-xeQHaLA?pid=ImgDet&rs=1");
             fertilizers.add(fertilizers3);
@@ -787,80 +1100,102 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
 
             //****Activities-Fertilizers****
             ActivityFertilizerDao activityFertilizerDao = db.activityFertilizerDao();
-            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Primary fertilizing"), fertilizerDao.getIdByName("Ure"), 70, "Once time"));
+            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Primary fertilizing"), fertilizerDao.getIdByName("Urea"), 70, "Once time"));
             activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Secondary fertilizing"), fertilizerDao.getIdByName("DAP"), 60, "Once time"));
-            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Secondary fertilizing"), fertilizerDao.getIdByName("Ure"), 60, "Once time"));
-            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Secondary fertilizing"), fertilizerDao.getIdByName("KCl"), 30, "Once time"));
-            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Third fertilizing"), fertilizerDao.getIdByName("Ure"), 50, "Once time"));
-            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Third fertilizing"), fertilizerDao.getIdByName("KCl"), 50, "Once time"));
+            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Secondary fertilizing"), fertilizerDao.getIdByName("Urea"), 60, "Once time"));
+            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Secondary fertilizing"), fertilizerDao.getIdByName("MOP"), 30, "Once time"));
+            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Thirdly fertilizing"), fertilizerDao.getIdByName("Urea"), 50, "Once time"));
+            activityFertilizerDao.insert(new ActivityFertilizers(activityDao.getIdByName("Thirdly fertilizing"), fertilizerDao.getIdByName("MOP"), 50, "Once time"));
 
             //****Weeds****
-            // TODO: 6/2/2023 Add more weeds
             WeedDao weedDao = db.weedDao();
             ArrayList<Weeds> weeds = new ArrayList<>();
-            Weeds weeds1 = new Weeds("Echinochloa crus-galli", "Asia: China, Japan, and Korea.\n" +
-                    "\n" +
-                    "South and Southeast Asia: India, Indonesia, Cambodia, Lao PDR, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
-                    "\n" +
-                    "Rest of the world: widespread in Africa, Europe, and America.",
+            Weeds weeds1 = new Weeds("Echinochloa crus-galli", "- Asia: China, Japan, and Korea.\n" +
+                    "- South and Southeast Asia: India, Indonesia, Cambodia, Lao PDR, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
+                    "- Rest of the world: widespread in Africa, Europe, and America.",
                     "Annual, erect, tufted or reclining at base; up to 200 cm tall.\n" +
-                    "\n" +
-                    "Stem: culms rooting at lower nodes, cylindrical, without hairs, and filled with white spongy pith.\n" +
-                    "\n" +
-                    "Leaf: linear with a broad round base and narrow top; blade 10−40 cm long; ligule absent.\n" +
-                    "\n" +
-                    "Inflorescence: loose green to purplish, 10−25 cm long comprising compound racemes; spikelets more or less elliptical and pointed, usually slightly hairy; awns, if present, green to purplish, 2−5 mm long.",
+                    "- Stem: culms rooting at lower nodes, cylindrical, without hairs, and filled with white spongy pith.\n" +
+                    "- Leaf: linear with a broad round base and narrow top; blade 10−40 cm long; ligule absent.\n" +
+                    "- Inflorescence: loose green to purplish, 10−25 cm long comprising compound racemes; spikelets more or less elliptical and pointed, usually slightly hairy; awns, if present, green to purplish, 2−5 mm long.",
                     "The common barnyard gas ropagates by seed. It flowers throughout the year and can produce seeds within 60 days.\n" +
-                            "\n" +
                             "Echinochloa crus-galli prefers moist to wet land; easily grows in direct-seeded rice fields and wastelands. It is a common weed in swamps and aquatic places. ",
                     "It is a serious serious weed of lowland rice due to its rapid growth, competitive ability, and capacity to multiply rapidly. The young shoots are eaten in Java and it is used for reclaiming saline lands in Egypt. The weed serves as feed for animals in grasslands and wastelands.",
-                    "Cultural control: Thorough land preparation for rice under wet or dry conditions can reduce infestations.It is difficult to distinguish the weed seedlings from rice at early stages, which makes hand weeding difficult.\n" +
-                            "\n" +
-                            "Biological control: the fungal pathogen Exserohilum monoceras shown to control this weed.\n" +
-                            "\n" +
-                            "Chemical control: Oxadiazon, pretilachlor, pendimethalin or cyhalofop, thiobencarb, butachlor, and propanil mixtures with quinclorac or fenoxaprop.",
+                    "- Cultural control: Thorough land preparation for rice under wet or dry conditions can reduce infestations.It is difficult to distinguish the weed seedlings from rice at early stages, which makes hand weeding difficult.\n" +
+                            "- Biological control: the fungal pathogen Exserohilum monoceras shown to control this weed.\n" +
+                            "- Chemical control: Oxadiazon, pretilachlor, pendimethalin or cyhalofop, thiobencarb, butachlor, and propanil mixtures with quinclorac or fenoxaprop.",
                     "https://th.bing.com/th/id/R.b63f6a54017e74b40ef1610f0a5b77d3?rik=0nrhgwsltfWG0Q&pid=ImgRaw&r=0");
             weeds.add(weeds1);
-            Weeds weeds2 = new Weeds("Leptochloa chinensis", "Asia: Japan and Korea.\n" +
-                    "\n" +
-                    "South and Southeast Asia: Bangladesh, Cambodia, India, Indonesia, Lao PDR, Malaysia, Myanmar, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
-                    "\n" +
-                    "Rest of the world: Australia, Papua New Guinea, Swaziland, and West Africa.",
+            Weeds weeds2 = new Weeds("Leptochloa chinensis", "- Asia: Japan and Korea.\n" +
+                    "- South and Southeast Asia: Bangladesh, Cambodia, India, Indonesia, Lao PDR, Malaysia, Myanmar, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
+                    "- Rest of the world: Australia, Papua New Guinea, Swaziland, and West Africa.",
                     "A tufted and smooth annual or perennial; up to 120 cm tall.\n" +
-                            "\n" +
-                            "Stem: slender, hollow, erect or ascending from a branching base, rooting at lower nodes, smooth and without hair, typically 10−20 nodes, and can reach as high as 50−100 cm.\n" +
-                            "\n" +
-                            "Leaf: smooth, linear, 10−30 cm long; ligule an inconspicuous membrane 1−2 mm long and deeply divided into hairlike segments.\n" +
-                            "\n" +
-                            "Inflorescence: narrowly ovate, loose panicle, main axis 10−40 cm long, and with many spike-like slender branches; racemes slender, each with two rows of spikelets, spikelets 2−3.2 mm long, purplish or green and 4−6 flowered.",
+                            "- Stem: slender, hollow, erect or ascending from a branching base, rooting at lower nodes, smooth and without hair, typically 10−20 nodes, and can reach as high as 50−100 cm.\n" +
+                            "- Leaf: smooth, linear, 10−30 cm long; ligule an inconspicuous membrane 1−2 mm long and deeply divided into hairlike segments.\n" +
+                            "- Inflorescence: narrowly ovate, loose panicle, main axis 10−40 cm long, and with many spike-like slender branches; racemes slender, each with two rows of spikelets, spikelets 2−3.2 mm long, purplish or green and 4−6 flowered.",
                     "Red sprangletop propagates by seeds or vegetatively by rootstocks. Germination does not occur when seeds are submerged in water.",
                     "Leptochola chinensis is a serious weed of rice. Its ability to withstand waterlogged conditions as well as drained, moist conditions makes it a problem weed in rice.",
-                    "Cultural control: rotovating and puddling of rice fields during land preparation; hand weeding can be effective during the early growth stages of the weed.\n" +
-                            "\n" +
-                            "Chemical control: Quinclorac, propanil, pendimethalin, fenoxaprop, pretilachlor, or benthiocarb.",
+                    "- Cultural control: rotovating and puddling of rice fields during land preparation; hand weeding can be effective during the early growth stages of the weed.\n" +
+                            "- Chemical control: Quinclorac, propanil, pendimethalin, fenoxaprop, pretilachlor, or benthiocarb.",
                     "https://th.bing.com/th/id/R.4da97a4c232ef70fd2ff3800c0d539d6?rik=xc%2bL9LvQhR6zNA&pid=ImgRaw&r=0");
             weeds.add(weeds2);
-            Weeds weeds3 = new Weeds("Echinochloa colona", "Asia: China and Japan.\n" +
-                    "\n" +
-                    "South and Southeast Asia: Bangladesh, Cambodia, India, Indonesia, Lao PDR, Malaysia, Myanmar, Nepal, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
-                    "\n" +
-                    "Rest of the world: Australia, Bolivia, Botswana, Costa Rica, Ecuador, El Salvador, France, Fiji, Guatemala, Honduras, Iraq, Italy, Kenya, Mexico, Nicaragua, Paraguay, Peru, Portugal, Senegal, Spain, Tanzania, Uganda, United States, Venezuela, West Africa, and Zambia.",
+            Weeds weeds3 = new Weeds("Echinochloa colona", "- Asia: China and Japan.\n" +
+                    "- South and Southeast Asia: Bangladesh, Cambodia, India, Indonesia, Lao PDR, Malaysia, Myanmar, Nepal, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
+                    "- Rest of the world: Australia, Bolivia, Botswana, Costa Rica, Ecuador, El Salvador, France, Fiji, Guatemala, Honduras, Iraq, Italy, Kenya, Mexico, Nicaragua, Paraguay, Peru, Portugal, Senegal, Spain, Tanzania, Uganda, United States, Venezuela, West Africa, and Zambia.",
                     "A tufted annual grass, up to 60 cm tall.\n" +
-                            "\n" +
-                            "Stem: reddish purple or green, ascending to erect, without hairs.\n" +
-                            "\n" +
-                            "Leaf: linear, 10−15 cm long, basal portion often tinged with red; ligule absent.\n" +
-                            "\n" +
-                            "Inflorescence: simple, ascending racemes, green to purple, about 5−15 cm long; spikelets subsessile 1−3 mm long.",
+                            "- Stem: reddish purple or green, ascending to erect, without hairs.\n" +
+                            "- Leaf: linear, 10−15 cm long, basal portion often tinged with red; ligule absent.\n" +
+                            "- Inflorescence: simple, ascending racemes, green to purple, about 5−15 cm long; spikelets subsessile 1−3 mm long.",
                     "Echinochloa colona flowers throughout the year and is propagated by seeds. Seeds have a short dormancy period.\n" +
-                            "\n" +
                             "It can be present in large numbers and responsive to nutrients. Prefers moist but unflooded conditions and is a problem mainly in upland and rainfed lowland rice fields rather than in flooded fields. ",
                     "It closely \"mimics\" rice in the vegetative growth stage and is a severe competitor of rice. It is a host of diseases such as tungro and rice yellow dwarf. It can be used as a palatable fodder for milking animals and water buffalo. ",
-                    "Cultural control: flooding; hand weeding or use of a hoe during early growth stages.\n" +
-                            "\n" +
-                            "Chemical control: preemergence application of oxadiazon or pendimethalin or postemergence application of cyhalofop, butachlor, and fenoxaprop can be effective. ",
+                    "- Cultural control: flooding; hand weeding or use of a hoe during early growth stages.\n" +
+                            "- Chemical control: preemergence application of oxadiazon or pendimethalin or postemergence application of cyhalofop, butachlor, and fenoxaprop can be effective. ",
                     "https://th.bing.com/th/id/R.3bf335162dd6132bfdb76839de4ac9ab?rik=IxLkP%2bVx3L8YgQ&riu=http%3a%2f%2fasergeev.com%2fpictures%2farchives%2f2020%2f2741%2fjpeg%2f31.jpg&ehk=K4AUZ22vPuIqdn3NVvLawsV7yb56L6UQ1ljY3WVYxoQ%3d&risl=&pid=ImgRaw&r=0");
             weeds.add(weeds3);
+            Weeds weeds4 = new Weeds("Fimbristylis miliacea", "- South and Southeast Asia: Bangladesh, Bhutan, Cambodia, India, Indonesia Lao PDR, Malaysia, Myanmar, Nepal, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
+                    "- Rest of the world: Ecuador, Madagascar, Nicaragua, Peru, and Suriname. ",
+                    "Annual or perennial, without hairs, strongly tillering, with fibrous roots and up to 80−90 cm high.\n" +
+                            "- Stem: slender, erect, densely tufted, compressed, and smooth; strongly angled at the top and flattened at the base; 20−70 cm tall.\n" +
+                            "- Leaf: stiff and thread-like; on flowerless stems: in 2 rows and with flattened sheaths; no prominent midribs; on flowering stems: only linear leaf sheaths; basal leaves have overlapping leaf sheaths; ligule absent.\n" +
+                            "- Inflorescence: 6−10 cm long, compound umbel with 6−50 spikelets; spikelets reddish brown, 2−4 mm long and either round or acute at apex.\n" +
+                            "- Fruit: straw-coloured or pale ivory nut, 0.2−0.3 mm long.",
+                    "Propagates by seeds; flowers year-round and produces 10,000 seeds per plant; seeds can germinate immediately after reaching maturity.\n" +
+                            "In rice fields, seedlings appear soon after the rice is sown; flower in about one month and are capable of producing a second generation in the same season. Germinates where flood water is shallow or absent and seedlings may emerge throughout the entire growing period of rice. ",
+                    "It is a serious and widespread weed of rice. An alternate host of diseases Rhizoctonia solani, Thanatephorus cucumeris, and Xanthomonas campestris pv. oryzae, insects Creatonotus gangis Linnaeus, Leptocorisa acuta (Thunberg), and Mythimna separata (Walker), and nematodes Hirschmanniella sp. and Meloidogyne spp. ",
+                    "- Cultural control: hand cultivation.\n" +
+                            "- Chemical control: postemergence application of MCPA and 2,4-D reported to be effective in rice. ",
+                    "https://th.bing.com/th/id/R.d93b3a2a18e9332195003e9d610f8009?rik=GiNmpdDkRckQEA&pid=ImgRaw&r=0");
+            weeds.add(weeds4);
+            Weeds weeds5 = new Weeds("Cyperus iria", "- Asia: China (including Taiwan), Japan, and Korea.\n" +
+                    "- South and Southeast Asia: Bangladesh, Cambodia, India, Indonesia, Lao PDR, Malaysia, Myanmar, Nepal, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
+                    "- Rest of the world: Australia, Fiji, Swaziland, West Africa.",
+                    "It is a tufted annual herb, or occasionally perennial, with fibrous roots, 15−75 yellowish red roots, 10−70 cm tall.\n" +
+                            "- Stem: sharply 3-angled, tufted, smooth, 5−80 cm high.\n" +
+                            "- Leaf: basal, rough to touch in the upper part, linear, flaccid, with gradual tapering point and 3−8 mm wide; sheath reddish or purplish brown, enveloping the stem at the base.\n" +
+                            "- Inflorescence: simple or compound umbel composed of numerous erect-spreading 3−10 mm long flattened spikelets.\n" +
+                            "- Fruit: three-angled, 1.0−1.5 mm nut with slightly concave sides and shiny dark brown to black.",
+                    "The weed thrives in wetland rice, annual dryland crops, and plantation crops.\n" +
+                            "Rice flatsedge or umbrella sedge multiplies rapidly: can produce 3,000−5,000 seeds per plant, seedlings emerge immediately after rice is sown, flowers month later and can establish second generation in the same season. It flowers throughout the year.",
+                    "An important and widespread weed in South and Southeast Asia. Ovipositional host of the insects Creatonotus gangis Linnaeus, Leptocorisa acuta (Thunberg), Marasmia exigua (Butler), Mythimna separata (Walker), Nilaparvata lugens (Stål), Nisia carolinensis Fennah, Pseudococcus saccharicola Takahashi, Recilia dorsalis (Motschulsky), Spodoptera mauritia acronyctoides (Guenee), and Stenchaetothrips biformis (Bagnall), diseases Pyricularia oryzae, Rhizoctonia solani, and Sarocladium oryzae, and nematodes Circonemella onoensis, Hirschmanniella oryzae, and Pratylenchus indicus.",
+                    "- Cultural control: hand weeding at an earlier stage of growth to prevent flowering and seed production; rotary weeding in transplanted rice during the seedling stage.\n" +
+                            "- Chemical control: Butachlor or oxadiazon after harrowing and sowing of rice and chlorimuron, propanil, or MCPA after emergence.",
+                    "https://th.bing.com/th/id/R.3da1294c64f0c1aa59d494c62c4f6fff?rik=rjTPSNSD0Gb6VA&riu=http%3a%2f%2fflowers.la.coocan.jp%2fCyperaceae%2fCyperus+iria%2fDSC03569.JPG&ehk=pT%2bx9k8EPYMVWX7BNd0dhKwyiejtDRgLH4BbutM1rcA%3d&risl=&pid=ImgRaw&r=0");
+            weeds.add(weeds5);
+            Weeds weeds6 = new Weeds("Eclipta prostrata", "- Asia: China (including Taiwan), Japan, and Korea.\n" +
+                    "- South and Southeast Asia: Bangladesh, India, Indonesia, Cambodia, Lao PDR, Malaysia, Nepal, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
+                    "- Rest of the world: Angola, Arabian Peninsula, Argentina, Australia, Brazil, Colombia, Costa Rica, Cote d'Ivoire, Cuba, Egypt, Fiji, Ghana, Iraq, Mexico, Peru, Portugal, Puerto Rico, Rhodesia, Sudan, Surinam, Trinidad, United States of America (including Hawaii), Zambia, and Zimbabwe.",
+                    "A prostrate or reclining to erect, often branched, annual or perennial herb, 30−100 cm tall.\n" +
+                            "- Stem: cylindrical, green or purplish, rooting at basal nodes, and often covered with long white hairs.\n" +
+                            "- Leaf: oblong to lance-shaped, opposite, sessile or short-stalked, with more or less coarse hairs; margins entire or slightly toothed, up to 2−16 cm long.\n" +
+                            "- Inflorescence: terminal and axillary, about 1 cm across, white or cream, on peduncles to 7 cm long.\n" +
+                            "- Fruit: achene, densely warted, either brown or black, 2−3 mm long.",
+                    "It is widespread and has adapted to a range of environments. It is found in poorly drained wet areas, saline conditions, along streams, in drains and canals of irrigated lowland rice paddies, in waste areas, and in upland fields.\n" +
+                            "A single plant can produce as many as 17,000 seeds; germination is affected by light, moisture level, pH, and temperature, but seeds have no dormancy.",
+                    "An important and widespread weed in South and Southeast Asia. Ovipositional host of the insects Creatonotus gangis Linnaeus, Leptocorisa acuta (Thunberg), Marasmia exigua (Butler), Mythimna separata (Walker), Nilaparvata lugens (Stål), Nisia carolinensis Fennah, Pseudococcus saccharicola Takahashi, Recilia dorsalis (Motschulsky), Spodoptera mauritia acronyctoides (Guenee), and Stenchaetothrips biformis (Bagnall), diseases Pyricularia oryzae, Rhizoctonia solani, and Sarocladium oryzae, and nematodes Circonemella onoensis, Hirschmanniella oryzae, and Pratylenchus indicus.",
+                    "- Cultural control: cultivation and hand weeding.\n" +
+                            "- Chemical control: preemergence application of oxadiazon or postemergence spraying of either 2,4-D or MCPA reported to be effective. ",
+                    "https://th.bing.com/th/id/R.b8ee3f7782439ef18e9d90e8cd1da81e?rik=GjmKzZF%2bbtzgdg&pid=ImgRaw&r=0");
+            weeds.add(weeds6);
             for (Weeds w : weeds){
                 weedDao.insert(w);
             }
@@ -870,17 +1205,186 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Echinochloa crus-galli")));
             cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Leptochloa chinensis")));
             cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Echinochloa colona")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Fimbristylis miliacea")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Cyperus iria")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Eclipta prostrata")));
+
             cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Echinochloa crus-galli")));
             cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Leptochloa chinensis")));
             cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Echinochloa colona")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Fimbristylis miliacea")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Cyperus iria")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Eclipta prostrata")));
 
             //****Weeds-Pesticides****
             WeedPesticideDao weedPesticideDao = db.weedPesticideDao();
             weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Elano 20EC"), weedDao.getIdByName("Echinochloa crus-galli")));
             weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Elano 20EC"), weedDao.getIdByName("Leptochloa chinensis")));
             weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Elano 20EC"), weedDao.getIdByName("Echinochloa colona")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Sofit 300EC"), weedDao.getIdByName("Echinochloa colona")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Sofit 300EC"), weedDao.getIdByName("Leptochloa chinensis")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Sofit 300EC"), weedDao.getIdByName("Echinochloa crus-galli")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Sofit 300EC"), weedDao.getIdByName("Fimbristylis miliacea")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Sofit 300EC"), weedDao.getIdByName("Cyperus iria")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Sofit 300EC"), weedDao.getIdByName("Eclipta prostrata")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Dual Gold 96EC"), weedDao.getIdByName("Echinochloa colona")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Dual Gold 96EC"), weedDao.getIdByName("Leptochloa chinensis")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Dual Gold 96EC"), weedDao.getIdByName("Echinochloa crus-galli")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Dual Gold 96EC"), weedDao.getIdByName("Fimbristylis miliacea")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Dual Gold 96EC"), weedDao.getIdByName("Cyperus iria")));
+            weedPesticideDao.insert(new WeedsPesticides(pesticideDao.getIdByName("Dual Gold 96EC"), weedDao.getIdByName("Eclipta prostrata")));
 
+            //*****Deficiencies and toxicities*****
+            DeficienciesToxicitiesDao deficienciesToxicitiesDao = db.deficienciesToxicitiesDao();
+            ArrayList<DeficienciesToxicities> deficienciesToxicities = new ArrayList<>();
+            DeficienciesToxicities deficienciesToxicities1 = new DeficienciesToxicities("Nitrogen (N) deficiency", "Check the field for abnormalities. N deficient crops are stunted and discoloured. Specifically:\n" +
+                    "- Older leaves or whole plants are yellowish green.\n" +
+                    "- Old leaves and sometimes all leaves become light green and chlorotic at the tip.\n" +
+                    "-  Entire field may appear yellowish.\n" +
+                    "\n" +
+                    "Check the leaves for the following symptoms:\n" +
+                    "- Leaves can die under severe N stress. Except for young leaves, which are greener, leaves of nitrogen-deficient plants are narrow, small, short, erect, and lemon-yellowish green.\n" +
+                    "- Other symptoms are reduced tillering and reduced grain number.",
+                    "Nitrogen deficiency is one of the most common problems in rice in Asia. It is common in all rice-growing soils where modern varieties are grown without sufficient mineral N fertilizer. Nitrogen-deficient crops have low yields.\n" +
+                            "It often occurs at critical growth stages of the plant, such as tillering and panicle initiation, when the demand for nitrogen is large.\n" +
+                            "Nitrogen deficiency may also occur when a large amount of N fertilizer has been applied but at the wrong time or in the wrong way. Soils particularly prone to N deficiency include the following types:\n" +
+                            "- Soils with very low soil organic matter content.\n" +
+                            "- Soils with particular constraints to indigenous N supply (e.g., acid sulfate soils, saline soils, Phosphorus (P)-deficient soils, poorly drained wetland soils).\n" +
+                            "- Alkaline and calcareous soils with low soil organic matter status and a high potential for ammonia (NH3) volatilization losses.",
+                    "To manage nitrogen deficiency:\n" +
+                            "- Apply N fertilizer efficiently.\n" +
+                            "- Do not apply large amounts of N to less responsive varieties.\n" +
+                            "- Hybrid rice absorbs mineral N more efficiently than inbred rice varieties.\n" +
+                            "- Choose a suitable plant spacing for each cultivar. Crops with suboptimal plant densities do not use fertilizer N efficiently.\n" +
+                            "- Adjust the number of splits and timing of N applications according to the crop establishment method. Transplanted and direct-seeded rice require different N management strategies.\n" +
+                            "- Maintain proper water control, i.e., keep the field flooded to prevent denitrification but avoid N losses from water runoff over bunds immediately following fertilizer application.\n" +
+                            "- Establish a dense, healthy rice crop by using high-quality seeds of a high-yielding variety with multiple pest resistance and a suitable plant density.\n" +
+                            "- Control weeds that compete with rice for N.",
+                    "https://th.bing.com/th/id/R.3eba97b47555a5f1b760e86280278628?rik=fRHAPARi7jqvwg&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fnutrients-nitrogen-deficiency.jpg&ehk=V%2bfi4aMhyG3dK2h8x6UnnWyh37QT86iTz5dElir7KOo%3d&risl=&pid=ImgRaw&r=0");
+            deficienciesToxicities.add(deficienciesToxicities1);
 
+            DeficienciesToxicities deficienciesToxicities2 = new DeficienciesToxicities("Nitrogen (N) excess", "Fields with excessive nitrogen have plants that:\n" +
+                    "- Look overly green\n" +
+                    "- May be healthy, but also may be lodged at maturity (especially in direct-seeded rice)\n" +
+                    "- May have thin stems\n" +
+                    "- May be prone to disease (e.g., bacterial leaf blight, sheath blight, blast) or insects (leaffolder)\n" +
+                    "There can also be patchy patterns resulting from uneven application across the field.",
+                    "Problems in excess N happen when fertilizers are relatively cheap, and farmers do not understand the correct amount of nitrogen required relative to their yield goals and the right time of N application.\n" +
+                            "Excessive N causes \"luxuriant\" growth, resulting in the plant being attractive to insects and/or diseases/pathogens. The excessive growth can also reduce stem strength resulting in lodging during flowering and grain filling.\n" +
+                            "Excessive use of N also has negative implications for the environment and lowers farm profits.",
+                    "To manage nitrogen excess:\n" +
+                            "- Apply sufficient N to meet the plants' needs (20 kg N for each t of grain produced).\n" +
+                            "- Identify how much N is coming from the soil and other sources (e.g., water or bacteria in the soil or water) and then apply the additional N to meet the yield goal.",
+                    "https://th.bing.com/th/id/R.4d1e2820f95ea25aa2917192855592f1?rik=dVo3N5SO4MRG4w&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fnitrogen-excess-leaf-color-chart.jpg&ehk=JOde6MY80Ruc6lGi%2fzb0IncOsawSQDpDQDmBTh3RAFw%3d&risl=&pid=ImgRaw&r=0");
+            deficienciesToxicities.add(deficienciesToxicities2);
+
+            DeficienciesToxicities deficienciesToxicities3 = new DeficienciesToxicities("Phosphorus (P) deficiency", "Check the field for the following symptoms:\n" +
+                    "- Stunted plants\n" +
+                    "- Reduced tillering\n" +
+                    "- Older leaves are narrow, short, very erect, and have a \"dirty\" dark green colour\n" +
+                    "- Stems are thin and spindly, and plant development is retarded\n" +
+                    "- The number of leaves, panicles, and grains per panicle is also reduced. Young leaves may appear to be healthy, but older leaves turn brown and die.\n" +
+                    "\n" +
+                    "Also, check for discolouration:\n" +
+                    "- Leaves appear pale green when P and Nitrogen (N) deficiency occur simultaneously\n" +
+                    "- Red and purple colours may develop in leaves if the variety has a tendency to produce anthocyanin",
+                    "Phosphorus deficiency is widespread in all major rice ecosystems and is the major growth-limiting factor in acid upland soils where soil P-fixation capacity is often large.\n" +
+                            "\n" +
+                            "Soils particularly prone to P deficiency include the following types:\n" +
+                            "- Coarse-textured soils containing small amounts of organic matter and small P reserves (e.g., sandy soils in northeast Thailand, and Cambodia)\n" +
+                            "- Highly weathered, clayey, acid upland soils with high P-fixation capacity (e.g., Ultisols and Oxisols in many countries\n" +
+                            "- Degraded lowland soils (e.g., North Vietnam)\n" +
+                            "- Calcareous, saline, and sodic soils\n" +
+                            "- Volcanic soils with high P-sorption capacity (e.g., Andisols in Japan and parts of Sumatra and Java)\n" +
+                            "- Peat soils (Histosols)\n" +
+                            "- Acid sulfate soils in which large amounts of active Al and Fe result in the formation of insoluble P compounds at low pH",
+                    "To manage phosphorus deficiency:\n" +
+                            "- Use high-quality seeds of a high-yielding variety.\n" +
+                            "- Use rice cultivars that use P efficiently, particularly on acid upland soils.\n" +
+                            "- In rice-rice systems, carry out dry, shallow tillage (10 cm) within two weeks after harvest. On acid, low-fertility rainfed lowland and upland soils, all existing soil fertility problems (acidity, Al toxicity, and deficiencies of Magnesium, Potassium, and other nutrients) must be corrected before a response to P is obtained.\n" +
+                            "- Incorporate rice straw. Although the total amount of P recycled with the straw is small (1 kg P t-1 straw), it will contribute to maintaining a positive P balance in the long term.\n" +
+                            "- Apply optimum doses of N and K and correct micronutrient deficiencies.\n" +
+                            "- Replenish P removed in crop products by applying P fertilizers, farmyard manure, or other materials (night soil, compost).\n" +
+                            "- Apply fertilizers efficiently.",
+                    "https://th.bing.com/th/id/R.dcf9a0264e1b5ca7f4e92b75692af0df?rik=3iFbw1ChTOhaog&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fnutrients-phosphorus-deficiency.jpg&ehk=eWkGvEch7HySY5bUqJ8Epv%2fOYYHGdsWtB32GbvXEzD8%3d&risl=&pid=ImgRaw&r=0");
+            deficienciesToxicities.add(deficienciesToxicities3);
+
+            DeficienciesToxicities deficienciesToxicities4 = new DeficienciesToxicities("Potassium (K) deficiency", "Check the plants for discolouration:\n" +
+                    "- Dark green plants with yellowish brown leaf margins or dark brown necrotic spots appearing first on the tip of older leaves\n" +
+                    "- Yellowish brown leaf tips, when under severe K deficiency\n" +
+                    "- Older leaves change from yellow to brown\n" +
+                    "- Yellow stripes may appear along leaf intervein's and lower leaves may bend downward\n" +
+                    "- Discoloration gradually appears on younger leaves if deficiency is not corrected.\n" +
+                    "\n" +
+                    "Other signs and symptoms of K deficiency include:\n" +
+                    "- Rusty brown spots on the tips of older leaves that later spread over the whole leaf causing it to turn brown and dry if K deficiency is severe\n" +
+                    "- Irregular necrotic spots may also occur on panicles\n" +
+                    "- Stunted plants with smaller leaves, short and thin stems\n" +
+                    "- Reduced tillering under very severe deficiency\n" +
+                    "- Greater incidence of lodging\n" +
+                    "- Early leaf senescence, leaf wilting, and leaf rolling when the temperature is high, and humidity is low\n" +
+                    "- A large percentage of sterile or unfilled spikelets\n" +
+                    "- Unhealthy root system (many black roots, reduced root length and density), causing a reduction in the uptake of other nutrients\n" +
+                    "- Poor root oxidation power, causing decreased resistance to toxic substances produced under anaerobic soil conditions\n" +
+                    "- Increased incidence of diseases, where inappropriate amounts of fertilizers are used",
+                    "Potassium deficiency in rice is more common under the following crop management practices:\n" +
+                            "- Excessive use of Nitrogen (N) or N and P fertilizers with insufficient K application\n" +
+                            "- Direct-seeded rice during early growth stages, when the plant population is large and the root system is shallow\n" +
+                            "- Cultivar differences in susceptibility to K deficiency and response to K fertilizer.\n" +
+                            "\n" +
+                            "Soils, which are particularly prone to K deficiency include:\n" +
+                            "- Soils inherently low in K\n" +
+                            "- Coarse-textured soils with low cation exchange capacity and small K reserves (e.g., sandy soils in northeast Thailand, and Cambodia)\n" +
+                            "- Highly weathered acid soils with low CEC and low K reserves, e.g., acid upland soils (Ultisols or Oxisols) and degraded lowland soils (e.g., North Vietnam, northeast Thailand, Cambodia, Lao PDR).\n" +
+                            "\n" +
+                            "Soils on which K uptake is inhibited:\n" +
+                            "- Lowland clay soils with high K fixation\n" +
+                            "- Soils with a large K content but a very wide (Calcium + Magnesium)/K ratio\n" +
+                            "- Leached, \"old\" acid sulfate soils with a small base cation content\n" +
+                            "K deficiency may occur on acid sulfate soils even when the soil K content is large (Thailand, South Vietnam).",
+                    "To manage potassium deficiency\n" +
+                            "- Estimate K input from indigenous sources to assess site-specific K requirements.\n" +
+                            "- Increase K uptake by improving soil management practices on root health (e.g., deep tillage to improve percolation to at least 3-5 mm d-1 and to avoid excessively reducing conditions in soil).\n" +
+                            "- Establish an adequate population of healthy rice plants by using high-quality seeds of a modern variety with multiple pest resistance, and optimum crop maintenance (water and pest management).\n" +
+                            "- Incorporate rice straw. If straw burning is the only option for crop residue management, spread the straw evenly over the field (e.g., as it is left after combine harvest) before burning. Ash from burnt straw heaps should also be spread over the field.\n" +
+                            "- Apply optimum doses of N and P fertilizers and correct micronutrient deficiencies. Apply K fertilizers, farmyard manure, or other materials (rice husk, ash, night soil, compost) to replenish K removed in harvested crop products.",
+                    "https://www.pinoyrice.com/wp-content/uploads/potassium-deficient.jpg");
+            deficienciesToxicities.add(deficienciesToxicities4);
+
+            for (DeficienciesToxicities d : deficienciesToxicities){
+                deficienciesToxicitiesDao.insert(d);
+            }
+
+            //*****Crop-Deftox*****
+            CropDeftoxDao cropDeftoxDao = db.cropDeftoxDao();
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM18"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM18"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) excess")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM18"), deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM18"), deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency")));
+
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT08"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT08"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) excess")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT08"), deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT08"), deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency")));
+
+            //*****Deftox-Fertilizer*****
+            DeftoxFertilizerDao deftoxFertilizerDao = db.deftoxFertilizerDao();
+            deftoxFertilizerDao.insert(new DeftoxFertilizer(deficienciesToxicitiesDao.getIdByName("Nitrogen (N) deficiency"), fertilizerDao.getIdByName("Urea")));
+            deftoxFertilizerDao.insert(new DeftoxFertilizer(deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency"), fertilizerDao.getIdByName("DAP")));
+            deftoxFertilizerDao.insert(new DeftoxFertilizer(deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency"), fertilizerDao.getIdByName("MOP")));
+
+            //****Deftox-Stage*****
+            DeftoxStageDao deftoxStageDao = db.deftoxStageDao();
+            deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Nitrogen (N) deficiency"), stageDao.getIdByName("Tillering")));
+            deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Nitrogen (N) deficiency"), stageDao.getIdByName("Panicle initiation")));
+            deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Nitrogen (N) excess"), stageDao.getIdByName("Tillering")));
+            deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Nitrogen (N) excess"), stageDao.getIdByName("Panicle initiation")));
+            deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency"), stageDao.getIdByName("Tillering")));
+            deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency"), stageDao.getIdByName("Panicle initiation")));
+            deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency"), stageDao.getIdByName("Flowering")));
+            deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency"), stageDao.getIdByName("Flowering")));
+            deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency"), stageDao.getIdByName("Tillering")));
+            deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency"), stageDao.getIdByName("Panicle initiation")));
         });
     }
 }

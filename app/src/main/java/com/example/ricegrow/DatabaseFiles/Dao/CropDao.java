@@ -17,6 +17,9 @@ public interface CropDao {
     @Query("SELECT id FROM crops WHERE name =:name")
     int getIdByName (String name);
 
+    @Query("SELECT * FROM crops WHERE id =:id")
+    Crops getCropById (int id);
+
     @Query("SELECT name FROM crops")
     List<String> getAllCropNames();
 

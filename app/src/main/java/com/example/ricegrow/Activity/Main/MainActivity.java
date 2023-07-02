@@ -27,7 +27,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ricegrow.Activity.Authenticate.LoginNormal.LoginActivity;
+import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
+import com.example.ricegrow.Activity.Calculating.MainCalculating;
 import com.example.ricegrow.Activity.Knowledge.MainKnowledge;
+import com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.ListDeftox;
 import com.example.ricegrow.Activity.Knowledge.Management.Disease.ListDisease;
 import com.example.ricegrow.Activity.Knowledge.Management.Pest.ListPest;
 import com.example.ricegrow.Activity.Knowledge.Management.Weed.ListWeed;
@@ -124,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Pesticide selected", Toast.LENGTH_SHORT).show();
                 } else if (itemId == R.id.fertilizer) {
                     // Handle "Fertilizer" item selection
-                    Toast.makeText(MainActivity.this, "Fertilizer selected", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, FertilizerCalculate.class));
                 } else if (itemId == R.id.pest) {
                     // Handle "Pest" item selection
                     startActivity(new Intent(MainActivity.this, ListPest.class));
@@ -134,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
                 } else if (itemId == R.id.weed) {
                     // Handle "Weed" item selection
                     startActivity(new Intent(MainActivity.this, ListWeed.class));
+                } else if (itemId == R.id.deftox) {
+                    // Handle "Weed" item selection
+                    startActivity(new Intent(MainActivity.this, ListDeftox.class));
                 } else if (itemId == R.id.term) {
                     // Handle "Terms" item selection
                     Toast.makeText(MainActivity.this, "Terms selected", Toast.LENGTH_SHORT).show();
@@ -185,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if(itemId == R.id.planBottom){
                     Toast.makeText(MainActivity.this, "Plan selected!", Toast.LENGTH_SHORT).show();
                 } else if (itemId == R.id.calculatorBottom) {
-                    Toast.makeText(MainActivity.this, "Calculator selected!", Toast.LENGTH_SHORT).show();
+                    replaceFragment(new MainCalculating());
                 } else if (itemId == R.id.knowledge) {
                     //Inflate fragment
                     replaceFragment(new MainKnowledge());

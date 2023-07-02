@@ -16,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerAdapter;
+import com.example.ricegrow.DatabaseFiles.Model.CropStage;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
+import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -28,6 +30,7 @@ public class StageAdapter extends RecyclerView.Adapter<StageAdapter.ViewHolder>{
 
     private ArrayList<Stages> stages = new ArrayList<>();
     private Context context;
+    private RiceGrowDatabase db;
 
     public StageAdapter(Context context) {
         this.context = context;
@@ -42,10 +45,11 @@ public class StageAdapter extends RecyclerView.Adapter<StageAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        CropStage cropStage = db.cropStageDao().getFirstCropStageByStageId(stages.get(position).getId());
         holder.txtNameStage.setText(stages.get(position).getName());
-        String duration = String.valueOf(stages.get(position).getDuration()) +" days";
+        String duration = String.valueOf(cropStage.getDuration()) +" days";
         holder.txtDurationStage.setText(duration);
-        String startDate = String.valueOf(stages.get(position).getStartDate()) +" day";
+        String startDate = String.valueOf(cropStage.getStartDate()) +" day";
         holder.txtStartDate.setText(startDate);
         Glide.with(context)
                 .asBitmap()
@@ -86,6 +90,7 @@ public class StageAdapter extends RecyclerView.Adapter<StageAdapter.ViewHolder>{
             txtDurationStage = itemView.findViewById(R.id.txtDurationStage);
             txtStartDate = itemView.findViewById(R.id.txtStartDate);
             parent = itemView.findViewById(R.id.parent);
+            db = RiceGrowDatabase.getInstance(context);
         }
     }
 }

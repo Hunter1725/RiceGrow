@@ -33,50 +33,11 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/riceDropdown"
-                    android:layout_width="175dp"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@id/txtStage"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    app:hintEnabled="true"
-                    app:hintTextColor="@color/logo_tint"
-                    android:hint="Rice cultivars"
-                    app:boxStrokeColor="@color/logo_tint">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/riceAutoCompleteTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:inputType="none"
-                        android:textStyle="bold"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/txtEmpty2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/riceDropdown"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="15dp"
-                    android:text="Sorry, the information is being updated!"
-                    android:textSize="18sp"
-                    android:textStyle="italic"
-                    android:visibility="gone"
-                    android:layout_centerInParent="true"/>
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/stageRecView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/riceDropdown"
+                    android:layout_below="@+id/txtStage"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"

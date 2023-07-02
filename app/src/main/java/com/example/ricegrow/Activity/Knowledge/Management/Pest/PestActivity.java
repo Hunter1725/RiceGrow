@@ -131,7 +131,7 @@ public class PestActivity extends AppCompatActivity {
                 stagesAdapter = new SupAdapter(this);
                 stagesRecView.setAdapter(stagesAdapter);
                 stagesRecView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-                ArrayList<Stages> stages = (ArrayList<Stages>) db.stageDao().getStagesByDiseaseId(incomingPest.getId());
+                ArrayList<Stages> stages = (ArrayList<Stages>) db.stageDao().getStagesByPestId(incomingPest.getId());
                 if (stages != null) {
                     if (stages.size() > 0) {
                         stagesRecView.setVisibility(View.VISIBLE);

@@ -23,6 +23,7 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.UsingAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
@@ -70,8 +71,7 @@ public class FertilizerActivity extends AppCompatActivity {
                 if (itemId == R.id.calculating) {
                     // Handle search item click here
                     // Apply click effect or perform any desired action
-                    // TODO: 6/13/2023 Navigate the user to Calculating activity
-                    Toast.makeText(FertilizerActivity.this, "Search clicked", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(FertilizerActivity.this, FertilizerCalculate.class));
                     return true; // Return true to indicate that the event has been handled
                 } else if (itemId == R.id.home) {
                     startActivity(new Intent(FertilizerActivity.this, MainActivity.class));
