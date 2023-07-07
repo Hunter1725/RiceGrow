@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
+import com.example.ricegrow.Activity.Calculating.PesticideCalculating.PesticideCalculate;
+import com.example.ricegrow.Activity.Calculating.PesticideCalculating.SelectPesticide;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
@@ -42,7 +44,7 @@ public class MainCalculating extends Fragment {
         pesticideCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Pesticide calculation selected!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), SelectPesticide.class));
             }
         });
     }

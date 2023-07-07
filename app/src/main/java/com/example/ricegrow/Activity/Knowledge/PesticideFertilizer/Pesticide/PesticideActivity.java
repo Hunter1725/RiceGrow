@@ -1,5 +1,7 @@
 package com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide;
 
+import static com.example.ricegrow.Activity.Calculating.PesticideCalculating.PesticideCalculate.PESTICIDE_CALCULATE_KEY;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -34,6 +36,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
+import com.example.ricegrow.Activity.Calculating.PesticideCalculating.PesticideCalculate;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.UsingAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
@@ -88,7 +91,9 @@ public class PesticideActivity extends AppCompatActivity {
                 if (itemId == R.id.calculating) {
                     // Handle search item click here
                     // Apply click effect or perform any desired action
-                    Toast.makeText(PesticideActivity.this, "Search clicked", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(PesticideActivity.this, PesticideCalculate.class);
+                    intent.putExtra(PESTICIDE_CALCULATE_KEY, incomingPesticide);
+                    startActivity(intent);
                     return true; // Return true to indicate that the event has been handled
                 } else if (itemId == R.id.home) {
                     startActivity(new Intent(PesticideActivity.this, MainActivity.class));

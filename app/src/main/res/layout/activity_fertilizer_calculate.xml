@@ -250,6 +250,7 @@
                             android:minLines="1"
                             android:maxEms="4"
                             android:minEms="1"
+                            android:imeOptions="actionDone"
                             android:textStyle="bold"
                             android:textColor="@color/text_color"
                             android:textColorHint="@color/hint_text"

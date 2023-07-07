@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.example.ricegrow.Activity.Authenticate.LoginNormal.LoginActivity;
 import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
 import com.example.ricegrow.Activity.Calculating.MainCalculating;
+import com.example.ricegrow.Activity.Calculating.PesticideCalculating.SelectPesticide;
 import com.example.ricegrow.Activity.Knowledge.MainKnowledge;
 import com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.ListDeftox;
 import com.example.ricegrow.Activity.Knowledge.Management.Disease.ListDisease;
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "New plan selected", Toast.LENGTH_SHORT).show();
                 } else if (itemId == R.id.pesticide) {
                     // Handle "Pesticide" item selection
-                    Toast.makeText(MainActivity.this, "Pesticide selected", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, SelectPesticide.class));
                 } else if (itemId == R.id.fertilizer) {
                     // Handle "Fertilizer" item selection
                     startActivity(new Intent(MainActivity.this, FertilizerCalculate.class));
