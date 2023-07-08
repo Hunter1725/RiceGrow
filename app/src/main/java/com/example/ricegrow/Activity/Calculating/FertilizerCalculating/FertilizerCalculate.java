@@ -98,13 +98,11 @@ public class FertilizerCalculate extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (fieldAreaEditText.getText().toString().equals("")){
-                    btnCalculating.setEnabled(false);
-                    btnCalculating.setBackgroundColor(Color.parseColor("#8C8C8C"));
-                } else {
-                    btnCalculating.setEnabled(true);
-                    btnCalculating.setBackgroundColor(Color.parseColor("#4CAF50"));
-                }
+                String input = fieldAreaEditText.getText().toString();
+                boolean isInputValid = !input.isEmpty() && !input.matches("0*(\\.0*)?");
+
+                btnCalculating.setEnabled(isInputValid);
+                btnCalculating.setBackgroundColor(isInputValid ? Color.parseColor("#4CAF50") : Color.parseColor("#8C8C8C"));
             }
 
             @Override
@@ -278,114 +276,54 @@ public class FertilizerCalculate extends AppCompatActivity {
         String kText = nutrientKEditText.getText().toString();
 
         double area = Double.parseDouble(fieldAreaEditText.getText().toString());
-        int ureaAmount = 0;
-        int dapAmount = 0;
-        int mopAmount = 0;
 
-        if (!nText.isEmpty() && !pText.isEmpty() && !kText.isEmpty() && !nText.equals("0") && !pText.equals("0") && !kText.equals("0")) {
-            // All three nutrients provided
-            int nRatio = Integer.parseInt(nText);
-            int pRatio = Integer.parseInt(pText);
-            int kRatio = Integer.parseInt(kText);
-
-            if (fertilizerCalculating.getUnit().equals("ha")) {
-                dapAmount = (int) Math.round((pRatio / 0.46) * area);
-                double remainNRatio = nRatio * area - dapAmount * 0.18;
-                ureaAmount = (int) Math.round((remainNRatio / 0.463));
-                mopAmount = (int) Math.round((kRatio / 0.6) * area);
-            } else if (fertilizerCalculating.getUnit().equals("m2")) {
-                dapAmount = (int) Math.round(((pRatio / 0.46) * (area/10000)));
-                double remainNRatio = (nRatio * (area/10000)) - dapAmount * 0.18;
-                ureaAmount = (int) Math.round(((remainNRatio / 0.463)));
-                mopAmount = (int) Math.round(((kRatio / 0.6) * (area/10000)));
-            }
-        } else if (!nText.isEmpty() && !pText.isEmpty() && !nText.equals("0") && !pText.equals("0")) {
-            // N and P provided, K is null
-            int nRatio = Integer.parseInt(nText);
-            int pRatio = Integer.parseInt(pText);
-
-            if (fertilizerCalculating.getUnit().equals("ha")) {
-                dapAmount = (int) Math.round((pRatio / 0.46) * area);
-                ureaAmount = (int) Math.round((nRatio * area - dapAmount * 0.18) / 0.463);
-            } else if (fertilizerCalculating.getUnit().equals("m2")) {
-                dapAmount = (int) Math.round(((pRatio / 0.46) * area) / 10000);
-                ureaAmount = (int) Math.round(((nRatio * area - dapAmount * 0.18) / 0.463) / 10000);
-            }
-        } else if (!nText.isEmpty() && !kText.isEmpty() && !nText.equals("0") && !kText.equals("0")) {
-            // N and K provided, P is null
-            int nRatio = Integer.parseInt(nText);
-            int kRatio = Integer.parseInt(kText);
-
-            if (fertilizerCalculating.getUnit().equals("ha")) {
-                ureaAmount = (int) Math.round((nRatio / 0.463)* area);
-                mopAmount = (int) Math.round((kRatio / 0.6) * area);
-            } else if (fertilizerCalculating.getUnit().equals("m2")) {
-                ureaAmount = (int) Math.round(((nRatio / 0.463) * area) / 10000);
-                mopAmount = (int) Math.round(((kRatio / 0.6) * area) / 10000);
-            }
-        } else if (!pText.isEmpty() && !kText.isEmpty() && !pText.equals("0") && !kText.equals("0")) {
-            // P and K provided, N is null
-            int pRatio = Integer.parseInt(pText);
-            int kRatio = Integer.parseInt(kText);
-
-            if (fertilizerCalculating.getUnit().equals("ha")) {
-                dapAmount = (int) Math.round((pRatio / 0.46) * area);
-                mopAmount = (int) Math.round((kRatio / 0.6) * area);
-            } else if (fertilizerCalculating.getUnit().equals("m2")) {
-                dapAmount = (int) Math.round(((pRatio / 0.46) * area) / 10000);
-                mopAmount = (int) Math.round(((kRatio / 0.6) * area) / 10000);
-            }
-        } else if (!nText.isEmpty() && !nText.equals("0")) {
-            // N provided, P and K are null
-            int nRatio = Integer.parseInt(nText);
-            if (fertilizerCalculating.getUnit().equals("ha")) {
-                ureaAmount = (int) Math.round((nRatio / 0.463) * area);
-            } else if (fertilizerCalculating.getUnit().equals("m2")) {
-                ureaAmount = (int) Math.round(((nRatio / 0.463) * area) / 10000);
-            }
-        } else if (!pText.isEmpty() && !pText.equals("0")) {
-            // P provided, N and K are null
-            int pRatio = Integer.parseInt(pText);
-            if (fertilizerCalculating.getUnit().equals("ha")) {
-                dapAmount = (int) Math.round((pRatio / 0.46) * area);
-            } else if (fertilizerCalculating.getUnit().equals("m2")) {
-                dapAmount = (int) Math.round(((pRatio / 0.46) * area) / 10000);
-            }
-        } else if (!kText.isEmpty() && !kText.equals("0")) {
-            // K provided, N and P are null
-            int kRatio = Integer.parseInt(kText);
-            if (fertilizerCalculating.getUnit().equals("ha")) {
-                mopAmount = (int) Math.round((kRatio / 0.6) * area);
-            } else if (fertilizerCalculating.getUnit().equals("m2")) {
-                mopAmount = (int) Math.round(((kRatio / 0.6) * area) / 10000);
-            }
-        }
+        int dapAmount = calculateAmount(pText, area, 0.46);
+        int ureaAmount = calculateUreaAmount(nText, dapAmount, area, 0.18, 0.463);
+        int mopAmount = calculateAmount(kText, area, 0.6);
 
         fertilizerCalculating.setId(db.fertilizerCalculatingDao().getAll().getId());
         fertilizerCalculating.setNRatio(!nText.isEmpty() ? Integer.parseInt(nText) : 0);
         fertilizerCalculating.setPRatio(!pText.isEmpty() ? Integer.parseInt(pText) : 0);
         fertilizerCalculating.setKRatio(!kText.isEmpty() ? Integer.parseInt(kText) : 0);
         fertilizerCalculating.setArea(area);
-        if(ureaAmount != 0){
-            fertilizerCalculating.setUreaAmount(ureaAmount);
-        } else {
-            fertilizerCalculating.setUreaAmount(0);
-        }
-        if(dapAmount != 0){
-            fertilizerCalculating.setDapAmount(dapAmount);
-        } else {
-            fertilizerCalculating.setDapAmount(0);
-        }
-        if(mopAmount != 0){
-            fertilizerCalculating.setMopAmount(mopAmount);
-        } else {
-            fertilizerCalculating.setMopAmount(0);
-        }
+        fertilizerCalculating.setUreaAmount(ureaAmount);
+        fertilizerCalculating.setDapAmount(dapAmount);
+        fertilizerCalculating.setMopAmount(mopAmount);
         db.fertilizerCalculatingDao().updateFertilizerCalculating(fertilizerCalculating);
 
         progressCalculate.setVisibility(View.GONE);
         resultLayout.setVisibility(View.VISIBLE);
         dataAssignment();
+
+    }
+
+    // Method to calculate amount based on the nutrient text, area, and conversion factor
+    private int calculateAmount(String nutrientText, double area, double conversionFactor) {
+        int amount = 0;
+        if (!nutrientText.isEmpty() && !nutrientText.equals("0")) {
+            int nutrientRatio = Integer.parseInt(nutrientText);
+            double ratioArea = area;
+            if (fertilizerCalculating.getUnit().equals("m2")) {
+                ratioArea /= 10000;
+            }
+            amount = (int) Math.round((nutrientRatio / conversionFactor) * ratioArea);
+        }
+        return amount;
+    }
+
+    // Method to calculate the amount of urea based on nutrient N, dapAmount, area, conversion factor, and subtraction factor
+    private int calculateUreaAmount(String nText, int dapAmount, double area, double subtractionFactor, double conversionFactor) {
+        int ureaAmount = 0;
+        if (!nText.isEmpty() && !nText.equals("0")) {
+            int nRatio = Integer.parseInt(nText);
+            double ratioArea = area;
+            if (fertilizerCalculating.getUnit().equals("m2")) {
+                ratioArea /= 10000;
+            }
+            double remainNRatio = (nRatio * ratioArea) - (dapAmount * subtractionFactor);
+            ureaAmount = (int) Math.round((remainNRatio / conversionFactor) * ratioArea);
+        }
+        return ureaAmount;
     }
 
 

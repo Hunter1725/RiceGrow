@@ -154,13 +154,11 @@ public class PesticideCalculate extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (fieldAreaEditText.getText().toString().equals("")){
-                    btnCalculating.setEnabled(false);
-                    btnCalculating.setBackgroundColor(Color.parseColor("#8C8C8C"));
-                } else {
-                    btnCalculating.setEnabled(true);
-                    btnCalculating.setBackgroundColor(Color.parseColor("#4CAF50"));
-                }
+                String input = fieldAreaEditText.getText().toString();
+                boolean isInputValid = !input.isEmpty() && !input.matches("0*(\\.0*)?");
+
+                btnCalculating.setEnabled(isInputValid);
+                btnCalculating.setBackgroundColor(isInputValid ? Color.parseColor("#4CAF50") : Color.parseColor("#8C8C8C"));
             }
 
             @Override
@@ -372,25 +370,10 @@ public class PesticideCalculate extends AppCompatActivity {
         }
         double waterPerHectare = incomingPesticide.getWaterPerHectare();
         double totalWater = waterPerHectare * area;
-        double pesticidePerBottle = incomingPesticide.getPesticidePerBottle();
-        double totalPesticide = 0;
-        double totalBottle = 0;
-        if(capacity == 16){
-            totalBottle = Math.round(totalWater / capacity);
-            totalPesticide = totalBottle * pesticidePerBottle;
-        } else if (capacity == 18) {
-            pesticidePerBottle = (pesticidePerBottle * capacity) / 16;
-            totalBottle = Math.round(totalWater / capacity);
-            totalPesticide = totalBottle * pesticidePerBottle;
-        } else if (capacity == 20) {
-            pesticidePerBottle = (pesticidePerBottle * capacity) / 16;
-            totalBottle = Math.round(totalWater / capacity);
-            totalPesticide = totalBottle * pesticidePerBottle;
-        } else if (capacity == 25){
-            pesticidePerBottle = (pesticidePerBottle * capacity) / 16;
-            totalBottle = Math.round(totalWater / capacity);
-            totalPesticide = totalBottle * pesticidePerBottle;
-        }
+
+        double pesticidePerBottle = incomingPesticide.getPesticidePerBottle() * capacity / 16;
+        double totalBottle = Math.round(totalWater / capacity);
+        double totalPesticide = totalBottle * pesticidePerBottle;
 
         //Data assignment
         progressCalculate.setVisibility(View.GONE);
