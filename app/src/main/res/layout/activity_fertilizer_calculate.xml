@@ -306,15 +306,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Square meters (m²)"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         style="@style/Widget.App.RadioButton" />
                     <RadioButton
                         android:id="@+id/btnHectare"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hectare (ha)"
-                        android:layout_marginStart="20dp"
-                        android:textSize="16sp"
+                        android:layout_marginStart="10dp"
+                        android:textSize="17sp"
                         style="@style/Widget.App.RadioButton"
                         android:checked="true"/>
                 </RadioGroup>

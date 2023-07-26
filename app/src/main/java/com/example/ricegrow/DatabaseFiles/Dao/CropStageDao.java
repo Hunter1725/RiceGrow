@@ -20,4 +20,7 @@ public interface CropStageDao {
 
     @Query("SELECT * FROM crop_stage WHERE stage_id =:id")
     List<CropStage> getCropStageByStageId(int id);
+
+    @Query("SELECT * FROM crop_stage WHERE stage_id =:stageId AND crop_id =:cropId")
+    CropStage getCropStageByStageIdAndCropId(int stageId, int cropId);
 }

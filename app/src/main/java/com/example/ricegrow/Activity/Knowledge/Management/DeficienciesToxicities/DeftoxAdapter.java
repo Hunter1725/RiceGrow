@@ -41,8 +41,8 @@ public class DeftoxAdapter extends RecyclerView.Adapter<DeftoxAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtNameDeftox.setText(deficienciesToxicities.get(position).getName());
-        holder.txtValueSymptom.setText(deficienciesToxicities.get(position).getSymptoms());
-        holder.txtValueDes.setText(deficienciesToxicities.get(position).getDescription());
+        holder.txtValueSymptom.setText(deficienciesToxicities.get(position).getSymptoms().substring(0,20));
+        holder.txtValueDes.setText(deficienciesToxicities.get(position).getDescription().substring(0,20));
         Glide.with(context)
                 .asBitmap()
                 .load(deficienciesToxicities.get(position).getDeftoxImage())

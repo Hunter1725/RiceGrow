@@ -118,26 +118,6 @@ public class FertilizerCalculate extends AppCompatActivity {
             }
         });
 
-        //Toolbar
-        toolbarCalculate.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-        toolbarCalculate.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int itemId = item.getItemId();
-                if (itemId == R.id.home) {
-                    startActivity(new Intent(FertilizerCalculate.this, MainActivity.class));
-                    return true;
-                }
-                return false; // Return false to indicate that the event has not been handled
-            }
-        });
-
         fieldAreaEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -321,7 +301,7 @@ public class FertilizerCalculate extends AppCompatActivity {
                 ratioArea /= 10000;
             }
             double remainNRatio = (nRatio * ratioArea) - (dapAmount * subtractionFactor);
-            ureaAmount = (int) Math.round((remainNRatio / conversionFactor) * ratioArea);
+            ureaAmount = (int) Math.round(remainNRatio / conversionFactor);
         }
         return ureaAmount;
     }

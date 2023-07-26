@@ -255,15 +255,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Square meters (m²)"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             style="@style/Widget.App.RadioButton" />
                         <RadioButton
                             android:id="@+id/btnHectare"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Hectare (ha)"
-                            android:layout_marginStart="20dp"
-                            android:textSize="16sp"
+                            android:layout_marginStart="10dp"
+                            android:textSize="17sp"
                             style="@style/Widget.App.RadioButton"
                             android:checked="true"/>
                     </RadioGroup>
@@ -457,6 +457,16 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/defaultNutrients"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Note: Expert-recommended pesticide amounts provided above can be customized to your specific situation."
+                        android:textStyle="italic"
+                        android:textSize="15sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/resultCard"/>
 
                 </RelativeLayout>
 

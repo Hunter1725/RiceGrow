@@ -5,23 +5,33 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.ricegrow.DatabaseFiles.Converter.DateConverter;
+
+import java.time.LocalDate;
 
 @Entity(tableName = "plan_activities",
-        foreignKeys = {@ForeignKey(entity = PlanStages.class, parentColumns = "id", childColumns = "plan_stage_id")})
+        foreignKeys = {@ForeignKey(entity = PlanStages.class, parentColumns = "id", childColumns = "plan_stage_id", onDelete = ForeignKey.CASCADE),
+                        @ForeignKey(entity =  Activities.class, parentColumns = "id", childColumns = "activity_id")})
+@TypeConverters(DateConverter.class)
 public class PlanActivities {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "plan_stage_id")
     private int planStageId;
-    private String name;
-    private String description;
-    private int duration;
+    @ColumnInfo(name = "activity_id")
+    private int activityId;
+    @ColumnInfo(name = "start_date")
+    private LocalDate startDate;
+    @ColumnInfo(name = "end_date")
+    private LocalDate endDate;
 
-    public PlanActivities(int planStageId, String name, String description, int duration) {
+    public PlanActivities(int planStageId, int activityId, LocalDate startDate, LocalDate endDate) {
         this.planStageId = planStageId;
-        this.name = name;
-        this.description = description;
-        this.duration = duration;
+        this.activityId = activityId;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     @Ignore
@@ -44,27 +54,27 @@ public class PlanActivities {
         this.planStageId = planStageId;
     }
 
-    public String getName() {
-        return name;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    public String getDescription() {
-        return description;
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
-    public int getDuration() {
-        return duration;
+    public int getActivityId() {
+        return activityId;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setActivityId(int activityId) {
+        this.activityId = activityId;
     }
 }

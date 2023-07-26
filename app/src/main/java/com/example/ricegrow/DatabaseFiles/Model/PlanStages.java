@@ -5,10 +5,16 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.ricegrow.DatabaseFiles.Converter.DateConverter;
+
+import java.time.LocalDate;
 
 @Entity(tableName = "plan_stages",
-        foreignKeys = {@ForeignKey(entity = UserCrops.class, parentColumns = "id", childColumns = "user_crop_id"),
+        foreignKeys = {@ForeignKey(entity = UserCrops.class, parentColumns = "id", childColumns = "user_crop_id", onDelete = ForeignKey.CASCADE),
                 @ForeignKey(entity =  Stages.class, parentColumns = "id", childColumns = "stage_id")})
+@TypeConverters(DateConverter.class)
 public class PlanStages {
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -17,11 +23,11 @@ public class PlanStages {
     @ColumnInfo(name = "stage_id")
     private int stageId;
     @ColumnInfo(name = "start_date")
-    private String startDate;
+    private LocalDate startDate;
     @ColumnInfo(name = "end_date")
-    private String endDate;
+    private LocalDate endDate;
 
-    public PlanStages(int userCropId, int stageId, String startDate, String endDate) {
+    public PlanStages(int userCropId, int stageId, LocalDate startDate, LocalDate endDate) {
         this.userCropId = userCropId;
         this.stageId = stageId;
         this.startDate = startDate;
@@ -56,19 +62,19 @@ public class PlanStages {
         this.stageId = stageId;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 }

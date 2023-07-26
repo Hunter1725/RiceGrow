@@ -28,4 +28,7 @@ public interface FertilizerDao {
 
     @Query("SELECT * FROM fertilizers WHERE id IN (SELECT fertilizer_id FROM deftox_fertilizer WHERE deftox_id = :deftoxId)")
     List<Fertilizers> getFertilizerByDeftoxId (int deftoxId);
+
+    @Query("SELECT * FROM fertilizers WHERE id IN (SELECT DISTINCT fertilizer_id FROM activity_fertilizers )")
+    List<Fertilizers> getFertilizerFromActivity ();
 }

@@ -32,6 +32,7 @@
             android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:lines="1"
             android:textStyle="bold"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"

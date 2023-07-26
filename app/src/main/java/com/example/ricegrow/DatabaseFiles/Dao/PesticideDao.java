@@ -5,6 +5,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
+import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 
 import java.util.List;
@@ -37,4 +38,7 @@ public interface PesticideDao {
 
     @Query("SELECT * FROM pesticides WHERE id IN (SELECT pesticide_id FROM activity_pesticides WHERE activity_id = :activityId)")
     List<Pesticides> getPesticideByActivityId (int activityId);
+
+    @Query("SELECT * FROM pesticides WHERE id IN (SELECT DISTINCT pesticide_id FROM activity_pesticides )")
+    List<Pesticides> getPesticideFromActivity ();
 }

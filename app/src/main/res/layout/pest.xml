@@ -64,12 +64,13 @@
                     android:id="@+id/txtValueLifecycle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:lines="1"
                     android:text="About 100 days"
-                    android:textSize="16sp"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toEndOf="@+id/txtLifecycle"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtLifecycle"
-                    android:layout_marginStart="5dp"/>
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/txtLifecycle" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -92,6 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="6000VND/kg "
+                    android:lines="1"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toEndOf="@+id/txtDescription"

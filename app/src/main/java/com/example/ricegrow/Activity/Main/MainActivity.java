@@ -36,6 +36,8 @@ import com.example.ricegrow.Activity.Knowledge.Management.Disease.ListDisease;
 import com.example.ricegrow.Activity.Knowledge.Management.Pest.ListPest;
 import com.example.ricegrow.Activity.Knowledge.Management.Weed.ListWeed;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.MainPestFer;
+import com.example.ricegrow.Activity.Planning.MainPlanning;
+import com.example.ricegrow.Activity.Planning.Plan.PlanGenerate;
 import com.example.ricegrow.DatabaseFiles.Model.Users;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
@@ -71,12 +73,22 @@ public class MainActivity extends AppCompatActivity {
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_main);
 
-
         initView();
+
+        // Get the data from the intent
+        Intent intent = getIntent();
+        if (intent != null) {
+            String fragmentToShow = intent.getStringExtra("showFragment");
+            if ("planFragment".equals(fragmentToShow)) {
+                // Show the desired fragment using FragmentTransaction
+                replaceFragment(new MainPlanning());
+                bottomNavigationView.setSelectedItemId(R.id.planBottom);
+            }
+        }
 
         String userId = fb.getCurrentUser().getUid();
         Users user = db.userDao().getUserById(userId);
-        if(userId != null){
+        if(user != null){
             String avatar = user.getAvatar();
             avatarUser.setImageResource(getResources().getIdentifier(avatar, "drawable", getPackageName()));
             userName.setText(user.getName());
@@ -119,10 +131,11 @@ public class MainActivity extends AppCompatActivity {
                 // Perform actions based on the selected item
                 if (itemId == R.id.allPlan) {
                     // Handle "All plans" item selection
-                    Toast.makeText(MainActivity.this, "All plans selected", Toast.LENGTH_SHORT).show();
+                    replaceFragment(new MainPlanning());
+                    bottomNavigationView.setSelectedItemId(R.id.planBottom);
                 } else if (itemId == R.id.newPlan) {
                     // Handle "New plan" item selection
-                    Toast.makeText(MainActivity.this, "New plan selected", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, PlanGenerate.class));
                 } else if (itemId == R.id.pesticide) {
                     // Handle "Pesticide" item selection
                     startActivity(new Intent(MainActivity.this, SelectPesticide.class));
@@ -175,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Bottom navigation listener
-        bottomNavigationView.setSelectedItemId(R.id.homeBottom);
+//        bottomNavigationView.setSelectedItemId(R.id.homeBottom);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -190,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                 if(itemId == R.id.homeBottom){
                     Toast.makeText(MainActivity.this, "Home selected!", Toast.LENGTH_SHORT).show();
                 } else if(itemId == R.id.planBottom){
-                    Toast.makeText(MainActivity.this, "Plan selected!", Toast.LENGTH_SHORT).show();
+                    replaceFragment(new MainPlanning());
                 } else if (itemId == R.id.calculatorBottom) {
                     replaceFragment(new MainCalculating());
                 } else if (itemId == R.id.knowledge) {

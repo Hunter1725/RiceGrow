@@ -15,6 +15,18 @@
         android:theme="@style/Theme.RiceGrow"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.Planning.Calendar.WeekView"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Planning.Calendar.MainCalendar"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Planning.Plan.ViewPlan"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Planning.Plan.PlanGenerate"
+            android:exported="false" />
+        <activity
             android:name=".Activity.Calculating.PesticideCalculating.SelectPesticide"
             android:exported="false" />
         <activity

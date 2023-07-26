@@ -10,4 +10,6 @@
     <color name="icon_color">#0B5702</color>
     <color name="header_navigation">#008080</color>
     <color name="navigation_container">#81C784</color>
+    <color name="red">#F84949</color>
+    <color name="bg_event">#ccffcc</color>
 </resources>

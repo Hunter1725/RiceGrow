@@ -102,8 +102,19 @@ public class SelectPesticide extends AppCompatActivity {
 
         //Drop down menu
         // Create an ArrayAdapter with the menu items
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.category_pesticide, R.layout.pesticide_dropdown_menu);
+        ArrayList<String> customArray = new ArrayList<>();
+        customArray.add("All");
+
+        for (Pesticides pesticide : pesticides) {
+            String category = pesticide.getCategory();
+            if (!customArray.contains(category)) {
+                customArray.add(category);
+            }
+        }
+
+        // Create the ArrayAdapter using the custom array
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.pesticide_dropdown_menu, customArray);
         // Set the adapter to the AutoCompleteTextView
         categoryAutoCompleteTextView.setAdapter(adapter);
         categoryAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -114,11 +125,7 @@ public class SelectPesticide extends AppCompatActivity {
                 // Handle the selected category
                 if (selectedCategory.equals("All")) {
                     pesticideAdapter.setPesticides(pesticides);
-                } else if (selectedCategory.equals("Insecticide")) {
-                    pesticideAdapter.setPesticides((ArrayList<Pesticides>) db.pesticideDao().getPesticidesByCate(selectedCategory));
-                } else if (selectedCategory.equals("Fungicide")) {
-                    pesticideAdapter.setPesticides((ArrayList<Pesticides>) db.pesticideDao().getPesticidesByCate(selectedCategory));
-                } else if (selectedCategory.equals("Herbicide")) {
+                } else {
                     pesticideAdapter.setPesticides((ArrayList<Pesticides>) db.pesticideDao().getPesticidesByCate(selectedCategory));
                 }
             }

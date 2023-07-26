@@ -174,26 +174,6 @@ public class PesticideCalculate extends AppCompatActivity {
             }
         });
 
-        //Toolbar
-        toolbarCalculate.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-        toolbarCalculate.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int itemId = item.getItemId();
-                if (itemId == R.id.home) {
-                    startActivity(new Intent(PesticideCalculate.this, MainActivity.class));
-                    return true;
-                }
-                return false; // Return false to indicate that the event has not been handled
-            }
-        });
-
         fieldAreaEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {

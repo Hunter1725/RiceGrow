@@ -21,6 +21,9 @@ public interface StageDao {
     @Query("SELECT * FROM stages")
     List<Stages> getAllStages();
 
+    @Query("SELECT * FROM stages ORDER BY `order` ASC")
+    List<Stages> getAllStagesWithOrder();
+
     @Query("SELECT * FROM stages WHERE id =:id")
     Stages getStageById(int id);
 

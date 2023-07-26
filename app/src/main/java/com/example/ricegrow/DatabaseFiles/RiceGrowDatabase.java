@@ -30,7 +30,6 @@ import com.example.ricegrow.DatabaseFiles.Dao.PestPesticideDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PestStageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PesticideDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PlanActivityDao;
-import com.example.ricegrow.DatabaseFiles.Dao.PlanFertilizerDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PlanStageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.StageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.UserCropDao;
@@ -59,8 +58,6 @@ import com.example.ricegrow.DatabaseFiles.Model.Pests;
 import com.example.ricegrow.DatabaseFiles.Model.PestsPesticides;
 import com.example.ricegrow.DatabaseFiles.Model.PestsStages;
 import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;
-import com.example.ricegrow.DatabaseFiles.Model.PlanFertilizers;
-import com.example.ricegrow.DatabaseFiles.Model.PlanPesticides;
 import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
@@ -75,7 +72,7 @@ import java.util.concurrent.Executors;
 @Database(entities = {Activities.class, ActivityFertilizers.class, ActivityPesticides.class, CropDiseases.class,
                     CropPests.class, Crops.class, CropWeeds.class, CropStage.class,Diseases.class, DiseasesPesticides.class, DiseasesStages.class,
                     Fertilizers.class, Pesticides.class, Pests.class, PestsPesticides.class, PestsStages.class,
-                    PlanActivities.class, PlanFertilizers.class, PlanPesticides.class, PlanStages.class, Stages.class,
+                    PlanActivities.class, PlanStages.class, Stages.class,
                     UserCrops.class, Users.class, Weeds.class, WeedsPesticides.class, FertilizerCalculating.class, DeficienciesToxicities.class, CropDeftox.class,
                     DeftoxFertilizer.class, DeftoxStage.class}, version = 1)
 public abstract class RiceGrowDatabase extends RoomDatabase {
@@ -96,7 +93,6 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract PestPesticideDao pestPesticideDao();
     public abstract PestStageDao pestStageDao();
     public abstract PlanActivityDao planActivityDao();
-    public abstract PlanFertilizerDao planFertilizerDao();
     public abstract PlanStageDao planStageDao();
     public abstract StageDao stageDao();
     public abstract UserCropDao userCropDao();
@@ -147,10 +143,10 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             CropDao cropDao = db.cropDao();
             ArrayList<Crops> crops = new ArrayList<>();
             Crops crop1 = new Crops("OM18", "OM18 rice was selected from OM 8017/ OM 5166 hybrid combination, this is an aromatic rice variety with outstanding advantages such as high salt tolerance at 3-4 levels, pest resistance, especially high resistance and stability. with blast, high yield and short growth duration.",
-                                    97, 6700, 3.6, "https://loctroi.vn/UploadFiles/ImgUpload/OM%2018%201.png");
+                                    105, 6700, 3.6, "https://loctroi.vn/UploadFiles/ImgUpload/OM%2018%201.png");
             crops.add(crop1);
             Crops crop2 = new Crops("DT08", "DT08 (Dai Thom 08) is a high-quality type of Vietnam fragrant rice grown in Viet Nam. DT08 rice has medium grains, with an evenly bright-white color. DT08 rice has a short growth period; therfore, there are 3 crops of DT08 rice per year, which are harvested in the spring, autumn and winter. When cooked, the texture of DT08 rice is soft and remains sticky after cooling.",
-                    100, 7000, 3.9, "https://danviet.mediacdn.vn/2020/10/16/dai-thom-8-3-16028306562021544130115-crop-1602830669005866812402.jpg");
+                    110, 7000, 3.9, "https://danviet.mediacdn.vn/2020/10/16/dai-thom-8-3-16028306562021544130115-crop-1602830669005866812402.jpg");
             crops.add(crop2);
             for (Crops c : crops){
                 cropDao.insert(c);
@@ -869,10 +865,10 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Seeding"), 10, false, "26th", "35th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Tillering"), 40, false, "36th", "75th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Panicle initiation"), 18, false, "76th", "93th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Heading"), 10,false, "94th", "103th" ));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Flowering"), 10, false, "104th", "113th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Tillering"), 35, false, "36th", "75th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Panicle initiation"), 15, false, "76th", "93th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Heading"), 8,false, "94th", "103th" ));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Flowering"), 8, false, "104th", "113th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Milk"), 10, false, "114th", "123th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Dough"), 10, false, "124th", "133th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Mature"), 10,false, "134th", "143th" ));
@@ -881,11 +877,11 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Seeding"), 10, false, "26th", "35th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Tillering"), 40, false, "36th", "75th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Panicle initiation"), 18, false, "76th", "93th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Tillering"), 35, false, "36th", "75th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Panicle initiation"), 15, false, "76th", "93th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Heading"), 10,false, "94th", "103th" ));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Flowering"), 11, false, "104th", "114th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Milk"), 11, false, "115th", "125th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Flowering"), 10, false, "104th", "114th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Milk"), 10, false, "115th", "125th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Dough"), 11, false, "126th", "137th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Mature"), 10,false, "138th", "147th" ));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Harvesting"), 1, false, "148th", "148th"));
@@ -1003,9 +999,9 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             activities.add(activities9);
             Activities activities10 = new Activities(stageDao.getIdByName("Tillering"), "Irrigate the field", "The reason why water is pumped into the field about 1 - 3 cm before applying fertilizer is to prevent light from decomposing and evaporating manure. When fertilizer is applied to dry soil, it can cause a chemical reaction that releases ammonia gas. This gas can be harmful to plants and can cause root damage. By watering the soil before applying fertilizer, you can help prevent this reaction from occurring.", 1,"https://bomnuocdandung.vn/library/module_new/tim-hieu-may-bom-nuoc-dong-ruong-ntp_s1527.jpg");
             activities.add(activities10);
-            Activities activities11 = new Activities(stageDao.getIdByName("Tillering"), "Primary fertilizing","Primary fertilizing tillering rice is the most critical step in the process of planting and caring for rice. Fertilizing to help tiller rice is the period of fertilizing after 15 to 20 days after transplanting rice. For the rice to grow well, and for high yield, in addition to applying fertilizer with the right technique, choosing the right fertilizer is also one of the decisive factors. Should spend 1/2 -2/3 of the remaining nitrogen to fertilize the tillering stage to help the rice to branch quickly, concentrate and also to reduce the amount of fertilizer and avoid loss of nitrogen.", 20, "https://th.bing.com/th/id/OIP.MgwfDZUYoWI6diQcdRL6DAHaEM?pid=ImgDet&rs=1");
+            Activities activities11 = new Activities(stageDao.getIdByName("Tillering"), "Primary fertilizing","Primary fertilizing tillering rice is the most critical step in the process of planting and caring for rice. Fertilizing to help tiller rice is the period of fertilizing after 15 to 20 days after transplanting rice. For the rice to grow well, and for high yield, in addition to applying fertilizer with the right technique, choosing the right fertilizer is also one of the decisive factors. Should spend 1/2 -2/3 of the remaining nitrogen to fertilize the tillering stage to help the rice to branch quickly, concentrate and also to reduce the amount of fertilizer and avoid loss of nitrogen.", 18, "https://th.bing.com/th/id/OIP.MgwfDZUYoWI6diQcdRL6DAHaEM?pid=ImgDet&rs=1");
             activities.add(activities11);
-            Activities activities12 = new Activities(stageDao.getIdByName("Tillering"), "Secondary fertilizing", "Secondary fertilizing plays a very important role. It determines the yield as well as the efficiency of the entire rice crop. If we fertilize correctly, the rice yield will increase from 1 to 2 tons/ha. In contrast, the wrong fertilization will reduce rice yield from 1 to 2 tons/ha.", 20, "https://qph.fs.quoracdn.net/main-qimg-cdc47fc61921862a471f59807acb88e3");
+            Activities activities12 = new Activities(stageDao.getIdByName("Tillering"), "Secondary fertilizing", "Secondary fertilizing plays a very important role. It determines the yield as well as the efficiency of the entire rice crop. If we fertilize correctly, the rice yield will increase from 1 to 2 tons/ha. In contrast, the wrong fertilization will reduce rice yield from 1 to 2 tons/ha.", 18, "https://qph.fs.quoracdn.net/main-qimg-cdc47fc61921862a471f59807acb88e3");
             activities.add(activities12);
             Activities activities13 = new Activities(stageDao.getIdByName("Panicle initiation"), "Thirdly fertilizing", "Thirdly fertilizing is also one of the crucial stages contributing to determining rice yield. After the rice has fully bloomed, it is possible to fertilize the seeds by applying three types of Nitrogen (N), Phosphorus (P), and Potassium (K). This is the period when fertilizing is effective when planting rice, helping to limit falling and flattening seeds. Farmers should fertilize seedlings 25 days before harvest to reduce the amount of pesticide left on the seeds.", 3, "https://agri.vn/wp-content/uploads/2021/02/bon-phan-cho-lua-2-560x420.jpg");
             activities.add(activities13);
@@ -1019,7 +1015,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "\n" +
                     "- Preventing pest buildup: Timely application prevents pest populations from reaching damaging levels and reduces the risk of infestations in later stages.\n" +
                     "\n" +
-                    "- Overall crop health: Managing pests during this stage promotes the overall health, vigor, and productivity of the rice crop.", 15, "https://www.in2greatkc.com/wp-content/uploads/2020/02/farmers-are-spraying-crops-in-a-green-field_t20_yX1joL-1200x686.jpg");
+                    "- Overall crop health: Managing pests during this stage promotes the overall health, vigor, and productivity of the rice crop.", 12, "https://www.in2greatkc.com/wp-content/uploads/2020/02/farmers-are-spraying-crops-in-a-green-field_t20_yX1joL-1200x686.jpg");
             activities.add(activities14);
             Activities activities15 = new Activities(stageDao.getIdByName("Heading"), "Second spraying pesticide", "Spraying pesticides during the heading stage of rice growth is important for effective pest control and optimizing crop yield. Key points to consider include:\n" +
                     "\n" +
@@ -1031,7 +1027,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "\n" +
                     "- Optimizing yield: Effective pest control during the heading stage helps maximize rice yield by minimizing yield losses caused by pests and diseases.\n" +
                     "\n" +
-                    "- Timing for pest life cycle: Spraying pesticides at the heading stage disrupts the life cycle of pests, preventing them from reproducing and causing further damage in later stages.", 10, "https://th.bing.com/th/id/OIP.e-nbR5xBZVBkx5jhdIjZ8wHaE7?pid=ImgDet&rs=1");
+                    "- Timing for pest life cycle: Spraying pesticides at the heading stage disrupts the life cycle of pests, preventing them from reproducing and causing further damage in later stages.", 9, "https://th.bing.com/th/id/OIP.e-nbR5xBZVBkx5jhdIjZ8wHaE7?pid=ImgDet&rs=1");
             activities.add(activities15);
             Activities activities16 = new Activities(stageDao.getIdByName("Flowering"), "Third spraying pesticide", "Spraying pesticides during the flowering stage of rice growth offers several advantages:\n" +
                     "\n" +
@@ -1043,7 +1039,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "\n" +
                     "- Weather protection: Pesticides guard against adverse weather conditions that promote fungal diseases.\n" +
                     "\n" +
-                    "- Yield optimization: By safeguarding the reproductive structures, pesticides contribute to higher grain yield and quality.", 10, "https://thumbs.dreamstime.com/b/asian-farmers-using-pesticides-nebulizer-countryside-spray-his-green-farms-morning-181892511.jpg");
+                    "- Yield optimization: By safeguarding the reproductive structures, pesticides contribute to higher grain yield and quality.", 9, "https://thumbs.dreamstime.com/b/asian-farmers-using-pesticides-nebulizer-countryside-spray-his-green-farms-morning-181892511.jpg");
             activities.add(activities16);
             Activities activities17 = new Activities(stageDao.getIdByName("Dough"), "Fourth spraying pesticide", "Spraying pesticides during the dough stage of rice growth provides several benefits:\n" +
                     "\n" +

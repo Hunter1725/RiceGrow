@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:iconTint="@color/black"
+        android:title="Home"
+        android:contentDescription="This is home"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/current"
+        android:icon="@drawable/sowing_date"
+        android:iconTint="@color/black"
+        android:title="Current date"
+        android:contentDescription="This is current date"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/monthly"
+        android:icon="@drawable/monthly"
+        android:iconTint="@color/black"
+        android:title="Monthly"
+        app:showAsAction="never|withText"/>
+    <item
+        android:id="@+id/weekly"
+        android:icon="@drawable/weekly"
+        android:iconTint="@color/black"
+        android:title="Weekly"
+        app:showAsAction="never|withText"/>
+    <item
+        android:id="@+id/daily"
+        android:icon="@drawable/daily"
+        android:iconTint="@color/black"
+        android:title="Daily"
+        app:showAsAction="never|withText"/>
+
+</menu>

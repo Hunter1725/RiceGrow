@@ -24,6 +24,9 @@ public interface ActivityDao {
     @Query("SELECT * FROM activities WHERE name =:name")
     Activities getActivityByName(String name);
 
+    @Query("SELECT * FROM activities WHERE id =:id")
+    Activities getActivityById(int id);
+
     @Query("SELECT * FROM activities WHERE name LIKE :name")
     List<Activities> getActivitiesByName(String name);
 

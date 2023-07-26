@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="30dp"
+    tools:context=".Activity.Planning.Plan.ViewPlan">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/login_background"
+            android:fitsSystemWindows="true"
+            app:liftOnScroll="true">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarPlanning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/login_background"
+                app:menu="@menu/top_bar_management"
+                app:navigationIcon="@drawable/back"
+                app:title="View Plan" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:elevation="2dp"
+                android:layout_margin="4dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Crop Icon -->
+                    <ImageView
+                        android:id="@+id/cropIcon"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:src="@drawable/weed"
+                        app:tint="@color/button_bg" />
+
+                    <!-- Crop Name -->
+                    <TextView
+                        android:id="@+id/textCropName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rice Crop"
+                        android:textSize="22sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="5dp"/>
+
+                </LinearLayout>
+
+                <!-- Sowing Date -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/textSowingDateLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Started Date: "
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/sowing_date"
+                        android:drawablePadding="6dp"
+                        android:textStyle="italic"/>
+
+                    <TextView
+                        android:id="@+id/textSowingDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15/05/2023"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Expected Harvest Date -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/textExpectedHarvestDateLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Expected Harvest: "
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/harvest_date"
+                        android:drawablePadding="6dp"
+                        android:textStyle="italic"/>
+
+                    <TextView
+                        android:id="@+id/textExpectedHarvestDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30/09/2023"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Sowing Amount -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/textSowingAmountLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sowing Amount: "
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/sowing_amount"
+                        android:drawablePadding="6dp"
+                        android:textStyle="italic"/>
+
+                    <TextView
+                        android:id="@+id/textSowingAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50 kg"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Sowed Area -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/textSowedAreaLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sowed Area: "
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/sowing_area"
+                        android:drawablePadding="6dp"
+                        android:textStyle="italic"/>
+
+                    <TextView
+                        android:id="@+id/textSowedArea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1000 sq. meters"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Growth Period -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/textGrowthPeriodLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Growth Period: "
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/grown_period"
+                        android:drawablePadding="6dp"
+                        android:textStyle="italic"/>
+
+                    <TextView
+                        android:id="@+id/textGrowthPeriod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="120 days"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnViewDetailPlanCalendar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="View Plan Calendar"
+                    android:textColor="@color/white"
+                    android:layout_gravity="end"
+                    android:backgroundTint="@color/button_bg"
+                    android:layout_marginTop="16dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:dividerThickness="3dp"
+                    app:dividerColor="#D9D9D9"/>
+
+                <RelativeLayout
+                    android:id="@+id/resultLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:padding="10dp"
+                    android:elevation="8dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/textResult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="The amount of fertilizers recommended to use corresponds to the plan:"
+                        android:textSize="19sp"
+                        android:textStyle="bold"/>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/resultCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textResult"
+                        android:layout_marginTop="10dp"
+                        android:padding="8dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@color/white">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:id="@+id/textRecommend"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Recommended amount"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="5dp"/>
+
+                            <TextView
+                                android:id="@+id/textUrea"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Urea"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textRecommend"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginStart="20dp"/>
+
+                            <TextView
+                                android:id="@+id/textDAP"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DAP"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textRecommend"
+                                app:layout_constraintStart_toEndOf="@+id/textUrea"
+                                android:layout_marginStart="75dp"
+                                android:layout_marginTop="15dp"/>
+
+                            <TextView
+                                android:id="@+id/textMOP"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="MOP"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textRecommend"
+                                app:layout_constraintStart_toEndOf="@+id/textDAP"
+                                android:layout_marginStart="75dp"
+                                android:layout_marginTop="15dp"/>
+
+                            <TextView
+                                android:id="@+id/txtUrea"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="150 Kg"
+                                android:textSize="22sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textUrea"
+                                app:layout_constraintStart_toStartOf="@+id/textUrea"
+                                android:layout_marginTop="10dp" />
+
+                            <TextView
+                                android:id="@+id/txtDAP"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="50 Kg"
+                                android:textSize="22sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textDAP"
+                                app:layout_constraintStart_toStartOf="@+id/textDAP"
+                                android:layout_marginTop="10dp" />
+
+                            <TextView
+                                android:id="@+id/txtMOP"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="50 Kg"
+                                android:textSize="22sp"
+                                app:layout_constraintTop_toBottomOf="@+id/textMOP"
+                                app:layout_constraintStart_toStartOf="@+id/textMOP"
+                                android:layout_marginTop="10dp" />
+
+                            <Button
+                                android:id="@+id/btnViewDetailFertilizer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="View detail"
+                                android:textSize="18sp"
+                                android:textColor="@color/button_bg"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textRecommend"
+                                android:layout_marginTop="100dp"
+                                android:layout_marginEnd="10dp"
+                                android:backgroundTint="@color/login_background"/>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/defaultNutrients"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Note: Calculated based on the recommended amount of N-P-K is 80-30-40."
+                        android:textStyle="italic"
+                        android:textSize="15sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/resultCard"/>
+
+                </RelativeLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:dividerThickness="3dp"
+                    app:dividerColor="#D9D9D9"/>
+
+                <TextView
+                    android:id="@+id/recommendFertilizer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recommended fertilizers:"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"/>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fertilizerRecView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="9dp"/>
+
+                <TextView
+                    android:id="@+id/recommendPesticide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recommended pesticides:"
+                    android:layout_marginTop="15dp"
+                    android:textSize="18sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"/>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/pesticideRecView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="9dp"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

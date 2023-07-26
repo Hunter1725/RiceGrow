@@ -3,18 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F1F1F1">
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/StageActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="18dp"
         android:text="Growth Stages and Activities"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#4CAF50" />
+        android:textColor="#4CAF50"
+        android:padding="12dp"/>
 
 
     <GridLayout
