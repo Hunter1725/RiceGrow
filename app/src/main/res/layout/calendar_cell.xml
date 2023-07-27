@@ -23,8 +23,8 @@
     <TextView
         android:id="@+id/stageName"
         android:layout_margin="5dp"
-        android:layout_width="54dp"
-        android:layout_height="18dp"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
         android:paddingStart="5dp"
         android:lines="1"
         android:paddingEnd="5dp"
@@ -43,8 +43,8 @@
     <TextView
         android:id="@+id/activityName"
         android:layout_margin="5dp"
-        android:layout_width="54dp"
-        android:layout_height="18dp"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
         android:paddingStart="5dp"
         android:lines="1"
         android:paddingEnd="5dp"
