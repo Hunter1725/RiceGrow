@@ -102,6 +102,12 @@ public class MonthView extends Fragment implements CalendarAdapter.OnItemListene
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        setMonthView();
+    }
+
+    @Override
     public void onItemClick(int position, LocalDate date) {
         if(date != null) {
             selectDate = date;

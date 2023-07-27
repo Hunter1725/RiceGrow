@@ -185,6 +185,12 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        setWeekView();
+    }
+
+    @Override
     public void onItemClick(int position, LocalDate date) {
         if(date != null) {
             selectDate = date;
