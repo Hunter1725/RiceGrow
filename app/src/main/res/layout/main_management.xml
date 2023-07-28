@@ -55,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Crop varieties"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
 
@@ -123,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Pests"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
 
@@ -191,7 +191,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Diseases"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
 
@@ -259,7 +259,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Weeds"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
 
@@ -327,7 +327,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Deficiencies and toxicities"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
 

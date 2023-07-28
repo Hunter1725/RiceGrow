@@ -43,296 +43,308 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:elevation="8dp">
-
-                <TextView
-                    android:id="@+id/selectNutrient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="The amount of nutrients"
-                    android:textSize="19sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/nutrientNInputLayout"
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@+id/selectNutrient"
-                    android:hint="N"
-                    app:boxStrokeColor="@color/logo_tint"
-                    app:hintTextColor="@color/logo_tint"
-                    app:hintEnabled="true"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextAppearance="@style/TextInputLayoutHint"
-                    app:errorEnabled="true"
-                    app:errorTextAppearance="@style/TextInputLayoutError">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nutrientNEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:inputType="number"
-                        android:maxLength="3"
-                        android:maxLines="1"
-                        android:minLines="1"
-                        android:maxEms="2"
-                        android:minEms="1"
-                        android:text="80"
-                        android:imeOptions="actionDone"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/hint_text" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/nutrientPInputLayout"
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/nutrientNInputLayout"
-                    android:layout_below="@+id/selectNutrient"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="P"
-                    app:boxStrokeColor="@color/logo_tint"
-                    app:hintTextColor="@color/logo_tint"
-                    app:hintEnabled="true"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextAppearance="@style/TextInputLayoutHint"
-                    app:errorEnabled="true"
-                    app:errorTextAppearance="@style/TextInputLayoutError">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nutrientPEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:textSize="20sp"
-                        android:maxLength="3"
-                        android:maxLines="1"
-                        android:minLines="1"
-                        android:maxEms="2"
-                        android:minEms="1"
-                        android:text="30"
-                        android:imeOptions="actionDone"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/hint_text" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/nutrientKInputLayout"
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/selectNutrient"
-                    android:layout_toEndOf="@+id/nutrientPInputLayout"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp"
-                    android:hint="K"
-                    app:boxStrokeColor="@color/logo_tint"
-                    app:hintTextColor="@color/logo_tint"
-                    app:hintEnabled="true"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextAppearance="@style/TextInputLayoutHint"
-                    app:errorEnabled="true"
-                    app:errorTextAppearance="@style/TextInputLayoutError">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nutrientKEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:textSize="20sp"
-                        android:maxLength="3"
-                        android:maxLines="1"
-                        android:minLines="1"
-                        android:maxEms="2"
-                        android:minEms="1"
-                        android:text="40"
-                        android:imeOptions="actionDone"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/hint_text" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    style="@style/Widget.Material3.Button.TextButton"
-                    android:id="@+id/btnReset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Reset"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/button_bg"
-                    android:layout_below="@+id/selectNutrient"
-                    android:layout_toEndOf="@+id/nutrientKInputLayout"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="22dp" />
-
-                <TextView
-                    android:id="@+id/defaultNutrients"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Measured in kilograms (kg). Default is the recommended amount of nutrition from the experts for 1 ha (10000 m²)"
-                    android:layout_below="@+id/nutrientKInputLayout"
-                    android:textStyle="italic"
-                    android:textSize="15sp"/>
-
-                <TextView
-                    android:id="@+id/selectArea"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Field area"
-                    android:textSize="19sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="20dp"
-                    android:layout_below="@+id/defaultNutrients" />
-
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layoutInput"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_below="@+id/selectArea"
-                    android:layout_marginTop="5dp">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:elevation="8dp">
 
-                    <Button
-                        android:id="@+id/btnDecrease"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        style="@style/Widget.Material3.Button.TonalButton"
-                        app:icon="@drawable/down"
-                        app:iconGravity="textStart"
-                        app:iconSize="35dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:cornerRadius="50dp"
-                        app:iconPadding="0dp"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:insetLeft="0dp"
-                        android:insetRight="0dp"
+                    <TextView
+                        android:id="@+id/selectNutrient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="The amount of nutrients"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginTop="10dp"
-                        android:backgroundTint="@color/login_background"
-                        android:layout_marginStart="20dp"/>
+                        app:layout_constraintStart_toStartOf="parent"/>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/fieldAreaInputLayout"
-                        android:layout_width="160dp"
+                        android:id="@+id/nutrientNInputLayout"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toEndOf="@+id/btnDecrease"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:hint="N"
                         app:boxStrokeColor="@color/logo_tint"
+                        app:hintTextColor="@color/logo_tint"
+                        app:hintEnabled="true"
+                        app:hintAnimationEnabled="true"
                         app:hintTextAppearance="@style/TextInputLayoutHint"
                         app:errorEnabled="true"
                         app:errorTextAppearance="@style/TextInputLayoutError"
-                        app:suffixText="ha"
-                        app:suffixTextColor="@color/text_color"
-                        app:suffixTextAppearance="@style/SuffixTextAppearance">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/selectNutrient">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/fieldAreaEditText"
+                            android:id="@+id/nutrientNEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number|numberDecimal"
-                            android:textSize="22sp"
+                            android:textSize="20sp"
+                            android:inputType="number"
+                            android:maxLength="3"
                             android:maxLines="1"
                             android:minLines="1"
-                            android:maxEms="4"
+                            android:maxEms="2"
                             android:minEms="1"
+                            android:text="80"
                             android:imeOptions="actionDone"
                             android:textStyle="bold"
                             android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_text"
-                            app:layout_constraintStart_toEndOf="@+id/btnDecrease"
-                            app:layout_constraintBottom_toBottomOf="@+id/btnDecrease" />
+                            android:textColorHint="@color/hint_text" />
 
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/nutrientPInputLayout"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="P"
+                        app:boxStrokeColor="@color/logo_tint"
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/TextInputLayoutError"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextInputLayoutHint"
+                        app:hintTextColor="@color/logo_tint"
+                        app:layout_constraintEnd_toStartOf="@+id/nutrientKInputLayout"
+                        app:layout_constraintStart_toEndOf="@id/nutrientNInputLayout"
+                        app:layout_constraintTop_toBottomOf="@id/selectNutrient">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/nutrientPEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxEms="2"
+                            android:maxLength="3"
+                            android:maxLines="1"
+                            android:minEms="1"
+                            android:minLines="1"
+                            android:text="30"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/hint_text"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/nutrientKInputLayout"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="K"
+                        app:boxStrokeColor="@color/logo_tint"
+                        app:errorEnabled="true"
+                        app:errorTextAppearance="@style/TextInputLayoutError"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextAppearance="@style/TextInputLayoutHint"
+                        app:hintTextColor="@color/logo_tint"
+                        app:layout_constraintEnd_toStartOf="@+id/btnReset"
+                        app:layout_constraintTop_toBottomOf="@id/selectNutrient">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/nutrientKEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxEms="2"
+                            android:maxLength="3"
+                            android:maxLines="1"
+                            android:minEms="1"
+                            android:minLines="1"
+                            android:text="40"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/hint_text"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
-                        android:id="@+id/btnIncrease"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        app:icon="@drawable/up"
-                        app:iconGravity="textStart"
-                        app:iconSize="35dp"
-                        app:cornerRadius="50dp"
-                        app:iconPadding="0dp"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:insetLeft="0dp"
-                        android:insetRight="0dp"
-                        style="@style/Widget.Material3.Button.TonalButton"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fieldAreaInputLayout"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
-                        android:backgroundTint="@color/login_background"/>
+                        android:id="@+id/btnReset"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:text="Reset"
+                        android:textColor="@color/button_bg"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/selectNutrient" />
+
+                    <TextView
+                        android:id="@+id/defaultNutrients"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Measured in kilograms (kg). Default is the recommended amount of nutrition from the experts for 1 ha (10000 m²)"
+                        app:layout_constraintTop_toBottomOf="@id/nutrientKInputLayout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textStyle="italic"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/selectArea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Field area"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/defaultNutrients"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@id/selectArea"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="5dp">
+
+                        <Button
+                            android:id="@+id/btnDecrease"
+                            style="@style/Widget.Material3.Button.TonalButton"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="10dp"
+                            android:backgroundTint="@color/login_background"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
+                            app:cornerRadius="50dp"
+                            app:icon="@drawable/down"
+                            app:iconGravity="textStart"
+                            app:iconPadding="0dp"
+                            app:iconSize="35dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/fieldAreaInputLayout"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content"
+                            app:boxStrokeColor="@color/logo_tint"
+                            app:errorEnabled="true"
+                            app:errorTextAppearance="@style/TextInputLayoutError"
+                            app:hintTextAppearance="@style/TextInputLayoutHint"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/btnIncrease"
+                            app:layout_constraintStart_toEndOf="@id/btnDecrease"
+                            app:suffixText="ha"
+                            app:suffixTextAppearance="@style/SuffixTextAppearance"
+                            app:suffixTextColor="@color/text_color">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/fieldAreaEditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:imeOptions="actionDone"
+                                android:inputType="number|numberDecimal"
+                                android:maxEms="4"
+                                android:maxLines="1"
+                                android:minEms="1"
+                                android:minLines="1"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_text"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/btnDecrease"
+                                app:layout_constraintStart_toEndOf="@id/btnDecrease" />
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <Button
+                            android:id="@+id/btnIncrease"
+                            style="@style/Widget.Material3.Button.TonalButton"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="16dp"
+                            android:backgroundTint="@color/login_background"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
+                            app:cornerRadius="50dp"
+                            app:icon="@drawable/up"
+                            app:iconGravity="textStart"
+                            app:iconPadding="0dp"
+                            app:iconSize="35dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/selectUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Unit"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layoutInput" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:checkedButton="@+id/btnMeter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/selectUnit"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/btnMeter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Square meters (m²)"
+                            android:textSize="17sp"
+                            style="@style/Widget.App.RadioButton" />
+
+                        <RadioButton
+                            android:id="@+id/btnHectare"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hectare (ha)"
+                            android:layout_marginStart="10dp"
+                            android:textSize="17sp"
+                            style="@style/Widget.App.RadioButton"
+                            android:checked="true" />
+                    </RadioGroup>
+
+                    <Button
+                        android:id="@+id/btnCalculating"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="32dp"
+                        android:backgroundTint="@color/button_bg"
+                        android:text="Calculate"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintTop_toBottomOf="@id/radioGroup"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/selectUnit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Unit"
-                    android:textSize="19sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@+id/layoutInput" />
-
-                <RadioGroup
-                    android:id="@+id/radioGroup"
-                    android:checkedButton="@+id/radio_button_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/layoutInput"
-                    android:layout_toEndOf="@+id/selectUnit"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="10dp">
-                    <RadioButton
-                        android:id="@+id/btnMeter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Square meters (m²)"
-                        android:textSize="17sp"
-                        style="@style/Widget.App.RadioButton" />
-                    <RadioButton
-                        android:id="@+id/btnHectare"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hectare (ha)"
-                        android:layout_marginStart="10dp"
-                        android:textSize="17sp"
-                        style="@style/Widget.App.RadioButton"
-                        android:checked="true"/>
-                </RadioGroup>
-
-                <Button
-                    android:id="@+id/btnCalculating"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="32dp"
-                    android:backgroundTint="@color/button_bg"
-                    android:text="Calculate"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/white"
-                    android:layout_below="@+id/radioGroup"/>
-                </RelativeLayout>
 
                 <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/divider"
@@ -385,7 +397,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/textResult"
                         android:layout_marginTop="10dp"
-                        android:padding="8dp"
                         app:cardCornerRadius="16dp"
                         app:cardElevation="4dp"
                         app:cardBackgroundColor="@color/white">
@@ -417,7 +428,7 @@
                                 app:layout_constraintTop_toBottomOf="@+id/textRecommend"
                                 app:layout_constraintStart_toStartOf="parent"
                                 android:layout_marginTop="15dp"
-                                android:layout_marginStart="20dp"/>
+                                android:layout_marginStart="10dp"/>
 
                             <TextView
                                 android:id="@+id/textDAP"

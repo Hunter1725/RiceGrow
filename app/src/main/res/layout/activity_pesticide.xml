@@ -67,7 +67,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:text="Name pesticide"
-                    android:textSize="22sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -77,7 +77,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="Category:"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -85,7 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:text="Bayer"
                     android:textSize="18sp" />
 
@@ -96,7 +96,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="Manufacturer:"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -104,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:text="Bayer"
                     android:textSize="18sp" />
 
@@ -115,7 +115,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="Composition:"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -123,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:text="Antoxin silicat"
                     android:textSize="18sp" />
 
@@ -134,7 +134,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="Instruction:"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -142,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:text="2 days a week"
                     android:textSize="18sp" />
 
@@ -153,7 +153,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="Dosage per use (16-liter bottle):"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -161,7 +161,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:text="30ml/bottle"
                     android:textSize="18sp" />
 
@@ -172,7 +172,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="Amount of water sprayed:"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -180,7 +180,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:text="600l/ha"
                     android:textSize="18sp" />
 
@@ -198,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:text="Specializes in treating:"
                     android:layout_marginTop="15dp"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:layout_marginStart="8dp"
                     android:textStyle="bold"/>
 
@@ -226,7 +226,7 @@
                     android:layout_height="wrap_content"
                     android:text="Can be used in:"
                     android:layout_marginTop="15dp"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:layout_marginStart="8dp"
                     android:textStyle="bold"/>
 
