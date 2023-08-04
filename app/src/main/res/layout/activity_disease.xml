@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Symptoms:"
+                    android:text="Symptoms"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Descriptions:"
+                    android:text="Descriptions"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Prevention methods:"
+                    android:text="Prevention methods"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -139,7 +139,7 @@
                     android:id="@+id/pesticides"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Specialized pesticides:"
+                    android:text="Specialized pesticides"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -168,7 +168,7 @@
                     android:id="@+id/stages"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Possible stages of disease outbreaks:"
+                    android:text="Possible stages of disease outbreaks"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"

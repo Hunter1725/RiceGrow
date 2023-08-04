@@ -1,5 +1,6 @@
 package com.example.ricegrow.Activity.Planning;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,10 +10,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -20,16 +24,24 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ricegrow.Activity.Authenticate.LoginNormal.LoginActivity;
+import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.Activity.Planning.Plan.PlanGenerate;
 import com.example.ricegrow.Activity.Planning.Plan.PlanListAdapter;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainPlanning extends Fragment {
     private TextView txtEmpty;
@@ -92,21 +104,38 @@ public class MainPlanning extends Fragment {
 
             if (direction == ItemTouchHelper.LEFT) {
                 deletedPlan = userCrops.get(position);
-                db.userCropDao().delete(deletedPlan); // Delete from the database first
-                userCrops.remove(position); // Then remove from the list
-                planListAdapter.notifyItemRemoved(position);
-                Snackbar.make(plansListView, db.cropDao().getCropById(deletedPlan.getCropId()).getName() + " Sowing Date: " + deletedPlan.getSowingDate().toString() + " removed!", Snackbar.LENGTH_LONG)
-                        .setAction("Undo", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                db.userCropDao().insert(deletedPlan); // Insert back to the database
-                                userCrops.add(position, deletedPlan); // Add back to the list
-                                planListAdapter.notifyItemInserted(position);
-                                initRecyclerView();
-                            }
-                        }).setActionTextColor(Color.parseColor("#4CAF50"))
-                        .show();
-                initRecyclerView();
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog);
+                builder.setTitle("Delete plan");
+                builder.setMessage("Are you sure you want to delete this plan?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Perform guest login action
+                        db.userCropDao().delete(deletedPlan); // Delete from the database first
+                        userCrops.remove(position); // Then remove from the list
+                        planListAdapter.notifyItemRemoved(position);
+                        Snackbar.make(plansListView, db.cropDao().getCropById(deletedPlan.getCropId()).getName() + " Sowing Date: " + deletedPlan.getSowingDate().toString() + " removed!", Snackbar.LENGTH_LONG)
+                                .setAction("Undo", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        db.userCropDao().insert(deletedPlan); // Insert back to the database
+                                        userCrops.add(position, deletedPlan); // Add back to the list
+                                        planListAdapter.notifyItemInserted(position);
+                                        initRecyclerView();
+                                    }
+                                }).setActionTextColor(Color.parseColor("#4CAF50"))
+                                .show();
+                        initRecyclerView();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        initRecyclerView();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         }
 

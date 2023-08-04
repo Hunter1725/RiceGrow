@@ -2,6 +2,7 @@ package com.example.ricegrow.Activity.Planning.Calendar;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -73,13 +74,17 @@ public class CalendarUtils {
         return date.format(formatter);
     }
 
-    public static String formattedTime(LocalTime time) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
-        return time.format(formatter);
+    public static String formattedDayOfWeek(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMMM");
+        return date.format(formatter);
     }
 
-    public static String formattedShortTime(LocalTime time) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return time.format(formatter);
+    public static String formattedWeek(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE");
+        return date.format(formatter);
+    }
+    public static String formattedFullWeek(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE");
+        return date.format(formatter);
     }
 }

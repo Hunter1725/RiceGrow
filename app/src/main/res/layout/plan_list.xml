@@ -32,6 +32,8 @@
             android:layout_height="wrap_content"
             android:text="Sowing Date:"
             android:textColor="@color/black"
+            android:drawableStart="@drawable/sowing_date"
+            android:drawablePadding="5dp"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -60,6 +62,8 @@
             android:text="Area:"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:drawableStart="@drawable/sowing_area"
+            android:drawablePadding="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

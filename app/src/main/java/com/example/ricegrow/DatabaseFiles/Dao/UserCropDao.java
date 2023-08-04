@@ -18,6 +18,9 @@ public interface UserCropDao {
     @Query("SELECT * FROM user_crops")
     List<UserCrops> getAllUserCrops();
 
+    @Query("SELECT * FROM user_crops ORDER BY id DESC LIMIT 2")
+    List<UserCrops> getRecentUserCrops();
+
     @Delete
     void delete(UserCrops userCrops);
 }

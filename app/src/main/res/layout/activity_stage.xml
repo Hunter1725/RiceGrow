@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Descriptions:"
+                    android:text="Descriptions"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Duration:"
+                    android:text="Duration"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Start date:"
+                    android:text="Start date"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="End date:"
+                    android:text="End date"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -158,7 +158,7 @@
                     android:id="@+id/pests"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Harmful pests:"
+                    android:text="Harmful pests"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -187,7 +187,7 @@
                     android:id="@+id/diseases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Potential diseases:"
+                    android:text="Potential diseases"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -216,7 +216,7 @@
                     android:id="@+id/activities"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Relevant activities:"
+                    android:text="Relevant activities"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"

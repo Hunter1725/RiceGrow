@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Category:"
+                    android:text="Category"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Manufacturer:"
+                    android:text="Manufacturer"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Composition:"
+                    android:text="Composition"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Instruction:"
+                    android:text="Instruction"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Dosage per use (16-liter bottle):"
+                    android:text="Dosage per use (16-liter bottle)"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Amount of water sprayed:"
+                    android:text="Amount of water sprayed"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -196,7 +196,7 @@
                     android:id="@+id/specialize"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Specializes in treating:"
+                    android:text="Specializes in treating"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -224,7 +224,7 @@
                     android:id="@+id/using"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Can be used in:"
+                    android:text="Can be used in"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"

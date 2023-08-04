@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_main);
-
+        
         initView();
 
         // Get the data from the intent
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 if (itemId == R.id.search) {
                     // Handle search item click here
                     // Apply click effect or perform any desired action
-                    Toast.makeText(MainActivity.this, "Search clicked", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, SearchActivity.class));
                     return true; // Return true to indicate that the event has been handled
                 }
                 return false; // Return false to indicate that the event has not been handled
@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
 
                 if(itemId == R.id.homeBottom){
-                    Toast.makeText(MainActivity.this, "Home selected!", Toast.LENGTH_SHORT).show();
+                    replaceFragment(new MainFragment());
                 } else if(itemId == R.id.planBottom){
                     replaceFragment(new MainPlanning());
                 } else if (itemId == R.id.calculatorBottom) {
@@ -289,6 +289,7 @@ public class MainActivity extends AppCompatActivity {
         userName = headerView.findViewById(R.id.userName);
         userEmail = headerView.findViewById(R.id.userEmail);
         fabScrollToTop = findViewById(R.id.fabScrollToTop);
+        replaceFragment(new MainFragment());
     }
 
     public void replaceFragment(Fragment fragment) {
@@ -302,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        if (fragmentManager.getBackStackEntryCount() > 0) {
+        if (fragmentManager.getBackStackEntryCount() > 1) {
             fragmentManager.popBackStack();
             nestedScrollView.smoothScrollTo(0, 0);
         } else {

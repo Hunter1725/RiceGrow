@@ -33,6 +33,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:title="Rice Grow"
+                    app:titleTextColor="@color/button_bg"
+                    app:titleTextAppearance="@style/ToolbarTitleStyle"
                     app:titleCentered="true"
                     app:navigationIcon="@drawable/menu"
                     app:menu="@menu/top_app_bar"

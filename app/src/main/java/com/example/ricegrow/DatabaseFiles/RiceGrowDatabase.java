@@ -34,6 +34,7 @@ import com.example.ricegrow.DatabaseFiles.Dao.PlanStageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.StageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.UserCropDao;
 import com.example.ricegrow.DatabaseFiles.Dao.UserDao;
+import com.example.ricegrow.DatabaseFiles.Dao.WeatherDao;
 import com.example.ricegrow.DatabaseFiles.Dao.WeedDao;
 import com.example.ricegrow.DatabaseFiles.Dao.WeedPesticideDao;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
@@ -62,6 +63,7 @@ import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.Model.Users;
+import com.example.ricegrow.DatabaseFiles.Model.Weather;
 import com.example.ricegrow.DatabaseFiles.Model.Weeds;
 import com.example.ricegrow.DatabaseFiles.Model.WeedsPesticides;
 
@@ -74,7 +76,7 @@ import java.util.concurrent.Executors;
                     Fertilizers.class, Pesticides.class, Pests.class, PestsPesticides.class, PestsStages.class,
                     PlanActivities.class, PlanStages.class, Stages.class,
                     UserCrops.class, Users.class, Weeds.class, WeedsPesticides.class, FertilizerCalculating.class, DeficienciesToxicities.class, CropDeftox.class,
-                    DeftoxFertilizer.class, DeftoxStage.class}, version = 1)
+                    DeftoxFertilizer.class, DeftoxStage.class, Weather.class}, version = 1)
 public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract ActivityDao activityDao();
     public abstract ActivityFertilizerDao activityFertilizerDao();
@@ -104,6 +106,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract CropDeftoxDao cropDeftoxDao();
     public abstract DeftoxFertilizerDao deftoxFertilizerDao();
     public abstract DeftoxStageDao deftoxStageDao();
+    public abstract WeatherDao weatherDao();
 
 
     private static RiceGrowDatabase instance;

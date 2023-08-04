@@ -54,8 +54,9 @@
             android:padding="8dp">
 
             <ImageView
-                android:layout_width="54dp"
-                android:layout_height="54dp"
+                android:layout_margin="5dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/icon_fertilizer"
                 android:contentDescription="Fertilizer Icon"/>
 
@@ -117,8 +118,9 @@
             android:padding="16dp">
 
             <ImageView
-                android:layout_width="54dp"
-                android:layout_height="54dp"
+                android:layout_margin="5dp"
+                android:layout_width="45dp"
+                android:layout_height="50dp"
                 android:src="@drawable/pesticides_icon_vector"
                 android:contentDescription="Pesticide Icon"/>
 

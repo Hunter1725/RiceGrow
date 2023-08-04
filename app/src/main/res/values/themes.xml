@@ -37,6 +37,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="ToolbarTitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textStyle">bold</item>
+    </style>
 
     <style name="CircleShapeImageView">
         <item name="shapeAppearanceOverlay">@style/CircleShapeOverlay</item>
@@ -91,5 +94,42 @@
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent</item>
     </style>
 
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/logo_tint</item>
+        <item name="colorSecondary">@color/login_background</item>
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.App.Button.Positive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.App.Button.Negative</item>
+    </style>
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog2" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/logo_tint</item>
+        <item name="colorSecondary">@color/button_bg</item>
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text</item>
+    </style>
+
+
+    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.Material3">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textColor">@color/logo_tint</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.App.Button.Positive" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/warning_text</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Widget.App.Button.Negative" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textSize">16sp</item>
+    </style>
 
 </resources>
