@@ -1,9 +1,16 @@
 package com.example.ricegrow.Activity.Main;
 
+import static com.example.ricegrow.Activity.Planning.Plan.PlanGenerate.SHOW_FRAGMENT;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
@@ -14,15 +21,25 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,23 +53,38 @@ import com.example.ricegrow.Activity.Knowledge.Management.Disease.ListDisease;
 import com.example.ricegrow.Activity.Knowledge.Management.Pest.ListPest;
 import com.example.ricegrow.Activity.Knowledge.Management.Weed.ListWeed;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.MainPestFer;
+import com.example.ricegrow.Activity.Main.Weather.WeatherActivity;
+import com.example.ricegrow.Activity.Notification.NotificationService;
 import com.example.ricegrow.Activity.Planning.MainPlanning;
 import com.example.ricegrow.Activity.Planning.Plan.PlanGenerate;
+import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;
+import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
+import com.example.ricegrow.DatabaseFiles.Model.Setting;
+import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.Model.Users;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.Priority;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.search.SearchBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int NOTIFICATION_REQUEST_CODE = 2233;
     private FloatingActionButton fabScrollToTop;
     private NestedScrollView nestedScrollView;
     private DrawerLayout drawer;
@@ -67,28 +99,45 @@ public class MainActivity extends AppCompatActivity {
     private ShapeableImageView avatarUser;
 
     private TextView userName, userEmail;
+    private List<UserCrops> userCropsList = new ArrayList<>();
+    private Setting setting;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_main);
-        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                checkNotificationsSettings();
+            }
+        }
         initView();
-
         // Get the data from the intent
         Intent intent = getIntent();
         if (intent != null) {
-            String fragmentToShow = intent.getStringExtra("showFragment");
+            String fragmentToShow = intent.getStringExtra(SHOW_FRAGMENT);
             if ("planFragment".equals(fragmentToShow)) {
                 // Show the desired fragment using FragmentTransaction
+                setting.setMore(false);
+                db.settingDao().updateSetting(setting);
                 replaceFragment(new MainPlanning());
                 bottomNavigationView.setSelectedItemId(R.id.planBottom);
             }
         }
-
+        if (!userCropsList.isEmpty()) {
+            if (setting.isNotification()) {
+                startService(new Intent(this, NotificationService.class));
+            }
+            if (setting.isShowAgain() && setting.isMore()) {
+                showFarmingPlanDialog();
+                setting.setMore(false);
+                db.settingDao().updateSetting(setting);
+            }
+        }
         String userId = fb.getCurrentUser().getUid();
         Users user = db.userDao().getUserById(userId);
-        if(user != null){
+        if (user != null) {
             String avatar = user.getAvatar();
             avatarUser.setImageResource(getResources().getIdentifier(avatar, "drawable", getPackageName()));
             userName.setText(user.getName());
@@ -178,7 +227,6 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.search) {
-                    // Handle search item click here
                     // Apply click effect or perform any desired action
                     startActivity(new Intent(MainActivity.this, SearchActivity.class));
                     return true; // Return true to indicate that the event has been handled
@@ -200,9 +248,9 @@ public class MainActivity extends AppCompatActivity {
                 // Set checked state for the selected item
                 item.setChecked(true);
 
-                if(itemId == R.id.homeBottom){
+                if (itemId == R.id.homeBottom) {
                     replaceFragment(new MainFragment());
-                } else if(itemId == R.id.planBottom){
+                } else if (itemId == R.id.planBottom) {
                     replaceFragment(new MainPlanning());
                 } else if (itemId == R.id.calculatorBottom) {
                     replaceFragment(new MainCalculating());
@@ -247,6 +295,153 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        setting.setMore(true);
+        db.settingDao().updateSetting(setting);
+        super.onDestroy();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+    private void checkNotificationsSettings() {
+//        NotificationManagerCompat manager = NotificationManagerCompat.from(this);
+//        if (!manager.areNotificationsEnabled()) {
+//            MaterialAlertDialogBuilder alertBuilder = new MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog2)
+//                    .setTitle("Notifications are disabled")
+//                    .setMessage("Please enable the notifications for reminder farming plan!")
+//                    .setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            // Handle dismiss action
+//
+//                        }
+//                    })
+//                    .setPositiveButton("Enable", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            {
+//                                Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+//                                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+//                                startActivity(intent);
+//                            }
+//                        }
+//                    });
+//
+//            alertBuilder.show();
+//
+//        }
+        // Request permissions
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.POST_NOTIFICATIONS)) {
+            // User has previously denied the permission, show a rationale and request again if needed
+            showSnackbar();
+        } else {
+            // Request the permissions directly
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.POST_NOTIFICATIONS
+            }, NOTIFICATION_REQUEST_CODE);
+        }
+    }
+
+    private void showSnackbar() {
+        // Show a Snackbar to explain the need for permissions and prompt the user to grant them
+        Snackbar.make(findViewById(android.R.id.content), "Notification is required for this app to work.", Snackbar.LENGTH_INDEFINITE)
+                .setAction("Grant", new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+                    @Override
+                    public void onClick(View v) {
+                        // Request the permissions when the "Grant" button is clicked in the Snackbar
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{
+                                Manifest.permission.POST_NOTIFICATIONS
+                        }, NOTIFICATION_REQUEST_CODE);
+                    }
+                })
+                .show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == NOTIFICATION_REQUEST_CODE) {
+            // Check if the permissions were granted
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Notification is available!", Toast.LENGTH_SHORT).show();
+            } else {
+                // Permissions are denied, handle this case (e.g., show an error message)
+                Toast.makeText(this, "Notification permissions are required for this app to work.", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void showFarmingPlanDialog() {
+        // Inflate the dialog layout
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_farming_plan, null);
+
+        // Access the TextView in the dialog layout
+        TextView farmingPlanTextView = dialogView.findViewById(R.id.txtContentTodo);
+        MaterialCheckBox cbNotShowAgain = dialogView.findViewById(R.id.cbNotShowAgain);
+
+        //Content todolist
+        List<String> content = new ArrayList<>();
+        userCropsList = db.userCropDao().getAllUserCrops();
+        for (UserCrops userCrop : userCropsList) {
+            ArrayList<PlanStages> planStages = (ArrayList<PlanStages>) db.planStageDao().getAllPlanStageByUserCropId(userCrop.getId());
+            for (PlanStages planStage : planStages) {
+                if (planStage.getStartDate().isBefore(LocalDate.now().plusDays(1)) && planStage.getEndDate().isAfter(LocalDate.now())) {
+                    ArrayList<PlanActivities> planActivities = (ArrayList<PlanActivities>) db.planActivityDao().getAllPlanActivitiesByPlanStageId(planStage.getId());
+                    for (PlanActivities planActivity : planActivities) {
+                        if (planActivity.getStartDate().isBefore(LocalDate.now().plusDays(1)) && planActivity.getEndDate().isAfter(LocalDate.now())) {
+                            String reminder = "- " + "\"" + db.activityDao().getActivityById(planActivity.getActivityId()).getName() + "\"" + " for the plan" + " \"" + userCrop.getName() + "\"";
+                            content.add(reminder);
+                            content.add("\n\n");
+                        }
+                    }
+                }
+            }
+        }
+        content.remove(content.size() - 1);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String cropStageString : content) {
+            stringBuilder.append(cropStageString);
+        }
+        farmingPlanTextView.setText(stringBuilder.toString());
+
+        //Checkbox do not show again
+        cbNotShowAgain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    setting.setShowAgain(false);
+                    db.settingDao().updateSetting(setting);
+                } else {
+                    setting.setShowAgain(true);
+                    db.settingDao().updateSetting(setting);
+                }
+            }
+        });
+
+        // Create a MaterialAlertDialogBuilder
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog2);
+        builder.setView(dialogView)
+                .setTitle("Today's Farming Plan")
+                .setNegativeButton("View plan", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        replaceFragment(new MainPlanning());
+                        bottomNavigationView.setSelectedItemId(R.id.planBottom);
+                    }
+                })
+                .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        // Show the dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.top_app_bar, menu);
@@ -275,7 +470,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void initView() {
         nestedScrollView = findViewById(R.id.nestedScrollView);
         drawer = findViewById(R.id.drawer);
@@ -290,6 +484,8 @@ public class MainActivity extends AppCompatActivity {
         userEmail = headerView.findViewById(R.id.userEmail);
         fabScrollToTop = findViewById(R.id.fabScrollToTop);
         replaceFragment(new MainFragment());
+        userCropsList = db.userCropDao().getAllUserCrops();
+        setting = db.settingDao().getAll();
     }
 
     public void replaceFragment(Fragment fragment) {

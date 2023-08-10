@@ -12,14 +12,17 @@ import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import com.example.ricegrow.DatabaseFiles.Converter.DateConverter;
+import com.example.ricegrow.DatabaseFiles.Converter.IntegerListConverter;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(tableName = "user_crops",
         foreignKeys = {@ForeignKey(entity = Users.class, parentColumns = "id", childColumns = "user_id", onDelete = ForeignKey.CASCADE),
                         @ForeignKey(entity =  Crops.class, parentColumns = "id", childColumns = "crop_id")})
-@TypeConverters(DateConverter.class)
+@TypeConverters({DateConverter.class, IntegerListConverter.class})
 public class UserCrops implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -27,6 +30,8 @@ public class UserCrops implements Parcelable {
     private String userId;
     @ColumnInfo(name = "crop_id")
     private int cropId;
+    private String name;
+    private int color;
     @ColumnInfo(name = "sowing_amount")
     private double sowingAmount;
     @ColumnInfo(name = "sowing_date")
@@ -37,11 +42,17 @@ public class UserCrops implements Parcelable {
     private LocalDate expectedHarvestDate;
     @ColumnInfo(name = "growth_period")
     private int growthPeriod;
+    @ColumnInfo(name = "plan_stages")
+    private List<Integer> planStages;
+
+
 
     @Ignore
-    public UserCrops(String userId, int cropId, double sowingAmount, LocalDate sowingDate, double sowedArea, LocalDate expectedHarvestDate, int growthPeriod) {
+    public UserCrops(String userId, int cropId, String name, int color, double sowingAmount, LocalDate sowingDate, double sowedArea, LocalDate expectedHarvestDate, int growthPeriod) {
         this.userId = userId;
         this.cropId = cropId;
+        this.name = name;
+        this.color = color;
         this.sowingAmount = sowingAmount;
         this.sowingDate = sowingDate;
         this.sowedArea = sowedArea;
@@ -49,13 +60,16 @@ public class UserCrops implements Parcelable {
         this.growthPeriod = growthPeriod;
     }
 
-    public UserCrops(int cropId, double sowingAmount, LocalDate sowingDate, double sowedArea, LocalDate expectedHarvestDate, int growthPeriod) {
+    public UserCrops(int cropId, String name, int color, double sowingAmount, LocalDate sowingDate, double sowedArea, LocalDate expectedHarvestDate, int growthPeriod, List<Integer> planStages) {
         this.cropId = cropId;
+        this.name = name;
+        this.color = color;
         this.sowingAmount = sowingAmount;
         this.sowingDate = sowingDate;
         this.sowedArea = sowedArea;
         this.expectedHarvestDate = expectedHarvestDate;
         this.growthPeriod = growthPeriod;
+        this.planStages = planStages;
     }
 
     @Ignore
@@ -67,11 +81,15 @@ public class UserCrops implements Parcelable {
         id = in.readInt();
         userId = in.readString();
         cropId = in.readInt();
+        name = in.readString();
+        color = in.readInt();
         sowingAmount = in.readDouble();
         sowedArea = in.readDouble();
         growthPeriod = in.readInt();
         sowingDate = LocalDate.parse(in.readString()); // Convert String back to LocalDate
         expectedHarvestDate = LocalDate.parse(in.readString()); // Convert String back to LocalDate
+        planStages = new ArrayList<>();
+        in.readList(planStages, Integer.class.getClassLoader());
     }
 
 
@@ -94,6 +112,22 @@ public class UserCrops implements Parcelable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     public String getUserId() {
@@ -152,6 +186,14 @@ public class UserCrops implements Parcelable {
         this.growthPeriod = growthPeriod;
     }
 
+    public List<Integer> getPlanStages() {
+        return planStages;
+    }
+
+    public void setPlanStages(List<Integer> planStages) {
+        this.planStages = planStages;
+    }
+
     @Override
     public String toString() {
         return "UserCrops{" +
@@ -175,10 +217,13 @@ public class UserCrops implements Parcelable {
         dest.writeInt(id);
         dest.writeString(userId);
         dest.writeInt(cropId);
+        dest.writeString(name);
+        dest.writeInt(color);
         dest.writeDouble(sowingAmount);
         dest.writeDouble(sowedArea);
         dest.writeInt(growthPeriod);
         dest.writeString(sowingDate.toString()); // Convert LocalDate to String
         dest.writeString(expectedHarvestDate.toString()); // Convert LocalDate to String
+        dest.writeList(planStages);
     }
 }

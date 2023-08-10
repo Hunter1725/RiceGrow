@@ -3,6 +3,8 @@ package com.example.ricegrow.Activity.Planning.Plan;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.WindowCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,13 +19,21 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ricegrow.Activity.Main.MainActivity;
+import com.example.ricegrow.DatabaseFiles.Model.Activities;
+import com.example.ricegrow.DatabaseFiles.Model.CropStage;
 import com.example.ricegrow.DatabaseFiles.Model.Crops;
+import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;
+import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
+import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.textfield.TextInputEditText;
@@ -35,22 +45,30 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class PlanGenerate extends AppCompatActivity {
 
+    public static final String SHOW_FRAGMENT = "showFragment";
     private MaterialToolbar toolbarPlanning;
-    private Button btnDecrease, btnIncrease,btnGenerate;
+    private Button btnDecrease, btnIncrease, btnGenerate, btnColorPicker;
     private AutoCompleteTextView categoryAutoCompleteTextView;
     private RadioGroup radioGroup;
     private RadioButton btnMeter, btnHectare;
-    private TextInputEditText editTextDate, fieldAreaEditText;
-    private TextInputLayout textInputLayoutDate, fieldAreaInputLayout, categoryDropdown;
+    private TextInputEditText editTextDate, fieldAreaEditText, edtName;
+    private TextInputLayout textInputLayoutDate, fieldAreaInputLayout, categoryDropdown, textInputLayoutName;
     private CircularProgressIndicator progressCalculate;
     private MaterialDatePicker<Long> datePicker;
     private RiceGrowDatabase db;
     private String riceVariety = "";
     private LocalDate sowingDate;
+    private MaterialCheckBox checkBoxHideShowStages, checkBoxSelectAll;
+    private RecyclerView recyclerViewStages;
+    private StageCheckboxAdapter stageCheckboxAdapter;
+    private TextView txtWarningStage;
+    private View colorLayout;
+    private int selectedColor = Color.TRANSPARENT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +78,7 @@ public class PlanGenerate extends AppCompatActivity {
 
         initView();
 
-        if(fieldAreaEditText.getText().toString().isEmpty()){
+        if (fieldAreaEditText.getText().toString().isEmpty()) {
             btnGenerate.setEnabled(false);
             btnGenerate.setBackgroundColor(Color.parseColor("#8C8C8C"));
         }
@@ -87,6 +105,27 @@ public class PlanGenerate extends AppCompatActivity {
 
         initializeDatePicker();
 
+        initSelectStage();
+
+        checkBoxHideShowStages.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // Toggle the visibility of the RecyclerView based on the checkbox state
+            recyclerViewStages.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            checkBoxSelectAll.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+        });
+
+        // Set up the "Select All" checkbox listener
+        checkBoxSelectAll.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // Update the selection state of all stages in the RecyclerView
+            stageCheckboxAdapter.selectAllStages(isChecked);
+        });
+
+        btnColorPicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Show the color picker dialog
+                showColorPickerDialog();
+            }
+        });
 
         fieldAreaEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -174,16 +213,16 @@ public class PlanGenerate extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == R.id.btnMeter){
+                if (checkedId == R.id.btnMeter) {
                     fieldAreaInputLayout.setSuffixText("m²");
-                    if(!fieldAreaEditText.getText().toString().equals("")) {
-                        String area = String.valueOf(Double.parseDouble(fieldAreaEditText.getText().toString())*10000.0);
+                    if (!fieldAreaEditText.getText().toString().equals("")) {
+                        String area = String.valueOf(Double.parseDouble(fieldAreaEditText.getText().toString()) * 10000.0);
                         fieldAreaEditText.setText(area);
                     }
                 } else if (checkedId == R.id.btnHectare) {
                     fieldAreaInputLayout.setSuffixText("ha");
-                    if(!fieldAreaEditText.getText().toString().equals("")) {
-                        String area = String.valueOf(Double.parseDouble(fieldAreaEditText.getText().toString())/10000.0);
+                    if (!fieldAreaEditText.getText().toString().equals("")) {
+                        String area = String.valueOf(Double.parseDouble(fieldAreaEditText.getText().toString()) / 10000.0);
                         fieldAreaEditText.setText(area);
                     }
                 }
@@ -201,11 +240,27 @@ public class PlanGenerate extends AppCompatActivity {
         });
     }
 
+    private void showColorPickerDialog() {
+        ColorPickerDialog.show(this, color -> {
+            // Save the selected color and update UI if needed
+            selectedColor = color;
+            colorLayout.setBackgroundColor(selectedColor);
+        });
+    }
+
+    private void initSelectStage() {
+        stageCheckboxAdapter = new StageCheckboxAdapter(PlanGenerate.this);
+        recyclerViewStages.setAdapter(stageCheckboxAdapter);
+        recyclerViewStages.setLayoutManager(new LinearLayoutManager(PlanGenerate.this));
+        List<Stages> stagesList = db.stageDao().getAllStagesWithOrder();
+        stageCheckboxAdapter.setStages(stagesList);
+    }
+
     private void initDropDownMenu() {
         // Create an ArrayAdapter with the menu items
         ArrayList<Crops> crops = (ArrayList<Crops>) db.cropDao().getAllCrops();
         ArrayList<String> customArray = new ArrayList<>();
-        for(Crops crop : crops){
+        for (Crops crop : crops) {
             customArray.add(crop.getName());
         }
         // Create the ArrayAdapter using the custom array
@@ -223,15 +278,25 @@ public class PlanGenerate extends AppCompatActivity {
     }
 
     private void generating() {
-        if(editTextDate.getText().toString().isEmpty()){
+        if (edtName.getText().toString().isEmpty()){
+            textInputLayoutName.setError("Please enter the plan name!");
+            Toast.makeText(this, "Please enter the plan name!", Toast.LENGTH_SHORT).show();
+        }
+        else if (editTextDate.getText().toString().isEmpty()) {
             textInputLayoutDate.setError("Please select the sowing date!");
+            Toast.makeText(this, "Please select the sowing date!", Toast.LENGTH_SHORT).show();
+        } else if (stageCheckboxAdapter.getSelectedStageIds().isEmpty()) {
+            txtWarningStage.setVisibility(View.VISIBLE);
+            Toast.makeText(this, "Please select at least one stage!", Toast.LENGTH_SHORT).show();
         } else if (riceVariety.isEmpty()) {
             categoryDropdown.setError("Please select the rice variety!");
-        } else {
+            Toast.makeText(this, "Please select the rice variety!", Toast.LENGTH_SHORT).show();
+        }  else {
+            txtWarningStage.setVisibility(View.GONE);
             progressCalculate.setVisibility(View.VISIBLE);
             double area = Double.parseDouble(fieldAreaEditText.getText().toString());
-            if (fieldAreaInputLayout.getSuffixText().equals("m²")){
-                area = area/10000;
+            if (fieldAreaInputLayout.getSuffixText().equals("m²")) {
+                area = area / 10000;
             }
             String dateString = editTextDate.getText().toString();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.getDefault());
@@ -246,14 +311,68 @@ public class PlanGenerate extends AppCompatActivity {
             //Amount of sowing
             double sowingAmount = 120.0 * area;
             LocalDate expectedHarvestDate = sowingDate.plusDays(crop.getGrowthPeriod() + 26);
-            db.userCropDao().insert(new UserCrops(crop.getId(), sowingAmount, sowingDate, area, expectedHarvestDate, crop.getGrowthPeriod()));
-
-
-
+            int idUserCrop = (int) db.userCropDao().insert(new UserCrops(crop.getId(), edtName.getText().toString(), selectedColor, sowingAmount, sowingDate, area, expectedHarvestDate, crop.getGrowthPeriod(), stageCheckboxAdapter.getSelectedStageIds()));
+            UserCrops incomingUserCrops = db.userCropDao().getUserCropsById(idUserCrop);
+            //Create plan stages
+            if (db.planStageDao().getAllPlanStageByUserCropId(incomingUserCrops.getId()).isEmpty()) {
+                createPlan(incomingUserCrops);
+            }
             progressCalculate.setVisibility(View.GONE);
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("showFragment", "planFragment"); // Pass a unique identifier for the fragment
+            intent.putExtra(SHOW_FRAGMENT, "planFragment"); // Pass a unique identifier for the fragment
             startActivity(intent);
+        }
+    }
+    private void createPlanActivities(PlanStages planStages, int stageId, LocalDate startDate, LocalDate endDate) {
+        Stages stages = db.stageDao().getStageById(stageId);
+        List<Activities> activities = db.activityDao().getActivitiesByStageId(stages.getId());
+        LocalDate endDatePlanStage = null;
+
+        for (Activities activity : activities) {
+            if (endDatePlanStage == null) {
+                endDatePlanStage = startDate.plusDays(activity.getDuration());
+                db.planActivityDao().insert(new PlanActivities(planStages.getId(), activity.getId(), startDate, endDatePlanStage));
+            } else {
+                db.planActivityDao().insert(new PlanActivities(planStages.getId(), activity.getId(), endDatePlanStage, endDatePlanStage.plusDays(activity.getDuration())));
+                endDatePlanStage = endDatePlanStage.plusDays(activity.getDuration());
+            }
+        }
+    }
+
+    private void createPlanStages(UserCrops incomingUserCrops, int stageId, LocalDate startDate, LocalDate endDate) {
+        int idPlanStage = (int) db.planStageDao().insert(new PlanStages(incomingUserCrops.getId(), stageId, startDate, endDate));
+        PlanStages planStage = db.planStageDao().getPlanStagesById(idPlanStage);
+        if (db.planActivityDao().getAllPlanActivitiesByPlanStageId(planStage.getId()).isEmpty()) {
+            createPlanActivities(planStage, stageId, startDate, endDate);
+        }
+    }
+
+    private void createPlan(UserCrops incomingUserCrops) {
+        List<Integer> idStage = stageCheckboxAdapter.getSelectedStageIds();
+        LocalDate endDate = null;
+
+        for (int index = 0; index < idStage.size(); index++) {
+            Integer i = idStage.get(index);
+            CropStage cropStage = db.cropStageDao().getCropStageByStageIdAndCropId(i, incomingUserCrops.getCropId());
+
+            if (endDate == null) {
+                endDate = incomingUserCrops.getSowingDate().plusDays(cropStage.getDuration());
+                createPlanStages(incomingUserCrops, i, incomingUserCrops.getSowingDate(), endDate);
+            } else {
+                // Check the gap between stages
+                if (i - idStage.get(index - 1) > 1) {
+                    int space = i - idStage.get(index - 1);
+                    int s = idStage.get(index - 1);
+                    while (space > 1) {
+                        s++;
+                        CropStage cropStageSpace = db.cropStageDao().getCropStageByStageIdAndCropId(s, incomingUserCrops.getCropId());
+                        endDate = endDate.plusDays(cropStageSpace.getDuration());
+                        space--;
+                    }
+                }
+                createPlanStages(incomingUserCrops, i, endDate, endDate.plusDays(cropStage.getDuration()));
+                endDate = endDate.plusDays(cropStage.getDuration());
+            }
         }
     }
 
@@ -307,10 +426,18 @@ public class PlanGenerate extends AppCompatActivity {
         radioGroup = findViewById(R.id.radioGroup);
         btnMeter = findViewById(R.id.btnMeter);
         btnHectare = findViewById(R.id.btnHectare);
+        txtWarningStage = findViewById(R.id.txtWarningStage);
         fieldAreaEditText = findViewById(R.id.fieldAreaEditText);
         fieldAreaInputLayout = findViewById(R.id.fieldAreaInputLayout);
         categoryDropdown = findViewById(R.id.categoryDropdown);
         progressCalculate = findViewById(R.id.progressCalculate);
+        recyclerViewStages = findViewById(R.id.recyclerViewStages);
+        checkBoxHideShowStages = findViewById(R.id.checkBoxHideShowStages);
+        checkBoxSelectAll = findViewById(R.id.checkBoxSelectAll);
+        colorLayout = findViewById(R.id.colorLayout);
+        textInputLayoutName = findViewById(R.id.textInputLayoutName);
+        edtName = findViewById(R.id.edtName);
+        btnColorPicker = findViewById(R.id.btnColorPicker);
         fieldAreaInputLayout.setSuffixText("ha");
         db = RiceGrowDatabase.getInstance(this);
     }

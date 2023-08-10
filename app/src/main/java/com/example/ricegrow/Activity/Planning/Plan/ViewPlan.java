@@ -35,6 +35,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class ViewPlan extends AppCompatActivity {
@@ -69,6 +70,7 @@ public class ViewPlan extends AppCompatActivity {
                 //Calculating the amount of fertilizers
                 calculatingFertilizer();
                 //Assign data to variables
+                toolbarPlanning.setTitle(incomingUserCrops.getName());
                 Crops crops = db.cropDao().getCropById(incomingUserCrops.getCropId());
                 textCropName.setText(crops.getName());
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.getDefault());
@@ -119,17 +121,30 @@ public class ViewPlan extends AppCompatActivity {
 
         //Create plan calendar
         if(db.planStageDao().getAllPlanStageByUserCropId(incomingUserCrops.getId()).isEmpty()) {
-            ArrayList<Stages> allStage = (ArrayList<Stages>) db.stageDao().getAllStagesWithOrder();
+            List<Integer> idStage = incomingUserCrops.getPlanStages();
             LocalDate endDate = null;
-            for (Stages stage : allStage) {
-                CropStage cropStage = db.cropStageDao().getCropStageByStageIdAndCropId(stage.getId(), incomingUserCrops.getCropId());
+            for (int index = 0; index < idStage.size(); index++) {
+                Integer i = idStage.get(index);
+                CropStage cropStage = db.cropStageDao().getCropStageByStageIdAndCropId(i, incomingUserCrops.getCropId());
                 if (endDate == null) {
                     endDate = incomingUserCrops.getSowingDate().plusDays(cropStage.getDuration());
-                    db.planStageDao().insert(new PlanStages(incomingUserCrops.getId(), stage.getId(), incomingUserCrops.getSowingDate(), endDate));
+                    db.planStageDao().insert(new PlanStages(incomingUserCrops.getId(), i, incomingUserCrops.getSowingDate(), endDate));
                 } else {
-                    db.planStageDao().insert(new PlanStages(incomingUserCrops.getId(), stage.getId(), endDate, endDate.plusDays(cropStage.getDuration())));
+                    // Check the gap between stages
+                    if (i - idStage.get(index - 1) > 1) {
+                        int space = i - idStage.get(index - 1);
+                        int s = idStage.get(index - 1);
+                        while (space > 1) {
+                            s++;
+                            CropStage cropStageSpace = db.cropStageDao().getCropStageByStageIdAndCropId(s, incomingUserCrops.getCropId());
+                            endDate = endDate.plusDays(cropStageSpace.getDuration());
+                            space--;
+                        }
+                    }
+                    db.planStageDao().insert(new PlanStages(incomingUserCrops.getId(), i, endDate, endDate.plusDays(cropStage.getDuration())));
                     endDate = endDate.plusDays(cropStage.getDuration());
                 }
+
             }
         }
 

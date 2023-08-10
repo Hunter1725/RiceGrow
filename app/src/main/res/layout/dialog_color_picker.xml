@@ -1,0 +1,10 @@
+<!-- dialog_color_picker.xml -->
+<GridView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/colorGrid"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:numColumns="5"
+    android:horizontalSpacing="8dp"
+    android:verticalSpacing="8dp"
+    android:padding="8dp" />

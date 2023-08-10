@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,13 +18,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RiceGrow"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:name=".Activity.Notification.RiceGrow">
         <activity
             android:name=".Activity.Main.Weather.WeatherActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.Main.SearchActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.Planning.Calendar.WeekView"
             android:exported="false"
@@ -150,6 +155,8 @@
             android:name=".Activity.Main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
+        <receiver android:name=".Activity.Notification.AlarmReceiver" />
+        <service android:name=".Activity.Notification.NotificationService" />
     </application>
 
 </manifest>

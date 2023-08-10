@@ -144,149 +144,226 @@
         android:layout_width="match_parent"
         android:layout_height="100dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="In the stage:"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_margin="8dp"/>
-
-    <TextView
-        android:id="@+id/txtEmpty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="It is not in any stage!"
-        android:textStyle="italic"
-        android:textSize="18sp"
-        android:layout_gravity="center"
-        android:visibility="gone"/>
-
-    <com.google.android.material.card.MaterialCardView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:id="@+id/stage"
-        android:checkable="true"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="5dp"
-        android:backgroundTint="@color/login_background">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageStage"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:scaleType="centerCrop"
-                app:shapeAppearanceOverlay="@style/RoundedImageViewShape"
-                app:srcCompat="@drawable/ic_launcher_background"
-                android:contentDescription="Image of stage" />
-
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="16dp">
+                android:layout_margin="8dp"
+                android:text="In the stage:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/txtNameStage"
+            <TextView
+                android:id="@+id/txtEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="It is not in any stage!"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:visibility="gone" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/stage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/login_background"
+                android:checkable="true"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Stage name"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:layout_marginBottom="8dp" />
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imageStage"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:contentDescription="Image of stage"
+                        android:scaleType="centerCrop"
+                        app:shapeAppearanceOverlay="@style/RoundedImageViewShape"
+                        app:srcCompat="@drawable/ic_launcher_background" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtNameStage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="Stage name"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/durationStage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Duration:"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/txtDurationStage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="Duration day"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/durationStage"
+                                app:layout_constraintStart_toEndOf="@+id/durationStage" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/startDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Start date:"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/txtStartDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="Compositions name "
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/startDate"
+                                app:layout_constraintStart_toEndOf="@+id/startDate" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Activity:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtEmpty2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="There are no current activities!"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/activityListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp">
+                    android:text="Note:"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="10dp"/>
 
-                    <TextView
-                        android:id="@+id/durationStage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Duration:"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
-
-                    <TextView
-                        android:id="@+id/txtDurationStage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Duration day"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        app:layout_constraintStart_toEndOf="@+id/durationStage"
-                        app:layout_constraintBottom_toBottomOf="@+id/durationStage"
-                        android:layout_marginStart="5dp"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <Button
+                    android:id="@+id/btnAddNote"
+                    style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="+ Add new"
+                    android:textColor="@color/button_bg"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-                    <TextView
-                        android:id="@+id/startDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Start date:"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                <Button
+                    android:id="@+id/btnDeleteNote"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="Delete note"
+                    android:textColor="@color/button_bg"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="gone"/>
 
-                    <TextView
-                        android:id="@+id/txtStartDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Compositions name "
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        app:layout_constraintStart_toEndOf="@+id/startDate"
-                        app:layout_constraintBottom_toBottomOf="@+id/startDate"
-                        android:layout_marginStart="5dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/txtContentNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Not finish this activity today because its rain!"
+                android:textSize="18sp"
+                android:visibility="gone" />
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/txtEmpty3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="There are no notes!"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:visibility="visible" />
 
         </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Activity:"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_margin="8dp"/>
-
-    <TextView
-        android:id="@+id/txtEmpty2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="There are no current activities!"
-        android:textStyle="italic"
-        android:textSize="18sp"
-        android:layout_gravity="center"
-        android:visibility="gone"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/activityListView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"/>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

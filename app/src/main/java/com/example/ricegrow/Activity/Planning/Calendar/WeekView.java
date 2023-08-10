@@ -8,6 +8,7 @@ import static com.example.ricegrow.Activity.Planning.Plan.ViewPlan.USERCROP_KEY;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -15,7 +16,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,8 +28,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.ricegrow.Activity.Knowledge.StageActivity.Stage.StageActivity;
+import com.example.ricegrow.Activity.Planning.MainPlanning;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.CropStage;
+import com.example.ricegrow.DatabaseFiles.Model.Notes;
 import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
@@ -34,21 +39,29 @@ import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.checkbox.MaterialCheckBox;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 public class WeekView extends Fragment implements CalendarAdapter.OnItemListener{
 
-    private TextView monthYearText, txtEmpty, txtEmpty2, txtNameStage, txtDurationStage, txtStartDate;
-    private Button  btnDaily, btnPrevious, btnNext;
+    private TextView monthYearText, txtEmpty, txtEmpty2, txtNameStage, txtDurationStage, txtStartDate, txtContentNote, txtEmpty3;
+    private Button  btnDaily, btnPrevious, btnNext, btnAddNote, btnDeleteNote;
     private MaterialCardView cardStage;
     private ShapeableImageView imageStage;
     private RecyclerView calendarRecyclerView, activityListView;
     private UserCrops incomingUserCrops;
     private RiceGrowDatabase db;
     private Stages stages;
+    private PlanActivities currentPlanActivity;
+    private Notes notes;
 
 
     @Nullable
@@ -107,6 +120,97 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
                 startActivity(intent);
             }
         });
+
+        btnAddNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNoteDialog();
+            }
+        });
+
+        txtContentNote.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                showDeleteNote();
+                return true;
+            }
+        });
+        btnDeleteNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDeleteNote();
+            }
+        });
+    }
+
+    private void showDeleteNote() {
+        Notes deleteNotes = notes;
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog);
+        builder.setTitle("Delete note");
+        builder.setMessage("Are you sure you want to delete this note?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Perform guest login action
+                db.noteDao().delete(notes);
+                Snackbar.make(getView(),"The notes was removed!", Snackbar.LENGTH_LONG)
+                        .setAction("Undo", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                db.noteDao().insert(deleteNotes);
+                                setWeekView();
+                            }
+                        }).setActionTextColor(Color.parseColor("#4CAF50"))
+                        .show();
+                setWeekView();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void showNoteDialog() {
+        // Inflate the dialog layout
+        View dialogView = getLayoutInflater().inflate(R.layout.note_layout, null);
+
+        // Access the TextView in the dialog layout
+        TextInputLayout textInputLayoutNote = dialogView.findViewById(R.id.textInputLayoutNote);
+        TextInputEditText edtNote = dialogView.findViewById(R.id.edtNote);
+
+        // Create a MaterialAlertDialogBuilder
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity(), R.style.ThemeOverlay_App_MaterialAlertDialog2);
+        builder.setView(dialogView)
+                .setTitle("Add new note")
+                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String contentNote = edtNote.getText().toString();
+
+                        if(contentNote.isEmpty()){
+                            textInputLayoutNote.setError("Please enter something!");
+                        }
+                        else {
+                            db.noteDao().insert(new Notes(currentPlanActivity.getId(), selectDate, contentNote));
+                            setWeekView();
+                        }
+                    }
+                })
+                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        // Show the dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void setWeekView() {
@@ -152,10 +256,24 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
                     ArrayList<Activities> setList = new ArrayList<>();
                     for(PlanActivities planActivity : planActivities){
                         if(planActivity.getStartDate().isBefore(selectDate.plusDays(1)) && planActivity.getEndDate().isAfter(selectDate)){
+                            currentPlanActivity = planActivity;
                             setList.add(db.activityDao().getActivityById(planActivity.getActivityId()));
                         }
                     }
                     activityPlanAdapter.setActivities(setList);
+                    notes = db.noteDao().getNotesByPlanActivityId(currentPlanActivity.getId(), selectDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli());
+                    if( notes != null && notes.getDate().isEqual(selectDate)){
+                        txtEmpty3.setVisibility(View.GONE);
+                        btnAddNote.setVisibility(View.GONE);
+                        btnDeleteNote.setVisibility(View.VISIBLE);
+                        txtContentNote.setVisibility(View.VISIBLE);
+                        txtContentNote.setText(notes.getContent());
+                    } else {
+                        txtEmpty3.setVisibility(View.VISIBLE);
+                        btnAddNote.setVisibility(View.VISIBLE);
+                        btnDeleteNote.setVisibility(View.GONE);
+                        txtContentNote.setVisibility(View.GONE);
+                    }
                 }
 
                 break;
@@ -164,6 +282,10 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
             activityListView.setVisibility(View.GONE);
             txtEmpty.setVisibility(View.VISIBLE);
             txtEmpty2.setVisibility(View.VISIBLE);
+            txtEmpty3.setVisibility(View.VISIBLE);
+            btnAddNote.setVisibility(View.GONE);
+            btnDeleteNote.setVisibility(View.GONE);
+            txtContentNote.setVisibility(View.GONE);
         }
     }
 
@@ -172,12 +294,16 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
         btnDaily = view.findViewById(R.id.btnDaily);
         btnPrevious = view.findViewById(R.id.btnPrevious);
         btnNext = view.findViewById(R.id.btnNext);
+        btnAddNote = view.findViewById(R.id.btnAddNote);
+        btnDeleteNote = view.findViewById(R.id.btnDeleteNote);
         calendarRecyclerView = view.findViewById(R.id.calendarRecyclerView);
         txtEmpty = view.findViewById(R.id.txtEmpty);
         txtEmpty2 = view.findViewById(R.id.txtEmpty2);
         txtNameStage = view.findViewById(R.id.txtNameStage);
         txtDurationStage = view.findViewById(R.id.txtDurationStage);
         txtStartDate = view.findViewById(R.id.txtStartDate);
+        txtContentNote = view.findViewById(R.id.txtContentNote);
+        txtEmpty3 = view.findViewById(R.id.txtEmpty3);
         cardStage = view.findViewById(R.id.stage);
         imageStage = view.findViewById(R.id.imageStage);
         activityListView = view.findViewById(R.id.activityListView);

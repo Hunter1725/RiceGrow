@@ -25,12 +25,14 @@ import com.example.ricegrow.DatabaseFiles.Dao.DiseasePesticideDao;
 import com.example.ricegrow.DatabaseFiles.Dao.DiseaseStageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.FertilizerCalculatingDao;
 import com.example.ricegrow.DatabaseFiles.Dao.FertilizerDao;
+import com.example.ricegrow.DatabaseFiles.Dao.NoteDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PestDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PestPesticideDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PestStageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PesticideDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PlanActivityDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PlanStageDao;
+import com.example.ricegrow.DatabaseFiles.Dao.SettingDao;
 import com.example.ricegrow.DatabaseFiles.Dao.StageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.UserCropDao;
 import com.example.ricegrow.DatabaseFiles.Dao.UserDao;
@@ -54,12 +56,14 @@ import com.example.ricegrow.DatabaseFiles.Model.DiseasesPesticides;
 import com.example.ricegrow.DatabaseFiles.Model.DiseasesStages;
 import com.example.ricegrow.DatabaseFiles.Model.FertilizerCalculating;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
+import com.example.ricegrow.DatabaseFiles.Model.Notes;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
 import com.example.ricegrow.DatabaseFiles.Model.PestsPesticides;
 import com.example.ricegrow.DatabaseFiles.Model.PestsStages;
 import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
+import com.example.ricegrow.DatabaseFiles.Model.Setting;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.Model.Users;
@@ -76,7 +80,7 @@ import java.util.concurrent.Executors;
                     Fertilizers.class, Pesticides.class, Pests.class, PestsPesticides.class, PestsStages.class,
                     PlanActivities.class, PlanStages.class, Stages.class,
                     UserCrops.class, Users.class, Weeds.class, WeedsPesticides.class, FertilizerCalculating.class, DeficienciesToxicities.class, CropDeftox.class,
-                    DeftoxFertilizer.class, DeftoxStage.class, Weather.class}, version = 1)
+                    DeftoxFertilizer.class, DeftoxStage.class, Weather.class, Setting.class, Notes.class}, version = 1)
 public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract ActivityDao activityDao();
     public abstract ActivityFertilizerDao activityFertilizerDao();
@@ -107,6 +111,8 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract DeftoxFertilizerDao deftoxFertilizerDao();
     public abstract DeftoxStageDao deftoxStageDao();
     public abstract WeatherDao weatherDao();
+    public abstract SettingDao settingDao();
+    public abstract NoteDao noteDao();
 
 
     private static RiceGrowDatabase instance;
@@ -1384,6 +1390,10 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency"), stageDao.getIdByName("Flowering")));
             deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency"), stageDao.getIdByName("Tillering")));
             deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency"), stageDao.getIdByName("Panicle initiation")));
+
+            //Setting
+            SettingDao settingDao = db.settingDao();
+            settingDao.insert(new Setting(true, true, true, "VIE"));
         });
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Todo list today for your farming plan:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="10dp"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:id="@+id/txtContentTodo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fertilizer for plan 1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="10dp"/>
+
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cbNotShowAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.App.CheckBox"
+        android:text="Don't show again in the next start"
+        android:textSize="16dp"/>
+
+</LinearLayout>

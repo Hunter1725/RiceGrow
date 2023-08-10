@@ -146,11 +146,11 @@ public class MainCalendar extends AppCompatActivity {
     private void initView() {
         toolbarPlanning = findViewById(R.id.toolbarPlanning);
 
-        MonthView monthView = new MonthView();
+        WeekView weekView = new WeekView();
         Bundle args = new Bundle();
         args.putParcelable(USERCROP_KEY, incomingUserCrops);
-        monthView.setArguments(args);
-        replaceFragment(monthView);
+        weekView.setArguments(args);
+        replaceFragment(weekView);
     }
 
     public Fragment getCurrentFragment() {

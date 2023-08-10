@@ -236,7 +236,7 @@
                     android:id="@+id/txtDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Today, August 2"
+                    android:text="Empty"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -246,7 +246,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="30°C"
+                    android:text="--°C"
                     android:textSize="40sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -270,7 +270,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
-                    android:text="20 km/h"
+                    android:text="-- km/h"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/wind"
                     app:layout_constraintTop_toBottomOf="@+id/txtTemp" />
@@ -293,7 +293,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
-                    android:text="20%"
+                    android:text="--%"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/humidity"
                     app:layout_constraintTop_toBottomOf="@+id/wind" />
@@ -313,7 +313,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Scattered clouds"
+                    android:text="Empty"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -356,7 +356,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="5dp"
-                    android:text="Use fertilizers"
+                    android:text="Empty"
                     android:textAllCaps="true"
                     android:textSize="16sp"
                     android:textStyle="bold" />

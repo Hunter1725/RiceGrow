@@ -106,7 +106,7 @@ public class MainPlanning extends Fragment {
                 deletedPlan = userCrops.get(position);
                 MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog);
                 builder.setTitle("Delete plan");
-                builder.setMessage("Are you sure you want to delete this plan?");
+                builder.setMessage("Are you sure you want to delete this plan?\nWarning: You can undo this but all created notes will be deleted forever");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -114,7 +114,7 @@ public class MainPlanning extends Fragment {
                         db.userCropDao().delete(deletedPlan); // Delete from the database first
                         userCrops.remove(position); // Then remove from the list
                         planListAdapter.notifyItemRemoved(position);
-                        Snackbar.make(plansListView, db.cropDao().getCropById(deletedPlan.getCropId()).getName() + " Sowing Date: " + deletedPlan.getSowingDate().toString() + " removed!", Snackbar.LENGTH_LONG)
+                        Snackbar.make(plansListView, "The plan " + deletedPlan.getName() + " was removed!", Snackbar.LENGTH_LONG)
                                 .setAction("Undo", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {

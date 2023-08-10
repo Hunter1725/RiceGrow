@@ -19,6 +19,7 @@ public class NetworkUtils {
     private OnConnectivityChangeListener listener;
 
     private Handler mainHandler = new Handler(Looper.getMainLooper());
+    private ConnectivityManager.NetworkCallback networkCallback;
 
     public NetworkUtils(Context context) {
         this.context = context;
@@ -32,30 +33,30 @@ public class NetworkUtils {
     public void register() {
         NetworkRequest networkRequest = new NetworkRequest.Builder().build();
 
-        connectivityManager.registerNetworkCallback(
-                networkRequest,
-                new ConnectivityManager.NetworkCallback() {
-                    @Override
-                    public void onCapabilitiesChanged(@NonNull Network network, @NonNull NetworkCapabilities networkCapabilities) {
-                        isConnected = networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) &&
-                                networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED);
-                        notifyListener();
-                    }
+        networkCallback = new ConnectivityManager.NetworkCallback() {
+            @Override
+            public void onCapabilitiesChanged(@NonNull Network network, @NonNull NetworkCapabilities networkCapabilities) {
+                isConnected = networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) &&
+                        networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED);
+                notifyListener();
+            }
 
-                    @Override
-                    public void onLost(@NonNull Network network) {
-                        isConnected = false;
-                        notifyListener();
-                    }
-                }
-        );
+            @Override
+            public void onLost(@NonNull Network network) {
+                isConnected = false;
+                notifyListener();
+            }
+        };
+
+        connectivityManager.registerNetworkCallback(
+                networkRequest, networkCallback);
 
         isRegistered = true;
     }
 
     public void unregister() {
         if (isRegistered) {
-            connectivityManager.unregisterNetworkCallback(new ConnectivityManager.NetworkCallback());
+            connectivityManager.unregisterNetworkCallback(networkCallback);
             isRegistered = false;
         }
     }

@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
@@ -45,12 +46,12 @@ public class PlanListAdapter extends RecyclerView.Adapter<PlanListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         db = RiceGrowDatabase.getInstance(context);
+        holder.txtNamePlan.setText(userCrops.get(position).getName());
         holder.txtRiceVariety.setText(db.cropDao().getCropById(userCrops.get(position).getCropId()).getName());
-        String areaString = userCrops.get(position).getSowedArea() + " ha";
-        holder.txtArea.setText(areaString);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.getDefault());
         String dateString = userCrops.get(position).getSowingDate().format(formatter);
         holder.txtSowingDate.setText(dateString);
+        holder.colorColumn.setBackgroundColor(userCrops.get(position).getColor());
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,14 +69,16 @@ public class PlanListAdapter extends RecyclerView.Adapter<PlanListAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private LinearLayout parent;
-        private TextView txtRiceVariety, txtSowingDate, txtArea;
+        private ConstraintLayout parent;
+        private TextView txtRiceVariety, txtSowingDate, txtNamePlan;
+        private View colorColumn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtRiceVariety = itemView.findViewById(R.id.txtRiceVariety);
             txtSowingDate = itemView.findViewById(R.id.txtSowingDate);
-            txtArea = itemView.findViewById(R.id.txtArea);
+            txtNamePlan = itemView.findViewById(R.id.txtNamePlan);
+            colorColumn = itemView.findViewById(R.id.colorColumn);
             parent = itemView.findViewById(R.id.parent);
         }
     }

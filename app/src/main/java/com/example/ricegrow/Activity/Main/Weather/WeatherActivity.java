@@ -47,6 +47,7 @@ import com.google.android.gms.location.SettingsClient;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.List;
 
@@ -191,7 +192,8 @@ public class WeatherActivity extends AppCompatActivity {
 
     private void updateWeatherSection(DailyWeatherData weatherData, TextView dateView, TextView tempView, TextView windView,
                                       TextView humidityView, TextView maxMinView, TextView weatherDesView, ImageView weatherImageView, boolean week) {
-        LocalDate localDate = getLocalDateTimeFromTimestamp((long) weatherData.getDt());
+        LocalDate localDate = getLocalDateTimeFromTimestamp(weatherData.getDt());
+        LocalTime currentTime = LocalTime.now();
         if (week) {
             dateView.setText(CalendarUtils.formattedWeek(localDate));
         } else {
@@ -202,7 +204,16 @@ public class WeatherActivity extends AppCompatActivity {
             weather.setMain(weatherData.getWeather().get(0).getMain());
             weather.setHumidity(weatherData.getHumidity());
             weather.setSpeed(weatherData.getSpeed());
-            weather.setTemp(weatherData.getTemperature().getDay());
+            if (currentTime.isBefore(LocalTime.of(12, 0))) {
+                // Morning (before 12:00 PM)
+                weather.setTemp(weatherData.getTemperature().getDay());
+            } else if (currentTime.isBefore(LocalTime.of(18, 0))) {
+                // Afternoon/Evening (12:00 PM - 6:00 PM)
+                weather.setTemp(weatherData.getTemperature().getEve());
+            } else {
+                // Night (after 6:00 PM)
+                weather.setTemp(weatherData.getTemperature().getNight());
+            }
             db.weatherDao().updateWeather(weather);
             dateView.setText(CalendarUtils.formattedDayOfWeek(localDate));
             String weatherRecommend = "";
@@ -220,7 +231,19 @@ public class WeatherActivity extends AppCompatActivity {
             }
 
         }
-        int valueTemp = (int) weatherData.getTemperature().getDay();
+        int valueTemp;
+
+        if (currentTime.isBefore(LocalTime.of(12, 0))) {
+            // Morning (before 12:00 PM)
+            valueTemp = (int) weatherData.getTemperature().getDay();
+        } else if (currentTime.isBefore(LocalTime.of(18, 0))) {
+            // Afternoon/Evening (12:00 PM - 6:00 PM)
+            valueTemp = (int) weatherData.getTemperature().getEve();
+        } else {
+            // Night (after 6:00 PM)
+            valueTemp = (int) weatherData.getTemperature().getNight();
+        }
+
         if (unitTemp.equals("°F")){
             valueTemp = (valueTemp * 9/5) + 32;
         }

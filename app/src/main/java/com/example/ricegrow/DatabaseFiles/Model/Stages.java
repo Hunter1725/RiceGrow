@@ -20,12 +20,14 @@ public class Stages implements Parcelable {
     private String description;
     @ColumnInfo(name = "stage_image")
     private String stageImage;
+    private boolean selected;
 
     public Stages(String name, int order, String description, String stageImage) {
         this.name = name;
         this.order = order;
         this.description = description;
         this.stageImage = stageImage;
+        this.selected = false;
     }
 
     @Ignore
@@ -39,6 +41,24 @@ public class Stages implements Parcelable {
         order = in.readInt();
         description = in.readString();
         stageImage = in.readString();
+        selected = in.readByte() != 0;
+    }
+
+    @Ignore
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeInt(order);
+        dest.writeString(description);
+        dest.writeString(stageImage);
+        dest.writeByte((byte) (selected ? 1 : 0));
+    }
+
+    @Ignore
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     @Ignore
@@ -56,6 +76,14 @@ public class Stages implements Parcelable {
 
     public int getId() {
         return id;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
     public void setId(int id) {
@@ -94,20 +122,4 @@ public class Stages implements Parcelable {
         this.stageImage = stageImage;
     }
 
-
-    @Ignore
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Ignore
-    @Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(name);
-        dest.writeInt(order);
-        dest.writeString(description);
-        dest.writeString(stageImage);
-    }
 }
