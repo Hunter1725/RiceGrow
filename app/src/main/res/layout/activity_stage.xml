@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Descriptions"
+                    android:text="@string/descriptions"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Duration"
+                    android:text="@string/duration_nodot"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Start date"
+                    android:text="@string/start_date_nodot"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="End date"
+                    android:text="@string/end_date"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -158,7 +158,7 @@
                     android:id="@+id/pests"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Harmful pests"
+                    android:text="@string/harmful_pests"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:text="Sorry, the information is being updated!"
+                    android:text="@string/sorry_the_information_is_being_updated"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     android:visibility="gone"/>
@@ -187,7 +187,7 @@
                     android:id="@+id/diseases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Potential diseases"
+                    android:text="@string/potential_diseases"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -199,7 +199,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:text="Sorry, the information is being updated!"
+                    android:text="@string/sorry_the_information_is_being_updated"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     android:visibility="gone"/>
@@ -216,7 +216,7 @@
                     android:id="@+id/activities"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Relevant activities"
+                    android:text="@string/relevant_activities"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -228,7 +228,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:text="Sorry, the information is being updated!"
+                    android:text="@string/sorry_the_information_is_being_updated"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     android:visibility="gone"/>

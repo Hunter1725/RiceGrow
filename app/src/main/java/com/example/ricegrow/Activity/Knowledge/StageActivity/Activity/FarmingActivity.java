@@ -117,7 +117,7 @@ public class FarmingActivity extends AppCompatActivity {
                 txtNameActivity.setText(incomingActivity.getName());
                 toolbarActivity.setTitle(incomingActivity.getName());
                 txtDescription.setText(incomingActivity.getDescription());
-                String duration = String.valueOf(incomingActivity.getDuration()) + " days";
+                String duration = String.valueOf(incomingActivity.getDuration()) + getString(R.string.days);
                 txtDuration.setText(duration);
 
                 //Card stage
@@ -130,9 +130,9 @@ public class FarmingActivity extends AppCompatActivity {
                         .error(R.drawable.baseline_error_outline_24)
                         .into(imageStage);
                 txtNameStage.setText(stages.getName());
-                String durationStage = String.valueOf(cropStage.getDuration()) + " days";
+                String durationStage = String.valueOf(cropStage.getDuration()) + getString(R.string.days);
                 txtDurationStage.setText(durationStage);
-                String startDate = String.valueOf(cropStage.getStartDate()) + " day";
+                String startDate = String.valueOf(cropStage.getStartDate()) + getString(R.string.day);
                 txtStartDate.setText(startDate);
 
 

@@ -6,10 +6,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
+        android:name=".Activity.Notification.RiceGrow"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,16 +18,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RiceGrow"
-        tools:targetApi="31"
-        android:name=".Activity.Notification.RiceGrow">
+        tools:targetApi="31">
+        <activity
+            android:name=".Activity.Start.StartActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".Activity.Setting.SettingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.Main.Weather.WeatherActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Main.SearchActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Planning.Calendar.WeekView"
             android:exported="false"
@@ -140,13 +155,7 @@
         <activity
             android:name=".Activity.Authenticate.LoginNormal.LoginActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.Authenticate.LoginNormal.RegisterActivity"
             android:exported="true"
@@ -155,7 +164,9 @@
             android:name=".Activity.Main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
+
         <receiver android:name=".Activity.Notification.AlarmReceiver" />
+
         <service android:name=".Activity.Notification.NotificationService" />
     </application>
 

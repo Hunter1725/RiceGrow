@@ -29,7 +29,7 @@
                 android:background="@color/login_background"
                 app:menu="@menu/top_bar_management"
                 app:navigationIcon="@drawable/back"
-                app:title="Pesticide calculator" />
+                app:title="@string/pesticide_calculator" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -79,7 +79,7 @@
                         android:id="@+id/moreDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="More info here"
+                        android:text="@string/more_info_here"
                         android:textSize="18sp"
                         android:textStyle="italic"
                         android:textColor="@color/button_bg"
@@ -91,7 +91,7 @@
                         android:id="@+id/selectCapacity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Spray bottle capacity"
+                        android:text="@string/spray_bottle_capacity"
                         android:textSize="19sp"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
@@ -112,7 +112,7 @@
                             android:id="@+id/btn16"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="16 liters"
+                            android:text="@string/_16_liters"
                             android:textSize="19sp"
                             style="@style/Widget.App.RadioButton" />
 
@@ -120,7 +120,7 @@
                             android:id="@+id/btn18"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="18 liters"
+                            android:text="@string/_18_liters"
                             android:textSize="19sp"
                             style="@style/Widget.App.RadioButton" />
 
@@ -128,7 +128,7 @@
                             android:id="@+id/btn20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="20 liters"
+                            android:text="@string/_20_liters"
                             android:textSize="19sp"
                             style="@style/Widget.App.RadioButton" />
 
@@ -136,7 +136,7 @@
                             android:id="@+id/btn25"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="25 liters"
+                            android:text="@string/_25_liters"
                             android:textSize="19sp"
                             style="@style/Widget.App.RadioButton" />
 
@@ -146,7 +146,7 @@
                         android:id="@+id/selectArea"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Field area"
+                        android:text="@string/field_area"
                         android:textSize="19sp"
                         android:textStyle="bold"
                         android:layout_marginTop="20dp"
@@ -244,7 +244,7 @@
                         android:id="@+id/selectUnit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Unit"
+                        android:text="@string/unit"
                         android:textSize="19sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -264,7 +264,7 @@
                             android:id="@+id/btnMeter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Square meters (m²)"
+                            android:text="@string/square_meters_m"
                             android:textSize="17sp"
                             style="@style/Widget.App.RadioButton" />
 
@@ -272,7 +272,7 @@
                             android:id="@+id/btnHectare"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Hectare (ha)"
+                            android:text="@string/hectare_ha"
                             android:layout_marginStart="10dp"
                             android:textSize="17sp"
                             style="@style/Widget.App.RadioButton"
@@ -287,7 +287,7 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="32dp"
                         android:backgroundTint="@color/button_bg"
-                        android:text="Calculate"
+                        android:text="@string/calculate"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/white"
@@ -339,7 +339,7 @@
                         android:id="@+id/textResult"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="The amount of pesticides recommended to use:"
+                        android:text="@string/the_amount_of_pesticides_recommended_to_use"
                         android:textSize="19sp"
                         android:textStyle="bold"/>
 
@@ -363,7 +363,7 @@
                                 android:id="@+id/textCapacity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Spray bottle capacity:"
+                                android:text="@string/spray_bottle_capacity_dot"
                                 android:textSize="20sp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -384,7 +384,7 @@
                                 android:id="@+id/textAmountPest"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Amount of pesticides per spray bottle:"
+                                android:text="@string/amount_of_pesticides_per_spray_bottle"
                                 android:textSize="20sp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/txtCapacity"
@@ -406,7 +406,7 @@
                                 android:id="@+id/textTotalAmount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Total amount of needed pesticides:"
+                                android:text="@string/total_amount_of_needed_pesticides"
                                 android:textSize="20sp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/txtAmountPest"
@@ -428,7 +428,7 @@
                                 android:id="@+id/textTotalWater"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Total amount of water:"
+                                android:text="@string/total_amount_of_water"
                                 android:textSize="20sp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/txtTotalAmount"
@@ -450,7 +450,7 @@
                                 android:id="@+id/textTotalBottle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Total number of spray bottles:"
+                                android:text="@string/total_number_of_spray_bottles"
                                 android:textSize="20sp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/txtTotalWater"
@@ -477,7 +477,7 @@
                         android:id="@+id/defaultNutrients"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Note: Expert-recommended pesticide amounts provided above can be customized to your specific situation."
+                        android:text="@string/note_expert_recommended_pesticide_amounts_provided_above_can_be_customized_to_your_specific_situation"
                         android:textStyle="italic"
                         android:textSize="15sp"
                         android:layout_marginTop="10dp"
@@ -497,7 +497,7 @@
                     android:id="@+id/specializeTreating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Specializes in treating:"
+                    android:text="@string/specializes_in_treating_dot"
                     android:layout_marginTop="15dp"
                     android:textSize="18sp"
                     android:layout_marginStart="8dp"
@@ -509,7 +509,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:text="Sorry, the information is being updated!"
+                    android:text="@string/sorry_the_information_is_being_updated"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     android:visibility="gone"/>

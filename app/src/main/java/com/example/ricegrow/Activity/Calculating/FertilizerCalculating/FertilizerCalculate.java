@@ -150,7 +150,7 @@ public class FertilizerCalculate extends AppCompatActivity {
                     } else {
                         area = Double.valueOf(String.valueOf(fieldAreaEditText.getText()));
                         if ((area - 0.5) <= 0) {
-                            fieldAreaInputLayout.setError("Must be greater than 0");
+                            fieldAreaInputLayout.setError(getString(R.string.must_be_greater_than_0));
                         } else {
                             area -= 0.5;
                             fieldAreaEditText.setText(String.valueOf(area));
@@ -163,7 +163,7 @@ public class FertilizerCalculate extends AppCompatActivity {
                     } else {
                         area = Double.valueOf(String.valueOf(fieldAreaEditText.getText()));
                         if ((area - 500.0) <= 0) {
-                            fieldAreaInputLayout.setError("Must be greater than 0");
+                            fieldAreaInputLayout.setError(getString(R.string.must_be_greater_than_0));
                         } else {
                             area -= 500;
                             fieldAreaEditText.setText(String.valueOf(area));
@@ -394,7 +394,7 @@ public class FertilizerCalculate extends AppCompatActivity {
         String input = editText.getText().toString().trim();
 
         if (TextUtils.isEmpty(input)) {
-            textInputLayout.setError("Input cannot be empty");
+            textInputLayout.setError(getString(R.string.input_cannot_be_empty));
         } else {
             textInputLayout.setError(null);
         }

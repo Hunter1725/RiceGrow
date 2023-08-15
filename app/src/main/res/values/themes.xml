@@ -50,6 +50,15 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="CircleShapeImageView2">
+        <item name="shapeAppearanceOverlay">@style/CircleShapeOverlay2</item>
+    </style>
+
+    <style name="CircleShapeOverlay2">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30%</item>
+    </style>
+
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">#81C784</item>
     </style>
@@ -135,6 +144,21 @@
 
     <style name="Widget.App.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
         <item name="buttonTint">@color/checkbox_tint</item>
+    </style>
+
+    <style name="Widget.App.Switch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Switch</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Switch" parent="">
+        <item name="colorPrimary">@color/button_bg</item>
+    </style>
+
+
+    <style name="Widget.App.CardView" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">@color/card_check</item>
+        <item name="strokeColor">@color/outline_stroke_card</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
     </style>
 
 </resources>

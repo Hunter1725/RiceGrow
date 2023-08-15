@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Category"
+                    android:text="@string/category"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Manufacturer"
+                    android:text="@string/manufacturer"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Composition"
+                    android:text="@string/composition"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Instruction"
+                    android:text="@string/instruction"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Dosage per use (16-liter bottle)"
+                    android:text="@string/dosage_per_use_16_liter_bottle"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Amount of water sprayed"
+                    android:text="@string/amount_of_water_sprayed"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -196,7 +196,7 @@
                     android:id="@+id/specialize"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Specializes in treating"
+                    android:text="@string/specializes_in_treating"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -215,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:text="Sorry, the information is being updated!"
+                    android:text="@string/sorry_the_information_is_being_updated"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     android:visibility="gone"/>
@@ -224,7 +224,7 @@
                     android:id="@+id/using"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Can be used in"
+                    android:text="@string/can_be_used_in"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -244,7 +244,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:text="Sorry, the information is being updated!"
+                    android:text="@string/sorry_the_information_is_being_updated"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     android:visibility="gone"/>

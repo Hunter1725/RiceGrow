@@ -112,11 +112,11 @@ public class CropActivity extends AppCompatActivity {
                 txtNameCrop.setText(incomingCrop.getName());
                 toolbarCrop.setTitle(incomingCrop.getName());
                 txtDescription.setText(incomingCrop.getDescription());
-                String growth = "About " + String.valueOf(incomingCrop.getGrowthPeriod()) + " days";
+                String growth = getString(R.string.about) + String.valueOf(incomingCrop.getGrowthPeriod()) + getString(R.string.days);
                 txtGrowthPeriod.setText(growth);
                 String price = String.valueOf(incomingCrop.getSellingPrice()) + " VND/kg";
                 txtRetailPrice.setText(price);
-                String salt = "About " + String.valueOf(incomingCrop.getSaltTolerance() + "‰");
+                String salt = getString(R.string.about) + String.valueOf(incomingCrop.getSaltTolerance() + "‰");
                 txtSaltTolerance.setText(salt);
 
                 pestAdapter = new TreatingAdapter(this);

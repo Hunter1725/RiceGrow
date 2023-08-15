@@ -34,14 +34,14 @@
                 android:id="@+id/riceVariety"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/weed"
-                android:drawableTint="@color/black"
                 android:drawablePadding="5dp"
-                android:text="Rice variety:"
+                android:text="@string/rice_variety_dot"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:drawableStartCompat="@drawable/weed"
+                app:drawableTint="@color/black" />
 
             <TextView
                 android:id="@+id/txtRiceVariety"
@@ -65,13 +65,13 @@
                 android:id="@+id/SowingDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/sowing_date"
                 android:drawablePadding="5dp"
-                android:text="Sowing Date:"
+                android:text="@string/sowing_date_dot"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:drawableStartCompat="@drawable/sowing_date" />
 
             <TextView
                 android:id="@+id/txtSowingDate"

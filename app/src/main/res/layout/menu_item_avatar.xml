@@ -7,5 +7,5 @@
         android:layout_height="54dp"
         android:scaleType="centerCrop"
         style="@style/CircleShapeImageView"
-        app:srcCompat="@drawable/ic_launcher_background"
+        app:srcCompat="@drawable/logo"
         android:padding="10dp" />

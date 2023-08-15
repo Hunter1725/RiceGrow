@@ -33,8 +33,8 @@ public class ColorPickerDialog {
         colorGrid.setAdapter(colorAdapter);
 
         dialogBuilder.setView(dialogView);
-        dialogBuilder.setTitle("Pick a color");
-        dialogBuilder.setNegativeButton("Cancel", null);
+        dialogBuilder.setTitle(context.getString(R.string.pick_a_color));
+        dialogBuilder.setNegativeButton(context.getString(R.string.cancel), null);
         dialog = dialogBuilder.create();
         dialog.show();
     }

@@ -23,15 +23,19 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.LocaleList;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.view.Menu;
@@ -57,6 +61,8 @@ import com.example.ricegrow.Activity.Main.Weather.WeatherActivity;
 import com.example.ricegrow.Activity.Notification.NotificationService;
 import com.example.ricegrow.Activity.Planning.MainPlanning;
 import com.example.ricegrow.Activity.Planning.Plan.PlanGenerate;
+import com.example.ricegrow.Activity.Setting.ContextWrapper;
+import com.example.ricegrow.Activity.Setting.SettingActivity;
 import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
 import com.example.ricegrow.DatabaseFiles.Model.Setting;
@@ -81,6 +87,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -135,15 +142,15 @@ public class MainActivity extends AppCompatActivity {
                 db.settingDao().updateSetting(setting);
             }
         }
-        String userId = fb.getCurrentUser().getUid();
-        Users user = db.userDao().getUserById(userId);
-        if (user != null) {
-            String avatar = user.getAvatar();
-            avatarUser.setImageResource(getResources().getIdentifier(avatar, "drawable", getPackageName()));
-            userName.setText(user.getName());
-            userEmail.setText(user.getEmail());
-        }
 
+//        String userId = fb.getCurrentUser().getUid();
+//        Users user = db.userDao().getUserById(userId);
+//        if (user != null) {
+//            String avatar = user.getAvatar();
+//            avatarUser.setImageResource(getResources().getIdentifier(avatar, "drawable", getPackageName()));
+//            userName.setText(user.getName());
+//            userEmail.setText(user.getEmail());
+//        }
 
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open, R.string.drawer_close);
@@ -209,12 +216,9 @@ public class MainActivity extends AppCompatActivity {
                 } else if (itemId == R.id.licence) {
                     // Handle "Licences" item selection
                     Toast.makeText(MainActivity.this, "Licences selected", Toast.LENGTH_SHORT).show();
-                } else if (itemId == R.id.logout) {
-                    fb.signOut();
-                    Toast.makeText(MainActivity.this, "Logout successfully!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                } else if (itemId == R.id.setting) {
+                    startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 }
-
 
                 return true;
             }
@@ -296,39 +300,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        setting = db.settingDao().getAll();
         setting.setMore(true);
         db.settingDao().updateSetting(setting);
         super.onDestroy();
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        RiceGrowDatabase db = RiceGrowDatabase.getInstance(this);
+        String lng = db.settingDao().getAll().getLanguage();
+        Locale locale;
+        locale = new Locale(lng);
+        Locale.setDefault(locale);
+
+        Context context = ContextWrapper.wrap(newBase, locale);
+        super.attachBaseContext(context);
+    }
+
+
     @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     private void checkNotificationsSettings() {
-//        NotificationManagerCompat manager = NotificationManagerCompat.from(this);
-//        if (!manager.areNotificationsEnabled()) {
-//            MaterialAlertDialogBuilder alertBuilder = new MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog2)
-//                    .setTitle("Notifications are disabled")
-//                    .setMessage("Please enable the notifications for reminder farming plan!")
-//                    .setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            // Handle dismiss action
-//
-//                        }
-//                    })
-//                    .setPositiveButton("Enable", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            {
-//                                Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-//                                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
-//                                startActivity(intent);
-//                            }
-//                        }
-//                    });
-//
-//            alertBuilder.show();
-//
-//        }
         // Request permissions
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.POST_NOTIFICATIONS)) {
             // User has previously denied the permission, show a rationale and request again if needed
@@ -343,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showSnackbar() {
         // Show a Snackbar to explain the need for permissions and prompt the user to grant them
-        Snackbar.make(findViewById(android.R.id.content), "Notification is required for this app to work.", Snackbar.LENGTH_INDEFINITE)
+        Snackbar.make(findViewById(android.R.id.content), getString(R.string.notification_is_required_for_this_app_to_work), Snackbar.LENGTH_INDEFINITE)
                 .setAction("Grant", new View.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
                     @Override
@@ -363,10 +355,10 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == NOTIFICATION_REQUEST_CODE) {
             // Check if the permissions were granted
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Notification is available!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.notification_is_available), Toast.LENGTH_SHORT).show();
             } else {
                 // Permissions are denied, handle this case (e.g., show an error message)
-                Toast.makeText(this, "Notification permissions are required for this app to work.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.notification_permissions_are_required_for_this_app_to_work), Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -389,7 +381,7 @@ public class MainActivity extends AppCompatActivity {
                     ArrayList<PlanActivities> planActivities = (ArrayList<PlanActivities>) db.planActivityDao().getAllPlanActivitiesByPlanStageId(planStage.getId());
                     for (PlanActivities planActivity : planActivities) {
                         if (planActivity.getStartDate().isBefore(LocalDate.now().plusDays(1)) && planActivity.getEndDate().isAfter(LocalDate.now())) {
-                            String reminder = "- " + "\"" + db.activityDao().getActivityById(planActivity.getActivityId()).getName() + "\"" + " for the plan" + " \"" + userCrop.getName() + "\"";
+                            String reminder = "- " + "\"" + db.activityDao().getActivityById(planActivity.getActivityId()).getName() + "\"" + getString(R.string.for_the_plan) + " \"" + userCrop.getName() + "\"";
                             content.add(reminder);
                             content.add("\n\n");
                         }
@@ -421,15 +413,15 @@ public class MainActivity extends AppCompatActivity {
         // Create a MaterialAlertDialogBuilder
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog2);
         builder.setView(dialogView)
-                .setTitle("Today's Farming Plan")
-                .setNegativeButton("View plan", new DialogInterface.OnClickListener() {
+                .setTitle(getString(R.string.today_s_farming_plan))
+                .setNegativeButton(getString(R.string.view_plan), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         replaceFragment(new MainPlanning());
                         bottomNavigationView.setSelectedItemId(R.id.planBottom);
                     }
                 })
-                .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.close), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -455,9 +447,9 @@ public class MainActivity extends AppCompatActivity {
         View avatarActionView = avatarItem.getActionView();
         ShapeableImageView avatarImageView = avatarActionView.findViewById(R.id.miniAvatar);
 
-        String userId = fb.getCurrentUser().getUid();
-        String avatar = db.userDao().getAvatarById(userId);
-        avatarImageView.setImageResource(getResources().getIdentifier(avatar, "drawable", getPackageName()));
+//        String userId = fb.getCurrentUser().getUid();
+//        String avatar = db.userDao().getAvatarById(userId);
+//        avatarImageView.setImageResource(getResources().getIdentifier(avatar, "drawable", getPackageName()));
 
         avatarImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -504,17 +496,17 @@ public class MainActivity extends AppCompatActivity {
             nestedScrollView.smoothScrollTo(0, 0);
         } else {
             // No remaining fragments, show exit confirmation dialog
-            new MaterialAlertDialogBuilder(this)
-                    .setTitle("Exit")
-                    .setMessage("Are you sure you want to exit the app?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            new MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog2)
+                    .setTitle(getString(R.string.exit))
+                    .setMessage(getString(R.string.are_you_sure_you_want_to_exit_the_app))
+                    .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             // Exit the app
                             finishAffinity();
                         }
                     })
-                    .setNegativeButton("No", null)
+                    .setNegativeButton(getString(R.string.no), null)
                     .show();
         }
     }

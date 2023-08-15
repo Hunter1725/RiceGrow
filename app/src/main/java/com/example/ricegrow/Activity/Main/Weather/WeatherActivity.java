@@ -8,10 +8,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.view.WindowCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -25,6 +27,7 @@ import android.widget.Toast;
 import com.example.ricegrow.Activity.Planning.Calendar.CalendarUtils;
 import com.example.ricegrow.Activity.Main.Weather.Model.DailyWeatherData;
 import com.example.ricegrow.Activity.Main.Weather.Model.DailyWeatherResponse;
+import com.example.ricegrow.Activity.Setting.ContextWrapper;
 import com.example.ricegrow.DatabaseFiles.Model.Weather;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
@@ -50,6 +53,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -119,7 +123,7 @@ public class WeatherActivity extends AppCompatActivity {
                         }
                     }
                 } else {
-                    Toast.makeText(WeatherActivity.this, "Something error, can not get the weather data! Please try again!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WeatherActivity.this, getString(R.string.something_error_can_not_get_the_weather_data_please_try_again), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -140,10 +144,10 @@ public class WeatherActivity extends AppCompatActivity {
                 txtEmpty.setVisibility(View.GONE);
                 txtDayTip.setText(CalendarUtils.formattedFullWeek(getLocalDateTimeFromTimestamp((long) d.getDt())));
                 if (d.getHumidity() > 80 || d.getSpeed() > 15) {
-                    tipRecommend = "use fertilizers";
+                    tipRecommend = getString(R.string.use_fertilizers);
                     txtDayRecommend.setText(tipRecommend);
                 } else {
-                    tipRecommend = "use pesticides";
+                    tipRecommend = getString(R.string.use_pesticides);
                     txtDayRecommend.setText(tipRecommend);
                 }
                 break;
@@ -152,8 +156,20 @@ public class WeatherActivity extends AppCompatActivity {
         if (tipRecommend.isEmpty()){
             tinyTipLayout.setVisibility(View.GONE);
             txtEmpty.setVisibility(View.VISIBLE);
-            txtEmpty.setText("No tip for next 4 days");
+            txtEmpty.setText(R.string.no_tip_for_next_4_days);
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        RiceGrowDatabase db = RiceGrowDatabase.getInstance(this);
+        String lng = db.settingDao().getAll().getLanguage();
+        Locale locale;
+        locale = new Locale(lng);
+        Locale.setDefault(locale);
+
+        Context context = ContextWrapper.wrap(newBase, locale);
+        super.attachBaseContext(context);
     }
 
     private void rainForecast(List<DailyWeatherData> dailyDataList) {
@@ -169,9 +185,9 @@ public class WeatherActivity extends AppCompatActivity {
             }
         }
         if (rainForecast == null){
-            txtRainForecast.setText("No rain forecast in 4 next days.");
+            txtRainForecast.setText(getString(R.string.no_rain_forecast_in_4_next_days));
         } else {
-            txtRainForecast.setText("It is raining this " + rainForecast.toString());
+            txtRainForecast.setText(getString(R.string.it_is_raining_this) + rainForecast.toString());
         }
     }
 
@@ -219,14 +235,14 @@ public class WeatherActivity extends AppCompatActivity {
             String weatherRecommend = "";
             if (weatherData.getWeather().get(0).getMain().equals("Rain") || weatherData.getWeather().get(0).getMain().equals("Thunderstorm")) {
                 if(weatherData.getHumidity() > 80 || weatherData.getSpeed() > 15) {
-                    weatherRecommend = "use fertilizers";
+                    weatherRecommend = getString(R.string.use_fertilizers);
                     txtWeatherRecommend.setText(weatherRecommend);
                 } else {
-                    weatherRecommend = "use pesticides";
+                    weatherRecommend = getString(R.string.use_pesticides);
                     txtWeatherRecommend.setText(weatherRecommend);
                 }
             } else {
-                weatherRecommend = "Nothing";
+                weatherRecommend = getString(R.string.nothing);
                 txtWeatherRecommend.setText(weatherRecommend);
             }
 
@@ -351,7 +367,7 @@ public class WeatherActivity extends AppCompatActivity {
                         } else {
                             // Location settings are not satisfied, and cannot be resolved directly.
                             // Handle this case appropriately (e.g., show an error message).
-                            Toast.makeText(WeatherActivity.this, "Location settings are not satisfied.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(WeatherActivity.this, getString(R.string.location_settings_are_not_satisfied), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -366,7 +382,7 @@ public class WeatherActivity extends AppCompatActivity {
                 requestLocationUpdatesWithPermission();
             } else {
                 // User canceled or didn't enable location settings. Handle this case appropriately.
-                Toast.makeText(WeatherActivity.this, "Location settings are not enabled.", Toast.LENGTH_LONG).show();
+                Toast.makeText(WeatherActivity.this, getString(R.string.location_settings_are_not_enabled), Toast.LENGTH_LONG).show();
                 mainLayout.setVisibility(View.GONE);
                 requestLayout.setVisibility(View.VISIBLE);
             }
@@ -403,7 +419,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     private void showSnackbar() {
         // Show a Snackbar to explain the need for permissions and prompt the user to grant them
-        Snackbar.make(findViewById(android.R.id.content), "Location permission is required for this app to work.", Snackbar.LENGTH_INDEFINITE)
+        Snackbar.make(findViewById(android.R.id.content), getString(R.string.location_permission_is_required_for_this_app_to_work), Snackbar.LENGTH_INDEFINITE)
                 .setAction("Grant", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -428,7 +444,7 @@ public class WeatherActivity extends AppCompatActivity {
                 requestLocationUpdates();
             } else {
                 // Permissions are denied, handle this case (e.g., show an error message)
-                Toast.makeText(this, "Location permissions are required for this app to work.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.location_permissions_are_required_for_this_app_to_work), Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -444,7 +460,7 @@ public class WeatherActivity extends AppCompatActivity {
             selectedUnitIndex = 1;
         }
         MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog2);
-        dialogBuilder.setTitle("Choose Temperature Unit")
+        dialogBuilder.setTitle(getString(R.string.choose_temperature_unit))
                 .setSingleChoiceItems(temperatureUnits, selectedUnitIndex, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

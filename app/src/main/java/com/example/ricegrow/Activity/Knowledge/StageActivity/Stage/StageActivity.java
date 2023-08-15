@@ -123,7 +123,7 @@ public class StageActivity extends AppCompatActivity {
                 for (int i = 0; i < cropStageCount; i++) {
                     CropStage cropStage = cropStages.get(i);
                     Crops crop = db.cropDao().getCropById(cropStage.getCropId());
-                    String cropStageString = "- Rice variety " + crop.getName() + ": " + cropStage.getDuration() + " days";
+                    String cropStageString = getString(R.string.rice_variety_list) + crop.getName() + ": " + cropStage.getDuration() + getString(R.string.days);
 
                     // Check if it's the last item in the list
                     if (i == cropStageCount - 1) {
@@ -145,7 +145,7 @@ public class StageActivity extends AppCompatActivity {
                 for (int i = 0; i < cropStageCount; i++) {
                     CropStage cropStage = cropStages.get(i);
                     Crops crop = db.cropDao().getCropById(cropStage.getCropId());
-                    String cropStageString = "- Rice variety " + crop.getName() + ": " + cropStage.getStartDate() + " day";
+                    String cropStageString = getString(R.string.rice_variety_list) + crop.getName() + ": " + cropStage.getStartDate() + getString(R.string.day);
 
                     // Check if it's the last item in the list
                     if (i == cropStageCount - 1) {
@@ -167,7 +167,7 @@ public class StageActivity extends AppCompatActivity {
                 for (int i = 0; i < cropStageCount; i++) {
                     CropStage cropStage = cropStages.get(i);
                     Crops crop = db.cropDao().getCropById(cropStage.getCropId());
-                    String cropStageString = "- Rice variety " + crop.getName() + ": " + cropStage.getEndDate() + " day";
+                    String cropStageString = getString(R.string.rice_variety_list) + crop.getName() + ": " + cropStage.getEndDate() + getString(R.string.day);
 
                     // Check if it's the last item in the list
                     if (i == cropStageCount - 1) {

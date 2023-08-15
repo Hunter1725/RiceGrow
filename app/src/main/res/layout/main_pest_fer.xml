@@ -9,7 +9,7 @@
         android:id="@+id/PestFer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pesticides and Fertilizers"
+        android:text="@string/pesticides_and_fertilizers"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="#4CAF50"
@@ -54,7 +54,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pesticides"
+                        android:text="@string/pesticides"
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
@@ -63,7 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Pesticide Management: Protecting Your Crops and Plants"
+                        android:text="@string/pesticide_management_protecting_your_crops_and_plants"
                         android:textColor="#4CAF50"
                         android:textAppearance="?attr/textAppearanceBody1" />
 
@@ -80,7 +80,7 @@
                         android:id="@+id/btnCardPesticides"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Learn More"
+                        android:text="@string/learn_more"
                         android:textColor="#FFFFFF"
                         android:textAppearance="?attr/textAppearanceButton"
                         style="?attr/borderlessButtonStyle"
@@ -122,7 +122,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fertilizers"
+                        android:text="@string/fertilizers"
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
@@ -131,7 +131,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Fertilizer Application: Nourish Your Crops for Healthy Growth"
+                        android:text="@string/fertilizer_application_nourish_your_crops_for_healthy_growth"
                         android:textColor="#4CAF50"
                         android:textAppearance="?attr/textAppearanceBody1" />
 
@@ -148,7 +148,7 @@
                         android:id="@+id/btnCardFertilizers"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Learn More"
+                        android:text="@string/learn_more"
                         android:textColor="#FFFFFF"
                         android:textAppearance="?attr/textAppearanceButton"
                         style="?attr/borderlessButtonStyle"

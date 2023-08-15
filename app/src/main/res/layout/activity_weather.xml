@@ -29,7 +29,7 @@
                 android:background="@color/login_background"
                 app:menu="@menu/top_bar_weather"
                 app:navigationIcon="@drawable/back"
-                app:title="Weather forecast" />
+                app:title="@string/weather_forecast" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -102,7 +102,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:drawablePadding="5dp"
-                                android:text="Wind: "
+                                android:text="@string/wind"
                                 android:textSize="16sp"
                                 app:drawableStartCompat="@drawable/ic_wind"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +125,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:drawablePadding="5dp"
-                                android:text="Humidity: "
+                                android:text="@string/humidity"
                                 android:textSize="16sp"
                                 app:drawableStartCompat="@drawable/ic_humidity"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -148,7 +148,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:drawablePadding="5dp"
-                                android:text="Max/Min:"
+                                android:text="@string/max_min"
                                 android:textSize="16sp"
                                 app:drawableStartCompat="@drawable/ic_maxmin"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -202,21 +202,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/weatherRecommend"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Today is not suitable to:"
+                            android:text="@string/today_is_not_suitable_to"
                             android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/txtWeatherRecommend"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
                             android:text="Use fertilizers"
                             android:textAllCaps="true"
@@ -237,7 +236,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        android:text="The next 4 days"
+                        android:text="@string/the_next_4_days"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
 
@@ -407,7 +406,7 @@
                         android:id="@+id/txtRainForecast"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No rain forecast this week."
+                        android:text="@string/no_rain_forecast_this_week"
                         android:textSize="16sp"
                         android:padding="10dp"/>
 
@@ -420,7 +419,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tiny tip"
+                        android:text="@string/tiny_tip"
                         android:textSize="16sp"
                         android:textStyle="italic"
                         android:padding="10dp"/>
@@ -450,7 +449,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text=" is not suitable to:"
+                                android:text="@string/is_not_suitable_to"
                                 android:textSize="16sp" />
 
                         </LinearLayout>
@@ -472,7 +471,7 @@
                         android:id="@+id/txtEmpty"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No rain forecast this week."
+                        android:text="@string/no_rain_forecast_this_week"
                         android:textSize="16sp"
                         android:padding="10dp"
                         android:visibility="gone"
@@ -493,7 +492,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lines="2"
-                        android:text="Please enable your GPS to receive weather information"
+                        android:text="@string/please_enable_your_gps_to_receive_weather_information"
                         android:textSize="14sp"
                         android:layout_gravity="center"
                         android:textAlignment="center"/>

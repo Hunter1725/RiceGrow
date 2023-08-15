@@ -47,9 +47,9 @@ public class StageAdapter extends RecyclerView.Adapter<StageAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CropStage cropStage = db.cropStageDao().getFirstCropStageByStageId(stages.get(position).getId());
         holder.txtNameStage.setText(stages.get(position).getName());
-        String duration = String.valueOf(cropStage.getDuration()) +" days";
+        String duration = String.valueOf(cropStage.getDuration()) + context.getString(R.string.days);
         holder.txtDurationStage.setText(duration);
-        String startDate = String.valueOf(cropStage.getStartDate()) +" day";
+        String startDate = String.valueOf(cropStage.getStartDate()) + context.getString(R.string.day);
         holder.txtStartDate.setText(startDate);
         Glide.with(context)
                 .asBitmap()

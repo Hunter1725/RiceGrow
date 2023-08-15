@@ -138,7 +138,7 @@ public class PesticideActivity extends AppCompatActivity {
                 txtManufacturer.setText(incomingPesticide.getManufacturer());
                 txtComposition.setText(incomingPesticide.getComposition());
                 txtInstruction.setText(incomingPesticide.getUsageInstructions());
-                String pesticidePer = String.valueOf(incomingPesticide.getPesticidePerBottle()) + " ml/bottle (or grams/bottle)";
+                String pesticidePer = String.valueOf(incomingPesticide.getPesticidePerBottle()) + getString(R.string.ml_bottle_or_grams_bottle);
                 txtPesticidePerBottle.setText(pesticidePer);
                 String waterPerHa = String.valueOf(incomingPesticide.getWaterPerHectare() + " l/ha");
                 txtWaterPerHectare.setText(waterPerHa);

@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Welcome to RiceGrow App!"
+        android:text="@string/welcome_to_ricegrow_app"
         android:textColor="#4CAF50"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -73,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
                         android:lines="2"
-                        android:text="Fertilizer Calculator"
+                        android:text="@string/fertilizer_calculator"
                         android:textColor="#333333"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -123,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
                         android:lines="2"
-                        android:text="Plan generator"
+                        android:text="@string/plan_generator"
                         android:textColor="#333333"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -151,7 +151,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="Recent farming plans"
+        android:text="@string/recent_farming_plans"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -163,7 +163,7 @@
         android:layout_marginTop="10dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:text="No farming plans! Please inserting the new one!"
+        android:text="@string/no_farming_plans_please_inserting_the_new_one"
         android:textColor="#808080"
         android:textSize="16sp"
         android:textStyle="italic"
@@ -182,7 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="Weather forecast"
+        android:text="@string/weather_forecast"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -208,7 +208,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Connect to the internet to use the weather forecast!"
+                android:text="@string/connect_to_the_internet_to_use_the_weather_forecast"
                 android:textStyle="italic"
                 android:textSize="16sp"
                 android:layout_gravity="center"/>
@@ -236,7 +236,7 @@
                     android:id="@+id/txtDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Empty"
+                    android:text="@string/empty"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -258,7 +258,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:drawablePadding="5dp"
-                    android:text="Wind: "
+                    android:text="@string/wind"
                     android:textSize="16sp"
                     app:drawableStartCompat="@drawable/ic_wind"
                     app:layout_constraintStart_toStartOf="parent"
@@ -281,7 +281,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:drawablePadding="5dp"
-                    android:text="Humidity: "
+                    android:text="@string/humidity"
                     android:textSize="16sp"
                     app:drawableStartCompat="@drawable/ic_humidity"
                     app:layout_constraintStart_toStartOf="parent"
@@ -313,7 +313,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Empty"
+                    android:text="@string/empty"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -336,37 +336,28 @@
                 android:layout_marginTop="10dp"
                 app:dividerThickness="1dp"
                 app:dividerColor="#D9D9D9"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/weatherRecommend"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="10dp"
+                android:text="@string/today_is_not_suitable_to"
+                android:textSize="16sp"/>
 
-                <TextView
-                    android:id="@+id/weatherRecommend"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Today is not suitable to:"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/txtWeatherRecommend"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="5dp"
-                    android:text="Empty"
-                    android:textAllCaps="true"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/txtWeatherRecommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/empty"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold" />
             <TextView
                 android:id="@+id/updateWeather"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:text="Tap to receive the weather at your location"
+                android:text="@string/tap_to_receive_the_weather_at_your_location"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:layout_marginTop="10dp"

@@ -1391,9 +1391,6 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency"), stageDao.getIdByName("Tillering")));
             deftoxStageDao.insert(new DeftoxStage(deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency"), stageDao.getIdByName("Panicle initiation")));
 
-            //Setting
-            SettingDao settingDao = db.settingDao();
-            settingDao.insert(new Setting(true, true, true, "VIE"));
         });
     }
 }

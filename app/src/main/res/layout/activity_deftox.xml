@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Symptoms"
+                    android:text="@string/symptoms"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Descriptions"
+                    android:text="@string/descriptions"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Prevention methods"
+                    android:text="@string/prevention_methods"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -139,7 +139,7 @@
                     android:id="@+id/fertilizers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Specialized fertilizers"
+                    android:text="@string/specialized_fertilizers"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:text="Sorry, the information is being updated!"
+                    android:text="@string/sorry_the_information_is_being_updated"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     android:visibility="gone"/>
@@ -168,7 +168,7 @@
                     android:id="@+id/stages"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Possible stages of disease outbreaks"
+                    android:text="@string/possible_stages_of_disease_outbreaks"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -180,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:text="Sorry, the information is being updated!"
+                    android:text="@string/sorry_the_information_is_being_updated"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     android:visibility="gone"/>

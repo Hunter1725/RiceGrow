@@ -54,6 +54,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class PesticideCalculate extends AppCompatActivity {
     public static final String PESTICIDE_CALCULATE_KEY = "incoming_pesticide_calculate";
@@ -196,7 +197,7 @@ public class PesticideCalculate extends AppCompatActivity {
                     } else {
                         area = Double.valueOf(String.valueOf(fieldAreaEditText.getText()));
                         if ((area - 0.5) <= 0) {
-                            fieldAreaInputLayout.setError("Must be greater than 0");
+                            fieldAreaInputLayout.setError(getString(R.string.must_be_greater_than_0));
                         } else {
                             area -= 0.5;
                             fieldAreaEditText.setText(String.valueOf(area));
@@ -209,7 +210,7 @@ public class PesticideCalculate extends AppCompatActivity {
                     } else {
                         area = Double.valueOf(String.valueOf(fieldAreaEditText.getText()));
                         if ((area - 500.0) <= 0) {
-                            fieldAreaInputLayout.setError("Must be greater than 0");
+                            fieldAreaInputLayout.setError(getString(R.string.must_be_greater_than_0));
                         } else {
                             area -= 500;
                             fieldAreaEditText.setText(String.valueOf(area));
@@ -359,19 +360,19 @@ public class PesticideCalculate extends AppCompatActivity {
         progressCalculate.setVisibility(View.GONE);
         resultLayout.setVisibility(View.VISIBLE);
 
-        String stringCapacity = capacity + " liters";
+        String stringCapacity = capacity + getString(R.string.liters);
         txtCapacity.setText(stringCapacity);
 
-        String stringAmountPest = String.format("%.1f ml (or grams)", pesticidePerBottle);
+        String stringAmountPest = String.format(Locale.getDefault(), getString(R.string._1f_ml_or_grams), pesticidePerBottle);
         txtAmountPest.setText(stringAmountPest);
 
-        String stringTotalPest = String.format("%.2f liters (or kg)", totalPesticide / 1000);
+        String stringTotalPest = String.format(Locale.getDefault(), getString(R.string._2f_liters_or_kg), totalPesticide / 1000);
         txtTotalAmount.setText(stringTotalPest);
 
-        String stringTotalWater = String.format("%.2f liters", totalWater);
+        String stringTotalWater = String.format(Locale.getDefault(), getString(R.string._2f_liters), totalWater);
         txtTotalWater.setText(stringTotalWater);
 
-        String stringTotalBottle = String.format("%.0f spray bottles", totalBottle);
+        String stringTotalBottle = String.format(Locale.getDefault(), getString(R.string._0f_spray_bottles), totalBottle);
         txtTotalBottle.setText(stringTotalBottle);
     }
 
@@ -411,7 +412,7 @@ public class PesticideCalculate extends AppCompatActivity {
         String input = editText.getText().toString().trim();
 
         if (TextUtils.isEmpty(input)) {
-            textInputLayout.setError("Input cannot be empty");
+            textInputLayout.setError(getString(R.string.input_cannot_be_empty));
         } else {
             textInputLayout.setError(null);
         }

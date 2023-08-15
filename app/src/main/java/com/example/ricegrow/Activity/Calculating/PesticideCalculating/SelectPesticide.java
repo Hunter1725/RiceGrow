@@ -103,7 +103,7 @@ public class SelectPesticide extends AppCompatActivity {
         //Drop down menu
         // Create an ArrayAdapter with the menu items
         ArrayList<String> customArray = new ArrayList<>();
-        customArray.add("All");
+        customArray.add(getString(R.string.all));
 
         for (Pesticides pesticide : pesticides) {
             String category = pesticide.getCategory();
@@ -123,7 +123,7 @@ public class SelectPesticide extends AppCompatActivity {
                 // Get the selected category
                 String selectedCategory = (String) parent.getItemAtPosition(position);
                 // Handle the selected category
-                if (selectedCategory.equals("All")) {
+                if (selectedCategory.equals(getString(R.string.all))) {
                     pesticideAdapter.setPesticides(pesticides);
                 } else {
                     pesticideAdapter.setPesticides((ArrayList<Pesticides>) db.pesticideDao().getPesticidesByCate(selectedCategory));

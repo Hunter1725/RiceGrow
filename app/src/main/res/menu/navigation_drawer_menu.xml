@@ -6,17 +6,17 @@
 
         <item
             android:id="@+id/planning_items"
-            android:title="Planning">
+            android:title="@string/planning">
             <menu>
                 <item
                     android:id="@+id/allPlan"
-                    android:title="All plans"
+                    android:title="@string/all_plans"
                     android:icon="@drawable/planning"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
                 <item
                     android:id="@+id/newPlan"
-                    android:title="New plan"
+                    android:title="@string/new_plan"
                     android:icon="@drawable/new_plan"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
@@ -25,18 +25,18 @@
 
         <item
             android:id="@+id/calculating"
-            android:title="Calculating">
+            android:title="@string/calculating">
             <menu>
                 <item
                     android:id="@+id/pesticide"
                     android:icon="@drawable/pesticide"
-                    android:title="Pesticide"
+                    android:title="@string/pesticide"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
                 <item
                     android:id="@+id/fertilizer"
                     android:icon="@drawable/fertilizer"
-                    android:title="Fertilizer"
+                    android:title="@string/fertilizer"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
             </menu>
@@ -44,30 +44,30 @@
 
         <item
             android:id="@+id/information"
-            android:title="Management">
+            android:title="@string/management">
             <menu>
                 <item
                     android:id="@+id/pest"
                     android:icon="@drawable/pest"
-                    android:title="Pest"
+                    android:title="@string/pest"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
                 <item
                     android:id="@+id/disease"
                     android:icon="@drawable/disease"
-                    android:title="Disease"
+                    android:title="@string/disease"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
                 <item
                     android:id="@+id/weed"
                     android:icon="@drawable/weed"
-                    android:title="Weed"
+                    android:title="@string/weed"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
                 <item
                     android:id="@+id/deftox"
                     android:icon="@drawable/deftox"
-                    android:title="Deficiencies and toxicities"
+                    android:title="@string/deficiencies_and_toxicities"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
             </menu>
@@ -75,26 +75,26 @@
 
         <item
             android:id="@+id/others"
-            android:title="Other">
+            android:title="@string/other">
             <menu>
+                <item
+                    android:id="@+id/setting"
+                    android:icon="@drawable/ic_setting"
+                    android:title="@string/setting"
+                    android:checkable="true"
+                    app:showAsAction="ifRoom"/>
                 <item
                     android:id="@+id/term"
                     android:icon="@drawable/term"
-                    android:title="Terms"
+                    android:title="@string/terms"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
                 <item
                     android:id="@+id/licence"
                     android:icon="@drawable/licence"
-                    android:title="Licences"
+                    android:title="@string/licences"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
-                <item
-                    android:id="@+id/logout"
-                    android:icon="@drawable/logout"
-                    android:title="Logout"
-                    android:checkable="true"
-                    app:showAsAction="ifRoom"/>
             </menu>
         </item>
 

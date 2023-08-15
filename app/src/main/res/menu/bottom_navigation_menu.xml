@@ -4,20 +4,20 @@
         android:id="@+id/homeBottom"
         android:enabled="true"
         android:icon="@drawable/home"
-        android:title="Home"/>
+        android:title="@string/home"/>
     <item
         android:id="@+id/planBottom"
         android:enabled="true"
         android:icon="@drawable/planning"
-        android:title="Plan"/>
+        android:title="@string/plan"/>
     <item
         android:id="@+id/calculatorBottom"
         android:enabled="true"
         android:icon="@drawable/calculation"
-        android:title="Calculator"/>
+        android:title="@string/calculator"/>
     <item
         android:id="@+id/knowledge"
         android:enabled="true"
         android:icon="@drawable/book"
-        android:title="Knowledge"/>
+        android:title="@string/knowledge"/>
 </menu>

@@ -44,7 +44,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtNameActivity.setText(activities.get(position).getName());
         holder.txtValueDescription.setText(activities.get(position).getDescription());
-        String duration = String.valueOf(activities.get(position).getDuration()) + " days";
+        String duration = String.valueOf(activities.get(position).getDuration()) + context.getString(R.string.days);
         holder.txtValueDuration.setText(duration);
         Glide.with(context)
                 .asBitmap()

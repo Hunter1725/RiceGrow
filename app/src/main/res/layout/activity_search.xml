@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:iconifiedByDefault="false"
-                    app:queryHint="Searching something"
+                    app:queryHint="@string/searching_something"
                     android:layoutDirection="rtl"/>
 
             </com.google.android.material.appbar.MaterialToolbar>
@@ -54,7 +54,7 @@
                     android:id="@+id/txtResult"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Result: "
+                    android:text="@string/result"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_marginStart="8dp"
@@ -70,7 +70,7 @@
                         android:id="@+id/txtEmpty"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No matching results"
+                        android:text="@string/no_matching_results"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"

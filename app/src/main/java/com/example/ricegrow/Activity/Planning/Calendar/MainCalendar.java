@@ -11,7 +11,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +21,7 @@ import android.widget.Button;
 
 import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.Activity.Planning.Plan.ViewPlan;
+import com.example.ricegrow.Activity.Setting.ContextWrapper;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
@@ -30,6 +33,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainCalendar extends AppCompatActivity {
 
@@ -121,6 +125,23 @@ public class MainCalendar extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        RiceGrowDatabase db = RiceGrowDatabase.getInstance(this);
+        String languageToLoad;
+        String lng = db.settingDao().getAll().getLanguage();
+        Locale locale;
+
+        languageToLoad = Resources.getSystem().getConfiguration().getLocales().get(0).getLanguage();
+
+        lng = lng.equals(languageToLoad) ? "en" : "vi";
+        locale = new Locale(lng);
+        Locale.setDefault(locale);
+
+        Context context = ContextWrapper.wrap(newBase, locale);
+        super.attachBaseContext(context);
     }
 
     private void createActivityPlan() {

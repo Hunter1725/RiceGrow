@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Science name"
+                    android:text="@string/science_name"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Lifecycle"
+                    android:text="@string/lifecycle"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Symptoms"
+                    android:text="@string/symptoms"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Descriptions"
+                    android:text="@string/descriptions"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="Control methods"
+                    android:text="@string/control_methods"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -177,7 +177,7 @@
                     android:id="@+id/pesticides"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Specialized pesticides"
+                    android:text="@string/specialized_pesticides"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:text="Sorry, the information is being updated!"
+                    android:text="@string/sorry_the_information_is_being_updated"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     android:visibility="gone"/>
@@ -206,7 +206,7 @@
                     android:id="@+id/stages"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Possible stages of pest outbreaks"
+                    android:text="@string/possible_stages_of_pest_outbreaks"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -218,7 +218,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:text="Sorry, the information is being updated!"
+                    android:text="@string/sorry_the_information_is_being_updated"
                     android:textSize="18sp"
                     android:textStyle="italic"
                     android:visibility="gone"/>

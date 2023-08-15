@@ -10,7 +10,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Todo list today for your farming plan:"
+        android:text="@string/todo_list_today_for_your_farming_plan"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginBottom="10dp"
         android:textStyle="italic"/>
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/Widget.App.CheckBox"
-        android:text="Don't show again in the next start"
-        android:textSize="16dp"/>
+        android:text="@string/don_t_show_again_in_the_next_start"
+        android:textSize="16sp"/>
 
 </LinearLayout>

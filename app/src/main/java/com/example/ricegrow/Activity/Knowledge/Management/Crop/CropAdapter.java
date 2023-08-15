@@ -43,7 +43,7 @@ public class CropAdapter extends RecyclerView.Adapter<CropAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtNameCrop.setText(crops.get(position).getName());
-        String growth = "About " + String.valueOf(crops.get(position).getGrowthPeriod()) + " days";
+        String growth = context.getString(R.string.about) + String.valueOf(crops.get(position).getGrowthPeriod()) + context.getString(R.string.days);
         holder.txtValueGrowth.setText(growth);
         String price = crops.get(position).getSellingPrice() + " VND/kg";
         holder.txtValuePrice.setText(price);

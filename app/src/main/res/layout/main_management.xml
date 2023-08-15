@@ -9,7 +9,7 @@
         android:id="@+id/Management"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pest and Disease Management"
+        android:text="@string/pest_and_disease_management"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="#4CAF50"
@@ -54,7 +54,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Crop varieties"
+                        android:text="@string/crop_varieties"
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
@@ -63,7 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Crop Varieties: A Comprehensive Guide to Selecting the Perfect Crop"
+                        android:text="@string/crop_varieties_a_comprehensive_guide_to_selecting_the_perfect_crop"
                         android:textColor="#4CAF50"
                         android:textAppearance="?attr/textAppearanceBody1" />
 
@@ -80,7 +80,7 @@
                         android:id="@+id/btnCardCrop"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Learn More"
+                        android:text="@string/learn_more"
                         android:textColor="#FFFFFF"
                         android:textAppearance="?attr/textAppearanceButton"
                         style="?attr/borderlessButtonStyle"
@@ -122,7 +122,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pests"
+                        android:text="@string/pests"
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
@@ -131,7 +131,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Protect Your Crops: Effective Pest Management for Healthy Harvests"
+                        android:text="@string/protect_your_crops_effective_pest_management_for_healthy_harvests"
                         android:textColor="#4CAF50"
                         android:textAppearance="?attr/textAppearanceBody1" />
 
@@ -148,7 +148,7 @@
                         android:id="@+id/btnCardPests"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Learn More"
+                        android:text="@string/learn_more"
                         android:textColor="#FFFFFF"
                         android:textAppearance="?attr/textAppearanceButton"
                         style="?attr/borderlessButtonStyle"
@@ -190,7 +190,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diseases"
+                        android:text="@string/diseases"
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
@@ -199,7 +199,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text= "Disease Prevention: Ensuring Healthy Crops and Bountiful Harvests"
+                        android:text= "@string/disease_prevention_ensuring_healthy_crops_and_bountiful_harvests"
                         android:textColor="#4CAF50"
                         android:textAppearance="?attr/textAppearanceBody1" />
 
@@ -216,7 +216,7 @@
                         android:id="@+id/btnCardDisease"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Learn More"
+                        android:text="@string/learn_more"
                         android:textColor="#FFFFFF"
                         android:textAppearance="?attr/textAppearanceButton"
                         style="?attr/borderlessButtonStyle"
@@ -258,7 +258,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Weeds"
+                        android:text="@string/weeds"
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
@@ -267,7 +267,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text= "Weed Control: Keeping Your Fields Clear for Optimal Crop Growth"
+                        android:text= "@string/weed_control_keeping_your_fields_clear_for_optimal_crop_growth"
                         android:textColor="#4CAF50"
                         android:textAppearance="?attr/textAppearanceBody1" />
 
@@ -284,7 +284,7 @@
                         android:id="@+id/btnCardWeed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Learn More"
+                        android:text="@string/learn_more"
                         android:textColor="#FFFFFF"
                         android:textAppearance="?attr/textAppearanceButton"
                         style="?attr/borderlessButtonStyle"
@@ -326,7 +326,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Deficiencies and toxicities"
+                        android:text="@string/deficiencies_and_toxicities"
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:textStyle="bold" />
@@ -335,7 +335,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text= "Nutrient Management: Balancing Nutrient Levels for Healthy and Productive Crop Growth"
+                        android:text= "@string/nutrient_management_balancing_nutrient_levels_for_healthy_and_productive_crop_growth"
                         android:textColor="#4CAF50"
                         android:textAppearance="?attr/textAppearanceBody1" />
 
@@ -352,7 +352,7 @@
                         android:id="@+id/btnCardDeftox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Learn More"
+                        android:text="@string/learn_more"
                         android:textColor="#FFFFFF"
                         android:textAppearance="?attr/textAppearanceButton"
                         style="?attr/borderlessButtonStyle"

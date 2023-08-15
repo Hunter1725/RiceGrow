@@ -146,15 +146,15 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
     private void showDeleteNote() {
         Notes deleteNotes = notes;
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog);
-        builder.setTitle("Delete note");
-        builder.setMessage("Are you sure you want to delete this note?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle(getString(R.string.delete_note));
+        builder.setMessage(getString(R.string.are_you_sure_you_want_to_delete_this_note));
+        builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Perform guest login action
                 db.noteDao().delete(notes);
-                Snackbar.make(getView(),"The notes was removed!", Snackbar.LENGTH_LONG)
-                        .setAction("Undo", new View.OnClickListener() {
+                Snackbar.make(getView(),getString(R.string.the_notes_was_removed), Snackbar.LENGTH_LONG)
+                        .setAction(getString(R.string.undo), new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 db.noteDao().insert(deleteNotes);
@@ -165,7 +165,7 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
                 setWeekView();
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -186,14 +186,14 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
         // Create a MaterialAlertDialogBuilder
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity(), R.style.ThemeOverlay_App_MaterialAlertDialog2);
         builder.setView(dialogView)
-                .setTitle("Add new note")
-                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                .setTitle(getString(R.string.add_new_note))
+                .setPositiveButton(getString(R.string.add), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String contentNote = edtNote.getText().toString();
 
                         if(contentNote.isEmpty()){
-                            textInputLayoutNote.setError("Please enter something!");
+                            textInputLayoutNote.setError(getString(R.string.please_enter_something));
                         }
                         else {
                             db.noteDao().insert(new Notes(currentPlanActivity.getId(), selectDate, contentNote));
@@ -201,7 +201,7 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
                         }
                     }
                 })
-                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -240,9 +240,9 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
                         .error(R.drawable.baseline_error_outline_24)
                         .into(imageStage);
                 txtNameStage.setText(stages.getName());
-                String durationStage = cropStage.getDuration() + " days";
+                String durationStage = cropStage.getDuration() + getString(R.string.days);
                 txtDurationStage.setText(durationStage);
-                String startDate = cropStage.getStartDate() + " day";
+                String startDate = cropStage.getStartDate() + getString(R.string.day);
                 txtStartDate.setText(startDate);
 
                 //Activities

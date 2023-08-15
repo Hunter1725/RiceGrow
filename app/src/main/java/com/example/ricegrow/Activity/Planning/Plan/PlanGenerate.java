@@ -159,7 +159,7 @@ public class PlanGenerate extends AppCompatActivity {
                     } else {
                         area = Double.valueOf(String.valueOf(fieldAreaEditText.getText()));
                         if ((area - 0.5) <= 0) {
-                            fieldAreaInputLayout.setError("Must be greater than 0");
+                            fieldAreaInputLayout.setError(getString(R.string.must_be_greater_than_0));
                         } else {
                             area -= 0.5;
                             fieldAreaEditText.setText(String.valueOf(area));
@@ -172,7 +172,7 @@ public class PlanGenerate extends AppCompatActivity {
                     } else {
                         area = Double.valueOf(String.valueOf(fieldAreaEditText.getText()));
                         if ((area - 500.0) <= 0) {
-                            fieldAreaInputLayout.setError("Must be greater than 0");
+                            fieldAreaInputLayout.setError(getString(R.string.must_be_greater_than_0));
                         } else {
                             area -= 500;
                             fieldAreaEditText.setText(String.valueOf(area));
@@ -279,18 +279,18 @@ public class PlanGenerate extends AppCompatActivity {
 
     private void generating() {
         if (edtName.getText().toString().isEmpty()){
-            textInputLayoutName.setError("Please enter the plan name!");
-            Toast.makeText(this, "Please enter the plan name!", Toast.LENGTH_SHORT).show();
+            textInputLayoutName.setError(getString(R.string.please_enter_the_plan_name));
+            Toast.makeText(this, getString(R.string.please_enter_the_plan_name), Toast.LENGTH_SHORT).show();
         }
         else if (editTextDate.getText().toString().isEmpty()) {
-            textInputLayoutDate.setError("Please select the sowing date!");
-            Toast.makeText(this, "Please select the sowing date!", Toast.LENGTH_SHORT).show();
+            textInputLayoutDate.setError(getString(R.string.please_select_the_sowing_date));
+            Toast.makeText(this, getString(R.string.please_select_the_sowing_date), Toast.LENGTH_SHORT).show();
         } else if (stageCheckboxAdapter.getSelectedStageIds().isEmpty()) {
             txtWarningStage.setVisibility(View.VISIBLE);
-            Toast.makeText(this, "Please select at least one stage!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.please_select_at_least_one_stage), Toast.LENGTH_SHORT).show();
         } else if (riceVariety.isEmpty()) {
-            categoryDropdown.setError("Please select the rice variety!");
-            Toast.makeText(this, "Please select the rice variety!", Toast.LENGTH_SHORT).show();
+            categoryDropdown.setError(getString(R.string.please_select_the_rice_variety));
+            Toast.makeText(this, getString(R.string.please_select_the_rice_variety), Toast.LENGTH_SHORT).show();
         }  else {
             txtWarningStage.setVisibility(View.GONE);
             progressCalculate.setVisibility(View.VISIBLE);
@@ -379,7 +379,7 @@ public class PlanGenerate extends AppCompatActivity {
     private void initializeDatePicker() {
         // Initialize the date picker
         datePicker = MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Select Date")
+                .setTitleText(getString(R.string.select_date))
                 .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
                 .setTheme(R.style.ThemeOverlay_App_DatePicker)
                 .build();
@@ -398,6 +398,7 @@ public class PlanGenerate extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
                     editTextDate.setHint("mm/dd/yyyy");
+                    datePicker.show(getSupportFragmentManager(), "DATE_PICKER");
                 } else {
                     editTextDate.setHint(null);
                 }

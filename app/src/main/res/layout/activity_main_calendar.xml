@@ -29,7 +29,7 @@
                 android:background="@color/login_background"
                 app:menu="@menu/top_bar_planning"
                 app:navigationIcon="@drawable/back"
-                app:title="Plan Calendar" />
+                app:title="@string/plan_calendar" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

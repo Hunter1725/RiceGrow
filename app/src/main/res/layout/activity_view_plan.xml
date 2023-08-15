@@ -29,7 +29,7 @@
                 android:background="@color/login_background"
                 app:menu="@menu/top_bar_management"
                 app:navigationIcon="@drawable/back"
-                app:title="View Plan" />
+                app:title="@string/view_plan" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -84,12 +84,12 @@
                         android:id="@+id/textSowingDateLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Started Date: "
+                        android:text="@string/started_date"
                         android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:drawableStart="@drawable/sowing_date"
                         android:drawablePadding="6dp"
-                        android:textStyle="italic"/>
+                        android:textStyle="italic"
+                        app:drawableStartCompat="@drawable/sowing_date" />
 
                     <TextView
                         android:id="@+id/textSowingDate"
@@ -113,12 +113,12 @@
                         android:id="@+id/textExpectedHarvestDateLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Expected Harvest: "
+                        android:text="@string/expected_harvest"
                         android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:drawableStart="@drawable/harvest_date"
                         android:drawablePadding="6dp"
-                        android:textStyle="italic"/>
+                        android:textStyle="italic"
+                        app:drawableStartCompat="@drawable/harvest_date" />
 
                     <TextView
                         android:id="@+id/textExpectedHarvestDate"
@@ -142,12 +142,12 @@
                         android:id="@+id/textSowingAmountLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sowing Amount: "
+                        android:text="@string/sowing_amount"
                         android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:drawableStart="@drawable/sowing_amount"
                         android:drawablePadding="6dp"
-                        android:textStyle="italic"/>
+                        android:textStyle="italic"
+                        app:drawableStartCompat="@drawable/sowing_amount" />
 
                     <TextView
                         android:id="@+id/textSowingAmount"
@@ -171,12 +171,12 @@
                         android:id="@+id/textSowedAreaLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sowed Area: "
+                        android:text="@string/sowed_area"
                         android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:drawableStart="@drawable/sowing_area"
                         android:drawablePadding="6dp"
-                        android:textStyle="italic"/>
+                        android:textStyle="italic"
+                        app:drawableStartCompat="@drawable/sowing_area" />
 
                     <TextView
                         android:id="@+id/textSowedArea"
@@ -200,12 +200,12 @@
                         android:id="@+id/textGrowthPeriodLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Growth Period: "
+                        android:text="@string/growth_period_dot"
                         android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:drawableStart="@drawable/grown_period"
                         android:drawablePadding="6dp"
-                        android:textStyle="italic"/>
+                        android:textStyle="italic"
+                        app:drawableStartCompat="@drawable/grown_period" />
 
                     <TextView
                         android:id="@+id/textGrowthPeriod"
@@ -222,7 +222,7 @@
                     android:id="@+id/btnViewDetailPlanCalendar"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="View Plan Calendar"
+                    android:text="@string/view_plan_calendar"
                     android:textColor="@color/white"
                     android:layout_gravity="end"
                     android:backgroundTint="@color/button_bg"
@@ -250,7 +250,7 @@
                         android:id="@+id/textResult"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="The amount of fertilizers recommended to use corresponds to the plan:"
+                        android:text="@string/the_amount_of_fertilizers_recommended_to_use_corresponds_to_the_plan"
                         android:textSize="19sp"
                         android:textStyle="bold"/>
 
@@ -273,7 +273,7 @@
                                 android:id="@+id/textRecommend"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Recommended amount"
+                                android:text="@string/recommended_amount"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -351,7 +351,7 @@
                                 android:id="@+id/btnViewDetailFertilizer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="View detail"
+                                android:text="@string/view_detail"
                                 android:textSize="18sp"
                                 android:textColor="@color/button_bg"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -368,7 +368,7 @@
                         android:id="@+id/defaultNutrients"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Note: Calculated based on the recommended amount of N-P-K is 80-30-40."
+                        android:text="@string/note_calculated_based_on_the_recommended_amount_of_n_p_k_is_80_30_40"
                         android:textStyle="italic"
                         android:textSize="15sp"
                         android:layout_marginTop="10dp"
@@ -388,7 +388,7 @@
                     android:id="@+id/recommendFertilizer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recommended fertilizers:"
+                    android:text="@string/recommended_fertilizers"
                     android:layout_marginTop="10dp"
                     android:textSize="18sp"
                     android:layout_marginStart="8dp"
@@ -407,7 +407,7 @@
                     android:id="@+id/recommendPesticide"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recommended pesticides:"
+                    android:text="@string/recommended_pesticides"
                     android:layout_marginTop="15dp"
                     android:textSize="18sp"
                     android:layout_marginStart="8dp"

@@ -80,7 +80,7 @@ public class ViewPlan extends AppCompatActivity {
                 textSowingAmount.setText(amountString);
                 String areaString = incomingUserCrops.getSowedArea() + " ha";
                 textSowedArea.setText(areaString);
-                String periodString = incomingUserCrops.getGrowthPeriod() + " days";
+                String periodString = incomingUserCrops.getGrowthPeriod() + getString(R.string.days);
                 textGrowthPeriod.setText(periodString);
                 if(fertilizerCalculating.getUreaAmount() != 0) {
                     String urea = fertilizerCalculating.getUreaAmount() + " Kg";

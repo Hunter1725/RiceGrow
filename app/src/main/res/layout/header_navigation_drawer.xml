@@ -15,7 +15,7 @@
         android:layout_height="80dp"
         android:padding="1dp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/ic_launcher_background"
+        app:srcCompat="@drawable/logo"
         app:strokeColor="@color/white"
         app:strokeWidth="1dp" />
 
@@ -23,7 +23,7 @@
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hunter Mall"
+        android:text="Rice Grow"
         android:textStyle="bold"
         android:textSize="16sp"
         android:textColor="#FFF"
@@ -33,7 +33,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hunterCode.org"
+        android:text="leduhoang999@gmail.com"
         android:textStyle="italic"
         android:textColor="#FFF"
         android:textSize="16sp"

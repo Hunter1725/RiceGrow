@@ -19,19 +19,19 @@
         android:id="@+id/monthly"
         android:icon="@drawable/monthly"
         android:iconTint="@color/black"
-        android:title="Monthly"
+        android:title="@string/monthly"
         app:showAsAction="never|withText"/>
     <item
         android:id="@+id/weekly"
         android:icon="@drawable/weekly"
         android:iconTint="@color/black"
-        android:title="Weekly"
+        android:title="@string/weekly"
         app:showAsAction="never|withText"/>
     <item
         android:id="@+id/daily"
         android:icon="@drawable/daily"
         android:iconTint="@color/black"
-        android:title="Daily"
+        android:title="@string/daily"
         app:showAsAction="never|withText"/>
 
 </menu>

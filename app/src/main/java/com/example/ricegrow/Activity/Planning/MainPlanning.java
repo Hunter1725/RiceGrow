@@ -105,17 +105,17 @@ public class MainPlanning extends Fragment {
             if (direction == ItemTouchHelper.LEFT) {
                 deletedPlan = userCrops.get(position);
                 MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog);
-                builder.setTitle("Delete plan");
-                builder.setMessage("Are you sure you want to delete this plan?\nWarning: You can undo this but all created notes will be deleted forever");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setTitle(getString(R.string.delete_plan));
+                builder.setMessage(getString(R.string.are_you_sure_you_want_to_delete_this_plan_warning_you_can_undo_this_but_all_created_notes_will_be_deleted_forever));
+                builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Perform guest login action
                         db.userCropDao().delete(deletedPlan); // Delete from the database first
                         userCrops.remove(position); // Then remove from the list
                         planListAdapter.notifyItemRemoved(position);
-                        Snackbar.make(plansListView, "The plan " + deletedPlan.getName() + " was removed!", Snackbar.LENGTH_LONG)
-                                .setAction("Undo", new View.OnClickListener() {
+                        Snackbar.make(plansListView, getString(R.string.the_plan) + deletedPlan.getName() + getString(R.string.was_removed), Snackbar.LENGTH_LONG)
+                                .setAction(getString(R.string.undo), new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         db.userCropDao().insert(deletedPlan); // Insert back to the database
@@ -128,7 +128,7 @@ public class MainPlanning extends Fragment {
                         initRecyclerView();
                     }
                 });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         initRecyclerView();

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@null"
-        android:text="Monthly"
+        android:text="@string/monthly"
         android:textColor="@color/button_bg"
         android:textSize="22sp"
         android:textStyle="bold" />
@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="In the stage:"
+                android:text="@string/in_the_stage"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="It is not in any stage!"
+                android:text="@string/it_is_not_in_any_stage"
                 android:textSize="18sp"
                 android:textStyle="italic"
                 android:visibility="gone" />
@@ -153,7 +153,7 @@
                                 android:id="@+id/durationStage"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Duration:"
+                                android:text="@string/duration"
                                 android:textColor="@color/black"
                                 android:textSize="16sp"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -180,7 +180,7 @@
                                 android:id="@+id/startDate"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Start date:"
+                                android:text="@string/start_date"
                                 android:textColor="@color/black"
                                 android:textSize="16sp"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -209,7 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="Activity:"
+                android:text="@string/activity"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -218,7 +218,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="There are no current activities!"
+                android:text="@string/there_are_no_current_activities"
                 android:textSize="18sp"
                 android:textStyle="italic"
                 android:visibility="gone" />
@@ -236,7 +236,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Note:"
+                    android:text="@string/note"
                     android:textSize="18sp"
                     android:textStyle="bold|italic"
                     app:layout_constraintStart_toStartOf="parent"
@@ -250,7 +250,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:text="+ Add new"
+                    android:text="@string/add_new"
                     android:textColor="@color/button_bg"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -263,7 +263,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:text="Delete note"
+                    android:text="@string/delete_note"
                     android:textColor="@color/button_bg"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -278,7 +278,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Not finish this activity today because its rain!"
+                android:text="@string/not_finish_this_activity_today_because_its_rain"
                 android:textSize="18sp"
                 android:visibility="gone" />
 
@@ -287,7 +287,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="There are no notes!"
+                android:text="@string/there_are_no_notes"
                 android:textSize="18sp"
                 android:textStyle="italic"
                 android:visibility="visible" />

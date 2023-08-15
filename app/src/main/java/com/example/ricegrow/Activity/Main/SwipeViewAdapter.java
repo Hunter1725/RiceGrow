@@ -47,25 +47,19 @@ public class SwipeViewAdapter extends RecyclerView.Adapter<SwipeViewAdapter.View
         holder.cardPestFer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (swipeModels.get(position).getTitle()) {
-                    case "Pests":
-                        context.startActivity(new Intent(context, ListPest.class));
-                        break;
-                    case "Diseases":
-                        context.startActivity(new Intent(context, ListDisease.class));
-                        break;
-                    case "Weeds":
-                        context.startActivity(new Intent(context, ListWeed.class));
-                        break;
-                    case "Deficiencies and toxicities":
-                        context.startActivity(new Intent(context, ListDeftox.class));
-                        break;
-                    case "Pesticides":
-                        context.startActivity(new Intent(context, ListPesticide.class));
-                        break;
-                    case "Fertilizers":
-                        context.startActivity(new Intent(context, ListFertilizer.class));
-                        break;
+                String title = swipeModels.get(position).getTitle();
+                if (title.equals(context.getString(R.string.pests))) {
+                    context.startActivity(new Intent(context, ListPest.class));
+                } else if (title.equals(context.getString(R.string.diseases))) {
+                    context.startActivity(new Intent(context, ListDisease.class));
+                } else if (title.equals(context.getString(R.string.weeds))) {
+                    context.startActivity(new Intent(context, ListWeed.class));
+                } else if (title.equals(context.getString(R.string.deficiencies_and_toxicities))) {
+                    context.startActivity(new Intent(context, ListDeftox.class));
+                } else if (title.equals(context.getString(R.string.pesticides))) {
+                    context.startActivity(new Intent(context, ListPesticide.class));
+                } else if (title.equals(context.getString(R.string.fertilizers))) {
+                    context.startActivity(new Intent(context, ListFertilizer.class));
                 }
             }
         });

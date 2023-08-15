@@ -29,7 +29,7 @@
             android:background="@color/login_background"
             app:menu="@menu/top_bar_management"
             app:navigationIcon="@drawable/back"
-            app:title="New Plan Generator" />
+            app:title="@string/new_plan_generator" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -47,7 +47,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Enter the sowing date, area, and rice variety to generate customized plans."
+                    android:text="@string/enter_the_sowing_date_area_and_rice_variety_to_generate_customized_plans"
                     android:textSize="22sp"
                     android:textColor="@color/black"
                     android:layout_marginTop="10dp"/>
@@ -55,7 +55,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Plan name"
+                    android:text="@string/plan_name"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
@@ -69,7 +69,7 @@
                     app:hintTextColor="@color/logo_tint"
                     app:hintEnabled="true"
                     app:hintAnimationEnabled="true"
-                    android:hint="Name"
+                    android:hint="@string/name"
                     app:hintTextAppearance="@style/TextInputLayoutHint"
                     app:errorEnabled="true"
                     app:errorIconDrawable="@null"
@@ -92,7 +92,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sowing Date"
+                    android:text="@string/sowing_date"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
@@ -106,7 +106,7 @@
                     android:layout_marginTop="5dp"
                     app:hintEnabled="true"
                     app:hintAnimationEnabled="true"
-                    android:hint="Date"
+                    android:hint="@string/date"
                     app:errorEnabled="true"
                     app:errorTextAppearance="@style/TextInputLayoutError"
                     app:endIconMode="custom"
@@ -128,13 +128,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Select stages"
+                    android:text="@string/select_stages"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
                 <LinearLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -148,7 +147,7 @@
                             android:id="@+id/checkBoxHideShowStages"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Hide/Show Stages"
+                            android:text="@string/hide_show_stages"
                             style="@style/Widget.App.CheckBox"
                             app:checkedState="checked"
                             android:textSize="16sp"
@@ -159,7 +158,7 @@
                             android:id="@+id/checkBoxSelectAll"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Select All"
+                            android:text="@string/select_all"
                             style="@style/Widget.App.CheckBox"
                             app:checkedState="unchecked"
                             android:textSize="16sp"
@@ -172,7 +171,7 @@
                         android:id="@+id/txtWarningStage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Please select at least one stage!"
+                        android:text="@string/please_select_at_least_one_stage"
                         android:textSize="16sp"
                         android:layout_marginStart="10dp"
                         android:textColor="@color/warning_text"
@@ -191,7 +190,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Area"
+                    android:text="@string/area"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
@@ -287,7 +286,7 @@
                     android:id="@+id/selectUnit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Unit"
+                    android:text="@string/unit"
                     android:textSize="19sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -308,7 +307,7 @@
                         android:id="@+id/btnMeter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Square meters (m²)"
+                        android:text="@string/square_meters_m"
                         android:textSize="17sp"
                         style="@style/Widget.App.RadioButton" />
 
@@ -316,7 +315,7 @@
                         android:id="@+id/btnHectare"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hectare (ha)"
+                        android:text="@string/hectare_ha"
                         android:layout_marginStart="10dp"
                         android:textSize="17sp"
                         style="@style/Widget.App.RadioButton"
@@ -327,7 +326,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rice Variety"
+                    android:text="@string/rice_variety"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
@@ -342,7 +341,7 @@
                     app:errorEnabled="true"
                     app:errorTextAppearance="@style/TextInputLayoutError"
                     app:hintTextColor="@color/logo_tint"
-                    android:hint="Rice varieties"
+                    android:hint="@string/rice_varieties"
                     app:boxStrokeColor="@color/logo_tint">
 
                     <AutoCompleteTextView
@@ -358,7 +357,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Plan color (Optional)"
+                    android:text="@string/plan_color_optional"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
@@ -373,7 +372,7 @@
                         android:id="@+id/btnColorPicker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pick Color"
+                        android:text="@string/pick_color"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:backgroundTint="@color/button_bg"
@@ -403,7 +402,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="32dp"
                     android:backgroundTint="@color/button_bg"
-                    android:text="Generate"
+                    android:text="@string/generate"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"/>

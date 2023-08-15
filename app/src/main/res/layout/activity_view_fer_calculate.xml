@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/login_background"
                 app:navigationIcon="@drawable/back"
-                app:title="Recommended fertilizers" />
+                app:title="@string/recommended_fertilizers" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -60,7 +60,7 @@
                         android:id="@+id/fertilizingGuide"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fertilizing guide"
+                        android:text="@string/fertilizing_guide"
                         android:textSize="22sp"
                         android:textStyle="bold"
                         android:layout_marginStart="5dp"
@@ -73,7 +73,7 @@
                     android:id="@+id/defaultNutrients"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Note: Expert-recommended fertilizer amounts provided below can be customized to your specific situation."
+                    android:text="@string/note_expert_recommended_fertilizer_amounts_provided_below_can_be_customized_to_your_specific_situation"
                     android:textStyle="italic"
                     android:textSize="15sp"
                     android:layout_marginTop="10dp"/>
@@ -89,7 +89,7 @@
                         android:id="@+id/primaryFertilizer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Primary fertilizing"
+                        android:text="@string/primary_fertilizing"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:drawablePadding="5dp"
@@ -100,7 +100,7 @@
                         android:id="@+id/tilleringStage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tillering stage (36th - 55th day)"
+                        android:text="@string/tillering_stage_36th_55th_day"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp" />
@@ -109,7 +109,7 @@
                         android:id="@+id/guide1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="According to the amount as follows:"
+                        android:text="@string/according_to_the_amount_as_follows"
                         android:textSize="19sp"
                         android:layout_marginTop="10dp" />
 
@@ -181,7 +181,7 @@
                         android:id="@+id/secondFertilizer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Secondary fertilizing"
+                        android:text="@string/secondary_fertilizing"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:drawablePadding="5dp"
@@ -192,7 +192,7 @@
                         android:id="@+id/secondStage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tillering stage (56th - 75th day)"
+                        android:text="@string/tillering_stage_56th_75th_day"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp" />
@@ -201,7 +201,7 @@
                         android:id="@+id/guide2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="According to the amount as follows:"
+                        android:text="@string/according_to_the_amount_as_follows"
                         android:textSize="19sp"
                         android:layout_marginTop="10dp" />
 
@@ -311,7 +311,7 @@
                         android:id="@+id/thirdFertilizer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Thirdly fertilizing"
+                        android:text="@string/thirdly_fertilizing"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:drawablePadding="5dp"
@@ -322,7 +322,7 @@
                         android:id="@+id/thirdStage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Panicle initiation stage (76th - 93th day)"
+                        android:text="@string/panicle_initiation_stage_76th_93th_day"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp" />
@@ -331,7 +331,7 @@
                         android:id="@+id/guide3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="According to the amount as follows:"
+                        android:text="@string/according_to_the_amount_as_follows"
                         android:textSize="19sp"
                         android:layout_marginTop="10dp" />
 

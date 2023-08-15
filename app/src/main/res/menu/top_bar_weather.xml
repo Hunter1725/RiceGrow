@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/tempUnit"
-        android:title="Temperature unit"
+        android:title="@string/temperature_unit"
         android:iconTint="@color/black"
         app:showAsAction="never"
         />

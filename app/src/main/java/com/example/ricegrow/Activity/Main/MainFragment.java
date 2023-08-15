@@ -1,6 +1,10 @@
 package com.example.ricegrow.Activity.Main;
 
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -24,6 +28,7 @@ import com.example.ricegrow.Activity.Planning.Calendar.CalendarUtils;
 import com.example.ricegrow.Activity.Planning.Plan.PlanGenerate;
 import com.example.ricegrow.Activity.Planning.Plan.PlanListAdapter;
 import com.example.ricegrow.Activity.Main.Weather.WeatherActivity;
+import com.example.ricegrow.Activity.Setting.ContextWrapper;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.Model.Weather;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
@@ -31,6 +36,7 @@ import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainFragment extends Fragment implements NetworkUtils.OnConnectivityChangeListener {
     private MaterialCardView fertilizerCard, planCard, weatherCard;
@@ -111,14 +117,14 @@ public class MainFragment extends Fragment implements NetworkUtils.OnConnectivit
                 String weatherRecommend = "";
                 if (weather.getMain().equals("Rain") || weather.getMain().equals("Thunderstorm")) {
                     if (weather.getHumidity() > 80 || weather.getSpeed() > 15) {
-                        weatherRecommend = "use fertilizers";
+                        weatherRecommend = getString(R.string.use_fertilizers);
                         txtWeatherRecommend.setText(weatherRecommend);
                     } else {
-                        weatherRecommend = "use pesticides";
+                        weatherRecommend = getString(R.string.use_pesticides);
                         txtWeatherRecommend.setText(weatherRecommend);
                     }
                 } else {
-                    weatherRecommend = "Nothing";
+                    weatherRecommend = getString(R.string.nothing);
                     txtWeatherRecommend.setText(weatherRecommend);
                 }
             }
@@ -250,12 +256,12 @@ public class MainFragment extends Fragment implements NetworkUtils.OnConnectivit
         imageWeather = view.findViewById(R.id.imageWeather);
         db = RiceGrowDatabase.getInstance(getActivity());
         swipeModels = new ArrayList<>();
-        swipeModels.add(new SwipeModel("Pests", R.drawable.pests_management));
-        swipeModels.add(new SwipeModel("Diseases", R.drawable.disease_management));
-        swipeModels.add(new SwipeModel("Weeds", R.drawable.weed_management));
-        swipeModels.add(new SwipeModel("Deficiencies and toxicities", R.drawable.deficienciesandtoxicities));
-        swipeModels.add(new SwipeModel("Pesticides", R.drawable.pesticides_management));
-        swipeModels.add(new SwipeModel("Fertilizers", R.drawable.fertilizers_application));
+        swipeModels.add(new SwipeModel(getString(R.string.pests), R.drawable.pests_management));
+        swipeModels.add(new SwipeModel(getString(R.string.diseases), R.drawable.disease_management));
+        swipeModels.add(new SwipeModel(getString(R.string.weeds), R.drawable.weed_management));
+        swipeModels.add(new SwipeModel(getString(R.string.deficiencies_and_toxicities), R.drawable.deficienciesandtoxicities));
+        swipeModels.add(new SwipeModel(getString(R.string.pesticides), R.drawable.pesticides_management));
+        swipeModels.add(new SwipeModel(getString(R.string.fertilizers), R.drawable.fertilizers_application));
     }
 
     @Override

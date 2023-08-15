@@ -9,7 +9,7 @@
         android:id="@+id/titleKnowledge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Farming Knowledge"
+        android:text="@string/farming_knowledge"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="#4CAF50"
@@ -54,7 +54,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rice growth stages and farming activities"
+                            android:text="@string/rice_growth_stages_and_farming_activities"
                             android:textSize="20sp"
                             android:textColor="#000000"
                             android:textStyle="bold" />
@@ -63,7 +63,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Explore the various stages of rice growth and farming activities"
+                            android:text="@string/explore_the_various_stages_of_rice_growth_and_farming_activities"
                             android:textColor="#4CAF50"
                             android:textAppearance="?attr/textAppearanceBody1" />
 
@@ -80,7 +80,7 @@
                             android:id="@+id/btnCardStageActivity"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Learn More"
+                            android:text="@string/learn_more"
                             android:textColor="#FFFFFF"
                             android:textAppearance="?attr/textAppearanceButton"
                             style="?attr/borderlessButtonStyle"
@@ -122,7 +122,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pesticides and Fertilizers"
+                            android:text="@string/pesticides_and_fertilizers"
                             android:textSize="20sp"
                             android:textColor="#000000"
                             android:textStyle="bold" />
@@ -131,7 +131,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Pesticides - Fertilizers: Enhance Your Crop's Health and Growth"
+                            android:text="@string/pesticides_fertilizers_enhance_your_crop_s_health_and_growth"
                             android:textColor="#4CAF50"
                             android:textAppearance="?attr/textAppearanceBody1" />
 
@@ -148,7 +148,7 @@
                             android:id="@+id/btnCardPestFer"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Learn More"
+                            android:text="@string/learn_more"
                             android:textColor="#FFFFFF"
                             android:textAppearance="?attr/textAppearanceButton"
                             style="?attr/borderlessButtonStyle"
@@ -190,7 +190,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pest and Disease Management"
+                            android:text="@string/pest_and_disease_management"
                             android:textSize="20sp"
                             android:textColor="#000000"
                             android:textStyle="bold" />
@@ -199,7 +199,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Pest - Disease Management: Safeguard Your Crops from Threats"
+                            android:text="@string/pest_disease_management_safeguard_your_crops_from_threats"
                             android:textColor="#4CAF50"
                             android:textAppearance="?attr/textAppearanceBody1" />
 
@@ -216,7 +216,7 @@
                             android:id="@+id/btnCardManagement"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Learn More"
+                            android:text="@string/learn_more"
                             android:textColor="#FFFFFF"
                             android:textAppearance="?attr/textAppearanceButton"
                             style="?attr/borderlessButtonStyle"
