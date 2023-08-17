@@ -15,19 +15,19 @@ public interface ActivityDao {
     @Insert
     void insert (Activities activities);
 
-    @Query("SELECT id FROM activities WHERE name =:name")
+    @Query("SELECT id FROM activities WHERE nameEn =:name")
     int getIdByName (String name);
 
     @Query("SELECT * FROM activities")
     List<Activities> getAllActivities();
 
-    @Query("SELECT * FROM activities WHERE name =:name")
+    @Query("SELECT * FROM activities WHERE nameEn =:name")
     Activities getActivityByName(String name);
 
     @Query("SELECT * FROM activities WHERE id =:id")
     Activities getActivityById(int id);
 
-    @Query("SELECT * FROM activities WHERE name LIKE :name")
+    @Query("SELECT * FROM activities WHERE nameEn LIKE :name OR nameVi LIKE :name")
     List<Activities> getActivitiesByName(String name);
 
     @Query("SELECT * FROM activities WHERE id IN (SELECT activity_id FROM activity_fertilizers WHERE fertilizer_id = :fertilizerId)")

@@ -16,21 +16,17 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.TreatingAdapter;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.UsingAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
-import com.example.ricegrow.DatabaseFiles.Model.Activities;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Crops;
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
-import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
 import com.example.ricegrow.DatabaseFiles.Model.Weeds;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
@@ -111,7 +107,11 @@ public class CropActivity extends AppCompatActivity {
                         .into(imageCrop);
                 txtNameCrop.setText(incomingCrop.getName());
                 toolbarCrop.setTitle(incomingCrop.getName());
-                txtDescription.setText(incomingCrop.getDescription());
+                if(GetCurrentLanguage.getCurrentLanguage(CropActivity.this).equals("en")) {
+                    txtDescription.setText(incomingCrop.getDescriptionEn());
+                } else {
+                    txtDescription.setText(incomingCrop.getDescriptionVi());
+                }
                 String growth = getString(R.string.about) + String.valueOf(incomingCrop.getGrowthPeriod()) + getString(R.string.days);
                 txtGrowthPeriod.setText(growth);
                 String price = String.valueOf(incomingCrop.getSellingPrice()) + " VND/kg";

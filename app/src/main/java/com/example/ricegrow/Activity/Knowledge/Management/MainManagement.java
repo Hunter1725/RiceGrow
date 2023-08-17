@@ -38,7 +38,12 @@ public class MainManagement extends Fragment {
     }
 
     private void initListener() {
-
+        cardCrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListCrop.class));
+            }
+        });
         btnCardCrop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,10 +51,22 @@ public class MainManagement extends Fragment {
             }
         });
 
+        cardPest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListPest.class));
+            }
+        });
         btnCardPests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), ListPest.class));
+            }
+        });
+        cardDisease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListDisease.class));
             }
         });
 
@@ -60,6 +77,13 @@ public class MainManagement extends Fragment {
             }
         });
 
+        cardWeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListWeed.class));
+            }
+        });
+
         btnCardWeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +91,12 @@ public class MainManagement extends Fragment {
             }
         });
 
+        cardDeftox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListDeftox.class));
+            }
+        });
         btnCardDeftox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

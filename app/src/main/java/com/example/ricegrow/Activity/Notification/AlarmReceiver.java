@@ -18,6 +18,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.example.ricegrow.Activity.Main.MainActivity;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
@@ -45,7 +46,12 @@ public class AlarmReceiver extends BroadcastReceiver {
                     ArrayList<PlanActivities> planActivities = (ArrayList<PlanActivities>) db.planActivityDao().getAllPlanActivitiesByPlanStageId(planStage.getId());
                     for (PlanActivities planActivity : planActivities) {
                         if (planActivity.getStartDate().isBefore(LocalDate.now().plusDays(1)) && planActivity.getEndDate().isAfter(LocalDate.now())){
-                            String reminder ="- " + "\"" + db.activityDao().getActivityById(planActivity.getActivityId()).getName() + "\"" + context.getString(R.string.for_the_plan) + " \"" + userCrop.getName() + "\"";
+                            String reminder = "";
+                            if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+                                reminder = "- " + "\"" + db.activityDao().getActivityById(planActivity.getActivityId()).getNameEn() + "\"" + context.getString(R.string.for_the_plan) + " \"" + userCrop.getName() + "\"";
+                            } else {
+                                reminder = "- " + "\"" + db.activityDao().getActivityById(planActivity.getActivityId()).getNameVi() + "\"" + context.getString(R.string.for_the_plan) + " \"" + userCrop.getName() + "\"";
+                            }
                             content.add("\n" + reminder );
                         }
                     }

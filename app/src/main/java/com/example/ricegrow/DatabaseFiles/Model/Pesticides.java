@@ -16,9 +16,11 @@ public class Pesticides implements Parcelable {
     private String name;
     private String manufacturer;
     private String composition;
-    private String category;
+    private String categoryEn;
+    private String categoryVi;
     @ColumnInfo(name = "usage_instructions")
-    private String usageInstructions;
+    private String usageInstructionsEn;
+    private String usageInstructionsVi;
     @ColumnInfo(name = "pesticide_per_bottle")
     private double pesticidePerBottle;
     @ColumnInfo(name = "water_per_hectare")
@@ -26,12 +28,14 @@ public class Pesticides implements Parcelable {
     @ColumnInfo(name = "pesticide_image")
     private String pesticideImage;
 
-    public Pesticides(String name, String manufacturer, String composition, String category, String usageInstructions, double pesticidePerBottle, double waterPerHectare, String pesticideImage) {
+    public Pesticides(String name, String manufacturer, String composition, String categoryEn, String categoryVi, String usageInstructionsEn, String usageInstructionsVi, double pesticidePerBottle, double waterPerHectare, String pesticideImage) {
         this.name = name;
         this.manufacturer = manufacturer;
         this.composition = composition;
-        this.category = category;
-        this.usageInstructions = usageInstructions;
+        this.categoryEn = categoryEn;
+        this.categoryVi = categoryVi;
+        this.usageInstructionsEn = usageInstructionsEn;
+        this.usageInstructionsVi = usageInstructionsVi;
         this.pesticidePerBottle = pesticidePerBottle;
         this.waterPerHectare = waterPerHectare;
         this.pesticideImage = pesticideImage;
@@ -47,8 +51,10 @@ public class Pesticides implements Parcelable {
         name = in.readString();
         manufacturer = in.readString();
         composition = in.readString();
-        category = in.readString();
-        usageInstructions = in.readString();
+        categoryEn = in.readString();
+        categoryVi = in.readString();
+        usageInstructionsEn = in.readString();
+        usageInstructionsVi = in.readString();
         pesticidePerBottle = in.readDouble();
         waterPerHectare = in.readDouble();
         pesticideImage = in.readString();
@@ -99,20 +105,20 @@ public class Pesticides implements Parcelable {
         this.composition = composition;
     }
 
-    public String getCategory() {
-        return category;
+    public String getCategoryEn() {
+        return categoryEn;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryEn(String categoryEn) {
+        this.categoryEn = categoryEn;
     }
 
-    public String getUsageInstructions() {
-        return usageInstructions;
+    public String getUsageInstructionsEn() {
+        return usageInstructionsEn;
     }
 
-    public void setUsageInstructions(String usageInstructions) {
-        this.usageInstructions = usageInstructions;
+    public void setUsageInstructionsEn(String usageInstructionsEn) {
+        this.usageInstructionsEn = usageInstructionsEn;
     }
 
     public double getWaterPerHectare() {
@@ -139,6 +145,22 @@ public class Pesticides implements Parcelable {
         this.pesticideImage = pesticideImage;
     }
 
+    public String getCategoryVi() {
+        return categoryVi;
+    }
+
+    public void setCategoryVi(String categoryVi) {
+        this.categoryVi = categoryVi;
+    }
+
+    public String getUsageInstructionsVi() {
+        return usageInstructionsVi;
+    }
+
+    public void setUsageInstructionsVi(String usageInstructionsVi) {
+        this.usageInstructionsVi = usageInstructionsVi;
+    }
+
     @Ignore
     @Override
     public int describeContents() {
@@ -152,8 +174,10 @@ public class Pesticides implements Parcelable {
         dest.writeString(name);
         dest.writeString(manufacturer);
         dest.writeString(composition);
-        dest.writeString(category);
-        dest.writeString(usageInstructions);
+        dest.writeString(categoryEn);
+        dest.writeString(categoryVi);
+        dest.writeString(usageInstructionsEn);
+        dest.writeString(usageInstructionsVi);
         dest.writeDouble(pesticidePerBottle);
         dest.writeDouble(waterPerHectare);
         dest.writeString(pesticideImage);

@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.ricegrow.Activity.Knowledge.StageActivity.Stage.StageActivity;
-import com.example.ricegrow.Activity.Planning.MainPlanning;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.CropStage;
 import com.example.ricegrow.DatabaseFiles.Model.Notes;
@@ -39,7 +39,6 @@ import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
@@ -231,7 +230,11 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
                 cardStage.setVisibility(View.VISIBLE);
                 txtEmpty.setVisibility(View.GONE);
                 stages = db.stageDao().getStageById(planStage.getStageId());
-                txtNameStage.setText(stages.getName());
+                if(GetCurrentLanguage.getCurrentLanguage(getActivity()).equals("en")) {
+                    txtNameStage.setText(stages.getNameEn());
+                } else {
+                    txtNameStage.setText(stages.getNameVi());
+                }
                 CropStage cropStage = db.cropStageDao().getCropStageByStageIdAndCropId(stages.getId(), incomingUserCrops.getCropId());
                 Glide.with(getActivity())
                         .asBitmap()
@@ -239,7 +242,6 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
                         .placeholder(R.drawable.baseline_restart_alt_24)
                         .error(R.drawable.baseline_error_outline_24)
                         .into(imageStage);
-                txtNameStage.setText(stages.getName());
                 String durationStage = cropStage.getDuration() + getString(R.string.days);
                 txtDurationStage.setText(durationStage);
                 String startDate = cropStage.getStartDate() + getString(R.string.day);

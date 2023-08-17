@@ -12,19 +12,27 @@ import androidx.room.PrimaryKey;
 public class DeficienciesToxicities implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private String name;
-    private String symptoms;
-    private String description;
+    private String nameEn;
+    private String nameVi;
+    private String symptomsEn;
+    private String symptomsVi;
+    private String descriptionEn;
+    private String descriptionVi;
     @ColumnInfo(name = "prevention_methods")
-    private String preventionMethods;
+    private String preventionMethodsEn;
+    private String preventionMethodsVi;
     @ColumnInfo(name = "deftox_image")
     private String deftoxImage;
 
-    public DeficienciesToxicities(String name, String symptoms, String description, String preventionMethods, String deftoxImage) {
-        this.name = name;
-        this.symptoms = symptoms;
-        this.description = description;
-        this.preventionMethods = preventionMethods;
+    public DeficienciesToxicities(String nameEn, String nameVi, String symptomsEn, String symptomsVi, String descriptionEn, String descriptionVi, String preventionMethodsEn, String preventionMethodsVi, String deftoxImage) {
+        this.nameEn = nameEn;
+        this.nameVi = nameVi;
+        this.symptomsEn = symptomsEn;
+        this.symptomsVi = symptomsVi;
+        this.descriptionEn = descriptionEn;
+        this.descriptionVi = descriptionVi;
+        this.preventionMethodsEn = preventionMethodsEn;
+        this.preventionMethodsVi = preventionMethodsVi;
         this.deftoxImage = deftoxImage;
     }
 
@@ -35,10 +43,14 @@ public class DeficienciesToxicities implements Parcelable {
     @Ignore
     protected DeficienciesToxicities(Parcel in) {
         id = in.readInt();
-        name = in.readString();
-        symptoms = in.readString();
-        description = in.readString();
-        preventionMethods = in.readString();
+        nameEn = in.readString();
+        nameVi = in.readString();
+        symptomsEn = in.readString();
+        symptomsVi = in.readString();
+        descriptionEn = in.readString();
+        descriptionVi = in.readString();
+        preventionMethodsEn = in.readString();
+        preventionMethodsVi = in.readString();
         deftoxImage = in.readString();
     }
 
@@ -46,10 +58,14 @@ public class DeficienciesToxicities implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
-        dest.writeString(name);
-        dest.writeString(symptoms);
-        dest.writeString(description);
-        dest.writeString(preventionMethods);
+        dest.writeString(nameEn);
+        dest.writeString(nameVi);
+        dest.writeString(symptomsEn);
+        dest.writeString(symptomsVi);
+        dest.writeString(descriptionEn);
+        dest.writeString(descriptionVi);
+        dest.writeString(preventionMethodsEn);
+        dest.writeString(preventionMethodsVi);
         dest.writeString(deftoxImage);
     }
 
@@ -80,36 +96,36 @@ public class DeficienciesToxicities implements Parcelable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
-    public String getSymptoms() {
-        return symptoms;
+    public String getSymptomsEn() {
+        return symptomsEn;
     }
 
-    public void setSymptoms(String symptoms) {
-        this.symptoms = symptoms;
+    public void setSymptomsEn(String symptomsEn) {
+        this.symptomsEn = symptomsEn;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescriptionEn() {
+        return descriptionEn;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
     }
 
-    public String getPreventionMethods() {
-        return preventionMethods;
+    public String getPreventionMethodsEn() {
+        return preventionMethodsEn;
     }
 
-    public void setPreventionMethods(String preventionMethods) {
-        this.preventionMethods = preventionMethods;
+    public void setPreventionMethodsEn(String preventionMethodsEn) {
+        this.preventionMethodsEn = preventionMethodsEn;
     }
 
     public String getDeftoxImage() {
@@ -118,5 +134,37 @@ public class DeficienciesToxicities implements Parcelable {
 
     public void setDeftoxImage(String deftoxImage) {
         this.deftoxImage = deftoxImage;
+    }
+
+    public String getNameVi() {
+        return nameVi;
+    }
+
+    public void setNameVi(String nameVi) {
+        this.nameVi = nameVi;
+    }
+
+    public String getSymptomsVi() {
+        return symptomsVi;
+    }
+
+    public void setSymptomsVi(String symptomsVi) {
+        this.symptomsVi = symptomsVi;
+    }
+
+    public String getDescriptionVi() {
+        return descriptionVi;
+    }
+
+    public void setDescriptionVi(String descriptionVi) {
+        this.descriptionVi = descriptionVi;
+    }
+
+    public String getPreventionMethodsVi() {
+        return preventionMethodsVi;
+    }
+
+    public void setPreventionMethodsVi(String preventionMethodsVi) {
+        this.preventionMethodsVi = preventionMethodsVi;
     }
 }

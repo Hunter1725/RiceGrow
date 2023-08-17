@@ -15,8 +15,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -24,17 +22,16 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.TreatingAdapter;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.UsingAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.CropStage;
 import com.example.ricegrow.DatabaseFiles.Model.Crops;
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
-import com.example.ricegrow.DatabaseFiles.Model.Weeds;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -113,9 +110,15 @@ public class StageActivity extends AppCompatActivity {
                         .placeholder(R.drawable.baseline_restart_alt_24)
                         .error(R.drawable.baseline_error_outline_24)
                         .into(imageStage);
-                txtNameStage.setText(incomingStage.getName());
-                toolbarStage.setTitle(incomingStage.getName());
-                txtDescription.setText(incomingStage.getDescription());
+                if(GetCurrentLanguage.getCurrentLanguage(StageActivity.this).equals("en")) {
+                    txtNameStage.setText(incomingStage.getNameEn());
+                    toolbarStage.setTitle(incomingStage.getNameEn());
+                    txtDescription.setText(incomingStage.getDescriptionEn());
+                } else {
+                    txtNameStage.setText(incomingStage.getNameVi());
+                    toolbarStage.setTitle(incomingStage.getNameVi());
+                    txtDescription.setText(incomingStage.getDescriptionVi());
+                }
                 ArrayList<CropStage> cropStages = (ArrayList<CropStage>) db.cropStageDao().getCropStageByStageId(incomingStage.getId());
                 int cropStageCount = cropStages.size();
                 //Duration

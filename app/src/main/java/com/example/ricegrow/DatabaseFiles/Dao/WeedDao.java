@@ -15,13 +15,13 @@ public interface WeedDao {
     @Insert
     void insert (Weeds weeds);
 
-    @Query("SELECT id FROM weeds WHERE name =:name")
+    @Query("SELECT id FROM weeds WHERE nameEn =:name")
     int getIdByName (String name);
 
     @Query("SELECT * FROM weeds")
     List<Weeds> getAllWeeds();
 
-    @Query("SELECT * FROM weeds WHERE name LIKE :name")
+    @Query("SELECT * FROM weeds WHERE nameEn LIKE :name OR nameVi LIKE :name")
     List<Weeds> getWeedsByName(String name);
 
     @Query("SELECT * FROM weeds WHERE id IN (SELECT weed_id FROM weeds_pesticides WHERE pesticide_id = :pesticideId)")

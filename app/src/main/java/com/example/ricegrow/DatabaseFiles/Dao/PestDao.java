@@ -14,13 +14,13 @@ public interface PestDao {
     @Insert
     void insert (Pests pests);
 
-    @Query("SELECT id FROM pests WHERE name =:name")
+    @Query("SELECT id FROM pests WHERE nameEn =:name")
     int getIdByName (String name);
 
     @Query("SELECT * FROM pests")
     List<Pests> getAllPests();
 
-    @Query("SELECT * FROM pests WHERE name LIKE :name")
+    @Query("SELECT * FROM pests WHERE nameEn LIKE :name OR nameVi LIKE :name")
     List<Pests> getPestsByName(String name);
 
     @Query("SELECT * FROM pests WHERE id IN (SELECT pest_id FROM pest_pesticides WHERE pesticide_id = :pesticideId)")

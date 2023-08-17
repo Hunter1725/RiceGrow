@@ -13,8 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.StageActivity.Activity.ActivityAdapter;
 import com.example.ricegrow.Activity.Knowledge.StageActivity.Activity.FarmingActivity;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
@@ -41,8 +41,13 @@ public class ActivityPlanAdapter extends RecyclerView.Adapter<ActivityPlanAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtNameActivity.setText(activities.get(position).getName());
-        holder.txtValueDescription.setText(activities.get(position).getDescription());
+        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+            holder.txtNameActivity.setText(activities.get(position).getNameEn());
+            holder.txtValueDescription.setText(activities.get(position).getDescriptionEn());
+        } else {
+            holder.txtNameActivity.setText(activities.get(position).getNameVi());
+            holder.txtValueDescription.setText(activities.get(position).getDescriptionVi());
+        }
         String duration = String.valueOf(activities.get(position).getDuration()) + context.getString(R.string.days);
         holder.txtValueDuration.setText(duration);
         Glide.with(context)

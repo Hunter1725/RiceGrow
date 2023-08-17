@@ -3,29 +3,30 @@ package com.example.ricegrow.DatabaseFiles.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import androidx.room.Update;
 
 @Entity(tableName = "stages")
 public class Stages implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private String name;
+    private String nameEn;
+    private String nameVi;
     private int order;
-    private String description;
+    private String descriptionEn;
+    private String descriptionVi;
     @ColumnInfo(name = "stage_image")
     private String stageImage;
     private boolean selected;
 
-    public Stages(String name, int order, String description, String stageImage) {
-        this.name = name;
+    public Stages(String nameEn, String nameVi, int order, String descriptionEn, String descriptionVi, String stageImage) {
+        this.nameEn = nameEn;
+        this.nameVi = nameVi;
         this.order = order;
-        this.description = description;
+        this.descriptionEn = descriptionEn;
+        this.descriptionVi = descriptionVi;
         this.stageImage = stageImage;
         this.selected = false;
     }
@@ -37,9 +38,11 @@ public class Stages implements Parcelable {
     @Ignore
     protected Stages(Parcel in) {
         id = in.readInt();
-        name = in.readString();
+        nameEn = in.readString();
+        nameVi = in.readString();
         order = in.readInt();
-        description = in.readString();
+        descriptionEn = in.readString();
+        descriptionVi = in.readString();
         stageImage = in.readString();
         selected = in.readByte() != 0;
     }
@@ -48,9 +51,11 @@ public class Stages implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
-        dest.writeString(name);
+        dest.writeString(nameEn);
+        dest.writeString(nameVi);
         dest.writeInt(order);
-        dest.writeString(description);
+        dest.writeString(descriptionEn);
+        dest.writeString(descriptionVi);
         dest.writeString(stageImage);
         dest.writeByte((byte) (selected ? 1 : 0));
     }
@@ -90,20 +95,20 @@ public class Stages implements Parcelable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescriptionEn() {
+        return descriptionEn;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
     }
 
     public String getStageImage() {
@@ -122,4 +127,19 @@ public class Stages implements Parcelable {
         this.stageImage = stageImage;
     }
 
+    public String getNameVi() {
+        return nameVi;
+    }
+
+    public void setNameVi(String nameVi) {
+        this.nameVi = nameVi;
+    }
+
+    public String getDescriptionVi() {
+        return descriptionVi;
+    }
+
+    public void setDescriptionVi(String descriptionVi) {
+        this.descriptionVi = descriptionVi;
+    }
 }

@@ -2,9 +2,7 @@ package com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide;
 
 import static com.example.ricegrow.Activity.Calculating.PesticideCalculating.PesticideCalculate.PESTICIDE_CALCULATE_KEY;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -14,32 +12,22 @@ import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.target.Target;
-import com.bumptech.glide.request.transition.Transition;
 import com.example.ricegrow.Activity.Calculating.PesticideCalculating.PesticideCalculate;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.UsingAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
@@ -48,7 +36,6 @@ import com.example.ricegrow.DatabaseFiles.Model.Weeds;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -134,10 +121,15 @@ public class PesticideActivity extends AppCompatActivity {
                         .into(imagePesticide);
                 txtNamePesticide.setText(incomingPesticide.getName());
                 toolbar.setTitle(incomingPesticide.getName());
-                txtCategory.setText(incomingPesticide.getCategory());
+                if(GetCurrentLanguage.getCurrentLanguage(PesticideActivity.this).equals("en")) {
+                    txtCategory.setText(incomingPesticide.getCategoryEn());
+                    txtInstruction.setText(incomingPesticide.getUsageInstructionsEn());
+                } else {
+                    txtCategory.setText(incomingPesticide.getCategoryVi());
+                    txtInstruction.setText(incomingPesticide.getUsageInstructionsVi());
+                }
                 txtManufacturer.setText(incomingPesticide.getManufacturer());
                 txtComposition.setText(incomingPesticide.getComposition());
-                txtInstruction.setText(incomingPesticide.getUsageInstructions());
                 String pesticidePer = String.valueOf(incomingPesticide.getPesticidePerBottle()) + getString(R.string.ml_bottle_or_grams_bottle);
                 txtPesticidePerBottle.setText(pesticidePer);
                 String waterPerHa = String.valueOf(incomingPesticide.getWaterPerHectare() + " l/ha");
@@ -148,7 +140,7 @@ public class PesticideActivity extends AppCompatActivity {
                 treatingRecView.setAdapter(treatingAdapter);
                 treatingRecView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
-                if(incomingPesticide.getCategory().equals("Insecticide")){
+                if(incomingPesticide.getCategoryEn().equals("Insecticide")){
                     ArrayList<Pests> pests = (ArrayList<Pests>) db.pestDao().getPestByPesticideId(incomingPesticide.getId());
                     if(pests != null){
                         if(pests.size() > 0){
@@ -160,7 +152,7 @@ public class PesticideActivity extends AppCompatActivity {
                             txtEmpty.setVisibility(View.VISIBLE);
                         }
                     }
-                } else if (incomingPesticide.getCategory().equals("Fungicide")) {
+                } else if (incomingPesticide.getCategoryEn().equals("Fungicide")) {
                     ArrayList<Diseases> diseases = (ArrayList<Diseases>) db.diseaseDao().getDiseaseByPesticideId(incomingPesticide.getId());
                     if(diseases != null){
                         if(diseases.size() > 0){
@@ -172,7 +164,7 @@ public class PesticideActivity extends AppCompatActivity {
                             txtEmpty.setVisibility(View.VISIBLE);
                         }
                     }
-                } else if (incomingPesticide.getCategory().equals("Herbicide")) {
+                } else if (incomingPesticide.getCategoryEn().equals("Herbicide")) {
                     ArrayList<Weeds> weeds = (ArrayList<Weeds>) db.weedDao().getWeedByPesticideId(incomingPesticide.getId());
                     if(weeds != null){
                         if(weeds.size() > 0){

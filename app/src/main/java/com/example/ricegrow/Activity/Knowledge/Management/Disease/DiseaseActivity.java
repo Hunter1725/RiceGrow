@@ -24,12 +24,10 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
 import com.example.ricegrow.Activity.Knowledge.Management.SupAdapter;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.TreatingAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
-import com.example.ricegrow.DatabaseFiles.Model.Crops;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
-import com.example.ricegrow.DatabaseFiles.Model.Pests;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
@@ -107,11 +105,19 @@ public class DiseaseActivity extends AppCompatActivity {
                         .placeholder(R.drawable.baseline_restart_alt_24)
                         .error(R.drawable.baseline_error_outline_24)
                         .into(imageDisease);
-                txtNameDisease.setText(incomingDisease.getName());
-                toolbarDisease.setTitle(incomingDisease.getName());
-                txtDescription.setText(incomingDisease.getDescription());
-                txtSymptom.setText(incomingDisease.getSymptoms());
-                txtPreventionMethod.setText(incomingDisease.getPreventionMethods());
+                if(GetCurrentLanguage.getCurrentLanguage(DiseaseActivity.this).equals("en")) {
+                    txtNameDisease.setText(incomingDisease.getNameEn());
+                    toolbarDisease.setTitle(incomingDisease.getNameEn());
+                    txtDescription.setText(incomingDisease.getDescriptionEn());
+                    txtSymptom.setText(incomingDisease.getSymptomsEn());
+                    txtPreventionMethod.setText(incomingDisease.getPreventionMethodsEn());
+                } else {
+                    txtNameDisease.setText(incomingDisease.getNameVi());
+                    toolbarDisease.setTitle(incomingDisease.getNameVi());
+                    txtDescription.setText(incomingDisease.getDescriptionVi());
+                    txtSymptom.setText(incomingDisease.getSymptomsVi());
+                    txtPreventionMethod.setText(incomingDisease.getPreventionMethodsVi());
+                }
 
                 pesticideAdapter = new SupAdapter(this);
                 pesticideRecView.setAdapter(pesticideAdapter);

@@ -1,6 +1,5 @@
 package com.example.ricegrow.Activity.Knowledge.Management.Disease;
 
-import static com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity.CROP_KEY;
 import static com.example.ricegrow.Activity.Knowledge.Management.Disease.DiseaseActivity.DISEASE_KEY;
 
 import android.content.Context;
@@ -9,14 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
-import com.example.ricegrow.Activity.Knowledge.Management.Pest.PestAdapter;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
@@ -42,9 +39,15 @@ public class DiseaseAdapter extends RecyclerView.Adapter<DiseaseAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtNameDisease.setText(diseases.get(position).getName());
-        holder.txtValueSymptom.setText(diseases.get(position).getSymptoms());
-        holder.txtValueDes.setText(diseases.get(position).getDescription());
+        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+            holder.txtNameDisease.setText(diseases.get(position).getNameEn());
+            holder.txtValueSymptom.setText(diseases.get(position).getSymptomsEn());
+            holder.txtValueDes.setText(diseases.get(position).getDescriptionEn());
+        } else {
+            holder.txtNameDisease.setText(diseases.get(position).getNameVi());
+            holder.txtValueSymptom.setText(diseases.get(position).getSymptomsVi());
+            holder.txtValueDes.setText(diseases.get(position).getDescriptionVi());
+        }
         Glide.with(context)
                 .asBitmap()
                 .load(diseases.get(position).getDiseaseImage())

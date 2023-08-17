@@ -1,7 +1,6 @@
 package com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities;
 
 import static com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.DeftoxActivity.DEFTOX_KEY;
-import static com.example.ricegrow.Activity.Knowledge.Management.Disease.DiseaseActivity.DISEASE_KEY;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.Management.Disease.DiseaseActivity;
-import com.example.ricegrow.Activity.Knowledge.Management.Disease.DiseaseAdapter;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.DeficienciesToxicities;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
@@ -40,9 +38,15 @@ public class DeftoxAdapter extends RecyclerView.Adapter<DeftoxAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtNameDeftox.setText(deficienciesToxicities.get(position).getName());
-        holder.txtValueSymptom.setText(deficienciesToxicities.get(position).getSymptoms().substring(0,20));
-        holder.txtValueDes.setText(deficienciesToxicities.get(position).getDescription().substring(0,20));
+        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+            holder.txtNameDeftox.setText(deficienciesToxicities.get(position).getNameEn());
+            holder.txtValueSymptom.setText(deficienciesToxicities.get(position).getSymptomsEn());
+            holder.txtValueDes.setText(deficienciesToxicities.get(position).getDescriptionEn());
+        } else {
+            holder.txtNameDeftox.setText(deficienciesToxicities.get(position).getNameVi());
+            holder.txtValueSymptom.setText(deficienciesToxicities.get(position).getSymptomsVi());
+            holder.txtValueDes.setText(deficienciesToxicities.get(position).getDescriptionVi());
+        }
         Glide.with(context)
                 .asBitmap()
                 .load(deficienciesToxicities.get(position).getDeftoxImage())

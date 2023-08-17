@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -24,8 +23,10 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
+import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.UsingAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
@@ -112,10 +113,16 @@ public class FertilizerActivity extends AppCompatActivity {
                         .into(imageFertilizer);
                 txtNameFertilizer.setText(incomingFertilizer.getName());
                 toolbar.setTitle(incomingFertilizer.getName());
-                txtManufacturer.setText(incomingFertilizer.getManufacturer());
-                txtComposition.setText(incomingFertilizer.getComposition());
-                txtInstruction.setText(incomingFertilizer.getUsageInstructions());
-                String recommendedUsage = String.valueOf(incomingFertilizer.getRecommendedUsage() + "kg/ha");
+                if(GetCurrentLanguage.getCurrentLanguage(FertilizerActivity.this).equals("en")) {
+                    txtManufacturer.setText(incomingFertilizer.getManufacturerEn());
+                    txtComposition.setText(incomingFertilizer.getCompositionEn());
+                    txtInstruction.setText(incomingFertilizer.getUsageInstructionsEn());
+                } else {
+                    txtManufacturer.setText(incomingFertilizer.getManufacturerVi());
+                    txtComposition.setText(incomingFertilizer.getCompositionVi());
+                    txtInstruction.setText(incomingFertilizer.getUsageInstructionsVi());
+                }
+                String recommendedUsage = String.valueOf(incomingFertilizer.getRecommendedUsage() + " kg/ha");
                 txtRecommendedUsage.setText(recommendedUsage);
 
                 usingAdapter = new UsingAdapter(this);

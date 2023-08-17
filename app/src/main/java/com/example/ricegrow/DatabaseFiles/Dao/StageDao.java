@@ -15,7 +15,7 @@ public interface StageDao {
     @Insert
     void insert (Stages stages);
 
-    @Query("SELECT id FROM stages WHERE name =:name")
+    @Query("SELECT id FROM stages WHERE nameEn =:name")
     int getIdByName (String name);
 
     @Query("SELECT * FROM stages")
@@ -27,9 +27,9 @@ public interface StageDao {
     @Query("SELECT * FROM stages WHERE id =:id")
     Stages getStageById(int id);
 
-    @Query("SELECT * FROM stages WHERE name =:name")
+    @Query("SELECT * FROM stages WHERE nameEn =:name")
     Stages getStageByName(String name);
-    @Query("SELECT * FROM stages WHERE name LIKE :name")
+    @Query("SELECT * FROM stages WHERE nameEn LIKE :name OR nameVi LIKE :name")
     List<Stages> getStagesByName(String name);
 
     @Query("SELECT * FROM stages WHERE id IN (SELECT stage_id FROM diseases_stages WHERE disease_id = :diseaseId)")

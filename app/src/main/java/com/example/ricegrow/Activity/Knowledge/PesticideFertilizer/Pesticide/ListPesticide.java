@@ -15,9 +15,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.ricegrow.DatabaseFiles.Model.Crops;
+import com.example.ricegrow.Activity.Calculating.PesticideCalculating.SelectPesticide;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
@@ -27,7 +27,6 @@ import com.google.android.material.search.SearchView;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class ListPesticide extends AppCompatActivity {
 
@@ -108,9 +107,16 @@ public class ListPesticide extends AppCompatActivity {
         customArray.add(getString(R.string.all));
 
         for (Pesticides pesticide : pesticides) {
-            String category = pesticide.getCategory();
-            if (!customArray.contains(category)) {
-                customArray.add(category);
+            if(GetCurrentLanguage.getCurrentLanguage(ListPesticide.this).equals("en")) {
+                String category = pesticide.getCategoryEn();
+                if (!customArray.contains(category)) {
+                    customArray.add(category);
+                }
+            } else {
+                String category = pesticide.getCategoryVi();
+                if (!customArray.contains(category)) {
+                    customArray.add(category);
+                }
             }
         }
 
@@ -128,8 +134,11 @@ public class ListPesticide extends AppCompatActivity {
                 if (selectedCategory.equals(getString(R.string.all))) {
                     pesticideAdapter.setPesticides(pesticides);
                 } else {
-                    pesticideAdapter.setPesticides((ArrayList<Pesticides>) db.pesticideDao().getPesticidesByCate(selectedCategory));
-                }
+                    if(GetCurrentLanguage.getCurrentLanguage(ListPesticide.this).equals("en")) {
+                        pesticideAdapter.setPesticides((ArrayList<Pesticides>) db.pesticideDao().getPesticidesByCateEn(selectedCategory));
+                    } else {
+                        pesticideAdapter.setPesticides((ArrayList<Pesticides>) db.pesticideDao().getPesticidesByCateVi(selectedCategory));
+                    }                }
             }
         });
 

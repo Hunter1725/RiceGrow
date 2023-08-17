@@ -8,12 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
@@ -41,7 +41,11 @@ public class PesticideAdapter extends RecyclerView.Adapter<PesticideAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.txtNamePesticide.setText(pesticides.get(position).getName());
         holder.txtNameManufacturer.setText(pesticides.get(position).getManufacturer());
-        holder.txtNameCategory.setText(pesticides.get(position).getCategory());
+        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+            holder.txtNameCategory.setText(pesticides.get(position).getCategoryEn());
+        } else {
+            holder.txtNameCategory.setText(pesticides.get(position).getCategoryVi());
+        }
         Glide.with(context)
                 .asBitmap()
                 .load(pesticides.get(position).getPesticideImage())

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.R;
 import com.google.android.material.checkbox.MaterialCheckBox;
@@ -44,7 +45,11 @@ public class StageCheckboxAdapter extends RecyclerView.Adapter<StageCheckboxAdap
     @Override
     public void onBindViewHolder(@NonNull StageViewHolder holder, int position) {
         Stages stage = stages.get(position);
-        holder.checkBoxStage.setText(stage.getName());
+        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+            holder.checkBoxStage.setText(stage.getNameEn());
+        } else {
+            holder.checkBoxStage.setText(stage.getNameVi());
+        }
         Glide.with(context)
                 .asBitmap()
                 .load(stages.get(position).getStageImage())

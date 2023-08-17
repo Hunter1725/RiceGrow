@@ -22,12 +22,11 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.example.ricegrow.Activity.Knowledge.Management.Pest.PestActivity;
+import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
 import com.example.ricegrow.Activity.Knowledge.Management.SupAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
-import com.example.ricegrow.DatabaseFiles.Model.Pests;
-import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.DatabaseFiles.Model.Weeds;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
@@ -105,13 +104,23 @@ public class WeedActivity extends AppCompatActivity {
                         .placeholder(R.drawable.baseline_restart_alt_24)
                         .error(R.drawable.baseline_error_outline_24)
                         .into(imageWeed);
-                txtNameWeed.setText(incomingWeed.getName());
-                toolbarWeed.setTitle(incomingWeed.getName());
-                txtGeographicalDistribution.setText(incomingWeed.getGeographicalDistribution());
-                txtMorphology.setText(incomingWeed.getMorphology());
-                txtEcology.setText(incomingWeed.getEcology());
-                txtImpact.setText(incomingWeed.getImpact());
-                txtControlMethod.setText(incomingWeed.getControlMethods());
+                if(GetCurrentLanguage.getCurrentLanguage(WeedActivity.this).equals("en")) {
+                    txtNameWeed.setText(incomingWeed.getNameEn());
+                    toolbarWeed.setTitle(incomingWeed.getNameEn());
+                    txtGeographicalDistribution.setText(incomingWeed.getGeographicalDistributionEn());
+                    txtMorphology.setText(incomingWeed.getMorphologyEn());
+                    txtEcology.setText(incomingWeed.getEcologyEn());
+                    txtImpact.setText(incomingWeed.getImpactEn());
+                    txtControlMethod.setText(incomingWeed.getControlMethodsEn());
+                } else {
+                    txtNameWeed.setText(incomingWeed.getNameVi());
+                    toolbarWeed.setTitle(incomingWeed.getNameVi());
+                    txtGeographicalDistribution.setText(incomingWeed.getGeographicalDistributionVi());
+                    txtMorphology.setText(incomingWeed.getMorphologyVi());
+                    txtEcology.setText(incomingWeed.getEcologyVi());
+                    txtImpact.setText(incomingWeed.getImpactVi());
+                    txtControlMethod.setText(incomingWeed.getControlMethodsVi());
+                }
 
                 pesticideAdapter = new SupAdapter(this);
                 pesticideRecView.setAdapter(pesticideAdapter);

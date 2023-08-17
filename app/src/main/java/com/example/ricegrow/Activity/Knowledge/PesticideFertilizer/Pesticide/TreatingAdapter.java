@@ -4,7 +4,6 @@ import static com.example.ricegrow.Activity.Knowledge.Management.DeficienciesTox
 import static com.example.ricegrow.Activity.Knowledge.Management.Disease.DiseaseActivity.DISEASE_KEY;
 import static com.example.ricegrow.Activity.Knowledge.Management.Pest.PestActivity.PEST_KEY;
 import static com.example.ricegrow.Activity.Knowledge.Management.Weed.WeedActivity.WEED_KEY;
-import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity.PESTICIDE_KEY;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +20,7 @@ import com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities
 import com.example.ricegrow.Activity.Knowledge.Management.Disease.DiseaseActivity;
 import com.example.ricegrow.Activity.Knowledge.Management.Pest.PestActivity;
 import com.example.ricegrow.Activity.Knowledge.Management.Weed.WeedActivity;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.DeficienciesToxicities;
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
@@ -55,7 +54,11 @@ public class TreatingAdapter extends RecyclerView.Adapter<TreatingAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if(pests.size()!=0){
-            holder.txtName.setText(pests.get(position).getName());
+            if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+                holder.txtName.setText(pests.get(position).getNameEn());
+            } else {
+                holder.txtName.setText(pests.get(position).getNameVi());
+            }
             Glide.with(context)
                     .asBitmap()
                     .load(pests.get(position).getPestImage())
@@ -71,7 +74,12 @@ public class TreatingAdapter extends RecyclerView.Adapter<TreatingAdapter.ViewHo
                 }
             });
         } else if (diseases.size()!=0) {
-            holder.txtName.setText(diseases.get(position).getName());
+            if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+                holder.txtName.setText(diseases.get(position).getNameEn());
+            } else {
+                holder.txtName.setText(diseases.get(position).getNameVi());
+
+            }
             Glide.with(context)
                     .asBitmap()
                     .load(diseases.get(position).getDiseaseImage())
@@ -87,7 +95,11 @@ public class TreatingAdapter extends RecyclerView.Adapter<TreatingAdapter.ViewHo
                 }
             });
         } else if (weeds.size()!=0) {
-            holder.txtName.setText(weeds.get(position).getName());
+            if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+                holder.txtName.setText(weeds.get(position).getNameEn());
+            } else {
+                holder.txtName.setText(weeds.get(position).getNameVi());
+            }
             Glide.with(context)
                     .asBitmap()
                     .load(weeds.get(position).getWeed_image())
@@ -103,7 +115,11 @@ public class TreatingAdapter extends RecyclerView.Adapter<TreatingAdapter.ViewHo
                 }
             });
         } else if (deficienciesToxicities.size()!=0) {
-            holder.txtName.setText(deficienciesToxicities.get(position).getName());
+            if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+                holder.txtName.setText(deficienciesToxicities.get(position).getNameEn());
+            } else {
+                holder.txtName.setText(deficienciesToxicities.get(position).getNameVi());
+            }
             Glide.with(context)
                     .asBitmap()
                     .load(deficienciesToxicities.get(position).getDeftoxImage())

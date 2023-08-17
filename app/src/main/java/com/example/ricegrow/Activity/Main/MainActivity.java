@@ -9,12 +9,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -22,32 +17,20 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.LocaleList;
-import android.os.SystemClock;
-import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ricegrow.Activity.Authenticate.LoginNormal.LoginActivity;
 import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
 import com.example.ricegrow.Activity.Calculating.MainCalculating;
 import com.example.ricegrow.Activity.Calculating.PesticideCalculating.SelectPesticide;
@@ -56,22 +39,18 @@ import com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities
 import com.example.ricegrow.Activity.Knowledge.Management.Disease.ListDisease;
 import com.example.ricegrow.Activity.Knowledge.Management.Pest.ListPest;
 import com.example.ricegrow.Activity.Knowledge.Management.Weed.ListWeed;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.MainPestFer;
-import com.example.ricegrow.Activity.Main.Weather.WeatherActivity;
 import com.example.ricegrow.Activity.Notification.NotificationService;
 import com.example.ricegrow.Activity.Planning.MainPlanning;
 import com.example.ricegrow.Activity.Planning.Plan.PlanGenerate;
 import com.example.ricegrow.Activity.Setting.ContextWrapper;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.Activity.Setting.SettingActivity;
 import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
 import com.example.ricegrow.DatabaseFiles.Model.Setting;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
-import com.example.ricegrow.DatabaseFiles.Model.Users;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.Priority;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.checkbox.MaterialCheckBox;
@@ -80,7 +59,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.search.SearchBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -381,7 +359,12 @@ public class MainActivity extends AppCompatActivity {
                     ArrayList<PlanActivities> planActivities = (ArrayList<PlanActivities>) db.planActivityDao().getAllPlanActivitiesByPlanStageId(planStage.getId());
                     for (PlanActivities planActivity : planActivities) {
                         if (planActivity.getStartDate().isBefore(LocalDate.now().plusDays(1)) && planActivity.getEndDate().isAfter(LocalDate.now())) {
-                            String reminder = "- " + "\"" + db.activityDao().getActivityById(planActivity.getActivityId()).getName() + "\"" + getString(R.string.for_the_plan) + " \"" + userCrop.getName() + "\"";
+                            String reminder = "";
+                            if(GetCurrentLanguage.getCurrentLanguage(MainActivity.this).equals("en")) {
+                                reminder = "- " + "\"" + db.activityDao().getActivityById(planActivity.getActivityId()).getNameEn() + "\"" + getString(R.string.for_the_plan) + " \"" + userCrop.getName() + "\"";
+                            } else {
+                                reminder = "- " + "\"" + db.activityDao().getActivityById(planActivity.getActivityId()).getNameVi() + "\"" + getString(R.string.for_the_plan) + " \"" + userCrop.getName() + "\"";
+                            }
                             content.add(reminder);
                             content.add("\n\n");
                         }

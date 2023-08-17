@@ -1,6 +1,5 @@
 package com.example.ricegrow.Activity.Knowledge.PesticideFertilizer;
 
-import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity.FERTILIZER_KEY;
 import static com.example.ricegrow.Activity.Knowledge.StageActivity.Activity.FarmingActivity.ACTIVITY_KEY;
 
 import android.content.Context;
@@ -9,14 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity;
+import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
 import com.example.ricegrow.Activity.Knowledge.StageActivity.Activity.FarmingActivity;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
@@ -43,7 +42,11 @@ public class UsingAdapter extends RecyclerView.Adapter<UsingAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtName.setText(activities.get(position).getName());
+        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+            holder.txtName.setText(activities.get(position).getNameEn());
+        } else {
+            holder.txtName.setText(activities.get(position).getNameVi());
+        }
         Glide.with(context)
                 .asBitmap()
                 .load(activities.get(position).getActivityImage())

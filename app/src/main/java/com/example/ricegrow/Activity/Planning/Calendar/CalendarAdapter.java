@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
@@ -72,14 +73,22 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
                 if (planStage.getStartDate().isBefore(date.plusDays(1)) && planStage.getEndDate().isAfter(date)) {
                     Stages stages = db.stageDao().getStageById(planStage.getStageId());
                     holder.stageName.setVisibility(View.VISIBLE);
-                    holder.stageName.setText(stages.getName());
+                    if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+                        holder.stageName.setText(stages.getNameEn());
+                    } else {
+                        holder.stageName.setText(stages.getNameVi());
+                    }
                     ArrayList<PlanActivities> planActivities = (ArrayList<PlanActivities>) db.planActivityDao().getAllPlanActivitiesByPlanStageId(planStage.getId());
                     if(!planActivities.isEmpty()){
                         for(PlanActivities planActivity : planActivities){
                             if(planActivity.getStartDate().isBefore(date.plusDays(1)) && planActivity.getEndDate().isAfter(date)){
                                 holder.activityName.setVisibility(View.VISIBLE);
                                 Activities activities = db.activityDao().getActivityById(planActivity.getActivityId());
-                                holder.activityName.setText(activities.getName());
+                                if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+                                    holder.activityName.setText(activities.getNameEn());
+                                } else {
+                                    holder.activityName.setText(activities.getNameVi());
+                                }
                             }
                         }
                     }

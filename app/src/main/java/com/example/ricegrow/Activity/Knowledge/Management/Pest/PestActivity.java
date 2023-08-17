@@ -22,10 +22,9 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.example.ricegrow.Activity.Knowledge.Management.Disease.DiseaseActivity;
 import com.example.ricegrow.Activity.Knowledge.Management.SupAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
-import com.example.ricegrow.DatabaseFiles.Model.Diseases;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
@@ -105,13 +104,24 @@ public class PestActivity extends AppCompatActivity {
                         .placeholder(R.drawable.baseline_restart_alt_24)
                         .error(R.drawable.baseline_error_outline_24)
                         .into(imagePest);
-                txtNamePest.setText(incomingPest.getName());
-                txtScienceName.setText(incomingPest.getScienceName());
-                toolbarPest.setTitle(incomingPest.getName());
-                txtLifecycle.setText(incomingPest.getLifecycle());
-                txtDescription.setText(incomingPest.getDescription());
-                txtSymptom.setText(incomingPest.getSymptoms());
-                txtControlMethod.setText(incomingPest.getControlMethods());
+                if(GetCurrentLanguage.getCurrentLanguage(PestActivity.this).equals("en")) {
+                    txtNamePest.setText(incomingPest.getNameEn());
+                    txtScienceName.setText(incomingPest.getScienceNameEn());
+                    toolbarPest.setTitle(incomingPest.getNameEn());
+                    txtLifecycle.setText(incomingPest.getLifecycleEn());
+                    txtDescription.setText(incomingPest.getDescriptionEn());
+                    txtSymptom.setText(incomingPest.getSymptomsEn());
+                    txtControlMethod.setText(incomingPest.getControlMethodsEn());
+                } else {
+                    txtNamePest.setText(incomingPest.getNameVi());
+                    txtScienceName.setText(incomingPest.getScienceNameVi());
+                    toolbarPest.setTitle(incomingPest.getNameVi());
+                    txtLifecycle.setText(incomingPest.getLifecycleVi());
+                    txtDescription.setText(incomingPest.getDescriptionVi());
+                    txtSymptom.setText(incomingPest.getSymptomsVi());
+                    txtControlMethod.setText(incomingPest.getControlMethodsVi());
+                }
+
 
                 pesticideAdapter = new SupAdapter(this);
                 pesticideRecView.setAdapter(pesticideAdapter);

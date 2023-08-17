@@ -36,6 +36,12 @@ public class MainStageActivity extends Fragment {
     }
 
     private void initListener() {
+        cardStages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListStage.class));
+            }
+        });
         btnCardStages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +49,12 @@ public class MainStageActivity extends Fragment {
             }
         });
 
+        cardActivities.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListActivity.class));
+            }
+        });
         btnCardActivities.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

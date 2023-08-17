@@ -1,6 +1,5 @@
 package com.example.ricegrow.Activity.Knowledge.StageActivity.Activity;
 
-import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity.FERTILIZER_KEY;
 import static com.example.ricegrow.Activity.Knowledge.StageActivity.Activity.FarmingActivity.ACTIVITY_KEY;
 
 import android.content.Context;
@@ -14,10 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerAdapter;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
-import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -42,8 +39,13 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtNameActivity.setText(activities.get(position).getName());
-        holder.txtValueDescription.setText(activities.get(position).getDescription());
+        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+            holder.txtNameActivity.setText(activities.get(position).getNameEn());
+            holder.txtValueDescription.setText(activities.get(position).getDescriptionEn());
+        } else {
+            holder.txtNameActivity.setText(activities.get(position).getNameVi());
+            holder.txtValueDescription.setText(activities.get(position).getDescriptionVi());
+        }
         String duration = String.valueOf(activities.get(position).getDuration()) + context.getString(R.string.days);
         holder.txtValueDuration.setText(duration);
         Glide.with(context)

@@ -18,7 +18,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -26,10 +25,9 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.ricegrow.Activity.Knowledge.Management.SupAdapter;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.UsingAdapter;
 import com.example.ricegrow.Activity.Knowledge.StageActivity.Stage.StageActivity;
 import com.example.ricegrow.Activity.Main.MainActivity;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.CropStage;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
@@ -114,9 +112,15 @@ public class FarmingActivity extends AppCompatActivity {
                         .placeholder(R.drawable.baseline_restart_alt_24)
                         .error(R.drawable.baseline_error_outline_24)
                         .into(imageActivity);
-                txtNameActivity.setText(incomingActivity.getName());
-                toolbarActivity.setTitle(incomingActivity.getName());
-                txtDescription.setText(incomingActivity.getDescription());
+                if(GetCurrentLanguage.getCurrentLanguage(FarmingActivity.this).equals("en")) {
+                    txtNameActivity.setText(incomingActivity.getNameEn());
+                    toolbarActivity.setTitle(incomingActivity.getNameEn());
+                    txtDescription.setText(incomingActivity.getDescriptionEn());
+                } else {
+                    txtNameActivity.setText(incomingActivity.getNameVi());
+                    toolbarActivity.setTitle(incomingActivity.getNameVi());
+                    txtDescription.setText(incomingActivity.getDescriptionVi());
+                }
                 String duration = String.valueOf(incomingActivity.getDuration()) + getString(R.string.days);
                 txtDuration.setText(duration);
 
@@ -129,7 +133,11 @@ public class FarmingActivity extends AppCompatActivity {
                         .placeholder(R.drawable.baseline_restart_alt_24)
                         .error(R.drawable.baseline_error_outline_24)
                         .into(imageStage);
-                txtNameStage.setText(stages.getName());
+                if(GetCurrentLanguage.getCurrentLanguage(FarmingActivity.this).equals("en")) {
+                    txtNameStage.setText(stages.getNameEn());
+                } else {
+                    txtNameStage.setText(stages.getNameVi());
+                }
                 String durationStage = String.valueOf(cropStage.getDuration()) + getString(R.string.days);
                 txtDurationStage.setText(durationStage);
                 String startDate = String.valueOf(cropStage.getStartDate()) + getString(R.string.day);

@@ -17,16 +17,20 @@ public class Activities implements Parcelable {
     private int id;
     @ColumnInfo(name = "stage_id")
     private int stageId;
-    private String name;
-    private String description;
+    private String nameEn;
+    private String nameVi;
+    private String descriptionEn;
+    private String descriptionVi;
     private int duration;
     @ColumnInfo(name = "activity_image")
     private String activityImage;
 
-    public Activities(int stageId, String name, String description, int duration, String activityImage) {
+    public Activities(int stageId, String nameEn, String nameVi, String descriptionEn, String descriptionVi, int duration, String activityImage) {
         this.stageId = stageId;
-        this.name = name;
-        this.description = description;
+        this.nameEn = nameEn;
+        this.nameVi = nameVi;
+        this.descriptionEn = descriptionEn;
+        this.descriptionVi = descriptionVi;
         this.duration = duration;
         this.activityImage = activityImage;
     }
@@ -39,8 +43,10 @@ public class Activities implements Parcelable {
     protected Activities(Parcel in) {
         id = in.readInt();
         stageId = in.readInt();
-        name = in.readString();
-        description = in.readString();
+        nameEn = in.readString();
+        nameVi = in.readString();
+        descriptionEn = in.readString();
+        descriptionVi = in.readString();
         duration = in.readInt();
         activityImage = in.readString();
     }
@@ -74,12 +80,12 @@ public class Activities implements Parcelable {
         this.stageId = stageId;
     }
 
-    public String getName() {
-        return name;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
     public String getActivityImage() {
@@ -90,12 +96,12 @@ public class Activities implements Parcelable {
         this.activityImage = activityImage;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescriptionEn() {
+        return descriptionEn;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
     }
 
     public int getDuration() {
@@ -104,6 +110,22 @@ public class Activities implements Parcelable {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public String getNameVi() {
+        return nameVi;
+    }
+
+    public void setNameVi(String nameVi) {
+        this.nameVi = nameVi;
+    }
+
+    public String getDescriptionVi() {
+        return descriptionVi;
+    }
+
+    public void setDescriptionVi(String descriptionVi) {
+        this.descriptionVi = descriptionVi;
     }
 
     @Ignore
@@ -117,8 +139,10 @@ public class Activities implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeInt(stageId);
-        dest.writeString(name);
-        dest.writeString(description);
+        dest.writeString(nameEn);
+        dest.writeString(nameVi);
+        dest.writeString(descriptionEn);
+        dest.writeString(descriptionVi);
         dest.writeInt(duration);
         dest.writeString(activityImage);
     }

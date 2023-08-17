@@ -14,13 +14,13 @@ public interface DiseaseDao {
     @Insert
     void insert (Diseases diseases);
 
-    @Query("SELECT id FROM diseases WHERE name =:name")
+    @Query("SELECT id FROM diseases WHERE nameEn =:name")
     int getIdByName (String name);
 
     @Query("SELECT * FROM diseases")
     List<Diseases> getAllDiseases();
 
-    @Query("SELECT * FROM diseases WHERE name LIKE :name")
+    @Query("SELECT * FROM diseases WHERE nameEn LIKE :name OR nameVi LIKE :name")
     List<Diseases> getDiseasesByName(String name);
 
     @Query("SELECT * FROM diseases WHERE id IN (SELECT disease_id FROM diseases_pesticides WHERE pesticide_id = :pesticideId)")

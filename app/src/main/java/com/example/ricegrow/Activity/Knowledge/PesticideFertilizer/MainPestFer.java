@@ -38,6 +38,12 @@ public class MainPestFer extends Fragment {
 
 
     private void initListener() {
+        cardPesticides.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListPesticide.class));
+            }
+        });
         btnCardPesticides.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +51,12 @@ public class MainPestFer extends Fragment {
             }
         });
 
+        cardFertilizers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListFertilizer.class));
+            }
+        });
         btnCardFertilizers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,6 +1,5 @@
 package com.example.ricegrow.Activity.Knowledge.Management.Weed;
 
-import static com.example.ricegrow.Activity.Knowledge.Management.Pest.PestActivity.PEST_KEY;
 import static com.example.ricegrow.Activity.Knowledge.Management.Weed.WeedActivity.WEED_KEY;
 
 import android.content.Context;
@@ -9,14 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.Management.Pest.PestActivity;
-import com.example.ricegrow.Activity.Knowledge.Management.Pest.PestAdapter;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Weeds;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
@@ -43,9 +40,15 @@ public class WeedAdapter extends RecyclerView.Adapter<WeedAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtNameWeed.setText(weeds.get(position).getName());
-        holder.txtValueEcology.setText(weeds.get(position).getEcology());
-        holder.txtValueImpact.setText(weeds.get(position).getImpact());
+        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+            holder.txtNameWeed.setText(weeds.get(position).getNameEn());
+            holder.txtValueEcology.setText(weeds.get(position).getEcologyEn());
+            holder.txtValueImpact.setText(weeds.get(position).getImpactEn());
+        } else {
+            holder.txtNameWeed.setText(weeds.get(position).getNameVi());
+            holder.txtValueEcology.setText(weeds.get(position).getEcologyVi());
+            holder.txtValueImpact.setText(weeds.get(position).getImpactVi());
+        }
         Glide.with(context)
                 .asBitmap()
                 .load(weeds.get(position).getWeed_image())

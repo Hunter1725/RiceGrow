@@ -22,13 +22,12 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.example.ricegrow.Activity.Knowledge.Management.Disease.DiseaseActivity;
+import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
 import com.example.ricegrow.Activity.Knowledge.Management.SupAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.DeficienciesToxicities;
-import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
-import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
@@ -106,11 +105,19 @@ public class DeftoxActivity extends AppCompatActivity {
                         .placeholder(R.drawable.baseline_restart_alt_24)
                         .error(R.drawable.baseline_error_outline_24)
                         .into(imageDeftox);
-                txtNameDeftox.setText(incomingDeftox.getName());
-                toolbarDeftox.setTitle(incomingDeftox.getName());
-                txtDescription.setText(incomingDeftox.getDescription());
-                txtSymptom.setText(incomingDeftox.getSymptoms());
-                txtPreventionMethod.setText(incomingDeftox.getPreventionMethods());
+                if(GetCurrentLanguage.getCurrentLanguage(DeftoxActivity.this).equals("en")) {
+                    txtNameDeftox.setText(incomingDeftox.getNameEn());
+                    toolbarDeftox.setTitle(incomingDeftox.getNameEn());
+                    txtDescription.setText(incomingDeftox.getDescriptionEn());
+                    txtSymptom.setText(incomingDeftox.getSymptomsEn());
+                    txtPreventionMethod.setText(incomingDeftox.getPreventionMethodsEn());
+                } else {
+                    txtNameDeftox.setText(incomingDeftox.getNameVi());
+                    toolbarDeftox.setTitle(incomingDeftox.getNameVi());
+                    txtDescription.setText(incomingDeftox.getDescriptionVi());
+                    txtSymptom.setText(incomingDeftox.getSymptomsVi());
+                    txtPreventionMethod.setText(incomingDeftox.getPreventionMethodsVi());
+                }
 
                 fertilizerAdapter = new SupAdapter(this);
                 fertilizerRecView.setAdapter(fertilizerAdapter);

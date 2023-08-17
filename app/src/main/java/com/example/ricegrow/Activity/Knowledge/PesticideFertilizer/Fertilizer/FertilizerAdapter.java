@@ -1,7 +1,6 @@
 package com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer;
 
 import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity.FERTILIZER_KEY;
-import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity.PESTICIDE_KEY;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,14 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideAdapter;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
@@ -43,8 +40,13 @@ public class FertilizerAdapter extends RecyclerView.Adapter<FertilizerAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtNameFertilizer.setText(fertilizers.get(position).getName());
-        holder.txtNameManufacturer.setText(fertilizers.get(position).getManufacturer());
-        holder.txtNameComposition.setText(fertilizers.get(position).getComposition());
+        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+            holder.txtNameManufacturer.setText(fertilizers.get(position).getManufacturerEn());
+            holder.txtNameComposition.setText(fertilizers.get(position).getCompositionEn());
+        } else {
+            holder.txtNameManufacturer.setText(fertilizers.get(position).getManufacturerVi());
+            holder.txtNameComposition.setText(fertilizers.get(position).getCompositionVi());
+        }
         Glide.with(context)
                 .asBitmap()
                 .load(fertilizers.get(position).getFertImage())

@@ -21,8 +21,11 @@ public interface PesticideDao {
     @Query("SELECT * FROM pesticides")
     List<Pesticides> getAllPesticides();
 
-    @Query("SELECT * FROM pesticides WHERE category=:category")
-    List<Pesticides> getPesticidesByCate(String category);
+    @Query("SELECT * FROM pesticides WHERE categoryEn=:category")
+    List<Pesticides> getPesticidesByCateEn(String category);
+
+    @Query("SELECT * FROM pesticides WHERE categoryVi=:category")
+    List<Pesticides> getPesticidesByCateVi(String category);
 
     @Query("SELECT * FROM pesticides WHERE name LIKE :name")
     List<Pesticides> getPesticidesByName(String name);

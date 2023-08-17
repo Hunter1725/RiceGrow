@@ -1,6 +1,5 @@
 package com.example.ricegrow.Activity.Knowledge.StageActivity.Stage;
 
-import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity.FERTILIZER_KEY;
 import static com.example.ricegrow.Activity.Knowledge.StageActivity.Stage.StageActivity.STAGE_KEY;
 
 import android.content.Context;
@@ -14,10 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerAdapter;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.CropStage;
-import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
@@ -46,7 +43,11 @@ public class StageAdapter extends RecyclerView.Adapter<StageAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CropStage cropStage = db.cropStageDao().getFirstCropStageByStageId(stages.get(position).getId());
-        holder.txtNameStage.setText(stages.get(position).getName());
+        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+            holder.txtNameStage.setText(stages.get(position).getNameEn());
+        } else {
+            holder.txtNameStage.setText(stages.get(position).getNameVi());
+        }
         String duration = String.valueOf(cropStage.getDuration()) + context.getString(R.string.days);
         holder.txtDurationStage.setText(duration);
         String startDate = String.valueOf(cropStage.getStartDate()) + context.getString(R.string.day);

@@ -25,23 +25,16 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
-import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.ViewFerCalculate;
-import com.example.ricegrow.Activity.Knowledge.Management.SupAdapter;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.TreatingAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
-import com.example.ricegrow.DatabaseFiles.Model.DeficienciesToxicities;
 import com.example.ricegrow.DatabaseFiles.Model.Diseases;
-import com.example.ricegrow.DatabaseFiles.Model.FertilizerCalculating;
-import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
 import com.example.ricegrow.DatabaseFiles.Model.Weeds;
@@ -301,7 +294,7 @@ public class PesticideCalculate extends AppCompatActivity {
         treatingAdapter = new TreatingAdapter(this);
         treatingRecView.setAdapter(treatingAdapter);
         treatingRecView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-        if(incomingPesticide.getCategory().equals("Insecticide")){
+        if(incomingPesticide.getCategoryEn().equals("Insecticide")){
             ArrayList<Pests> pests = (ArrayList<Pests>) db.pestDao().getPestByPesticideId(incomingPesticide.getId());
             if(pests != null){
                 if(pests.size() > 0){
@@ -313,7 +306,7 @@ public class PesticideCalculate extends AppCompatActivity {
                     txtEmpty.setVisibility(View.VISIBLE);
                 }
             }
-        } else if (incomingPesticide.getCategory().equals("Fungicide")) {
+        } else if (incomingPesticide.getCategoryEn().equals("Fungicide")) {
             ArrayList<Diseases> diseases = (ArrayList<Diseases>) db.diseaseDao().getDiseaseByPesticideId(incomingPesticide.getId());
             if(diseases != null){
                 if(diseases.size() > 0){
@@ -325,7 +318,7 @@ public class PesticideCalculate extends AppCompatActivity {
                     txtEmpty.setVisibility(View.VISIBLE);
                 }
             }
-        } else if (incomingPesticide.getCategory().equals("Herbicide")) {
+        } else if (incomingPesticide.getCategoryEn().equals("Herbicide")) {
             ArrayList<Weeds> weeds = (ArrayList<Weeds>) db.weedDao().getWeedByPesticideId(incomingPesticide.getId());
             if(weeds != null){
                 if(weeds.size() > 0){

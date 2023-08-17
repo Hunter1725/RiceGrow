@@ -1,7 +1,6 @@
 package com.example.ricegrow.Activity.Calculating.PesticideCalculating;
 
 import static com.example.ricegrow.Activity.Calculating.PesticideCalculating.PesticideCalculate.PESTICIDE_CALCULATE_KEY;
-import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity.PESTICIDE_KEY;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideAdapter;
+import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
@@ -43,7 +42,11 @@ public class PesticideCalculateAdapter extends RecyclerView.Adapter<PesticideCal
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtNamePesticide.setText(pesticides.get(position).getName());
         holder.txtNameManufacturer.setText(pesticides.get(position).getManufacturer());
-        holder.txtNameCategory.setText(pesticides.get(position).getCategory());
+        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+            holder.txtNameCategory.setText(pesticides.get(position).getCategoryEn());
+        } else {
+            holder.txtNameCategory.setText(pesticides.get(position).getCategoryVi());
+        }
         Glide.with(context)
                 .asBitmap()
                 .load(pesticides.get(position).getPesticideImage())

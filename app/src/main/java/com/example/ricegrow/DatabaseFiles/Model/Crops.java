@@ -15,7 +15,8 @@ public class Crops implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
-    private String description;
+    private String descriptionEn;
+    private String descriptionVi;
     @ColumnInfo(name = "growth_period")
     private int growthPeriod;
     @ColumnInfo(name = "selling_price")
@@ -25,9 +26,10 @@ public class Crops implements Parcelable {
     @ColumnInfo(name = "crop_image")
     private String cropImage;
 
-    public Crops(String name, String description, int growthPeriod, double sellingPrice, double saltTolerance, String cropImage) {
+    public Crops(String name, String descriptionEn, String descriptionVi, int growthPeriod, double sellingPrice, double saltTolerance, String cropImage) {
         this.name = name;
-        this.description = description;
+        this.descriptionEn = descriptionEn;
+        this.descriptionVi = descriptionVi;
         this.growthPeriod = growthPeriod;
         this.sellingPrice = sellingPrice;
         this.saltTolerance = saltTolerance;
@@ -42,7 +44,8 @@ public class Crops implements Parcelable {
     protected Crops(Parcel in) {
         id = in.readInt();
         name = in.readString();
-        description = in.readString();
+        descriptionEn = in.readString();
+        descriptionVi = in.readString();
         growthPeriod = in.readInt();
         sellingPrice = in.readDouble();
         saltTolerance = in.readDouble();
@@ -78,12 +81,20 @@ public class Crops implements Parcelable {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescriptionEn() {
+        return descriptionEn;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
+    }
+
+    public String getDescriptionVi() {
+        return descriptionVi;
+    }
+
+    public void setDescriptionVi(String descriptionVi) {
+        this.descriptionVi = descriptionVi;
     }
 
     public int getGrowthPeriod() {
@@ -123,7 +134,7 @@ public class Crops implements Parcelable {
         return "Crops{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + descriptionEn + '\'' +
                 ", growth_period=" + growthPeriod +
                 ", selling_price=" + sellingPrice +
                 ", optimal_temperature=" + saltTolerance +
@@ -142,7 +153,8 @@ public class Crops implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeString(name);
-        dest.writeString(description);
+        dest.writeString(descriptionEn);
+        dest.writeString(descriptionVi);
         dest.writeInt(growthPeriod);
         dest.writeDouble(sellingPrice);
         dest.writeDouble(saltTolerance);

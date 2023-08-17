@@ -35,6 +35,12 @@ public class MainKnowledge extends Fragment {
     }
 
     private void initListener() {
+        cardStageActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity) requireActivity()).replaceFragment(new MainStageActivity());
+            }
+        });
         btnCardStageActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +48,12 @@ public class MainKnowledge extends Fragment {
             }
         });
 
+        cardPestFer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity) requireActivity()).replaceFragment(new MainPestFer());
+            }
+        });
         btnCardPestFer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +61,12 @@ public class MainKnowledge extends Fragment {
             }
         });
 
+        cardManagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity) requireActivity()).replaceFragment(new MainManagement());
+            }
+        });
         btnCardManagement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -14,20 +14,26 @@ public class Fertilizers implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
-    private String manufacturer;
-    private String composition;
+    private String manufacturerEn;
+    private String manufacturerVi;
+    private String compositionEn;
+    private String compositionVi;
     @ColumnInfo(name = "usage_instructions")
-    private String usageInstructions;
+    private String usageInstructionsEn;
+    private String usageInstructionsVi;
     @ColumnInfo(name = "recommended_usage")
     private double recommendedUsage;
     @ColumnInfo(name = "fert_image")
     private String fertImage;
 
-    public Fertilizers(String name, String manufacturer, String composition, String usageInstructions, double recommendedUsage, String fertImage) {
+    public Fertilizers(String name, String manufacturerEn, String manufacturerVi, String compositionEn, String compositionVi, String usageInstructionsEn, String usageInstructionsVi, double recommendedUsage, String fertImage) {
         this.name = name;
-        this.manufacturer = manufacturer;
-        this.composition = composition;
-        this.usageInstructions = usageInstructions;
+        this.manufacturerEn = manufacturerEn;
+        this.manufacturerVi = manufacturerVi;
+        this.compositionEn = compositionEn;
+        this.compositionVi = compositionVi;
+        this.usageInstructionsEn = usageInstructionsEn;
+        this.usageInstructionsVi = usageInstructionsVi;
         this.recommendedUsage = recommendedUsage;
         this.fertImage = fertImage;
     }
@@ -40,9 +46,12 @@ public class Fertilizers implements Parcelable {
     protected Fertilizers(Parcel in) {
         id = in.readInt();
         name = in.readString();
-        manufacturer = in.readString();
-        composition = in.readString();
-        usageInstructions = in.readString();
+        manufacturerEn = in.readString();
+        manufacturerVi = in.readString();
+        compositionEn = in.readString();
+        compositionVi = in.readString();
+        usageInstructionsEn = in.readString();
+        usageInstructionsVi = in.readString();
         recommendedUsage = in.readDouble();
         fertImage = in.readString();
     }
@@ -76,28 +85,28 @@ public class Fertilizers implements Parcelable {
         this.name = name;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String getManufacturerEn() {
+        return manufacturerEn;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setManufacturerEn(String manufacturerEn) {
+        this.manufacturerEn = manufacturerEn;
     }
 
-    public String getComposition() {
-        return composition;
+    public String getCompositionEn() {
+        return compositionEn;
     }
 
-    public void setComposition(String composition) {
-        this.composition = composition;
+    public void setCompositionEn(String compositionEn) {
+        this.compositionEn = compositionEn;
     }
 
-    public String getUsageInstructions() {
-        return usageInstructions;
+    public String getUsageInstructionsEn() {
+        return usageInstructionsEn;
     }
 
-    public void setUsageInstructions(String usageInstructions) {
-        this.usageInstructions = usageInstructions;
+    public void setUsageInstructionsEn(String usageInstructionsEn) {
+        this.usageInstructionsEn = usageInstructionsEn;
     }
 
     public double getRecommendedUsage() {
@@ -116,6 +125,30 @@ public class Fertilizers implements Parcelable {
         this.fertImage = fertImage;
     }
 
+    public String getManufacturerVi() {
+        return manufacturerVi;
+    }
+
+    public void setManufacturerVi(String manufacturerVi) {
+        this.manufacturerVi = manufacturerVi;
+    }
+
+    public String getCompositionVi() {
+        return compositionVi;
+    }
+
+    public void setCompositionVi(String compositionVi) {
+        this.compositionVi = compositionVi;
+    }
+
+    public String getUsageInstructionsVi() {
+        return usageInstructionsVi;
+    }
+
+    public void setUsageInstructionsVi(String usageInstructionsVi) {
+        this.usageInstructionsVi = usageInstructionsVi;
+    }
+
     @Ignore
     @Override
     public int describeContents() {
@@ -127,9 +160,12 @@ public class Fertilizers implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeString(name);
-        dest.writeString(manufacturer);
-        dest.writeString(composition);
-        dest.writeString(usageInstructions);
+        dest.writeString(manufacturerEn);
+        dest.writeString(manufacturerVi);
+        dest.writeString(compositionEn);
+        dest.writeString(compositionVi);
+        dest.writeString(usageInstructionsEn);
+        dest.writeString(usageInstructionsVi);
         dest.writeDouble(recommendedUsage);
         dest.writeString(fertImage);
     }

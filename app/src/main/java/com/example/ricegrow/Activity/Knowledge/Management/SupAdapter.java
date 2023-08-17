@@ -1,6 +1,5 @@
 package com.example.ricegrow.Activity.Knowledge.Management;
 
-import static com.example.ricegrow.Activity.Knowledge.Management.Pest.PestActivity.PEST_KEY;
 import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity.FERTILIZER_KEY;
 import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity.PESTICIDE_KEY;
 import static com.example.ricegrow.Activity.Knowledge.StageActivity.Stage.StageActivity.STAGE_KEY;
@@ -11,23 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.Management.Pest.PestActivity;
+import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.TreatingAdapter;
 import com.example.ricegrow.Activity.Knowledge.StageActivity.Stage.StageActivity;
-import com.example.ricegrow.DatabaseFiles.Model.Diseases;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
-import com.example.ricegrow.DatabaseFiles.Model.Pests;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
-import com.example.ricegrow.DatabaseFiles.Model.Weeds;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -88,7 +83,11 @@ public class SupAdapter extends RecyclerView.Adapter<SupAdapter.ViewHolder> {
                 }
             });
         } else if (stages.size() != 0) {
-            holder.txtName.setText(stages.get(position).getName());
+            if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+                holder.txtName.setText(stages.get(position).getNameEn());
+            } else {
+                holder.txtName.setText(stages.get(position).getNameVi());
+            }
             Glide.with(context)
                     .asBitmap()
                     .load(stages.get(position).getStageImage())
