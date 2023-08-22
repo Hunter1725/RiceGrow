@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.ricegrow.Activity.Knowledge.Management.Crop.ListCrop;
 import com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.ListDeftox;
 import com.example.ricegrow.Activity.Knowledge.Management.Disease.ListDisease;
 import com.example.ricegrow.Activity.Knowledge.Management.Pest.ListPest;
@@ -48,7 +49,9 @@ public class SwipeViewAdapter extends RecyclerView.Adapter<SwipeViewAdapter.View
             @Override
             public void onClick(View v) {
                 String title = swipeModels.get(position).getTitle();
-                if (title.equals(context.getString(R.string.pests))) {
+                if (title.equals(context.getString(R.string.rice_varieties))) {
+                    context.startActivity(new Intent(context, ListCrop.class));
+                } else if (title.equals(context.getString(R.string.pests))) {
                     context.startActivity(new Intent(context, ListPest.class));
                 } else if (title.equals(context.getString(R.string.diseases))) {
                     context.startActivity(new Intent(context, ListDisease.class));
