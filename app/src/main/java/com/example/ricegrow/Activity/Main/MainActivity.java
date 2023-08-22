@@ -45,6 +45,7 @@ import com.example.ricegrow.Activity.Planning.Plan.PlanGenerate;
 import com.example.ricegrow.Activity.Setting.ContextWrapper;
 import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.Activity.Setting.SettingActivity;
+import com.example.ricegrow.Activity.Setting.WebsiteActivity;
 import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
 import com.example.ricegrow.DatabaseFiles.Model.Setting;
@@ -121,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        //Get user info from Firebase
 //        String userId = fb.getCurrentUser().getUid();
 //        Users user = db.userDao().getUserById(userId);
 //        if (user != null) {
@@ -140,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         avatarUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "This is avatar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Enjoy this moment!", Toast.LENGTH_SHORT).show();
                 drawer.closeDrawers();
             }
         });
@@ -190,10 +192,16 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, ListDeftox.class));
                 } else if (itemId == R.id.term) {
                     // Handle "Terms" item selection
-                    Toast.makeText(MainActivity.this, "Terms selected", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, WebsiteActivity.class);
+                    String message = "https://www.freeprivacypolicy.com/live/0fa5afbc-8836-4aec-8c85-d6f10530d399";
+                    intent.putExtra("TERMS_KEY", message);
+                    startActivity(intent);
                 } else if (itemId == R.id.licence) {
                     // Handle "Licences" item selection
-                    Toast.makeText(MainActivity.this, "Licences selected", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, WebsiteActivity.class);
+                    String message = "https://www.freeprivacypolicy.com/live/e5a4b424-1b2a-4fee-ab8a-5b5db5ab7d96";
+                    intent.putExtra("PRIVACY_KEY", message);
+                    startActivity(intent);
                 } else if (itemId == R.id.setting) {
                     startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 }
@@ -427,19 +435,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem avatarItem = toolbar.getMenu().findItem(R.id.miniAvatar);
         avatarItem.setActionView(R.layout.menu_item_avatar);
-        View avatarActionView = avatarItem.getActionView();
-        ShapeableImageView avatarImageView = avatarActionView.findViewById(R.id.miniAvatar);
+//        View avatarActionView = avatarItem.getActionView();
+//        ShapeableImageView avatarImageView = avatarActionView.findViewById(R.id.miniAvatar);
 
 //        String userId = fb.getCurrentUser().getUid();
 //        String avatar = db.userDao().getAvatarById(userId);
 //        avatarImageView.setImageResource(getResources().getIdentifier(avatar, "drawable", getPackageName()));
 
-        avatarImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Mini avatar clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        avatarImageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this, "Mini avatar clicked", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         return super.onPrepareOptionsMenu(menu);
     }

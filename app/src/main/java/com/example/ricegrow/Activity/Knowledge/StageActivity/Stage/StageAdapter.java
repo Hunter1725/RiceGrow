@@ -45,13 +45,15 @@ public class StageAdapter extends RecyclerView.Adapter<StageAdapter.ViewHolder>{
         CropStage cropStage = db.cropStageDao().getFirstCropStageByStageId(stages.get(position).getId());
         if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
             holder.txtNameStage.setText(stages.get(position).getNameEn());
+            String startDate = String.valueOf(cropStage.getStartDate()) + context.getString(R.string.day);
+            holder.txtStartDate.setText(startDate);
         } else {
             holder.txtNameStage.setText(stages.get(position).getNameVi());
+            String startDate = String.valueOf("Ngày thứ " + cropStage.getStartDate());
+            holder.txtStartDate.setText(startDate);
         }
         String duration = String.valueOf(cropStage.getDuration()) + context.getString(R.string.days);
         holder.txtDurationStage.setText(duration);
-        String startDate = String.valueOf(cropStage.getStartDate()) + context.getString(R.string.day);
-        holder.txtStartDate.setText(startDate);
         Glide.with(context)
                 .asBitmap()
                 .load(stages.get(position).getStageImage())

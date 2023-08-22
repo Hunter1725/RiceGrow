@@ -148,8 +148,12 @@ public class StageActivity extends AppCompatActivity {
                 for (int i = 0; i < cropStageCount; i++) {
                     CropStage cropStage = cropStages.get(i);
                     Crops crop = db.cropDao().getCropById(cropStage.getCropId());
-                    String cropStageString = getString(R.string.rice_variety_list) + crop.getName() + ": " + cropStage.getStartDate() + getString(R.string.day);
-
+                    String cropStageString = "";
+                    if(GetCurrentLanguage.getCurrentLanguage(StageActivity.this).equals("en")) {
+                        cropStageString = getString(R.string.rice_variety_list) + crop.getName() + ": " + cropStage.getStartDate() + getString(R.string.day);
+                    } else {
+                        cropStageString = getString(R.string.rice_variety_list) + crop.getName() + ": Ngày thứ " + cropStage.getStartDate();
+                    }
                     // Check if it's the last item in the list
                     if (i == cropStageCount - 1) {
                         listStartDate.add(cropStageString);
@@ -170,8 +174,12 @@ public class StageActivity extends AppCompatActivity {
                 for (int i = 0; i < cropStageCount; i++) {
                     CropStage cropStage = cropStages.get(i);
                     Crops crop = db.cropDao().getCropById(cropStage.getCropId());
-                    String cropStageString = getString(R.string.rice_variety_list) + crop.getName() + ": " + cropStage.getEndDate() + getString(R.string.day);
-
+                    String cropStageString = "";
+                    if(GetCurrentLanguage.getCurrentLanguage(StageActivity.this).equals("en")) {
+                        cropStageString = getString(R.string.rice_variety_list) + crop.getName() + ": " + cropStage.getEndDate() + getString(R.string.day);
+                    } else {
+                        cropStageString = getString(R.string.rice_variety_list) + crop.getName() + ": Ngày thứ " + cropStage.getEndDate();
+                    }
                     // Check if it's the last item in the list
                     if (i == cropStageCount - 1) {
                         listEndDate.add(cropStageString);

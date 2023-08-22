@@ -85,14 +85,14 @@
                     app:showAsAction="ifRoom"/>
                 <item
                     android:id="@+id/term"
-                    android:icon="@drawable/term"
-                    android:title="@string/terms"
+                    android:icon="@drawable/licence"
+                    android:title="@string/terms_conditions"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
                 <item
                     android:id="@+id/licence"
-                    android:icon="@drawable/licence"
-                    android:title="@string/licences"
+                    android:icon="@drawable/term"
+                    android:title="@string/privacy_policy"
                     android:checkable="true"
                     app:showAsAction="ifRoom" />
             </menu>

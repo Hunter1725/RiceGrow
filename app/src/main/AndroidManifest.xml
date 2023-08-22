@@ -20,21 +20,25 @@
         android:theme="@style/Theme.RiceGrow"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.Setting.WebsiteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Start.IntroActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.Start.StartActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Activity.Setting.SettingActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Main.Weather.WeatherActivity"
             android:exported="false"
@@ -155,7 +159,7 @@
         <activity
             android:name=".Activity.Authenticate.LoginNormal.LoginActivity"
             android:exported="true"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.Authenticate.LoginNormal.RegisterActivity"
             android:exported="true"

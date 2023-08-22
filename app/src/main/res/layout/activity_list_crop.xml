@@ -70,7 +70,7 @@
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/searching_something"
+            android:hint="@string/searching_crop_varieties"
             app:layout_anchor="@id/search_bar">
 
             <TextView

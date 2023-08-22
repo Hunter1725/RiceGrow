@@ -173,7 +173,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/button_bg"
         android:text="Accept"
         android:textStyle="bold"
@@ -181,7 +181,29 @@
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/layoutTerm" />
 
+    <LinearLayout
+        android:id="@+id/layoutTerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:id="@+id/haveReadPrivacyAndTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I read and accept the terms of use and the privacy policy"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textStyle="" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

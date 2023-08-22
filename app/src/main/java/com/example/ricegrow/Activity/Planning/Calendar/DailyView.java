@@ -238,8 +238,13 @@ public class DailyView extends Fragment {
                         .into(imageStage);
                 String durationStage = cropStage.getDuration() + getString(R.string.days);
                 txtDurationStage.setText(durationStage);
-                String startDate = cropStage.getStartDate() + getString(R.string.day);
-                txtStartDate.setText(startDate);
+                if(GetCurrentLanguage.getCurrentLanguage(getActivity()).equals("en")) {
+                    String startDate = cropStage.getStartDate() + getString(R.string.day);
+                    txtStartDate.setText(startDate);
+                } else {
+                    String startDate = String.valueOf("Ngày thứ " + cropStage.getStartDate());
+                    txtStartDate.setText(startDate);
+                }
 
                 //Activities
                 ArrayList<PlanActivities> planActivities = (ArrayList<PlanActivities>) db.planActivityDao().getAllPlanActivitiesByPlanStageId(planStage.getId());

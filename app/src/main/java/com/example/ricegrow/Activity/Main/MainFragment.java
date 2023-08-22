@@ -29,6 +29,7 @@ import com.example.ricegrow.Activity.Planning.Plan.PlanGenerate;
 import com.example.ricegrow.Activity.Planning.Plan.PlanListAdapter;
 import com.example.ricegrow.Activity.Main.Weather.WeatherActivity;
 import com.example.ricegrow.Activity.Setting.ContextWrapper;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.Model.Weather;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
@@ -91,17 +92,32 @@ public class MainFragment extends Fragment implements NetworkUtils.OnConnectivit
                         imageWeather.setImageResource(R.drawable.sun);
                         break;
                     case "Clouds":
-                        switch (weather.getDescription()) {
-                            case "few clouds":
-                                imageWeather.setImageResource(R.drawable.cloudy_sunny);
-                                break;
-                            case "scattered clouds":
-                                imageWeather.setImageResource(R.drawable.cloudy);
-                                break;
-                            case "broken clouds":
-                            case "overcast clouds":
-                                imageWeather.setImageResource(R.drawable.cloudy_3);
-                                break;
+                        if(GetCurrentLanguage.getCurrentLanguage(getActivity()).equals("en")) {
+                            switch (weather.getDescription()) {
+                                case "few clouds":
+                                    imageWeather.setImageResource(R.drawable.cloudy_sunny);
+                                    break;
+                                case "scattered clouds":
+                                    imageWeather.setImageResource(R.drawable.cloudy);
+                                    break;
+                                case "broken clouds":
+                                case "overcast clouds":
+                                    imageWeather.setImageResource(R.drawable.cloudy_3);
+                                    break;
+                            }
+                        } else {
+                            switch (weather.getDescription()) {
+                                case "mây thưa":
+                                    imageWeather.setImageResource(R.drawable.cloudy_sunny);
+                                    break;
+                                case "mây rải rác":
+                                    imageWeather.setImageResource(R.drawable.cloudy);
+                                    break;
+                                case "mây cụm":
+                                case "mây đen u ám":
+                                    imageWeather.setImageResource(R.drawable.cloudy_3);
+                                    break;
+                            }
                         }
                         break;
                     case "Rain":
@@ -256,6 +272,7 @@ public class MainFragment extends Fragment implements NetworkUtils.OnConnectivit
         imageWeather = view.findViewById(R.id.imageWeather);
         db = RiceGrowDatabase.getInstance(getActivity());
         swipeModels = new ArrayList<>();
+        swipeModels.add(new SwipeModel(getString(R.string.rice_varieties), R.drawable.rice));
         swipeModels.add(new SwipeModel(getString(R.string.pests), R.drawable.pests_management));
         swipeModels.add(new SwipeModel(getString(R.string.diseases), R.drawable.disease_management));
         swipeModels.add(new SwipeModel(getString(R.string.weeds), R.drawable.weed_management));

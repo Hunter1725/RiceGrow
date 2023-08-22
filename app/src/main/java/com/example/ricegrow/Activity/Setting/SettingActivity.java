@@ -162,7 +162,7 @@ public class SettingActivity extends AppCompatActivity {
             txtUnitWeather.setText(fahrenheit);
         }
         MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog2);
-        dialogBuilder.setTitle("Choose Temperature Unit")
+        dialogBuilder.setTitle(getString(R.string.choose_temperature_unit))
                 .setSingleChoiceItems(temperatureUnits, selectedUnitIndex, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

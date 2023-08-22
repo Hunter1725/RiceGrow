@@ -18,7 +18,7 @@
     <string name="weather">Thời tiết</string>
     <string name="choose_your_weather_temperature_unit_to_use">Chọn đơn vị nhiệt độ thời tiết để sử dụng</string>
     <string name="the_current_is">Hiện tại là</string>
-    <string name="welcome_to_ricegrow_app">Chào mừng đến với ứng dụng RiceGrow!</string>
+    <string name="welcome_to_ricegrow_app">Chào mừng đến với ứng dụng Rice Grow!</string>
     <string name="fertilizer_calculator">Máy tính phân bón</string>
     <string name="plan_generator">Máy tạo kế hoạch</string>
     <string name="recent_farming_plans">Kế hoạch nông nghiệp gần đây</string>
@@ -304,4 +304,24 @@
     <string name="the_plan">"Kế hoạch "</string>
     <string name="was_removed">" đã bị xóa!"</string>
     <string name="day">\ ngày</string>
+    <string name="skip">Bỏ qua</string>
+    <string name="next">Tiếp theo</string>
+    <string name="farming_plan_generator">Trình tạo Kế hoạch Nông nghiệp</string>
+    <string name="create_tailored_agricultural_plans_for_optimal_crop_growth">Tạo kế hoạch nông nghiệp tùy chỉnh cho sự phát triển tối ưu của cây trồng</string>
+    <string name="pesticide_and_fertilizer_calculator">Máy tính Thuốc trừ sâu và Phân bón</string>
+    <string name="determine_precise_application_rates_for_pesticides_and_fertilizers">Xác định tỷ lệ ứng dụng chính xác cho thuốc trừ sâu và phân bón</string>
+    <string name="provides_essential_insights_for_effective_agricultural_practices">Cung cấp thông tin cần thiết cho các thực hành nông nghiệp hiệu quả.</string>
+    <string name="welcome_to_rice_grow">Chào mừng đến với Rice Grow!</string>
+    <string name="just_getting_started_lets_take_a_look_at_some_of_the_great_feature_of_the_app">Mới sử dụng? Hãy cùng xem một số tính năng tuyệt vời của ứng dụng này.</string>
+    <string name="searching_crop_varieties">Tìm kiếm giống cây trồng</string>
+    <string name="searching_deficiencies_and_toxicities">Tìm kiếm sự thiếu chất và nhiễm độc</string>
+    <string name="searching_diseases">Tìm kiếm bệnh</string>
+    <string name="searching_fertilizers">Tìm kiếm phân bón</string>
+    <string name="searching_pests">Tìm kiếm loài gây hại</string>
+    <string name="searching_pesticides">Tìm kiếm thuốc trừ sâu</string>
+    <string name="searching_growth_stages">Tìm kiếm các giai đoạn phát triển</string>
+    <string name="searching_weeds">Tìm kiếm cỏ dại</string>
+    <string name="searching_farming_activities">Tìm kiếm hoạt động nông nghiệp</string>
+    <string name="privacy_policy">Chính sách bảo mật</string>
+    <string name="terms_conditions">Điều khoản và Điều kiện</string>
 </resources>

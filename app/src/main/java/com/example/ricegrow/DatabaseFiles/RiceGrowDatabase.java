@@ -181,14 +181,26 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             //****Crops****
             CropDao cropDao = db.cropDao();
             ArrayList<Crops> crops = new ArrayList<>();
-            Crops crop1 = new Crops("OM18", "OM18 rice was selected from OM 8017/ OM 5166 hybrid combination, this is an aromatic rice variety with outstanding advantages such as high salt tolerance at 3-4 levels, pest resistance, especially high resistance and stability. with blast, high yield and short growth duration.",
-                    "Lúa OM18 được chọn tạo từ tổ hợp lai OM 8017/OM 5166; Đây là giống lúa thơm có những ưu điểm vượt trội như chịu mặn cao cấp 3-4, kháng sâu bệnh, đặc biệt kháng cao và ổn định với bệnh đạo ôn, năng suất cao, thời gian sinh trưởng ngắn.",
-                    105, 6700, 3.6, "https://loctroi.vn/UploadFiles/ImgUpload/OM%2018%201.png");
+            Crops crop1 = new Crops("OM 18", "OM 18 rice was selected from OM 8017/ OM 5166 hybrid combination, this is an aromatic rice variety with outstanding advantages such as high salt tolerance at 3-4 levels, pest resistance, especially high resistance and stability. with blast, high yield and short growth duration.",
+                    "Lúa OM 18 được chọn tạo từ tổ hợp lai OM 8017/OM 5166; Đây là giống lúa thơm có những ưu điểm vượt trội như chịu mặn cao cấp 3-4, kháng sâu bệnh, đặc biệt kháng cao và ổn định với bệnh đạo ôn, năng suất cao, thời gian sinh trưởng ngắn.",
+                    105, 8000, 3.6, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/rice_varieties%2FOM18.png?alt=media&token=d3719c12-c8c1-4429-9543-a087576577b8");
             crops.add(crop1);
-            Crops crop2 = new Crops("DT08", "DT08 (Dai Thom 08) is a high-quality type of Vietnam fragrant rice grown in Viet Nam. DT08 rice has medium grains, with an evenly bright-white color. DT08 rice has a short growth period; therfore, there are 3 crops of DT08 rice per year, which are harvested in the spring, autumn and winter. When cooked, the texture of DT08 rice is soft and remains sticky after cooling.",
-                    "DT08 (Đài thơm 08) là giống lúa thơm Việt Nam chất lượng cao được trồng tại Việt Nam. Gạo DT08 có hạt vừa, màu trắng sáng đều. lúa DT08 có thời gian sinh trưởng ngắn; nên lúa DT08 mỗi năm thu hoạch được 3 vụ xuân, thu, đông. Cơm gạo DT08 khi nấu chín dẻo, để nguội vẫn giữ được độ dẻo.",
-                    110, 7000, 3.9, "https://danviet.mediacdn.vn/2020/10/16/dai-thom-8-3-16028306562021544130115-crop-1602830669005866812402.jpg");
+            Crops crop2 = new Crops("DT 08", "DT 08 (Dai Thom 08) is a high-quality type of Vietnam fragrant rice grown in Viet Nam. DT 08 rice has medium grains, with an evenly bright-white color. DT 08 rice has a short growth period; therfore, there are 3 crops of DT 08 rice per year, which are harvested in the spring, autumn and winter. When cooked, the texture of DT 08 rice is soft and remains sticky after cooling.",
+                    "DT 08 (Đài thơm 08) là giống lúa thơm Việt Nam chất lượng cao được trồng tại Việt Nam. Gạo DT 08 có hạt vừa, màu trắng sáng đều. lúa DT 08 có thời gian sinh trưởng ngắn; nên lúa DT 08 mỗi năm thu hoạch được 3 vụ xuân, thu, đông. Cơm gạo DT 08 khi nấu chín dẻo, để nguội vẫn giữ được độ dẻo.",
+                    110, 7500, 3.9, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/rice_varieties%2FDT08.jpg?alt=media&token=5cdf8bde-756b-489a-94e5-106dbe669d5e");
             crops.add(crop2);
+            Crops crop3 = new Crops("OM 5451", "The rice variety OM 5451 is a rice variety selected from the Jasmine 85/OM2490 hybrid, created by the Mekong Delta Rice Institute. This rice variety is popularly grown in the Mekong Delta region for its high yield and export-standard rice quality.\n" +
+                    "\n" +
+                    "The rice grain from the OM 5451 rice variety has an elongated shape (about 6.6 mm), little white belly, slightly cloudy milk color. The rice is medium and soft, but when it cools down, it won't harden the rice. This type of rice is also selected by the canteens of factories and industrial parks with a large number of employees, sold in the domestic market and exported to foreign countries.",
+                    "Giống lúa OM 5451 là giống lúa được chọn từ tổ hợp lai Jasmine 85/OM2490, do Viện lúa Đồng bằng Sông Cửu Long chọn tạo. Giống lúa này được trồng phổ biến ở khu vực đồng bằng sông Cửu Long cho năng suất cao, phẩm chất gạo đạt tiêu chuẩn xuất khẩu. \n" +
+                            "\n" +
+                            "Hạt gạo từ giống lúa OM 5451 có hình dáng thon dài (khoảng 6.6 mm), ít bạc bụng, hơi đục màu sữa. Cơm dẻo vừa và mềm, để nguội vẫn không bị cứng cơm. Loại gạo này còn được các nhà ăn xí nghiệp, khu công nghiệp với số lượng nhân viên lớn lựa chọn, được bán ở thị trường trong nước và xuất khẩu ra nước ngoài.",
+                    100, 7800, 3.8, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/rice_varieties%2FOM5451.jpg?alt=media&token=a69576ef-a647-4716-901a-78a2a02dd2a4");
+            crops.add(crop3);
+            Crops crop4 = new Crops("IR 50404", "The green leaf IR50404 rice variety is sourced from the International Rice Research Institute. IR50404 was imported into Vietnam in early 1990. The rice variety IR50404 was selected and developed by the Department of Food Crops - Vietnam Academy of Agricultural Science and Technology. The green leaf IR50404 rice variety was officially recognized in 1992.",
+                    "Giống lúa IR50404 lá xanh có nguồn gốc từ viện nghiên cứu lúa quốc tế.  IR50404 được nhập vào Việt Nam đầu năm 1990. Giống lúa IR50404 do Bộ môn cây lương thực – viện khoa học kỹ thuật Nông Nghiệp Việt Nam chọn lọc và phát triển. Giống lúa IR50404 lá xanh được công nhận chính thức vào năm 1992.",
+                    95, 7600, 3.7, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/rice_varieties%2FIR50404.jpg?alt=media&token=45679827-3ac7-4ea9-a25e-e18ec731c619");
+            crops.add(crop4);
             for (Crops c : crops) {
                 cropDao.insert(c);
             }
@@ -238,7 +250,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Làm ngập và cày ruộng sau khi thu hoạch nếu có thể.\n" +
                             "- Loại bỏ cỏ dại khỏi các cánh đồng và biên giới.\n" +
                             "- Giảm mật độ trồng.\n" +
-                            "- Sử dụng tỷ lệ phân bón cân đối.", "https://th.bing.com/th/id/OIP.wkplL9vtl_OwP-X2tVUCPAHaKF?pid=ImgDet&rs=1");
+                            "- Sử dụng tỷ lệ phân bón cân đối.", "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pests%2Frice_leafholder.jpg?alt=media&token=1aeea10a-ee33-449b-a275-6179961df0b4");
             pests.add(pests1);
             Pests pests2 = new Pests("Planthopper", "Rầy", "Two species of planthopper infest rice. These are the brown planthopper (BPH), Nilaparvata lugens (Stal); and the whitebacked planthopper (WBPH), Sogatella furcifera (Horvath).",
                     "Hai loài rầy hại lúa. Đó là rầy nâu (BPH), Nilaparvata lugens (Stal); và rầy lưng trắng (WBPH), Sogatella furcifera (Horvath).",
@@ -286,7 +298,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             " + Nếu số lượng thiên địch vượt trội so với rầy nâu thì nguy cơ bị cháy rầy là thấp. Ngay cả những cây lúa đã bị rầy gây hại cũng không nên xử lý bằng thuốc trừ sâu nếu số lượng thiên địch vượt trội so với rầy nâu. Thiên địch của rầy nâu bao gồm bọ nước, bọ xít, nhện và ký sinh trứng khác nhau.\n" +
                             "- Kiểm soát hóa chất\n" +
                             " + Chỉ phun thuốc trên luống mạ đối với rầy nâu hoặc rầy nâu nếu đủ các điều kiện: trung bình trên 1 gốc có trên 1 con rầy, trung bình nhiều rầy hơn thiên địch, không nên ngập úng luống mạ.",
-                    "https://assets.irinnews.org/s3fs-public/images/201008240806390234.jpg");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pests%2Fplant_hopper.jpg?alt=media&token=3945fca0-f467-482d-b00c-3dc4ce96327f");
             pests.add(pests2);
             Pests pests3 = new Pests("Stem borer", "Sâu đục thân", "Schoenobius incertulas", "Schoenobius incertulas",
                     "The life cycle of stem borers consists of four stages: egg, larva, pupa and adult. After sunset, the male and female moths come together and after sexual union the eggs are fertilized internally. The eggs are laid in batches of 10-80 on the upperside and underside of leaf surfaces, usually close to the midrib. They hatch after 4-10 days. Younger larvae (caterpillars) feed on the leaf whorl. Older larvae tunnel into the stems, and it is within these tunnels that they feed and grow for about 2-3 weeks.",
@@ -323,7 +335,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Khuyến khích các tác nhân kiểm soát sinh học: braconid, eulophid, mymarid, scelionid, chalcid, pteromalid và trichogrammatid wasps, kiến, bọ rùa, bọ cánh cứng staphylinid, gryllid, châu chấu xanh, và ruồi mirid, phorid và platystomatid, bethylid, braconid, elasmid, ong bắp cày eulophid, eurytomid và ichneumonid, bọ carabid và bọ cánh cứng, ruồi chloropid, bọ gerrid và pentatomid, kiến và ve, ráy tai, chim, ruồi asilid, ong vespid, chuồn chuồn, chuồn chuồn kim và nhện\n" +
                             "- Vi khuẩn và nấm cũng lây nhiễm cho ấu trùng: giun tròn, chalcid, elasmid và eulophid\n" +
                             "- Bón phân đạm chia nhỏ theo tỷ lệ và thời điểm bón khuyến cáo.",
-                    "https://th.bing.com/th/id/R.c756d12510c53bfca915af923be95f60?rik=0V4mw1iKHhcfRw&riu=http%3a%2f%2fwww.pyrgus.de%2fbilder1%2fnoctuidae%2fnonagrioides_rpe2013.jpg&ehk=fLTeIFo3z8Iy%2f4HWvi1orII29L%2fTNgw4l%2fdN7mwlk68%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pests%2Fstem_borer.jpg?alt=media&token=6cc4a2cc-1bb7-4542-ba4c-a6165d63e2b4");
             pests.add(pests3);
 
             Pests pests4 = new Pests("Rice thrips", "Bọ trĩ", "Stenchaetothrips biformis (Bagnall)", "Stenchaetothrips biformis (Bagnall)",
@@ -363,7 +375,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Liên hệ với văn phòng nông nghiệp địa phương của bạn để biết danh sách cập nhật các giống hiện có.\n" +
                             "- Lũ lụt nhấn chìm cánh đồng bị nhiễm khuẩn trong hai ngày.\n" +
                             "- Khuyến khích các tác nhân kiểm soát sinh học: bọ trĩ săn mồi, bọ cánh cứng coccinellid, bọ anthocorid và bọ cánh cứng staphylinid.",
-                    "https://th.bing.com/th/id/R.ee0245c113c556e604a7ed4a972b6d0e?rik=Oo7Llr3Ao8oecg&riu=http%3a%2f%2flouisianariceinsects.files.wordpress.com%2f2011%2f05%2f6-thrip-on-leaf-2.jpg&ehk=WwrcpbJ5EaCIHlE%2bbamNibajb0f4ey5UjzrrFoijKtk%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pests%2Frice_thrips.jpg?alt=media&token=c68ab507-a166-4ecc-8eec-96c1400141a4");
             pests.add(pests4);
 
             Pests pests5 = new Pests("Rice bug", "Bọ lúa (Bọ xít dài)", "The most common species of rice bug are Leptocorisa oratorius F. and Leptocorisa acuta Thunberg.", "Loài bọ gạo phổ biến nhất là Leptocorisa oratorius F. và Leptocorisa acuta Thunberg.",
@@ -411,7 +423,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "Để kiểm soát hóa chất, trước khi sử dụng thuốc trừ sâu, hãy liên hệ với chuyên gia bảo vệ thực vật để được gợi ý, hướng dẫn và cảnh báo cụ thể cho trường hợp của bạn:\n" +
                             "- Bắt đầu dò ruộng từ trước trỗ và tiếp tục hàng ngày cho đến khi lúa trỗ cứng. Đếm bọ lúa vào sáng sớm hoặc chiều tối từ 20 ngọn đồi khi đi chéo qua ruộng cấy. Sâu trưởng thành thường bay ra khỏi đường trước khi bạn đến cây lúa, vì vậy số lượng có thể chỉ tiết lộ những dạng chưa trưởng thành. Có thể cần phải kiểm soát trực tiếp nếu có hơn 10 con bọ xít/20 ngọn đồi.\n" +
                             "- Việc lựa chọn thuốc diệt côn trùng phụ thuộc vào nhiều yếu tố, chẳng hạn như thiết bị phun thuốc diệt côn trùng có sẵn, chi phí thuốc diệt côn trùng, kinh nghiệm của người phun thuốc hoặc sự hiện diện của cá. Lợi ích của việc sử dụng thuốc diệt côn trùng phải được cân nhắc với các rủi ro đối với sức khỏe và môi trường. ",
-                    "https://th.bing.com/th/id/R.82a9a86b8a48b5388b79b6ab62bb7418?rik=ilkWzMGP5eLXbA&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2ffactsheet-ricebug-2.jpg&ehk=AURainKybmYn1vGqH5oDHzVeaqin8KCkkfwC%2bA87O%2bs%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pests%2Frice_bug.jpg?alt=media&token=54086a34-0113-485b-a548-8f4eb0c1a7af");
             pests.add(pests5);
 
             Pests pests6 = new Pests("Black bug", "Bọ đen (Bọ xít đen)", "Scotinophora lurida", "Scotinophora lurida",
@@ -455,7 +467,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Trong giai đoạn đầu lây nhiễm, hãy nâng mực nước trên ruộng trong 2−3 ngày để buộc côn trùng di chuyển lên trên.\n" +
                             "- Làm ngập các cánh đồng. Điều này có thể khiến tỷ lệ trứng chết cao hơn.\n" +
                             "- Sau khi thu hoạch, cày ruộng để loại bỏ côn trùng còn sót lại.",
-                    "https://th.bing.com/th/id/R.a2fbf8e512c22f96f65ae09aaee47daf?rik=Ne%2b6Qiim3a1HIQ&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2ffactsheet-black-bug.jpg&ehk=zTLsoA4tYkAGDJMVrNW%2boLvn8j2FBfVtCG6awJpNvjk%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pests%2Fblack_bug.jpg?alt=media&token=b2283a8e-4d91-4c71-a5dd-4aea9a32e40b");
             pests.add(pests6);
 
             Pests pests7 = new Pests("Rice gall midge", "Muỗi mật gạo (muỗi hành)", "Orseolia oryzae (Wood-Mason)", "Orseolia oryzae (Wood-Mason)",
@@ -489,7 +501,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Sử dụng các giống kháng. Liên hệ với văn phòng nông nghiệp địa phương của bạn để biết danh sách cập nhật các giống hiện có.\n" +
                             "- Cày xới đất của vụ trước và loại bỏ tất cả ký chủ thực vật trái vụ.\n" +
                             "- Khuyến khích các tác nhân kiểm soát sinh học: thú mỏ vịt, eupelmid và ong bắp cày pteromalid (ký sinh ở ấu trùng), ve phytoseiid (ăn trứng), nhện (ăn người trưởng thành).",
-                    "https://content.peat-cloud.com/w600/asian-rice-gall-midge-1.jpg");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pests%2Frice_gall_midge.jpg?alt=media&token=13a864a6-3487-47fa-91a3-b92c106709ac");
             pests.add(pests7);
             Pests pests8 = new Pests("Green leafhopper", "Rầy xanh", "Two species of green leafhoppers (GLH) can spread tungro: Nephotettix malayanus and Nephotettix virescens.", "Hai loài rầy xanh (GLH) có thể phát tán bệnh tungro: Nephotettix malayanus và Nephotettix virescens.",
                     "Green leafhoppers usually have a short life cycle of only a few weeks. There are several generations per year, with populations building up through spring, and peaking during summer and autumn. Green leafhopper adults are pale green with two black spots at the centre of the forewings and black markings on the head. They are active during both day and night, walk sideways, and when disturbed, quickly jump from the leaf blade.",
@@ -524,7 +536,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Kiểm soát cỏ dại trên đồng ruộng và trên các bờ ruộng để loại bỏ các vật chủ cỏ ưa thích của GLH và thúc đẩy sức sống của cây trồng.\n" +
                             "- Thực hiện luân canh cây trồng không phải lúa trong mùa khô để giảm vật chủ luân phiên của bệnh.\n" +
                             "Xen lúa nương với đậu tương để giảm tỷ lệ rầy trên lúa.",
-                    "https://th.bing.com/th/id/R.32974c870ee19077055ac2ae2e6a86dd?rik=6sl6SE4oHV%2f3Tw&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fgreen-leafhopper.jpg&ehk=HuuiMQqn13qTEVPvAxlGskVoZ8yfLdqBFtxd5LUXJCg%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pests%2Fgreen_planthopper.jpg?alt=media&token=ec761116-5237-4114-bb3c-2276e5e45dff");
             pests.add(pests8);
             for (Pests p : pests) {
                 pestDao.insert(p);
@@ -532,23 +544,41 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
 
             //****Crops-Pests****
             CropPestDao cropPestDao = db.cropPestDao();
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Rice leaffolder")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Planthopper")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Stem borer")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Rice thrips")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Rice bug")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Black bug")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Rice gall midge")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM18"), pestDao.getIdByName("Green leafhopper")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 18"), pestDao.getIdByName("Rice leaffolder")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 18"), pestDao.getIdByName("Planthopper")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 18"), pestDao.getIdByName("Stem borer")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 18"), pestDao.getIdByName("Rice thrips")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 18"), pestDao.getIdByName("Rice bug")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 18"), pestDao.getIdByName("Black bug")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 18"), pestDao.getIdByName("Rice gall midge")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 18"), pestDao.getIdByName("Green leafhopper")));
 
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Rice leaffolder")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Planthopper")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Stem borer")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Rice thrips")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Rice bug")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Black bug")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Rice gall midge")));
-            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT08"), pestDao.getIdByName("Green leafhopper")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT 08"), pestDao.getIdByName("Rice leaffolder")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT 08"), pestDao.getIdByName("Planthopper")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT 08"), pestDao.getIdByName("Stem borer")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT 08"), pestDao.getIdByName("Rice thrips")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT 08"), pestDao.getIdByName("Rice bug")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT 08"), pestDao.getIdByName("Black bug")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT 08"), pestDao.getIdByName("Rice gall midge")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("DT 08"), pestDao.getIdByName("Green leafhopper")));
+
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 5451"), pestDao.getIdByName("Rice leaffolder")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 5451"), pestDao.getIdByName("Planthopper")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 5451"), pestDao.getIdByName("Stem borer")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 5451"), pestDao.getIdByName("Rice thrips")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 5451"), pestDao.getIdByName("Rice bug")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 5451"), pestDao.getIdByName("Black bug")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 5451"), pestDao.getIdByName("Rice gall midge")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("OM 5451"), pestDao.getIdByName("Green leafhopper")));
+
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("IR 50404"), pestDao.getIdByName("Rice leaffolder")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("IR 50404"), pestDao.getIdByName("Planthopper")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("IR 50404"), pestDao.getIdByName("Stem borer")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("IR 50404"), pestDao.getIdByName("Rice thrips")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("IR 50404"), pestDao.getIdByName("Rice bug")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("IR 50404"), pestDao.getIdByName("Black bug")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("IR 50404"), pestDao.getIdByName("Rice gall midge")));
+            cropPestDao.insert(new CropPests(cropDao.getIdByName("IR 50404"), pestDao.getIdByName("Green leafhopper")));
 
             //****Diseases****
             DiseaseDao diseaseDao = db.diseaseDao();
@@ -577,13 +607,13 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Flood the field as often as possible.\n" +
                             "\n" +
                             "Systemic fungicides like triazoles and strobilurins can be used judiciously for control to control blasts. A fungicide application at heading can be effective in preventing the disease.",
-                    "Để quản lý vụ nổ:\n" +
+                    "Để quản lý bệnh đạo ôn:\n" +
                             "- Điều chỉnh thời gian gieo trồng. Gieo hạt sớm, khi có thể, sau khi bắt đầu mùa mưa.\n" +
                             "- Chia nhỏ việc bón phân đạm thành hai hoặc nhiều lần xử lý. Sử dụng quá nhiều phân bón có thể làm tăng cường độ bệnh đạo ôn.\n" +
                             "- Làm ngập cánh đồng thường xuyên nhất có thể.\n" +
                             "\n" +
                             "Các loại thuốc diệt nấm toàn thân như triazole và strobilurin có thể được sử dụng một cách thận trọng để kiểm soát bệnh đạo ôn. Phun thuốc diệt nấm vào thời điểm có thể có hiệu quả trong việc ngăn ngừa bệnh.",
-                    "https://youngerusa.com/images/easyblog_articles/75/b2ap3_thumbnail_rice-blast-01.jpg");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/diseases%2Fblast.jpg?alt=media&token=36d0234f-86a6-49b5-8290-af95c1472702");
             diseases.add(diseases1);
             Diseases diseases2 = new Diseases("Leaf Scald", "Bỏng lá", "Check the plant for the following symptoms:\n" +
                     "- Zonate lesions of alternating light tan and dark brown starting from leaf tips or edges\n" +
@@ -620,7 +650,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "Để ngăn chặn sự tồn tại của mầm bệnh trong các mùa vụ:\n" +
                             "- Loại bỏ cỏ dại.\n" +
                             "- Cày dưới gốc rạ.\n" +
-                            "- Loại bỏ những khẩu phần gạo bị nhiễm bệnh.", "https://th.bing.com/th/id/R.9432878d674c9e4bb83358870c17bbf2?rik=Os6x6dGwsF4uvA&pid=ImgRaw&r=0");
+                            "- Loại bỏ những khẩu phần gạo bị nhiễm bệnh.", "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/diseases%2Fleaf_scald.jpg?alt=media&token=58ca4ae1-d05c-4274-b9a9-82b9fb0febf4");
             diseases.add(diseases2);
             Diseases diseases3 = new Diseases("Sheath rot", "Thối vỏ (Thối bẹ)", "Although sheath rot can be observed in the field as a single disease on rice sheath, more often, it has become part of a complex of grain and leaf sheath discolouration commonly observed on wet-season rice.\n" +
                     "- Check for lesions: The typical sheath rot lesion starts at the uppermost leaf sheath enclosing the young panicles. It appears oblong or as irregular spot with dark reddish, brown margins, and gray center or brownish gray throughout.\n" +
@@ -653,7 +683,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Bón phân kali ở giai đoạn đẻ nhánh.\n" +
                             "- Phun qua lá canxi sulfat và kẽm sulfat.\n" +
                             "- Áp dụng thuốc diệt nấm xử lý hạt giống như carbendazim, edifenphos hoặc mancozeb để xử lý hạt giống và phun qua lá ở giai đoạn trổ bông.\n" +
-                            "- Phun thuốc diệt nấm trên lá như benomyl và đồng oxychloride dưới dạng thuốc xịt qua lá.", "https://th.bing.com/th/id/R.8d68160a38d65319e7e62544445b4124?rik=eOT%2fmI%2b2QVKQgw&pid=ImgRaw&r=0");
+                            "- Phun thuốc diệt nấm trên lá như benomyl và đồng oxychloride dưới dạng thuốc xịt qua lá.", "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/diseases%2Fsheath_rot.png?alt=media&token=1fd6ec9a-0961-42b0-b1a6-2371b651b362");
             diseases.add(diseases3);
             Diseases diseases4 = new Diseases("Brown spot", "Đốm nâu", "Check for lesions:\n" +
                     "- Infected seedlings have small, circular, yellow brown or brown lesions that may girdle the coleoptile and distort primary and secondary leaves.\n" +
@@ -691,7 +721,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Liên hệ với văn phòng nông nghiệp địa phương của bạn để biết danh sách cập nhật các giống hiện có.\n" +
                             "- Sử dụng thuốc diệt nấm (ví dụ: iprodione, propiconazole, azoxystrobin, trifloxystrobin và carbendazim) để xử lý hạt giống.\n" +
                             "- Xử lý hạt giống bằng nước nóng (53−54°C) trong 10−12 phút trước khi trồng, để kiểm soát nhiễm trùng ban đầu ở giai đoạn cây con. Để tăng hiệu quả xử lý, ngâm hạt giống trước trong nước lạnh trong 8 giờ.",
-                    "https://th.bing.com/th/id/OIP.hjf0k_QD7VYPbDd_9wGzogHaE9?pid=ImgDet&rs=1");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/diseases%2Fbrown_spot.jpg?alt=media&token=aa31defa-c079-463b-af91-babd2c0c90b5");
             diseases.add(diseases4);
             Diseases diseases5 = new Diseases("Sheath blight", "Khô vằn", "Check for lesions:\n" +
                     "Symptoms are usually observed from tillering to the milk stage in a rice crop and include the following:\n" +
@@ -733,7 +763,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Rút cạn ruộng lúa tương đối sớm trong vụ mùa để giảm dịch bệnh khô vằn.\n" +
                             "- Sử dụng thuốc diệt nấm để xử lý hạt giống.\n" +
                             "- Cải thiện cấu trúc tán cây bằng cách giảm tỷ lệ gieo hạt hoặc cung cấp khoảng cách giữa các cây rộng hơn.",
-                    "https://th.bing.com/th/id/R.b0a881668e48971c15bb9b3d812bf1d0?rik=1vQdiZN0WefPzA&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/diseases%2Fsheath_blight.jpg?alt=media&token=c17e52b3-f7d6-4295-9c57-ff087fbc3f1a");
             diseases.add(diseases5);
             Diseases diseases6 = new Diseases("Rice grassy stunt", "Lùn xoắn cỏ", "To identify hills of Rice grassy stunt virus-infected plants, check for the following symptoms:\n" +
                     "- Severely stunted plants\n" +
@@ -765,7 +795,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "Rice grassy stunt disease often develops and causes severe damage after the area is heavily infected with planthoppers. There is currently no cure for this disease. The best way to prevent disease is to manage BPH well, choose the sowing time to \"avoid planthoppers\", when the field is sick, it is necessary to destroy the diseased plants, then prevent BPH and spray foliar fertilizers with high phosphorus and potassium content. to increase plant resistance.",
                     "Để kiểm soát virus lùn xoắn cỏ hại lúa, cần phải quản lý véc tơ rầy nâu. Điều này có thể được thực hiện thông qua việc sử dụng thuốc trừ sâu, giống kháng rầy nâu hoặc thiết lập cây trồng đồng bộ. Cần phải cày xới gốc rạ bị nhiễm bệnh sau khi thu hoạch để giảm thiểu nguồn vi-rút.\n" +
                             "Bệnh lùn sọc lá hại lúa thường phát sinh và gây hại nặng sau khi diện tích bị nhiễm rầy nặng. Hiện chưa có thuốc đặc trị. Cách phòng bệnh tốt nhất là quản lý tốt rầy nâu, chọn thời vụ gieo sạ để \"né rầy\" \", khi ruộng bị bệnh cần tiêu hủy cây bệnh, sau đó phòng trừ rầy nâu và phun phân bón lá có hàm lượng lân, kali cao để tăng sức đề kháng cho cây.",
-                    "https://th.bing.com/th/id/R.d144c7ca3ebfbc40372b8642e26a3e90?rik=CCnkAsmvE71OZQ&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2frice-grassy-stunt.jpg&ehk=D2kWKLkLFvMo0zPbsrdSyiaqEPWh0HIZKAbY8R0JKds%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/diseases%2Frice_grassy_stunt.jpg?alt=media&token=59551ed5-fc41-4464-a159-25ea282743b3");
             diseases.add(diseases6);
             Diseases diseases7 = new Diseases("Rice ragged stunt", "Lùn xoắn lá", "To detect rice ragged stunt virus, check plants for:\n" +
                     "- Severe stunting during early crop stages\n" +
@@ -813,7 +843,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Thực hành trồng đồng bộ.\n" +
                             "- Cày gốc rạ bị nhiễm bệnh dưới ruộng sau khi thu hoạch để giảm nguồn virus.\n" +
                             "Bệnh lùn sọc vằn hại lúa thường phát sinh và gây hại nặng sau khi diện tích bị nhiễm rầy nặng. Hiện chưa có thuốc đặc trị. Cách phòng bệnh tốt nhất là quản lý tốt rầy nâu, chọn thời vụ gieo sạ để \"né rầy\". \", khi ruộng bị bệnh cần tiêu hủy cây bệnh, sau đó phòng trừ rầy nâu và phun phân bón lá có hàm lượng lân, kali cao để tăng sức đề kháng cho cây.",
-                    "https://th.bing.com/th/id/R.f5a2fa886ff852a1b15db472f2c0ce50?rik=0hyAHpnHbzaf%2bg&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fragged-stunt.jpg&ehk=iwf2VGTlPDWMfYmRUd3eBqR1V6Qzip%2bgKBCkQizEYdE%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/diseases%2Frice_ragged_stunt.jpg?alt=media&token=b0bdcc38-63c0-4710-b63d-9798cbc62afb");
             diseases.add(diseases7);
             Diseases diseases8 = new Diseases("Tungro", "Vàng lùn", "The yellow or orange-yellow discolouration is noticeable in tungro-infected plants. Discolouration begins from the leaf tip and extends down to the blade or the lower leaf portion. Infected leaves may also show a mottled or striped appearance, rust-coloured spots, and inter-veinal necrosis.\n" +
                     "Tungro-infected plants also show symptoms of stunting, delayed flowering, which may delay maturity, reduced number of tillers, small and not completely exserted panicles, as well as a higher than normal percentage of sterile panicles or partially filled grains, covered with dark brown blotches.\n" +
@@ -849,7 +879,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Việc gieo trồng muộn hoặc muộn, so với ngày trung bình ở một khu vực nhất định, khiến cánh đồng dễ nhiễm bệnh Tungro. Những cánh đồng trồng muộn cũng có nguy cơ gieo trồng sớm trong mùa tới.\n" +
                             "- Điều chỉnh thời gian gieo trồng khi rầy xanh không vào mùa hoặc nhiều nếu biết\n" +
                             "- Cày gốc rạ nhiễm bệnh ngay sau khi thu hoạch để giảm nguồn lây và tiêu diệt ổ trứng, nơi sinh sản của rầy xanh.",
-                    "https://th.bing.com/th/id/R.beae016d4bb5c5f00a4664e9c143b192?rik=E0gzsw7jMRWSNw&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2ftungro-1.jpg&ehk=XnMTeKKXMzaJML7uO%2bxU2aWQazaPzjoSg1sVZ85eACw%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/diseases%2Ftungro.jpg?alt=media&token=8a972af9-c79a-42b4-bcf2-868bb189bfef");
             diseases.add(diseases8);
 
             Diseases diseases9 = new Diseases("Bacterial leaf streak", "Cháy bìa lá", "Check for lesions:\n" +
@@ -894,7 +924,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Rút cạn ruộng khi lũ lụt nghiêm trọng.\n" +
                             "- Phơi khô ruộng trong thời gian bỏ hoang để tiêu diệt vi khuẩn trong đất và tàn dư thực vật.\n" +
                             "- Trong trường hợp nhiễm bệnh nghiêm trọng, khi đó năng suất có thể bị ảnh hưởng, thuốc diệt nấm gốc đồng được áp dụng cho nhóm có thể có hiệu quả trong việc kiểm soát bệnh.",
-                    "https://th.bing.com/th/id/R.efc604d42f1cd730459a6f6b9e2bfa86?rik=b1q9xQKZAyRlnw&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fbacterial-leaf-streak-1.jpg&ehk=OOUYUFe0%2bJQdWhnkdKdefuiTErw83ii086ICxgXC90c%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/diseases%2Fbacterial_leaf_streak.jpg?alt=media&token=101904fa-45ce-4fc9-a8be-3ddfd173635a");
             diseases.add(diseases9);
 
             Diseases diseases10 = new Diseases("Red stripe", "Sọc đỏ", "Check leaves for lesions and discolouration:\n" +
@@ -927,7 +957,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Đảm bảo tỷ lệ gieo hạt tối ưu và khoảng cách giữa các cây rộng hơn cũng giúp giảm bệnh tật.\n" +
                             "- Đảm bảo thoát nước không liên tục trong quá trình bắt đầu bông.\n" +
                             "- Sử dụng thuốc diệt nấm benzimidazole (benomyl, carbendazim và thiophanate methyl) để xử lý hạt giống.",
-                    "https://th.bing.com/th/id/R.ed396f3128da9b4f0d8d62edc08535a5?rik=IJL49wvb2%2bGCCw&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fred-stripe.jpg&ehk=GoPefIkPQBXtpxFYX%2bnyWzWLJvK7eqj6FkOB%2fTp2u3w%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/diseases%2Fred_stripe.jpg?alt=media&token=49529f6b-a156-4591-92bb-3324413e0865");
             diseases.add(diseases10);
 
             Diseases diseases11 = new Diseases("Stem rot", "Thối thân", "Check the plant for the following symptoms:\n" +
@@ -960,7 +990,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Sử dụng phân bón cân đối hoặc thực hiện bón phân chia với hàm lượng kali và vôi cao để tăng độ pH của đất.\n" +
                             "- Các hóa chất như fentin hydroxit được phun vào giai đoạn giữa đẻ nhánh, thiophanate-methyl được phun trong giai đoạn bắt đầu bệnh có thể làm giảm tỷ lệ thối thân trên ruộng lúa.\n" +
                             "- Các loại thuốc diệt nấm khác như Ferimzone và validamycin A cũng cho thấy hiệu quả chống lại nấm.",
-                    "https://agriculturistmusa.com/wp-content/uploads/2018/05/Stem-rot-of-rice-management.jpg");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/diseases%2Fstem_rot.webp?alt=media&token=12f60502-eaf5-4200-9a14-2ca4a6d85d11");
             diseases.add(diseases11);
 
             for (Diseases d : diseases) {
@@ -969,29 +999,54 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
 
             //****Crops-Diseases****
             CropDiseaseDao cropDiseaseDao = db.cropDiseaseDao();
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Blast")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Leaf Scald")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Sheath rot")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Brown spot")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Sheath blight")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Rice grassy stunt")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Rice ragged stunt")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Tungro")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Bacterial leaf streak")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Red stripe")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM18"), diseaseDao.getIdByName("Stem rot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 18"), diseaseDao.getIdByName("Blast")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 18"), diseaseDao.getIdByName("Leaf Scald")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 18"), diseaseDao.getIdByName("Sheath rot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 18"), diseaseDao.getIdByName("Brown spot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 18"), diseaseDao.getIdByName("Sheath blight")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 18"), diseaseDao.getIdByName("Rice grassy stunt")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 18"), diseaseDao.getIdByName("Rice ragged stunt")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 18"), diseaseDao.getIdByName("Tungro")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 18"), diseaseDao.getIdByName("Bacterial leaf streak")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 18"), diseaseDao.getIdByName("Red stripe")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 18"), diseaseDao.getIdByName("Stem rot")));
 
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Blast")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Leaf Scald")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Sheath rot")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Brown spot")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Sheath blight")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Rice grassy stunt")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Rice ragged stunt")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Tungro")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Bacterial leaf streak")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Red stripe")));
-            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT08"), diseaseDao.getIdByName("Stem rot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT 08"), diseaseDao.getIdByName("Blast")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT 08"), diseaseDao.getIdByName("Leaf Scald")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT 08"), diseaseDao.getIdByName("Sheath rot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT 08"), diseaseDao.getIdByName("Brown spot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT 08"), diseaseDao.getIdByName("Sheath blight")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT 08"), diseaseDao.getIdByName("Rice grassy stunt")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT 08"), diseaseDao.getIdByName("Rice ragged stunt")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT 08"), diseaseDao.getIdByName("Tungro")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT 08"), diseaseDao.getIdByName("Bacterial leaf streak")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT 08"), diseaseDao.getIdByName("Red stripe")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("DT 08"), diseaseDao.getIdByName("Stem rot")));
+
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 5451"), diseaseDao.getIdByName("Blast")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 5451"), diseaseDao.getIdByName("Leaf Scald")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 5451"), diseaseDao.getIdByName("Sheath rot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 5451"), diseaseDao.getIdByName("Brown spot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 5451"), diseaseDao.getIdByName("Sheath blight")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 5451"), diseaseDao.getIdByName("Rice grassy stunt")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 5451"), diseaseDao.getIdByName("Rice ragged stunt")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 5451"), diseaseDao.getIdByName("Tungro")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 5451"), diseaseDao.getIdByName("Bacterial leaf streak")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 5451"), diseaseDao.getIdByName("Red stripe")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("OM 5451"), diseaseDao.getIdByName("Stem rot")));
+
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("IR 50404"), diseaseDao.getIdByName("Blast")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("IR 50404"), diseaseDao.getIdByName("Leaf Scald")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("IR 50404"), diseaseDao.getIdByName("Sheath rot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("IR 50404"), diseaseDao.getIdByName("Brown spot")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("IR 50404"), diseaseDao.getIdByName("Sheath blight")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("IR 50404"), diseaseDao.getIdByName("Rice grassy stunt")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("IR 50404"), diseaseDao.getIdByName("Rice ragged stunt")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("IR 50404"), diseaseDao.getIdByName("Tungro")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("IR 50404"), diseaseDao.getIdByName("Bacterial leaf streak")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("IR 50404"), diseaseDao.getIdByName("Red stripe")));
+            cropDiseaseDao.insert(new CropDiseases(cropDao.getIdByName("IR 50404"), diseaseDao.getIdByName("Stem rot")));
+
 
             //****Pesticides****
             PesticideDao pesticideDao = db.pesticideDao();
@@ -1004,7 +1059,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "Khoảng thời gian trước khi thu hoạch- PHI: 7 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách sử dụng: Lượng nước phun từ 400 – 600 lít/ha." +
                             "Không nên dùng nước phèn chua để pha với thuốc diệt côn trùng Padan 95SP.", 30, 400,
-                    "https://vietnong.vn/wp-content/uploads/2022/04/PANDAN-95-01-768x768.jpg");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fpadan.jpg?alt=media&token=d8c14044-4759-4af1-b397-0d506fc8ab8f");
             pesticides.add(pesticides1);
 
             Pesticides pesticides2 = new Pesticides("Regent 800WG", "Bayer", "Fipronil (min 95 %): 800g/kg", "Insecticide", "Thuốc trừ sâu",
@@ -1012,7 +1067,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "Quarantine period (PreHarvest Interval- PHI): 15 days (Duration in days from last handling to harvest)\n\n" +
                             "Usage: The amount of water sprayed is 210 - 600 liters/ha. Spray when pests appear", "Liều lượng: 32 g/ha\n\n" +
                     "Thời gian kiểm dịch (Khoảng thời gian trước khi thu hoạch- PHI): 15 ngày (Thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
-                    "Cách dùng: Lượng nước phun 210 - 600 lít/ha. Phun khi sâu bệnh xuất hiện", 1.6, 600, "https://vuonsaigon.vn/wp-content/uploads/2019/12/regent-1g-599x599.jpg");
+                    "Cách dùng: Lượng nước phun 210 - 600 lít/ha. Phun khi sâu bệnh xuất hiện", 1.6, 600, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fregent.jpg?alt=media&token=41e96cef-dd10-4dc3-b227-dbe4dc5eeefd");
             pesticides.add(pesticides2);
 
             Pesticides pesticides3 = new Pesticides("ANTRACOL 70WP", "Bayer", "Propineb (min 80%) : 700 g/kg", "Fungicide", "Thuốc trừ bệnh",
@@ -1020,7 +1075,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "PreHarvest Interval- PHI: 7 days (Time interval in days from last handling to harvest)\n\n" +
                             "Usage: The amount of water sprayed is 320 - 800 liters/ha. Spray when the disease appears", "Liều lượng: 1,5 kg/ha\n\n" +
                     "Khoảng thời gian trước khi thu hoạch- PHI: 7 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
-                    "Cách dùng: Lượng nước phun 320 - 800 lít/ha. Phun khi bệnh xuất hiện", 64, 400, "https://www.phandoiso1.com/wp-content/uploads/2020/11/Antracol-70WP-1kg-1-610x610.jpg");
+                    "Cách dùng: Lượng nước phun 320 - 800 lít/ha. Phun khi bệnh xuất hiện", 64, 400, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2FAntracol.jpg?alt=media&token=ca2cdb2a-7a08-4e8d-97b4-09b0c5ebea19");
             pesticides.add(pesticides3);
 
             Pesticides pesticides4 = new Pesticides("Xantocin 40WP", "VFC", "Bronopol (min 99%) : 40% w/w", "Fungicide", "Thuốc trừ bệnh", "Dosage: 0.2 – 0.25 kg/ha\n\n" +
@@ -1029,7 +1084,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 0,2 – 0,25 kg/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch- PHI: 1 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước phun 400 - 500 lít/ha. Phun khi tỷ lệ bệnh khoảng 5 - 10%",
-                    10, 400, "https://vietnong.vn/wp-content/uploads/2022/12/thuoc-bvtv-xantocin-40wp-768x672.jpg");
+                    10, 400, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fxantocin.jpg?alt=media&token=4ce0b990-a0de-44f5-a743-5928d4ed52fb");
             pesticides.add(pesticides4);
 
             Pesticides pesticides5 = new Pesticides("Hilton USA 320 EC", "HopTri Co", "Pretilachlor 300g/l + Pyribenzoxim 20g/l + Fenclorim 100g/l", "Herbicide", "Thuốc diệt cỏ",
@@ -1039,7 +1094,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 1,0 – 1,25 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch- PHI: Không xác định (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước phun 400 lít/ha. Phun sau sạ 6-10 ngày",
-                    40, 400, "https://www.hoptri.com/media/k2/items/cache/08f61c52357dcc6d2503bfea790efe4d_M.jpg");
+                    40, 400, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fhilton.jpg?alt=media&token=09c8a329-8889-494c-912f-089ca5bcc77e");
             pesticides.add(pesticides5);
 
             Pesticides pesticides6 = new Pesticides("Elano 20EC", "HopTri Co", "Cyhalofop-butyl (min 97 %) : 200 g/l", "Herbicide", "Thuốc diệt cỏ", "Dosage: 0.4 liters/ha\n\n" +
@@ -1048,7 +1103,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 0,4 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch (PHI): Ngày không xác định (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước phun 320-400 lít/ha. Phun sau sạ 3-15 ngày",
-                    20, 320, "https://www.hoptri.com/media/k2/items/cache/0ef95987526970d668cbb7995fe36b10_M.jpg");
+                    20, 320, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Felano.jpg?alt=media&token=26c467b2-7a9b-4cba-a883-50bf41d78bcf");
             pesticides.add(pesticides6);
 
             Pesticides pesticides7 = new Pesticides("Tilt Super 300EC", "Syngenta", "Difenoconazole 150g/l + Propiconazole 150g/l: 300g/l", "Fungicide", "Thuốc trừ bệnh", "Dosage: 0.25 – 0.3 liters/ha\n\n" +
@@ -1057,7 +1112,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 0,25 – 0,3 lít/ha\n\n" +
                             "Thời gian kiểm dịch (Khoảng thời gian trước khi thu hoạch- PHI): 14 ngày (Thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Phun với lượng 500-600 lít nước/ha. Phun khi tỷ lệ bệnh khoảng 8%",
-                    10, 500, "https://th.bing.com/th/id/R.71e6bb0376104ac186b5086f027a22dc?rik=3N3Ex%2bedKUCvDw&pid=ImgRaw&r=0");
+                    10, 500, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Ftilt_super.png?alt=media&token=e72795b8-d044-4c9b-bda3-55168961e504");
             pesticides.add(pesticides7);
 
             Pesticides pesticides8 = new Pesticides("Bassa 50EC", "PSC.1", "Fenobucarb (BPMC) (min 96 %) : 50% w/w", "Insecticide", "Thuốc trừ sâu", "Dosage: 1.0 – 1.5 litres/ha\n\n" +
@@ -1066,7 +1121,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 1,0 – 1,5 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch (PHI): 7 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Phun, pha với 600 lít nước/ha",
-                    51, 600, "https://vietnong.vn/wp-content/uploads/2022/04/bassa-50ec_1620538912.jpg");
+                    51, 600, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fbassa.jpg?alt=media&token=9362bc4c-8f79-4c7b-8970-8afa7a76c5c6");
             pesticides.add(pesticides8);
 
             Pesticides pesticides9 = new Pesticides("Dupont™ Pexena™ 106SC", "Syngenta", "Triflumezopyrim (min 94%) : 106 g/l", "Insecticide", "Thuốc trừ sâu", "Dosage: 300 ml/ha\n\n" +
@@ -1075,7 +1130,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 300 ml/ha\n\n" +
                             "Thời gian kiểm dịch (Khoảng thời gian trước khi thu hoạch- PHI): 21 ngày (Thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước phun 400-500 L/ha. Phun 1 lần khi rầy tuổi 1-2 xuất hiện trên ruộng.",
-                    10, 450, "https://vietnong.vn/wp-content/uploads/2022/12/thuoc-tru-ray-dupont-pexena-106sc.jpg");
+                    10, 450, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fpexena.jpg?alt=media&token=19be8599-52d5-413e-90ad-b9e5226a0141");
             pesticides.add(pesticides9);
 
             Pesticides pesticides10 = new Pesticides("Sulfaron 250EC", "Golden Rice Co., Ltd", "Carbosulfan 200 g/l + Chlorfluazuron 50g/l : 250 g/l", "Insecticide", "Thuốc trừ sâu", "Dosage: 0.3-0.4 litres/ha\n\n" +
@@ -1084,7 +1139,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 0,3-0,4 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch (PHI): 7 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách sử dụng: Lượng nước phun 400 -500 lít/ha.",
-                    15, 400, "https://product.hstatic.net/1000220686/product/sulfaron-250ec-100ml_00d45c876f384c779ca5e91a86fc99e8_master.jpg");
+                    15, 400, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fsulfaron.jpg?alt=media&token=3d3444b8-b794-45e5-ac57-6f256ad402d8");
             pesticides.add(pesticides10);
 
             Pesticides pesticides11 = new Pesticides("Virtako 40WG", "Syngenta", "Chlorantraniliprole 20% + Thiamethoxam 20% : 40% w/w", "Insecticide", "Thuốc trừ sâu", "Dosage: 37.5 – 75 g/ha\n\n" +
@@ -1093,7 +1148,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 37,5 – 75 g/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch (PHI): 7 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước phun 400 - 500 lít/ha. Phun sau khi bướm nở rộ, sau 15 ngày phun lần 2 nếu cần.",
-                    2.9, 500, "https://www.phandoiso1.com/wp-content/uploads/2021/03/Virtako-40WG-4.5g-1-768x768.jpg");
+                    2.9, 500, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2FVirtako.jpg?alt=media&token=e4c2100c-414e-4f50-9dba-a9a9f63f8833");
             pesticides.add(pesticides11);
 
             Pesticides pesticides12 = new Pesticides("Fanmax 350SC", "Phu Nong Co., Ltd", "Chlorfenapyr 250 g/l + Spirodiclofen 100 g/l : 350 g/l", "Insecticide", "Thuốc trừ sâu", "Dosage: 0.25 litres/ha\n\n" +
@@ -1102,7 +1157,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 0,25 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch (PHI): 7 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước phun 400-500 lít/ha. Phun khi mật độ khoảng 10-20 con/m2",
-                    9.5, 450, "https://th.bing.com/th/id/R.ff7aae5264b604079aa30cca77d5285c?rik=zSWBwLhA7Hxggg&pid=ImgRaw&r=0");
+                    9.5, 450, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Ffanmax.jpg?alt=media&token=29f7f23f-35e5-4f88-aa85-afeddb691429");
             pesticides.add(pesticides12);
 
             Pesticides pesticides13 = new Pesticides("Reasgant 5EC", "Shijiazhuang Xingbai Bioengineering Co., Ltd", "Abamectin: 50g/l", "Insecticide", "Thuốc trừ sâu", "Dosage: 100 – 200 ml/ha\n\n" +
@@ -1111,7 +1166,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 100 – 200 ml/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch- PHI: 7 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước phun từ 500 - 600 lít/ha. Phun khi sâu mới xuất hiện",
-                    6.5, 550, "https://sieuthinhanong.com/wp-content/uploads/2021/03/REASGANT-5EC-1-768x768-1.jpg");
+                    6.5, 550, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2FREASGANT.jpg?alt=media&token=62681bab-041f-4bc6-92f0-c2a4356b2a3d");
             pesticides.add(pesticides13);
 
             Pesticides pesticides14 = new Pesticides("Chess 50WG", "Syngenta", "500g/kg Pymetrozine", "Insecticide", "Thuốc trừ sâu", "Dosage: 0.5 – 1.0 litre/ha\n\n" +
@@ -1120,7 +1175,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 0,5 – 1,0 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch (PHI): 7 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước phun 400 lít/ha. Phun khi sâu mới xuất hiện",
-                    13, 400, "https://azfarming.vn/wp-content/uploads/2021/09/thuoc-tru-sau-chess-50wg.jpg");
+                    13, 400, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fchess_50wg.jpg?alt=media&token=66e31fa4-44e7-4b8e-a56e-d1a55519422e");
             pesticides.add(pesticides14);
 
             Pesticides pesticides15 = new Pesticides("Tasieu 5WG", "Viet Thang Co., Ltd", "Emamectin benzoate (Avermectin B1a 90 % + Avermectin B1b 10%) : 5% w/w", "Insecticide", "Thuốc trừ sâu", "Dosage: 150 – 250 g/ha\n\n" +
@@ -1129,7 +1184,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 150 – 250 g/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch (PHI): 7 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước phun từ 500 - 600 lít/ha. Phun khi sâu tơ còn nhỏ",
-                    6.5, 550, "https://th.bing.com/th/id/OIP.iF3q8FYfdBw_xnWXhWtW_QHaHa?pid=ImgDet&rs=1");
+                    6.5, 550, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Ftasieu.jpg?alt=media&token=f279d28a-ddf5-4396-9dc0-f0ca848c35dd");
             pesticides.add(pesticides15);
 
             Pesticides pesticides16 = new Pesticides("Sporekill 120SL", "VFC", "Didecyldimethylammonium chloride (min 76.6%) : 120 g/l", "Fungicide", "Thuốc trừ bệnh", "Dosage: 0.5 litre/ha\n\n" +
@@ -1138,7 +1193,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 0,5 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch (PHI): 7 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước phun: 320-400 l/ha. Phun 2 lần, lần 1 trước khi ra hoa và lần 2 sau khi ra hoa. Phun vào sáng sớm hoặc chiều mát.",
-                    25, 350, "https://th.bing.com/th/id/R.c2001b1f257a8949fb6cabec0b91b24e?rik=jPyZ2iWcYwCqLQ&riu=http%3a%2f%2fproduct.hstatic.net%2f1000220686%2fproduct%2fsporekill_120sl_35b6f237723d4d43aec2635fa4387054_grande.jpg&ehk=KZEC5eJz%2fO8G95kX%2bPnFd19X8KqtBh1thIMxHBatJgE%3d&risl=&pid=ImgRaw&r=0");
+                    25, 350, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fsporekill.jpg?alt=media&token=c7240ae3-e430-4ebc-80e9-7ce9d8549fdc");
             pesticides.add(pesticides16);
 
             Pesticides pesticides17 = new Pesticides("Carban 50SC", "Loc Troi Group Joint Stock Company", "Carbendazim (min 98%): 500g/l", "Fungicide", "Thuốc trừ bệnh", "Dosage: 1.0 – 2.5 litres/ha\n\n" +
@@ -1147,7 +1202,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 1,0 – 2,5 lít/ha\n\n" +
                             "Thời gian kiểm dịch (Khoảng thời gian trước khi thu hoạch- PHI): 14 ngày (Thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Phun với lượng 320-400 lít nước/ha. Phun khi bệnh xuất hiện",
-                    80, 400, "https://dangnhanh.com.vn/upload/images/watermark/2021-06-18-20-21-11/13-10.png?v=1");
+                    80, 400, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fcarban.png?alt=media&token=8a1a3267-7b43-47d1-93ac-672bda616ff0");
             pesticides.add(pesticides17);
 
             Pesticides pesticides18 = new Pesticides("Amistar Top 325SC", "Syngenta", "200g/L Azoxystrobin + 125g/L Difenoconazole", "Fungicide", "Thuốc trừ bệnh", "Dosage: 0.25 - 0.3 litre/ha\n\n" +
@@ -1156,7 +1211,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 0,25 - 0,3 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch (PHI): 10 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước phun 400 - 500 lít/ha. Phun khi tỷ lệ bệnh khoảng 5 - 10%",
-                    12, 450, "https://th.bing.com/th/id/OIP.Q-kOXJmHrB-x-xgZi_O0SAHaHa?pid=ImgDet&rs=1");
+                    12, 450, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Famistar.jpg?alt=media&token=c1df97ab-d5ef-47df-911d-6c938e2483ed");
             pesticides.add(pesticides18);
 
             Pesticides pesticides19 = new Pesticides("Sofit 300EC", "Syngenta", "300g/L Pretilachlor + 100g/L Fenclorim", "Herbicide", "Thuốc diệt cỏ", "Dosage: 1.2 litre/ha\n\n" +
@@ -1165,7 +1220,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 1,2 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch (PHI): Ngày không xác định (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách sử dụng: Lượng nước phun 300-400 lít/ha.",
-                    50, 400, "https://vietnamnongnghiepsach.com.vn/wp-content/uploads/2016/09/SOFIT-300EC.jpg");
+                    50, 400, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2FSOFIT.jpg?alt=media&token=3add14fb-5690-4f42-906b-5df17d3b03c5");
             pesticides.add(pesticides19);
 
             Pesticides pesticides20 = new Pesticides("Dual Gold 96EC", "Syngenta", "960g/L S-Metolachlor", "Herbicide", "Thuốc diệt cỏ", "Dosage: 0,75-1 litre/ha\n\n" +
@@ -1174,7 +1229,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 0,75-1 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch (PHI): Ngày không xác định (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Phun, pha với 320-400 lít nước/ha.",
-                    50, 320, "https://th.bing.com/th/id/R.07870815d5998072abc052019186d95d?rik=7UH4%2bor73dOGiw&pid=ImgRaw&r=0");
+                    50, 320, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fdual_gold.jpg?alt=media&token=fb3ee557-9e10-43eb-804c-fc937faf4c81");
             pesticides.add(pesticides20);
 
             Pesticides pesticides21 = new Pesticides("Anvil 5SC", "Syngenta", "Hexaconazole 50 g/l : 50 g/l", "Fungicide", "Thuốc trừ bệnh", "Dosage: 1 litre/ha\n\n" +
@@ -1183,7 +1238,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 1 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch- PHI: 14 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước 320-600 lít/ha. Phun khi tỷ lệ bệnh khoảng 5%",
-                    40, 500, "https://tapdoanvinasa.com/wp-content/uploads/2019/09/ANVIL-5SC-01.jpg");
+                    40, 500, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2FANVIL.jpg?alt=media&token=1bb5b115-a995-4824-b7f8-b00864309940");
             pesticides.add(pesticides21);
 
             Pesticides pesticides22 = new Pesticides("Nevo 330EC", "Syngenta", "80g/L Cyproconazole + 250g/L Propiconazole", "Fungicide", "Thuốc trừ bệnh", "Dosage: 0.3 litre/ha\n\n" +
@@ -1192,7 +1247,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Liều lượng: 0,3 lít/ha\n\n" +
                             "Khoảng thời gian trước khi thu hoạch- PHI: 15 ngày (Khoảng thời gian tính bằng ngày từ lần xử lý cuối cùng đến khi thu hoạch)\n\n" +
                             "Cách dùng: Lượng nước 400-500 lít/ha. Phun khi thời tiết thuận lợi cho bệnh phát triển",
-                    14, 500, "https://product.hstatic.net/1000220686/product/nevo_330ec_250ml_fix_master.jpg");
+                    14, 500, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/pesticides%2Fnevo.jpg?alt=media&token=15102b1f-1923-4b37-ae24-65e2aaefc9c1");
             pesticides.add(pesticides22);
 
 
@@ -1268,63 +1323,63 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "The land is levelled, weeds and crop residues are removed, and the soil is loosened to facilitate root penetration. Proper land preparation helps improve water drainage, nutrient availability, and weed control, ensuring optimal conditions for the subsequent stages of rice growth.",
                     "Làm đất là một công đoạn thiết yếu trong quá trình trồng lúa, bao gồm việc chuẩn bị đồng ruộng trước khi gieo hoặc cấy mạ. Trong giai đoạn này, đất được xới xáo cẩn thận để tạo môi trường thuận lợi cho cây lúa phát triển. \n" +
                             "Đất được san phẳng, loại bỏ cỏ dại và tàn dư cây trồng, đồng thời xới đất để tạo điều kiện cho rễ cây xâm nhập. Làm đất đúng cách giúp cải thiện khả năng thoát nước, cung cấp dinh dưỡng và kiểm soát cỏ dại, đảm bảo điều kiện tối ưu cho các giai đoạn sinh trưởng tiếp theo của cây lúa.",
-                    "https://th.bing.com/th/id/R.b928873958a4df004db23adba653e97b?rik=kGnyVrBQTTIF1g&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2flandprep-wetpreparation-1.jpg&ehk=oXMrExLT09ZhnuJpyqJQ72ty7ZOVtOYFu2druY5AFk0%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fland.jpg?alt=media&token=a24a11dd-900b-4cbc-b796-84f660575465");
             stages.add(stages1);
             Stages stages2 = new Stages("Planting", "Gieo xạ", 2, "Planting is a crucial stage in rice cultivation, where the prepared seedlings are transplanted into the rice field. It involves carefully placing the young rice plants in evenly spaced rows or broadcasting the seeds directly into the soil. \n" +
                     "Proper planting ensures good establishment of the crop, allowing the roots to anchor in the soil and the shoots to emerge for further growth. This stage sets the foundation for the rice plants to develop and progress through subsequent growth stages.",
                     "Gieo xạ là một giai đoạn quan trọng trong canh tác lúa, trong đó cây con đã chuẩn bị được cấy vào ruộng lúa. Nó liên quan đến việc cẩn thận đặt các cây lúa non thành hàng cách đều nhau hoặc gieo hạt trực tiếp vào đất. \n" +
                             "Trồng đúng cách đảm bảo cây lúa hình thành tốt, cho phép rễ bám chặt vào đất và các chồi nhô lên để phát triển hơn nữa. Giai đoạn này tạo nền tảng cho cây lúa phát triển và tiến bộ qua các giai đoạn sinh trưởng tiếp theo.",
-                    "https://th.bing.com/th/id/R.dfe2c1f4e31c156afbb2b8adc54549a5?rik=zw0az2vZVZdtYA&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fplanting-broadcasting.jpg&ehk=JU43RWaUyWxI%2f2VHzdv2zMExTYtfoqXpKGykMM6%2fJQQ%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fplanting.jpg?alt=media&token=b987a412-a1a1-443a-8d53-1a926af22308");
             stages.add(stages2);
             Stages stages3 = new Stages("Seeding", "Cây con", 3, "The seeding stage of the rice crop is when the seeds are planted in the field. They undergo germination, where the seed coat breaks open, and a root and shoot emerge. Seedlings rely on stored nutrients until they can photosynthesize. This stage is crucial for establishing a healthy crop stand and requires proper seedbed preparation, spacing, and weed control. Water supply and weed management are important factors for successful seedling growth.",
                     "Giai đoạn cây con của cây lúa là khi hạt giống được trồng trên ruộng. Chúng trải qua giai đoạn nảy mầm, khi lớp vỏ hạt mở ra, rễ và chồi xuất hiện. Cây con dựa vào chất dinh dưỡng dự trữ cho đến khi chúng có thể quang hợp. Giai đoạn này rất quan trọng để thiết lập một cây trồng khỏe mạnh và yêu cầu chuẩn bị luống gieo hạt, khoảng cách và kiểm soát cỏ dại thích hợp. Cung cấp nước và quản lý cỏ dại là những yếu tố quan trọng để cây con phát triển thành công.",
-                    "https://th.bing.com/th/id/OIP.wNQXrTe-2YypjCvbzoq9owAAAA?pid=ImgDet&rs=1");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fseeding.jpg?alt=media&token=2a2f04dc-9b46-44a0-80f0-42239090c724");
             stages.add(stages3);
             Stages stages4 = new Stages("Tillering", "Đẻ nhánh", 4, "During the tillering stage of the rice crop, the seedlings grow and develop additional shoots called tillers. These tillers emerge from the base of the main plant and contribute to the overall plant density. Tillering is an important stage as it determines the potential number of panicles that the rice plant can produce.\n" +
                     "Adequate spacing, nutrient availability, and water management during this stage are crucial for promoting tiller development and ensuring healthy plant growth. It is also a critical period for weed control and the application of fertilizers to support optimal tiller production and crop yield.",
                     "Trong giai đoạn đẻ nhánh của cây lúa, cây con sinh trưởng và phát triển thêm các chồi gọi là chồi nhánh. Những chồi nhánh này xuất hiện từ gốc của cây chính và đóng góp vào mật độ tổng thể của cây. Đẻ nhánh là một giai đoạn quan trọng vì nó quyết định số lượng chồi có thể bông mà cây lúa có thể tạo ra.\n" +
                             "Khoảng cách thích hợp, lượng dinh dưỡng sẵn có và quản lý nước trong giai đoạn này là rất quan trọng để thúc đẩy sự phát triển của nhánh và đảm bảo cây phát triển khỏe mạnh. Đây cũng là giai đoạn quan trọng để kiểm soát cỏ dại và sử dụng phân bón để hỗ trợ quá trình tạo nhánh và năng suất cây trồng tối ưu.",
-                    "https://th.bing.com/th/id/R.2cc0f6bb6f01303f70e68df00c0995bd?rik=8y%2bBaemk26xERg&riu=http%3a%2f%2fwww.dronefromchina.com%2facademy%2fwp-content%2fuploads%2f2018%2f10%2fu21042416133353258809fm173app25fJPEG.jpg&ehk=Sb4eldaxliOHQqoxJ6D7CgCgCjc0ZOZ0XdMGd5kTDZ0%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Ftillering.jpg?alt=media&token=0fed0041-6aa5-4a06-a083-6ebf57de87e7");
             stages.add(stages4);
             Stages stages5 = new Stages("Panicle initiation", "Làm đòng", 5, "During the panicle initiation stage of the rice crop, the plant transition from the vegetative phase to the reproductive phase. This stage is characterized by the formation of panicles, which are the reproductive structures that contain the rice flowers. Panicle initiation marks an important milestone in the rice crop's growth cycle as it signifies the beginning of flower development. \n" +
                     "The plants allocate more energy towards the panicles, and they start to grow and elongate. Adequate water supply and nutrient availability, particularly nitrogen, are crucial during this stage to support panicle development and ensure the formation of healthy and productive flowers. Proper management practices, such as weed control and pest management, are also important to minimize potential stressors that could affect panicle initiation and subsequent grain formation.",
                     "Trong giai đoạn bắt đầu trổ đòng của cây lúa, cây chuyển từ giai đoạn sinh dưỡng sang giai đoạn sinh sản. Giai đoạn này được đặc trưng bởi sự hình thành các bông lúa, là cấu trúc sinh sản chứa các bông lúa. Sự khởi đầu bông lúa đánh dấu một mốc quan trọng trong chu kỳ sinh trưởng của cây lúa vì nó báo hiệu sự bắt đầu phát triển của hoa. \n" +
                             "Thực vật phân bổ nhiều năng lượng hơn cho các bông, và chúng bắt đầu phát triển và dài ra. Cung cấp đầy đủ nước và chất dinh dưỡng, đặc biệt là nitơ, rất quan trọng trong giai đoạn này để hỗ trợ sự phát triển của bông và đảm bảo hình thành những bông hoa khỏe mạnh và năng suất. Thực hành quản lý đúng cách , chẳng hạn như kiểm soát cỏ dại và quản lý sâu bệnh, cũng rất quan trọng để giảm thiểu các yếu tố gây căng thẳng tiềm ẩn có thể ảnh hưởng đến sự khởi đầu của bông và quá trình hình thành hạt sau đó.",
-                    "https://i.ytimg.com/vi/c3d9MzvcTTo/maxresdefault.jpg");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fpanicle.jpg?alt=media&token=12e8fe24-83cc-4b1d-aa15-0926f75684a6");
             stages.add(stages5);
             Stages stages6 = new Stages("Heading", "Trổ bông", 6, "The heading stage of the rice crop marks the transition from vegetative to reproductive growth. During this stage, the panicle, which bears the flowers and grains, emerges. Florets develop within the panicle, and their synchronized growth is crucial for optimal yield. \n" +
                     "Proper management practices, including irrigation, nutrient supply, and pest control, are essential during this stage. Farmers monitor indicators like panicle emergence and floret development to make informed decisions. The heading stage sets the foundation for flowering, grain development, and eventual harvest, impacting overall crop yield and quality.",
                     "Giai đoạn trổ bông của cây lúa đánh dấu sự chuyển đổi từ sinh trưởng sinh dưỡng sang sinh trưởng. Trong giai đoạn này, bông lúa, nơi mang hoa và hạt, xuất hiện. Hoa con phát triển trong bông và sự phát triển đồng bộ của chúng là rất quan trọng để đạt năng suất tối ưu. \n" +
                             "Các biện pháp quản lý phù hợp, bao gồm tưới tiêu, cung cấp chất dinh dưỡng và kiểm soát sâu bệnh, là rất cần thiết trong giai đoạn này. Nông dân theo dõi các chỉ số như sự xuất hiện của bông và sự phát triển của bông hoa để đưa ra quyết định sáng suốt. Giai đoạn trổ bông tạo nền tảng cho sự ra hoa, phát triển hạt và thu hoạch cuối cùng , ảnh hưởng đến năng suất và chất lượng cây trồng tổng thể.",
-                    "https://oba-shima.mito-city.com/wp/wp-content/uploads/2013/08/inenohana-8.jpg");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fheading.jpg?alt=media&token=a8abe7fd-0294-407c-9524-50a800d975eb");
             stages.add(stages6);
             Stages stages7 = new Stages("Flowering", "Nở hoa thụ phấn", 7, "The flowering stage of the rice crop is a crucial phase where the plant produces flowers containing male and female reproductive structures. Optimal environmental conditions and pollination are essential for successful fertilization. Monitoring and managing this stage ensures the production of viable grains. Factors such as timing, abundance of flowers, and proper management practices influence the outcome.\n" +
                     "The flowering stage typically lasts around a week before the flowers transform into developing grains, leading to grain filling and maturation. Effective management during this stage enhances yield potential and contributes to food security and agricultural sustainability.",
                     "Giai đoạn nở hoa thụ phấn của cây lúa là giai đoạn quan trọng khi cây tạo ra hoa chứa cấu trúc sinh sản đực và cái. Điều kiện môi trường tối ưu và quá trình thụ phấn là điều cần thiết để quá trình thụ tinh thành công. Theo dõi và quản lý giai đoạn này đảm bảo sản xuất các loại ngũ cốc có thể sống được. Các yếu tố như thời gian, sự phong phú của hoa và các biện pháp quản lý phù hợp sẽ ảnh hưởng đến kết quả.\n" +
                             "Giai đoạn nở hoa thường kéo dài khoảng một tuần trước khi hoa biến thành hạt đang phát triển, dẫn đến hạt chắc và chín. Việc quản lý hiệu quả trong giai đoạn này giúp nâng cao tiềm năng năng suất và góp phần đảm bảo an ninh lương thực cũng như tính bền vững của nông nghiệp.",
-                    "https://th.bing.com/th/id/R.624deda3b79e82c7eb20310bfadae590?rik=zUVfOL9WWyayWg&riu=http%3a%2f%2fimg.zhiwushuo.com%2fuploads%2fallimg%2f202149%2f20210609024642741.jpg&ehk=Xn4Q9nFs7rqVqTe29NZWmrlfcWVxDIuz84Si5FVwYIk%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fflowering.jpg?alt=media&token=7a0950a9-fd5a-42fd-8645-1f0d5cb0185c");
             stages.add(stages7);
             Stages stages8 = new Stages("Milk", "Hạt chín sữa", 8, "The milk stage is a crucial phase in the growth of rice crops. It refers to the stage when the rice grains are in a soft dough state and appear milky due to the presence of a translucent liquid. During this stage, the grains accumulate starch and undergo significant physiological changes. It is a critical period for determining the optimal time for harvest, as the grains gradually harden and prepare for final ripening. \n" +
                     "Proper management practices, such as irrigation, nutrient supply, and pest control, are essential during this stage to support grain development and quality formation. Overall, the milk stage is vital for achieving high-quality rice grains with optimal yield and nutritional value.",
                     "Giai đoạn sữa là giai đoạn quan trọng trong quá trình sinh trưởng của cây lúa. Nó đề cập đến giai đoạn hạt gạo ở trạng thái nhão mềm và có màu trắng đục do có chứa chất lỏng trong suốt. Trong giai đoạn này, hạt gạo tích tụ tinh bột và trải qua những thay đổi sinh lý quan trọng. Đây là giai đoạn quan trọng để xác định thời điểm thu hoạch tối ưu, khi các loại ngũ cốc dần cứng lại và chuẩn bị cho quá trình chín cuối cùng. \n" +
                             "Các biện pháp quản lý phù hợp, chẳng hạn như tưới tiêu, cung cấp dinh dưỡng và kiểm soát sâu bệnh, là rất cần thiết trong giai đoạn này để hỗ trợ quá trình phát triển và hình thành chất lượng hạt. Nhìn chung, giai đoạn sữa là rất quan trọng để đạt được hạt gạo chất lượng cao với năng suất và giá trị dinh dưỡng tối ưu. ",
-                    "https://th.bing.com/th/id/R.fa825926cfaa783b838e1c3298471843?rik=7ecRRwkUYy1Mlg&riu=http%3a%2f%2fagritech.tnau.ac.in%2fagriculture%2fphoto_bank%2frice%2fimages%2f033.+Paddy+field+%40+milking+stage.jpg&ehk=FXHMFODGyU4M%2bGZ2CLYLkYW%2fyFCMTvWXIXwEofY9d%2bs%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fmilk.jpg?alt=media&token=70ab2bdd-876f-4a3d-b82f-f9d63baa933f");
             stages.add(stages8);
             Stages stages9 = new Stages("Dough", "Hạt chín sáp", 9, "The dough stage is a significant phase in the growth of rice crops. It refers to the stage when the rice grains become firm and undergo a transition from a milky texture to a dough-like consistency. During this stage, the grains continue to accumulate starch, and their moisture content decreases. The grains become denser and more compact, and their color may change from translucent to a light yellowish hue. \n" +
                     "The dough stage is critical for determining the optimal time for harvest, as the grains reach their maximum size and develop their characteristic texture. It is important to closely monitor the crop during this stage to ensure that the grains mature properly and attain the desired quality. Adequate irrigation, nutrient management, and pest control are essential for supporting grain development and maximizing yield. Overall, the dough stage marks a crucial milestone in the rice crop's growth, indicating that the grains are nearing maturity and approaching harvest readiness.",
                     "The dough stage is a significant phase in the growth of rice crops. It refers to the stage when the rice grains become firm and undergo a transition from a milky texture to a dough-like consistency. During this stage, the grains continue to accumulate starch, and their moisture content decreases. The grains become denser and more compact, and their color may change from translucent to a light yellowish hue. \n" +
                             "The dough stage is critical for determining the optimal time for harvest, as the grains reach their maximum size and develop their characteristic texture. It is important to closely monitor the crop during this stage to ensure that the grains mature properly and attain the desired quality. Adequate irrigation, nutrient management, and pest control are essential for supporting grain development and maximizing yield. Overall, the dough stage marks a crucial milestone in the rice crop's growth, indicating that the grains are nearing maturity and approaching harvest readiness.",
-                    "https://www.en.krishakjagat.org/wp-content/uploads/2020/12/trieu-tan-lua.jpg");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fdough.webp?alt=media&token=e4d5e180-91c7-4c12-af8b-c2cb0de9b6c7");
             stages.add(stages9);
             Stages stage10 = new Stages("Mature", "Hạt chín hoàn toàn", 10, "The mature stage is the final phase in the growth cycle of rice crops. It represents the culmination of the plant's development, where the rice grains reach their full maturity and are ready for harvest. During this stage, the rice plant undergoes physiological changes, such as the drying and yellowing of the leaves, indicating the completion of its life cycle. The rice grains attain their maximum size, weight, and colour, typically turning golden or brown, depending on the variety. \n" +
                     "The plant's energy is primarily directed towards grain filling and maturation, as the nutrients and sugars produced by photosynthesis are allocated to the developing grains. It is crucial to harvest the rice crop at the right time during the mature stage to ensure optimal grain quality and yield. Delaying the harvest may result in grain shattering or susceptibility to pests and diseases. The mature stage is a critical period that signifies the readiness of the rice crop for harvest, marking the successful completion of the growth process and the transition to the next phase of processing and utilization.",
                     "Giai đoạn chín là giai đoạn cuối cùng trong chu kỳ sinh trưởng của cây lúa. Nó thể hiện đỉnh cao quá trình phát triển của cây lúa, khi hạt lúa chín hoàn toàn và sẵn sàng cho thu hoạch. Trong giai đoạn này, cây lúa trải qua những thay đổi về sinh lý, chẳng hạn như lá khô và vàng, cho thấy vòng đời của nó đã hoàn thành. Hạt gạo đạt kích thước, trọng lượng và màu sắc tối đa, thường chuyển sang màu vàng hoặc nâu, tùy thuộc vào giống. \n" +
                             "Năng lượng của cây trồng chủ yếu hướng vào việc làm đầy và chín hạt, vì các chất dinh dưỡng và đường do quá trình quang hợp tạo ra được phân bổ cho các hạt đang phát triển. Điều quan trọng là phải thu hoạch lúa đúng thời điểm trong giai đoạn chín để đảm bảo chất lượng hạt tối ưu và giai đoạn chín là giai đoạn quan trọng báo hiệu cây lúa đã sẵn sàng cho thu hoạch, đánh dấu sự kết thúc thành công của quá trình sinh trưởng và chuyển sang giai đoạn tiếp theo chế biến và sử dụng.",
-                    "https://qph.fs.quoracdn.net/main-qimg-e430ecabafc3856bb49038f999d57186");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fmature.jpg?alt=media&token=bac50374-b0ef-4949-acd7-c026adec502e");
             stages.add(stage10);
             Stages stages11 = new Stages("Harvesting", "Thu hoạch", 11, "Harvesting is the final stage of rice planting where the mature rice crop is collected. It involves removing the mature panicles from the rice plants. The timing of the harvest is crucial for optimal grain quality. Harvesting methods include manual or mechanical techniques. Once harvested, the rice crop is dried, threshed, and processed to obtain the final polished rice product. Harvesting concludes the rice planting process, providing a plentiful yield of nutritious grains.",
                     "Thu hoạch là giai đoạn cuối cùng của quá trình trồng lúa khi lúa trưởng thành được thu hoạch. Nó liên quan đến việc loại bỏ các bông lúa trưởng thành khỏi cây lúa. Thời điểm thu hoạch là rất quan trọng để có chất lượng hạt tối ưu. Phương pháp thu hoạch bao gồm các kỹ thuật thủ công hoặc cơ giới. Sau khi thu hoạch , lúa được sấy khô, tuốt lúa và chế biến để thu được sản phẩm gạo được đánh bóng cuối cùng. Việc thu hoạch kết thúc quá trình trồng lúa, mang lại năng suất dồi dào các loại hạt dinh dưỡng.",
-                    "https://th.bing.com/th/id/OIP.jK8a-oRAOY1A3uYJ1qm7MgAAAA?pid=ImgDet&rs=1");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fharvesting.jpg?alt=media&token=d73481b5-f591-4293-b8b2-16e916e37e2a");
             stages.add(stages11);
             for (Stages s : stages) {
                 stageDao.insert(s);
@@ -1332,30 +1387,55 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
 
             //*****Crops-Stages*****
             CropStageDao cropStageDao = db.cropStageDao();
-            //***OM18***
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Seeding"), 10, false, "26th", "35th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Tillering"), 35, false, "36th", "75th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Panicle initiation"), 15, false, "76th", "93th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Heading"), 8, false, "94th", "103th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Flowering"), 8, false, "104th", "113th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Milk"), 10, false, "114th", "123th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Dough"), 10, false, "124th", "133th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Mature"), 10, false, "134th", "143th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM18"), stageDao.getIdByName("Harvesting"), 1, false, "144th", "144th"));
-            //***DT08***
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Seeding"), 10, false, "26th", "35th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Tillering"), 35, false, "36th", "75th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Panicle initiation"), 15, false, "76th", "93th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Heading"), 10, false, "94th", "103th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Flowering"), 10, false, "104th", "114th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Milk"), 10, false, "115th", "125th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Dough"), 11, false, "126th", "137th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Mature"), 10, false, "138th", "147th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT08"), stageDao.getIdByName("Harvesting"), 1, false, "148th", "148th"));
+            //***OM 18***
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Seeding"), 10, false, "26th", "35th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Tillering"), 35, false, "36th", "75th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Panicle initiation"), 15, false, "76th", "93th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Heading"), 8, false, "94th", "103th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Flowering"), 8, false, "104th", "113th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Milk"), 10, false, "114th", "123th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Dough"), 10, false, "124th", "133th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Mature"), 10, false, "134th", "143th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Harvesting"), 1, false, "144th", "144th"));
+            //***DT 08***
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Seeding"), 10, false, "26th", "35th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Tillering"), 35, false, "36th", "75th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Panicle initiation"), 15, false, "76th", "93th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Heading"), 10, false, "94th", "103th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Flowering"), 10, false, "104th", "114th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Milk"), 10, false, "115th", "125th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Dough"), 11, false, "126th", "137th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Mature"), 10, false, "138th", "147th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Harvesting"), 1, false, "148th", "148th"));
+            //***OM 5451***
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Seeding"), 9, false, "26th", "34th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Tillering"), 35, false, "35th", "74th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Panicle initiation"), 14, false, "75th", "88th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Heading"), 8, false, "89th", "96th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Flowering"), 8, false, "97th", "104th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Milk"), 9, false, "105th", "113th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Dough"), 9, false, "114th", "122th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Mature"), 9, false, "123th", "132th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Harvesting"), 1, false, "133th", "133th"));
+
+            //***IR 50404***
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Seeding"), 8, false, "26th", "33th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Tillering"), 34, false, "34th", "72th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Panicle initiation"), 13, false, "73th", "85th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Heading"), 8, false, "86th", "93th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Flowering"), 8, false, "94th", "101th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Milk"), 8, false, "102th", "109th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Dough"), 8, false, "110th", "117th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Mature"), 9, false, "118th", "126th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Harvesting"), 1, false, "127th", "127th"));
 
             //*****Stages-Pests****
             PestStageDao pestStageDao = db.pestStageDao();
@@ -1441,28 +1521,28 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             ActivityDao activityDao = db.activityDao();
             ArrayList<Activities> activities = new ArrayList<>();
             Activities activities1 = new Activities(stageDao.getIdByName("Land preparation"), "Bunds or dikes", "Đắp bờ hoặc đê ", "Bunds or dikes enable the field to hold water. This is important especially in areas where water supply is not reliable.",
-                    "Bờ hoặc đê giúp giữ nước cho ruộng. Điều này đặc biệt quan trọng ở những khu vực nguồn cung cấp nước không đáng tin cậy.", 1, "https://th.bing.com/th/id/R.1bd80a029cffc86c8835b7f40398508e?rik=7j%2b42WSNhGYfZw&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2flandprep-bunds.jpg&ehk=1W7eDsYxjgFR8zYo2jkBMJHIQygVwGwUon%2b%2f6REeJsc%3d&risl=&pid=ImgRaw&r=0");
+                    "Bờ hoặc đê giúp giữ nước cho ruộng. Điều này đặc biệt quan trọng ở những khu vực nguồn cung cấp nước không đáng tin cậy.", 1, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fbund.jpg?alt=media&token=beb80c5a-7002-4a2e-ba54-51453b7ef933");
             activities.add(activities1);
             Activities activities2 = new Activities(stageDao.getIdByName("Land preparation"), "Irrigate the field", "Tưới ruộng", "Irrigate the field with 2−3 cm of water for about 3−7 days or until it is soft enough and suitable for an equipment to be used.",
-                    "Tưới ruộng với lượng nước 2−3 cm trong khoảng 3−7 ngày hoặc cho đến khi đất đủ mềm và phù hợp để sử dụng thiết bị.", 7, "https://th.bing.com/th/id/R.fa0b048dceec885f0aec00cb097c429c?rik=ejInn0L4%2b5COMg&riu=http%3a%2f%2f2.bp.blogspot.com%2f-qhduk5WJAgU%2fTeAr1RjuMQI%2fAAAAAAAAATw%2f5m-sUHJGvBk%2fs1600%2frice%2bpaddies.jpg&ehk=jm1Ck2QQP%2f92%2fTVTJ5jugRztEjKAlT%2bNsvrk6xdux%2bg%3d&risl=&pid=ImgRaw&r=0");
+                    "Tưới ruộng với lượng nước 2−3 cm trong khoảng 3−7 ngày hoặc cho đến khi đất đủ mềm và phù hợp để sử dụng thiết bị.", 7, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Firrigate_the_field.jpg?alt=media&token=8e15a7cd-07fe-41ee-81b9-2f7ecbf941b7");
             activities.add(activities2);
             Activities activities3 = new Activities(stageDao.getIdByName("Land preparation"), "Perform primary tillage operations", "Xới đất lần đầu", "Primary tillage is normally undertaken when the soil is wet enough to allow the field to be plowed and strong enough to give reasonable levels of traction. This can be immediately after harvest or at the beginning of the next season, depending on soil moisture and water availability.",
-                    "Xới đất lần đầu thường được thực hiện khi đất đủ ẩm để cho phép cày ruộng và đủ mạnh để tạo ra lực kéo hợp lý. Việc này có thể được thực hiện ngay sau khi thu hoạch hoặc vào đầu mùa tiếp theo, tùy thuộc vào độ ẩm và nước của đất khả dụng.", 2, "https://i.ytimg.com/vi/hh3lh1VzFgk/maxresdefault.jpg");
+                    "Xới đất lần đầu thường được thực hiện khi đất đủ ẩm để cho phép cày ruộng và đủ mạnh để tạo ra lực kéo hợp lý. Việc này có thể được thực hiện ngay sau khi thu hoạch hoặc vào đầu mùa tiếp theo, tùy thuộc vào độ ẩm và nước của đất khả dụng.", 2, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fperform_primary_tillage_operations.jpg?alt=media&token=4f5f1876-220f-4de1-bdf9-d11bd4c290b7");
             activities.add(activities3);
             Activities activities4 = new Activities(stageDao.getIdByName("Land preparation"), "Flood the field", "Làm ngập ruộng", "Keep the field submerged for 10−14 days after plowing to soften clods and to decompose organic materials.",
-                    "Giữ cho ruộng ngập nước trong 10−14 ngày sau khi cày xới để làm mềm cục đất và phân hủy các chất hữu cơ.", 10, "https://th.bing.com/th/id/R.7704876989fec876a5c1d08efc3c20e3?rik=3qjXuDm%2bRhfFCg&riu=http%3a%2f%2fwww.duplisea.ca%2fphotos%2f2006-7.JPG&ehk=X9rEkkdop382JG4tUj6fhxHB%2bwwNOhznofbs48mx4CA%3d&risl=&pid=ImgRaw&r=0");
+                    "Giữ cho ruộng ngập nước trong 10−14 ngày sau khi cày xới để làm mềm cục đất và phân hủy các chất hữu cơ.", 10, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fflood.jpg?alt=media&token=74a749db-46c8-46d6-8ad1-e23cf55f9d38");
             activities.add(activities4);
             Activities activities5 = new Activities(stageDao.getIdByName("Land preparation"), "Perform secondary tillage operations", "Xới đất lần 2", "Depending on climate and soil type, this should be done 10−14 days after primary workings.",
-                    "Tùy thuộc vào khí hậu và loại đất, việc này nên được thực hiện sau 10−14 ngày kể từ khi xới đất lần đầu.", 2, "https://i.ytimg.com/vi/IkUAaJ7f3t0/maxresdefault.jpg");
+                    "Tùy thuộc vào khí hậu và loại đất, việc này nên được thực hiện sau 10−14 ngày kể từ khi xới đất lần đầu.", 2, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fperform_secondary_tillage_operations.jpg?alt=media&token=8d9ae2a8-f3cf-45f0-a582-eb17a3360256");
             activities.add(activities5);
             Activities activities6 = new Activities(stageDao.getIdByName("Land preparation"), "Level the field", "Trạc đất", "Levelling should be done two (2) days before planting. A levelled and smooth soil surface provides for uniform germination and growth of the crops. A well-levelled field improves water coverage and is also proven to increase crop yield and quality.",
-                    "Việc san lấp mặt bằng nên được thực hiện hai (2) ngày trước khi trồng. Bề mặt đất bằng phẳng và bằng phẳng giúp cây trồng nảy mầm và phát triển đồng đều. Ruộng được san bằng tốt giúp cải thiện độ che phủ của nước và cũng được chứng minh là làm tăng năng suất và chất lượng cây trồng.", 2, "https://mientaycogi.com/wp-content/uploads/2020/03/l%C3%A0m-ru%E1%BB%99ng-mi%E1%BB%81n-t%C3%A2y.jpg");
+                    "Việc san lấp mặt bằng nên được thực hiện hai (2) ngày trước khi trồng. Bề mặt đất bằng phẳng và bằng phẳng giúp cây trồng nảy mầm và phát triển đồng đều. Ruộng được san bằng tốt giúp cải thiện độ che phủ của nước và cũng được chứng minh là làm tăng năng suất và chất lượng cây trồng.", 2, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Flevel_the_field.jpg?alt=media&token=5e0e0bdd-bb69-47e0-bb18-66cbc30d8a4a");
             activities.add(activities6);
             Activities activities7 = new Activities(stageDao.getIdByName("Planting"), "Transplanting", "Cấy lúa", "Transplanting is commonly practiced as a method of weed control for wet or puddled fields. It requires less seed but much more labor compared to direct seeding. Also, transplanted crops take longer to mature due to transplanting shock.",
-                    "Cấy thường được thực hiện như một phương pháp kiểm soát cỏ dại trên những cánh đồng ẩm ướt hoặc vũng nước. Nó cần ít hạt giống hơn nhưng tốn nhiều công sức hơn so với gieo hạt trực tiếp. Ngoài ra, cây cấy mất nhiều thời gian hơn để trưởng thành do sốc khi cấy.", 1, "https://th.bing.com/th/id/R.49c3f04a3549cc5d5737ac488ee690ce?rik=jajTyg%2fmNGodew&riu=http%3a%2f%2fcamnangcaytrong.com%2fUploads%2fNews%2fcay-lua.jpg&ehk=iPHX2jQ1yd4mBn8bt8QTNgWdAa%2fbFCDR7IItuLC%2bbbg%3d&risl=&pid=ImgRaw&r=0");
+                    "Cấy thường được thực hiện như một phương pháp kiểm soát cỏ dại trên những cánh đồng ẩm ướt hoặc vũng nước. Nó cần ít hạt giống hơn nhưng tốn nhiều công sức hơn so với gieo hạt trực tiếp. Ngoài ra, cây cấy mất nhiều thời gian hơn để trưởng thành do sốc khi cấy.", 1, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Ftransplanting.jpg?alt=media&token=ab52eecd-9eb4-4e61-82d2-24e339b22966");
             activities.add(activities7);
             Activities activities8 = new Activities(stageDao.getIdByName("Planting"), "Direct seeding", "Xạ lúa", "Direct-seeded crops require less labour and tend to mature faster than transplanted crops. In this method, plants are not subjected to stresses such as being pulled from the soil and re-establishing fine rootlets. However, they have more competition from weeds.",
-                    "Xạ lúa đòi hỏi ít lao động hơn và có xu hướng trưởng thành nhanh hơn so với cây trồng cấy ghép. Theo phương pháp này, cây trồng không phải chịu áp lực như bị kéo khỏi đất và tái lập rễ con. Tuy nhiên, chúng phải chịu nhiều sự cạnh tranh hơn từ cỏ dại. ", 1, "https://i.ytimg.com/vi/qwyQQqG8DbI/maxresdefault.jpg");
+                    "Xạ lúa đòi hỏi ít lao động hơn và có xu hướng trưởng thành nhanh hơn so với cây trồng cấy ghép. Theo phương pháp này, cây trồng không phải chịu áp lực như bị kéo khỏi đất và tái lập rễ con. Tuy nhiên, chúng phải chịu nhiều sự cạnh tranh hơn từ cỏ dại. ", 1, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fdirect_seeding.jpg?alt=media&token=d552f963-c5c8-4289-ae70-348961b9d4d4");
             activities.add(activities8);
             Activities activities9 = new Activities(stageDao.getIdByName("Seeding"), "Spraying herbicide", "Phun thuốc diệt cỏ", "Spraying herbicides during the seeding stage of rice growth is beneficial for effective weed control and promoting healthy crop establishment. The key points are:\n" +
                     "\n" +
@@ -1485,19 +1565,19 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "\n" +
                             "- Hiệu quả lao động: Việc sử dụng thuốc diệt cỏ giúp giảm nhu cầu làm cỏ thủ công, tiết kiệm thời gian và công sức trong quá trình quản lý cỏ dại.\n" +
                             "\n" +
-                            "- Hình thành cây trồng đồng đều: Những cánh đồng không có cỏ dại trong quá trình gieo hạt thúc đẩy sự hình thành cây trồng đồng đều, dẫn đến tăng trưởng ổn định và năng suất cây trồng tổng thể tốt hơn.", 10, "https://th.bing.com/th/id/OIP.J3O4uhyxBFYpHO_9LTttwAHaE8?pid=ImgDet&rs=1");
+                            "- Hình thành cây trồng đồng đều: Những cánh đồng không có cỏ dại trong quá trình gieo hạt thúc đẩy sự hình thành cây trồng đồng đều, dẫn đến tăng trưởng ổn định và năng suất cây trồng tổng thể tốt hơn.", 10, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fspraying_herbicide.jpg?alt=media&token=89ef581c-0d16-4446-b253-5cae7d9aa5e5");
             activities.add(activities9);
             Activities activities10 = new Activities(stageDao.getIdByName("Tillering"), "Irrigate the field", "Tưới ruộng", "The reason why water is pumped into the field about 1 - 3 cm before applying fertilizer is to prevent light from decomposing and evaporating manure. When fertilizer is applied to dry soil, it can cause a chemical reaction that releases ammonia gas. This gas can be harmful to plants and can cause root damage. By watering the soil before applying fertilizer, you can help prevent this reaction from occurring.",
-                    "Sở dĩ bơm nước vào ruộng khoảng 1 - 3 cm trước khi bón phân là để ánh sáng không làm phân phân hủy và bốc hơi. Khi bón phân cho đất khô có thể gây ra phản ứng hóa học giải phóng khí amoniac. Khí này có thể có hại cho cây trồng và có thể gây tổn thương rễ. Bằng cách tưới nước vào đất trước khi bón phân, bạn có thể giúp ngăn chặn phản ứng này xảy ra.", 1, "https://bomnuocdandung.vn/library/module_new/tim-hieu-may-bom-nuoc-dong-ruong-ntp_s1527.jpg");
+                    "Sở dĩ bơm nước vào ruộng khoảng 1 - 3 cm trước khi bón phân là để ánh sáng không làm phân phân hủy và bốc hơi. Khi bón phân cho đất khô có thể gây ra phản ứng hóa học giải phóng khí amoniac. Khí này có thể có hại cho cây trồng và có thể gây tổn thương rễ. Bằng cách tưới nước vào đất trước khi bón phân, bạn có thể giúp ngăn chặn phản ứng này xảy ra.", 1, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Firrigate_the_field_2.webp?alt=media&token=32ae2ee0-66a3-4e4e-8ee0-84caa3e29633");
             activities.add(activities10);
             Activities activities11 = new Activities(stageDao.getIdByName("Tillering"), "Primary fertilizing", "Bón lót", "Primary fertilizing tillering rice is the most critical step in the process of planting and caring for rice. Fertilizing to help tiller rice is the period of fertilizing after 15 to 20 days after transplanting rice. For the rice to grow well, and for high yield, in addition to applying fertilizer with the right technique, choosing the right fertilizer is also one of the decisive factors. Should spend 1/2 -2/3 of the remaining nitrogen to fertilize the tillering stage to help the rice to branch quickly, concentrate and also to reduce the amount of fertilizer and avoid loss of nitrogen.",
-                    "Bón thúc thúc lúa đẻ nhánh là khâu quan trọng nhất trong quá trình gieo trồng và chăm sóc lúa. Bón lót giúp lúa đẻ nhánh là thời kỳ bón sau khi cấy lúa từ 15 đến 20 ngày. Để cây lúa sinh trưởng phát triển tốt, cho năng suất cao , ngoài việc bón phân đúng kỹ thuật thì việc chọn loại phân bón phù hợp cũng là một trong những yếu tố quyết định, nên dành 1/2 -2/3 lượng đạm còn lại để bón giai đoạn đẻ nhánh giúp lúa đẻ nhánh nhanh, tập trung, đồng thời cũng để giảm lượng phân bón, tránh thất thoát đạm", 18, "https://th.bing.com/th/id/OIP.MgwfDZUYoWI6diQcdRL6DAHaEM?pid=ImgDet&rs=1");
+                    "Bón thúc thúc lúa đẻ nhánh là khâu quan trọng nhất trong quá trình gieo trồng và chăm sóc lúa. Bón lót giúp lúa đẻ nhánh là thời kỳ bón sau khi cấy lúa từ 15 đến 20 ngày. Để cây lúa sinh trưởng phát triển tốt, cho năng suất cao , ngoài việc bón phân đúng kỹ thuật thì việc chọn loại phân bón phù hợp cũng là một trong những yếu tố quyết định, nên dành 1/2 -2/3 lượng đạm còn lại để bón giai đoạn đẻ nhánh giúp lúa đẻ nhánh nhanh, tập trung, đồng thời cũng để giảm lượng phân bón, tránh thất thoát đạm", 18, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fprimary_fertilizing.jpg?alt=media&token=89b07a1c-8f43-46ba-acb5-8ef1f43ce9a1");
             activities.add(activities11);
             Activities activities12 = new Activities(stageDao.getIdByName("Tillering"), "Secondary fertilizing", "Bón thúc đẻ nhánh", "Secondary fertilizing plays a very important role. It determines the yield as well as the efficiency of the entire rice crop. If we fertilize correctly, the rice yield will increase from 1 to 2 tons/ha. In contrast, the wrong fertilization will reduce rice yield from 1 to 2 tons/ha.",
-                    "Bón thúc đẻ nhánh có vai trò rất quan trọng, quyết định đến năng suất cũng như hiệu quả của cả vụ lúa, nếu bón phân đúng thì năng suất lúa tăng từ 1 đến 2 tấn/ha, ngược lại bón sai thì năng suất lúa giảm năng suất lúa từ 1 đến 2 tấn/ha.", 18, "https://qph.fs.quoracdn.net/main-qimg-cdc47fc61921862a471f59807acb88e3");
+                    "Bón thúc đẻ nhánh có vai trò rất quan trọng, quyết định đến năng suất cũng như hiệu quả của cả vụ lúa, nếu bón phân đúng thì năng suất lúa tăng từ 1 đến 2 tấn/ha, ngược lại bón sai thì năng suất lúa giảm năng suất lúa từ 1 đến 2 tấn/ha.", 18, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fsecondary_fertilizing.jpg?alt=media&token=d7ed48d7-8f4f-41fa-86b3-f7467c544a8c");
             activities.add(activities12);
             Activities activities13 = new Activities(stageDao.getIdByName("Panicle initiation"), "Thirdly fertilizing", "Bón thúc đòng", "Thirdly fertilizing is also one of the crucial stages contributing to determining rice yield. After the rice has fully bloomed, it is possible to fertilize the seeds by applying three types of Nitrogen (N), Phosphorus (P), and Potassium (K). This is the period when fertilizing is effective when planting rice, helping to limit falling and flattening seeds. Farmers should fertilize seedlings 25 days before harvest to reduce the amount of pesticide left on the seeds.",
-                    "Bón thúc đòng cũng là một trong những khâu quan trọng góp phần quyết định năng suất lúa. Sau khi lúa trổ đòng, có thể bón lót cho hạt bằng cách bón 3 loại đạm (N), Lân (P), Kali (K) Đây là thời kỳ bón phân phát huy tác dụng khi gieo cấy lúa, giúp hạn chế tình trạng hạt bị đổ, lép, bà con nên bón thúc trước khi thu hoạch 25 ngày để giảm lượng thuốc bảo vệ thực vật còn sót lại trên hạt.", 3, "https://agri.vn/wp-content/uploads/2021/02/bon-phan-cho-lua-2-560x420.jpg");
+                    "Bón thúc đòng cũng là một trong những khâu quan trọng góp phần quyết định năng suất lúa. Sau khi lúa trổ đòng, có thể bón lót cho hạt bằng cách bón 3 loại đạm (N), Lân (P), Kali (K) Đây là thời kỳ bón phân phát huy tác dụng khi gieo cấy lúa, giúp hạn chế tình trạng hạt bị đổ, lép, bà con nên bón thúc trước khi thu hoạch 25 ngày để giảm lượng thuốc bảo vệ thực vật còn sót lại trên hạt.", 3, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fthirdly_fertilizing.jpg?alt=media&token=03228f3a-1cb7-4b66-959b-5124ec878890");
             activities.add(activities13);
             Activities activities14 = new Activities(stageDao.getIdByName("Panicle initiation"), "First spraying pesticide", "Xịt thuốc sâu lần đầu", "Spraying pesticides during the panicle initiation stage of rice growth is crucial for effective pest management and promoting healthy crop development. By targeting this stage, the following benefits can be achieved:\n" +
                     "\n" +
@@ -1520,7 +1600,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "\n" +
                             "- Ngăn chặn sự tích tụ của dịch hại: Ứng dụng kịp thời sẽ ngăn quần thể dịch hại đạt đến mức gây hại và giảm nguy cơ bị phá hoại trong các giai đoạn sau.\n" +
                             "\n" +
-                            "- Sức khỏe tổng thể của cây trồng: Quản lý sâu bệnh trong giai đoạn này sẽ thúc đẩy sức khỏe tổng thể, sức sống và năng suất của cây lúa.", 12, "https://www.in2greatkc.com/wp-content/uploads/2020/02/farmers-are-spraying-crops-in-a-green-field_t20_yX1joL-1200x686.jpg");
+                            "- Sức khỏe tổng thể của cây trồng: Quản lý sâu bệnh trong giai đoạn này sẽ thúc đẩy sức khỏe tổng thể, sức sống và năng suất của cây lúa.", 12, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Ffirst_spraying_pesticide.jpg?alt=media&token=385036ff-6f12-41b8-8b5c-be8fd3e126d4");
             activities.add(activities14);
             Activities activities15 = new Activities(stageDao.getIdByName("Heading"), "Second spraying pesticide", "Xịt thuốc sâu lần 2", "Spraying pesticides during the heading stage of rice growth is important for effective pest control and optimizing crop yield. Key points to consider include:\n" +
                     "\n" +
@@ -1543,7 +1623,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "\n" +
                             "- Tối ưu hóa năng suất: Kiểm soát sâu bệnh hiệu quả trong giai đoạn làm đòng giúp tối đa hóa năng suất lúa bằng cách giảm thiểu tổn thất năng suất do sâu bệnh gây ra.\n" +
                             "\n" +
-                            "- Thời điểm vòng đời sinh vật gây hại: Phun thuốc trừ sâu ở giai đoạn đầu làm gián đoạn vòng đời sinh vật gây hại, không cho chúng sinh sản và gây hại ở giai đoạn sau.", 9, "https://th.bing.com/th/id/OIP.e-nbR5xBZVBkx5jhdIjZ8wHaE7?pid=ImgDet&rs=1");
+                            "- Thời điểm vòng đời sinh vật gây hại: Phun thuốc trừ sâu ở giai đoạn đầu làm gián đoạn vòng đời sinh vật gây hại, không cho chúng sinh sản và gây hại ở giai đoạn sau.", 9, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fsecond_spraying_pesticide.jpg?alt=media&token=b4d37634-4ebb-480c-bb3c-45509393a1f5");
             activities.add(activities15);
             Activities activities16 = new Activities(stageDao.getIdByName("Flowering"), "Third spraying pesticide", "Xịt thuốc sâu lần 3", "Spraying pesticides during the flowering stage of rice growth offers several advantages:\n" +
                     "\n" +
@@ -1566,7 +1646,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "\n" +
                             "- Bảo vệ thời tiết: Thuốc trừ sâu bảo vệ chống lại các điều kiện thời tiết bất lợi thúc đẩy bệnh nấm.\n" +
                             "\n" +
-                            "- Tối ưu hóa năng suất: Bằng cách bảo vệ các cấu trúc sinh sản, thuốc trừ sâu góp phần mang lại năng suất và chất lượng hạt cao hơn.", 9, "https://thumbs.dreamstime.com/b/asian-farmers-using-pesticides-nebulizer-countryside-spray-his-green-farms-morning-181892511.jpg");
+                            "- Tối ưu hóa năng suất: Bằng cách bảo vệ các cấu trúc sinh sản, thuốc trừ sâu góp phần mang lại năng suất và chất lượng hạt cao hơn.", 9, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fthird_spraying_pesticide.webp?alt=media&token=f6df64f8-6c2b-43e8-9eff-e8a490899a99");
             activities.add(activities16);
             Activities activities17 = new Activities(stageDao.getIdByName("Dough"), "Fourth spraying pesticide", "Xịt thuốc sâu lần 4", "Spraying pesticides during the dough stage of rice growth provides several benefits:\n" +
                     "\n" +
@@ -1589,7 +1669,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "\n" +
                             "- Chuẩn bị thu hoạch: Phun thuốc trừ sâu ở giai đoạn nhào bột giúp chuẩn bị cho vụ thu hoạch bằng cách giảm sự phá hoại của sâu bệnh và đảm bảo hình thành hạt khỏe mạnh.\n" +
                             "\n" +
-                            "- Tuổi thọ cây trồng: Kiểm soát sâu bệnh hiệu quả trong giai đoạn này góp phần vào sức khỏe tổng thể và tuổi thọ của cây lúa.", 20, "https://www.dudegrows.com/wp-content/uploads/2020/02/gmo-spray-scaled.jpg");
+                            "- Tuổi thọ cây trồng: Kiểm soát sâu bệnh hiệu quả trong giai đoạn này góp phần vào sức khỏe tổng thể và tuổi thọ của cây lúa.", 20, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Ffourth_spraying_pesticide.jpg?alt=media&token=d12a631a-256f-4647-87db-f2ccd063c380");
             activities.add(activities17);
             for (Activities a : activities) {
                 activityDao.insert(a);
@@ -1623,7 +1703,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "Cây lương thực: 120 - 200kg/ha/lần\n" +
                             "Cây ngắn ngày: 150 - 200kg/ha/lần\n" +
                             "Các loại cây khác: 200 - 300kg/ha/lần\n" +
-                            "* Các hướng dẫn trên chỉ mang tính chất tham khảo và cần được điều chỉnh tùy theo khu vực và giống cây trồng.", 60, "https://th.bing.com/th/id/R.e20502f8dbb9df0485c7e3762ff3cb5c?rik=sQWCyJm3AGwm%2fg&riu=http%3a%2f%2fphanbonminhphat.vn%2fupload%2fhinhthem%2fdap-korea-18-7721.jpg&ehk=EcBDlefYdqq7%2fKQwbCJodyv1%2fp9xzp1usGceyhu6Gaw%3d&risl=&pid=ImgRaw&r=0");
+                            "* Các hướng dẫn trên chỉ mang tính chất tham khảo và cần được điều chỉnh tùy theo khu vực và giống cây trồng.", 60, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/fertilizers%2Fdap.jpg?alt=media&token=bbf58e38-531d-43f1-9b6e-746aa7605c15");
             fertilizers.add(fertilizers1);
             Fertilizers fertilizers2 = new Fertilizers("Urea", "Petrovietnam Camau Fertilizer Joint stock company", "Công ty Cổ phần Phân bón Dầu khí Cà Mau", "Ingredients %: N:46.3%; Biuret: 0.99%; Humidity: 0.5%", "Thành phần %: N:46,3%; Biuret: 0,99%; Độ ẩm: 0,5%",
                     "Rice: 50-60 kg/ha/time (3 times/crop: 7-10 days after sowing/18-22 days after sowing/ 38-42 days after sowing)\n" +
@@ -1631,13 +1711,13 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "Sugarcane: 120-150 kg/ha/time (3 times/crop: 15-20 days after planting/2-3 months after planting/4-5 months after planting)",
                     "Lúa: 50-60 kg/ha/lần (3 lần/vụ: 7-10 ngày sau sạ/18-22 ngày sau sạ/ 38-42 ngày sau sạ)\n" +
                             "Bắp: 80-100 kg/ha/lần (3 lần/vụ: 7-10 ngày sau trồng/20-30 ngày sau trồng/40-50 ngày sau trồng)\n" +
-                            "Mía: 120-150 kg/ha/lần (3 lần/vụ: 15-20 ngày sau trồng/2-3 tháng sau trồng/4-5 tháng sau trồng)", 60, "https://tapdoanvinasa.com/wp-content/uploads/2020/03/phan-ure-ca-mau-tapdoanvinasa-02.jpg");
+                            "Mía: 120-150 kg/ha/lần (3 lần/vụ: 15-20 ngày sau trồng/2-3 tháng sau trồng/4-5 tháng sau trồng)", 60, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/fertilizers%2Furea.jpg?alt=media&token=c18fc7e4-ddf6-49db-bd8f-b671bae5c5a5");
             fertilizers.add(fertilizers2);
             Fertilizers fertilizers3 = new Fertilizers("MOP", "Petrovietnam Camau Fertilizer Joint stock company", "Công ty Cổ phần Phân bón Dầu khí Cà Mau", "Ingredients %: Kali (K2O): 61%;Humidity: 0.5%", "Thành phần %: Kali (K2O): 61%; Độ ẩm: 0,5%",
                     "Use potassium fertilizer to best fertilize rice in 2 stages: 1st time, 12-15 days after transplanting rice, depending on long or short-term rice varieties. At this time, it is necessary to fertilize on average each pole (500 m2) from 2-3 kg to make the rice plant healthy, hardy transplant, high effective branch. \n" +
                             "The second fertilizer application is very important when the rice plant is standing female, preparing to make a spike.",
                     "Dùng phân kali bón cho lúa tốt nhất vào 2 đợt: Lần 1, sau cấy 12-15 ngày tùy theo giống lúa dài ngày hay ngắn ngày, thời điểm này cần bón bình quân cho mỗi sào (500 m2) từ 2-3 kg để cây lúa khỏe, cứng cấy, đẻ nhánh hiệu quả cao. \n" +
-                            "Bón phân lần 2 rất quan trọng khi cây lúa đang làm đòng cái, chuẩn bị làm đòng.", 40, "https://th.bing.com/th/id/OIP.uh5Z9Uqifb46kRsiMH-xeQHaLA?pid=ImgDet&rs=1");
+                            "Bón phân lần 2 rất quan trọng khi cây lúa đang làm đòng cái, chuẩn bị làm đòng.", 40, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/fertilizers%2Fkali.jpg?alt=media&token=6b31aa1b-f6b6-4a43-8c29-7426b7b0b185");
             fertilizers.add(fertilizers3);
             for (Fertilizers f : fertilizers) {
                 fertilizerDao.insert(f);
@@ -1681,7 +1761,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "- Kiểm soát truyền thống: Chuẩn bị đất kỹ lưỡng cho lúa trong điều kiện ẩm ướt hoặc khô ráo có thể làm giảm sự phá hoại. Rất khó để phân biệt cỏ dại với lúa ở giai đoạn đầu, điều này gây khó khăn cho việc làm cỏ bằng tay.\n" +
                             "- Kiểm soát sinh học: mầm bệnh nấm Exserohilum monoceras có thể kiểm soát loại cỏ dại này.\n" +
                             "- Kiểm soát hóa học: Hỗn hợp oxadiazon, pretilachlor, pendimethalin hoặc cyhalofop, thiobencarb, butachlor và propanil với quinclorac hoặc fenoxaprop.",
-                    "https://th.bing.com/th/id/R.b63f6a54017e74b40ef1610f0a5b77d3?rik=0nrhgwsltfWG0Q&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/weeds%2Fechinochloa_crus_galli.jpg?alt=media&token=f9650dc3-6cec-42ae-9949-5ee8effd3a46");
             weeds.add(weeds1);
             Weeds weeds2 = new Weeds("Leptochloa chinensis", "Cỏ đuôi phụng", "- Asia: Japan and Korea.\n" +
                     "- South and Southeast Asia: Bangladesh, Cambodia, India, Indonesia, Lao PDR, Malaysia, Myanmar, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
@@ -1705,7 +1785,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Chemical control: Quinclorac, propanil, pendimethalin, fenoxaprop, pretilachlor, or benthiocarb.",
                     "- Kiểm soát truyền thống: luân canh và xới xáo ruộng lúa trong quá trình làm đất; làm cỏ bằng tay có thể có hiệu quả trong giai đoạn phát triển ban đầu của cỏ dại.\n" +
                             "- Kiểm soát bằng hóa chất: Quinclorac, propanil, pendimethalin, fenoxaprop, pretilachlor hoặc benthiocarb.",
-                    "https://th.bing.com/th/id/R.4da97a4c232ef70fd2ff3800c0d539d6?rik=xc%2bL9LvQhR6zNA&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/weeds%2Fleptochloa_chinensis.jpg?alt=media&token=16ee025f-6629-438b-8d7b-ffb187fccb3e");
             weeds.add(weeds2);
             Weeds weeds3 = new Weeds("Echinochloa colona", "Cỏ lồng vực cạn", "- Asia: China and Japan.\n" +
                     "- South and Southeast Asia: Bangladesh, Cambodia, India, Indonesia, Lao PDR, Malaysia, Myanmar, Nepal, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
@@ -1731,7 +1811,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Chemical control: preemergence application of oxadiazon or pendimethalin or postemergence application of cyhalofop, butachlor, and fenoxaprop can be effective. ",
                     "- Kiểm soát truyền thống: lũ lụt; làm cỏ bằng tay hoặc sử dụng cuốc trong giai đoạn tăng trưởng ban đầu.\n" +
                             "- Kiểm soát hóa học: phun trước chồi oxadiazon hoặc pendimethalin hoặc phun sau chồi mầm cyhalofop, butachlor và fenoxaprop có thể có hiệu quả.",
-                    "https://th.bing.com/th/id/R.3bf335162dd6132bfdb76839de4ac9ab?rik=IxLkP%2bVx3L8YgQ&riu=http%3a%2f%2fasergeev.com%2fpictures%2farchives%2f2020%2f2741%2fjpeg%2f31.jpg&ehk=K4AUZ22vPuIqdn3NVvLawsV7yb56L6UQ1ljY3WVYxoQ%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/weeds%2Fechinochloa_colona.jpg?alt=media&token=34c62ca8-cebc-4995-a454-93a0bc914df1");
             weeds.add(weeds3);
             Weeds weeds4 = new Weeds("Fimbristylis miliacea", "Cỏ chác", "- South and Southeast Asia: Bangladesh, Bhutan, Cambodia, India, Indonesia Lao PDR, Malaysia, Myanmar, Nepal, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
                     "- Rest of the world: Ecuador, Madagascar, Nicaragua, Peru, and Suriname. ",
@@ -1757,7 +1837,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Chemical control: postemergence application of MCPA and 2,4-D reported to be effective in rice. ",
                     "- Kiểm soát văn hóa: canh tác thủ công.\n" +
                             "- Kiểm soát hóa học: ứng dụng MCPA và 2,4-D sau khi nảy mầm được báo cáo là có hiệu quả trên lúa.",
-                    "https://th.bing.com/th/id/R.d93b3a2a18e9332195003e9d610f8009?rik=GiNmpdDkRckQEA&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/weeds%2Ffimbristylis_miliacea.jpg?alt=media&token=38592891-39db-44c1-8c60-e384cc19db66");
             weeds.add(weeds4);
             Weeds weeds5 = new Weeds("Cyperus iria", "Cỏ lác rận", "- Asia: China (including Taiwan), Japan, and Korea.\n" +
                     "- South and Southeast Asia: Bangladesh, Cambodia, India, Indonesia, Lao PDR, Malaysia, Myanmar, Nepal, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
@@ -1785,7 +1865,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Chemical control: Butachlor or oxadiazon after harrowing and sowing of rice and chlorimuron, propanil, or MCPA after emergence.",
                     "- Kiểm soát văn hóa: làm cỏ bằng tay ở giai đoạn đầu của quá trình sinh trưởng để ngăn chặn quá trình ra hoa và tạo hạt; làm cỏ quay vòng trên lúa cấy trong giai đoạn cây con.\n" +
                             "- Kiểm soát bằng hóa chất: Butachlor hoặc oxadiazon sau khi bừa và gieo lúa và chlorimuron, propanil hoặc MCPA sau khi trổ.",
-                    "https://th.bing.com/th/id/R.3da1294c64f0c1aa59d494c62c4f6fff?rik=rjTPSNSD0Gb6VA&riu=http%3a%2f%2fflowers.la.coocan.jp%2fCyperaceae%2fCyperus+iria%2fDSC03569.JPG&ehk=pT%2bx9k8EPYMVWX7BNd0dhKwyiejtDRgLH4BbutM1rcA%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/weeds%2Fcyperus_iria.jpg?alt=media&token=77832e52-ae94-414d-8e07-f3a6d991e87b");
             weeds.add(weeds5);
             Weeds weeds6 = new Weeds("Eclipta prostrata", "Cỏ mực", "- Asia: China (including Taiwan), Japan, and Korea.\n" +
                     "- South and Southeast Asia: Bangladesh, India, Indonesia, Cambodia, Lao PDR, Malaysia, Nepal, Pakistan, Philippines, Sri Lanka, Thailand, and Vietnam.\n" +
@@ -1813,7 +1893,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Chemical control: preemergence application of oxadiazon or postemergence spraying of either 2,4-D or MCPA reported to be effective. ",
                     "- Kiểm soát văn hóa: canh tác và làm cỏ bằng tay.\n" +
                             "- Kiểm soát hóa học: phun oxadiazon trước khi mọc hoặc phun sau khi mọc của 2,4-D hoặc MCPA được báo cáo là có hiệu quả.",
-                    "https://th.bing.com/th/id/R.b8ee3f7782439ef18e9d90e8cd1da81e?rik=GjmKzZF%2bbtzgdg&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/weeds%2Feclipta_prostrata.jpg?alt=media&token=fe60cc81-541a-43b7-9cdf-4a4dc4f92423");
             weeds.add(weeds6);
             for (Weeds w : weeds) {
                 weedDao.insert(w);
@@ -1821,19 +1901,33 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
 
             //****Crops-Weeds****
             CropWeedDao cropWeedDao = db.cropWeedDao();
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Echinochloa crus-galli")));
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Leptochloa chinensis")));
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Echinochloa colona")));
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Fimbristylis miliacea")));
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Cyperus iria")));
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM18"), weedDao.getIdByName("Eclipta prostrata")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 18"), weedDao.getIdByName("Echinochloa crus-galli")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 18"), weedDao.getIdByName("Leptochloa chinensis")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 18"), weedDao.getIdByName("Echinochloa colona")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 18"), weedDao.getIdByName("Fimbristylis miliacea")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 18"), weedDao.getIdByName("Cyperus iria")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 18"), weedDao.getIdByName("Eclipta prostrata")));
 
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Echinochloa crus-galli")));
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Leptochloa chinensis")));
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Echinochloa colona")));
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Fimbristylis miliacea")));
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Cyperus iria")));
-            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT08"), weedDao.getIdByName("Eclipta prostrata")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT 08"), weedDao.getIdByName("Echinochloa crus-galli")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT 08"), weedDao.getIdByName("Leptochloa chinensis")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT 08"), weedDao.getIdByName("Echinochloa colona")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT 08"), weedDao.getIdByName("Fimbristylis miliacea")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT 08"), weedDao.getIdByName("Cyperus iria")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("DT 08"), weedDao.getIdByName("Eclipta prostrata")));
+
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 5451"), weedDao.getIdByName("Echinochloa crus-galli")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 5451"), weedDao.getIdByName("Leptochloa chinensis")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 5451"), weedDao.getIdByName("Echinochloa colona")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 5451"), weedDao.getIdByName("Fimbristylis miliacea")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 5451"), weedDao.getIdByName("Cyperus iria")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("OM 5451"), weedDao.getIdByName("Eclipta prostrata")));
+
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("IR 50404"), weedDao.getIdByName("Echinochloa crus-galli")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("IR 50404"), weedDao.getIdByName("Leptochloa chinensis")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("IR 50404"), weedDao.getIdByName("Echinochloa colona")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("IR 50404"), weedDao.getIdByName("Fimbristylis miliacea")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("IR 50404"), weedDao.getIdByName("Cyperus iria")));
+            cropWeedDao.insert(new CropWeeds(cropDao.getIdByName("IR 50404"), weedDao.getIdByName("Eclipta prostrata")));
 
             //****Weeds-Pesticides****
             WeedPesticideDao weedPesticideDao = db.weedPesticideDao();
@@ -1902,7 +1996,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Duy trì kiểm soát nước hợp lý, tức là giữ cho ruộng ngập nước để ngăn chặn quá trình khử nitrat nhưng tránh thất thoát N do nước chảy tràn qua bờ ngay sau khi bón phân.\n" +
                             "- Thiết lập một vụ lúa dày đặc, khỏe mạnh bằng cách sử dụng hạt giống chất lượng cao của giống năng suất cao, kháng nhiều loại sâu bệnh và mật độ cây trồng phù hợp.\n" +
                             "- Kiểm soát cỏ dại cạnh tranh N với lúa.",
-                    "https://th.bing.com/th/id/R.3eba97b47555a5f1b760e86280278628?rik=fRHAPARi7jqvwg&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fnutrients-nitrogen-deficiency.jpg&ehk=V%2bfi4aMhyG3dK2h8x6UnnWyh37QT86iTz5dElir7KOo%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/deficiencies_toxicities%2Fnitrogen_(N)_deficiency.jpg?alt=media&token=2d31be96-34bf-4f7b-a654-71237b2d3fa0");
             deficienciesToxicities.add(deficienciesToxicities1);
 
             DeficienciesToxicities deficienciesToxicities2 = new DeficienciesToxicities("Nitrogen (N) excess", "Thừa đạm (N)", "Fields with excessive nitrogen have plants that:\n" +
@@ -1929,7 +2023,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Để quản lý lượng nitơ dư thừa:\n" +
                             "- Bón đủ N để đáp ứng nhu cầu của cây trồng (20 kg N cho mỗi tấn hạt được tạo ra).\n" +
                             "- Xác định lượng N đến từ đất và các nguồn khác (ví dụ: nước hoặc vi khuẩn trong đất hoặc nước) và sau đó bón thêm N để đáp ứng mục tiêu năng suất.",
-                    "https://th.bing.com/th/id/R.4d1e2820f95ea25aa2917192855592f1?rik=dVo3N5SO4MRG4w&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fnitrogen-excess-leaf-color-chart.jpg&ehk=JOde6MY80Ruc6lGi%2fzb0IncOsawSQDpDQDmBTh3RAFw%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/deficiencies_toxicities%2Fnitrogen_(N)_excess.jpg?alt=media&token=f5c7b578-425f-411e-aa3b-182e7e4237ba");
             deficienciesToxicities.add(deficienciesToxicities2);
 
             DeficienciesToxicities deficienciesToxicities3 = new DeficienciesToxicities("Phosphorus (P) deficiency", "Thiếu phốt pho (P)", "Check the field for the following symptoms:\n" +
@@ -1988,7 +2082,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Áp dụng liều lượng N và K tối ưu và khắc phục tình trạng thiếu vi chất dinh dưỡng.\n" +
                             "- Bổ sung P bị loại bỏ trong các sản phẩm cây trồng bằng cách bón phân P, phân chuồng hoặc các vật liệu khác (đất ủ, phân hữu cơ).\n" +
                             "- Bón phân hiệu quả.",
-                    "https://th.bing.com/th/id/R.dcf9a0264e1b5ca7f4e92b75692af0df?rik=3iFbw1ChTOhaog&riu=http%3a%2f%2fwww.knowledgebank.irri.org%2fimages%2fstories%2fnutrients-phosphorus-deficiency.jpg&ehk=eWkGvEch7HySY5bUqJ8Epv%2fOYYHGdsWtB32GbvXEzD8%3d&risl=&pid=ImgRaw&r=0");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/deficiencies_toxicities%2Fphosphorus_(P)_deficiency.jpg?alt=media&token=3af41f35-1823-405c-8e6c-c657a257389f");
             deficienciesToxicities.add(deficienciesToxicities3);
 
             DeficienciesToxicities deficienciesToxicities4 = new DeficienciesToxicities("Potassium (K) deficiency", "Thiếu kali (K)", "Check the plants for discolouration:\n" +
@@ -2069,7 +2163,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Thiết lập đủ số lượng cây lúa khỏe mạnh bằng cách sử dụng hạt giống chất lượng cao của giống hiện đại với khả năng kháng nhiều loại sâu bệnh và duy trì mùa màng tối ưu (quản lý nước và sâu bệnh).\n" +
                             "- Kết hợp rơm rạ. Nếu đốt rơm rạ là lựa chọn duy nhất để quản lý tàn dư cây trồng, hãy rải đều rơm rạ trên ruộng (ví dụ như rơm rạ còn lại sau khi thu hoạch) trước khi đốt. Tro từ đống rơm cháy cũng nên được rải trên mặt đất. trường.\n" +
                             "- Bón phân N và P với liều lượng tối ưu và khắc phục tình trạng thiếu vi lượng. Bón phân K, phân chuồng hoặc các vật liệu khác (trấu, tro, đất ủ, phân hữu cơ) để bổ sung lượng K đã lấy đi trong sản phẩm cây trồng đã thu hoạch.",
-                    "https://www.pinoyrice.com/wp-content/uploads/potassium-deficient.jpg");
+                    "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/deficiencies_toxicities%2Fpotassium_(K)_deficiency.jpg?alt=media&token=52ad0117-6b15-4ea4-9613-92b6828e2e5f");
             deficienciesToxicities.add(deficienciesToxicities4);
 
             for (DeficienciesToxicities d : deficienciesToxicities) {
@@ -2078,15 +2172,25 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
 
             //*****Crop-Deftox*****
             CropDeftoxDao cropDeftoxDao = db.cropDeftoxDao();
-            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM18"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) deficiency")));
-            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM18"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) excess")));
-            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM18"), deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency")));
-            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM18"), deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM 18"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM 18"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) excess")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM 18"), deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM 18"), deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency")));
 
-            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT08"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) deficiency")));
-            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT08"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) excess")));
-            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT08"), deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency")));
-            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT08"), deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT 08"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT 08"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) excess")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT 08"), deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("DT 08"), deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency")));
+
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM 5451"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM 5451"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) excess")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM 5451"), deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("OM 5451"), deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency")));
+
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("IR 50404"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("IR 50404"), deficienciesToxicitiesDao.getIdByName("Nitrogen (N) excess")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("IR 50404"), deficienciesToxicitiesDao.getIdByName("Phosphorus (P) deficiency")));
+            cropDeftoxDao.insert(new CropDeftox(cropDao.getIdByName("IR 50404"), deficienciesToxicitiesDao.getIdByName("Potassium (K) deficiency")));
 
             //*****Deftox-Fertilizer*****
             DeftoxFertilizerDao deftoxFertilizerDao = db.deftoxFertilizerDao();

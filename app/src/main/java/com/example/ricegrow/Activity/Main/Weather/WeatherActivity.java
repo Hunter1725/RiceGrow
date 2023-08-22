@@ -24,10 +24,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
 import com.example.ricegrow.Activity.Planning.Calendar.CalendarUtils;
 import com.example.ricegrow.Activity.Main.Weather.Model.DailyWeatherData;
 import com.example.ricegrow.Activity.Main.Weather.Model.DailyWeatherResponse;
 import com.example.ricegrow.Activity.Setting.ContextWrapper;
+import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Weather;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
@@ -107,8 +109,12 @@ public class WeatherActivity extends AppCompatActivity {
         int numberOfDays = 5; // Fetch forecast for the next 5 days
 
         WeatherApiService apiService = WeatherApiClient.getClient();
-
-        Call<DailyWeatherResponse> call = apiService.getDailyWeatherData(latitude, longitude, API_KEY, units, numberOfDays);
+        Call<DailyWeatherResponse> call = null;
+        if(GetCurrentLanguage.getCurrentLanguage(WeatherActivity.this).equals("en")) {
+            call = apiService.getDailyWeatherData(latitude, longitude, API_KEY, units, numberOfDays);
+        } else {
+            call = apiService.getDailyWeatherDataVi(latitude, longitude, API_KEY, units, numberOfDays,"vi");
+        }
         call.enqueue(new Callback<DailyWeatherResponse>() {
             @Override
             public void onResponse(@NonNull Call<DailyWeatherResponse> call, @NonNull Response<DailyWeatherResponse> response) {
@@ -298,17 +304,32 @@ public class WeatherActivity extends AppCompatActivity {
                 weatherImageView.setImageResource(R.drawable.sun);
                 break;
             case "Clouds":
-                switch (description) {
-                    case "few clouds":
-                        weatherImageView.setImageResource(R.drawable.cloudy_sunny);
-                        break;
-                    case "scattered clouds":
-                        weatherImageView.setImageResource(R.drawable.cloudy);
-                        break;
-                    case "broken clouds":
-                    case "overcast clouds":
-                        weatherImageView.setImageResource(R.drawable.cloudy_3);
-                        break;
+                if(GetCurrentLanguage.getCurrentLanguage(WeatherActivity.this).equals("en")) {
+                    switch (description) {
+                        case "few clouds":
+                            weatherImageView.setImageResource(R.drawable.cloudy_sunny);
+                            break;
+                        case "scattered clouds":
+                            weatherImageView.setImageResource(R.drawable.cloudy);
+                            break;
+                        case "broken clouds":
+                        case "overcast clouds":
+                            weatherImageView.setImageResource(R.drawable.cloudy_3);
+                            break;
+                    }
+                } else {
+                    switch (description) {
+                        case "mây thưa":
+                            weatherImageView.setImageResource(R.drawable.cloudy_sunny);
+                            break;
+                        case "mây rải rác":
+                            weatherImageView.setImageResource(R.drawable.cloudy);
+                            break;
+                        case "mây cụm":
+                        case "mây đen u ám":
+                            weatherImageView.setImageResource(R.drawable.cloudy_3);
+                            break;
+                    }
                 }
                 break;
             case "Rain":

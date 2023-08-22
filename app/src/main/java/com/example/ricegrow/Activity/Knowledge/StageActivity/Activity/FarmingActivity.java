@@ -135,13 +135,15 @@ public class FarmingActivity extends AppCompatActivity {
                         .into(imageStage);
                 if(GetCurrentLanguage.getCurrentLanguage(FarmingActivity.this).equals("en")) {
                     txtNameStage.setText(stages.getNameEn());
+                    String startDate = String.valueOf(cropStage.getStartDate()) + getString(R.string.day);
+                    txtStartDate.setText(startDate);
                 } else {
                     txtNameStage.setText(stages.getNameVi());
+                    String startDate = String.valueOf("Ngày thứ " + cropStage.getStartDate());
+                    txtStartDate.setText(startDate);
                 }
                 String durationStage = String.valueOf(cropStage.getDuration()) + getString(R.string.days);
                 txtDurationStage.setText(durationStage);
-                String startDate = String.valueOf(cropStage.getStartDate()) + getString(R.string.day);
-                txtStartDate.setText(startDate);
 
 
                 recommendedAdapter = new SupAdapter(this);

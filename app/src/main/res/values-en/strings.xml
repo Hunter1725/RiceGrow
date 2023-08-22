@@ -18,7 +18,7 @@
     <string name="weather">Weather</string>
     <string name="choose_your_weather_temperature_unit_to_use">Choose your weather temperature unit to use</string>
     <string name="the_current_is">The current is</string>
-    <string name="welcome_to_ricegrow_app">Welcome to RiceGrow App!</string>
+    <string name="welcome_to_ricegrow_app">Welcome to Rice Grow App!</string>
     <string name="fertilizer_calculator">Fertilizer Calculator</string>
     <string name="plan_generator">Plan generator</string>
     <string name="recent_farming_plans">Recent farming plans</string>
@@ -304,4 +304,24 @@
     <string name="the_plan">"The plan "</string>
     <string name="was_removed">" was removed!"</string>
     <string name="day">\ day</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="farming_plan_generator">Farming Plan Generator</string>
+    <string name="create_tailored_agricultural_plans_for_optimal_crop_growth">Create tailored agricultural plans for optimal crop growth</string>
+    <string name="pesticide_and_fertilizer_calculator">Pesticide and Fertilizer Calculator</string>
+    <string name="determine_precise_application_rates_for_pesticides_and_fertilizers">Determine precise application rates for pesticides and fertilizers</string>
+    <string name="provides_essential_insights_for_effective_agricultural_practices">Provides essential insights for effective agricultural practices.</string>
+    <string name="welcome_to_rice_grow">Welcome to Rice Grow!</string>
+    <string name="just_getting_started_lets_take_a_look_at_some_of_the_great_feature_of_the_app">Just getting started? Lets take a look at some of the great features of the app.</string>
+    <string name="searching_crop_varieties">Searching crop varieties</string>
+    <string name="searching_deficiencies_and_toxicities">Searching deficiencies and toxicities</string>
+    <string name="searching_diseases">Searching diseases</string>
+    <string name="searching_fertilizers">Searching fertilizers</string>
+    <string name="searching_pests">Searching pests</string>
+    <string name="searching_pesticides">Searching pesticides</string>
+    <string name="searching_growth_stages">Searching growth stages</string>
+    <string name="searching_weeds">Searching weeds</string>
+    <string name="searching_farming_activities">Searching farming activities</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_conditions">Terms and Conditions</string>
 </resources>
