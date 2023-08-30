@@ -31,6 +31,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,11 +84,21 @@ public class ChatActivity extends AppCompatActivity implements NetworkUtils.OnCo
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                messageList.add(new Message(message,sentBy, LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)));
+                timeNow();
+                messageList.add(new Message(message,sentBy, timeNow()));
                 messageAdapter.notifyDataSetChanged();
                 recyclerView.smoothScrollToPosition(messageAdapter.getItemCount());
             }
         });
+    }
+
+    private static long timeNow() {
+        // Get the current LocalDateTime
+        LocalDateTime localDateTime = LocalDateTime.now();
+        // Get the system's default time zone
+        ZoneId systemZone = ZoneId.systemDefault();
+        // Convert LocalDateTime to EpochSecond
+        return localDateTime.atZone(systemZone).toEpochSecond();
     }
 
     @Override
@@ -171,7 +182,7 @@ public class ChatActivity extends AppCompatActivity implements NetworkUtils.OnCo
     private void callAPI(String question) {
         String finalMessage = GUIDE_STRING.concat(question);
         //okhttp
-        messageList.add(new Message(getString(R.string.typing),Message.SENT_BY_BOT,  LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)));
+        messageList.add(new Message(getString(R.string.typing),Message.SENT_BY_BOT, timeNow()));
 
         JSONObject jsonBody = new JSONObject();
         try {
@@ -242,12 +253,14 @@ public class ChatActivity extends AppCompatActivity implements NetworkUtils.OnCo
             runOnUiThread(() -> {
                 bottom_layout.setVisibility(View.VISIBLE);
                 lostLayout.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
                 initRecyclerView();
             });
         } else {
             runOnUiThread(() -> {
                 bottom_layout.setVisibility(View.GONE);
                 lostLayout.setVisibility(View.VISIBLE);
+                recyclerView.setVisibility(View.GONE);
             });
         }
     }

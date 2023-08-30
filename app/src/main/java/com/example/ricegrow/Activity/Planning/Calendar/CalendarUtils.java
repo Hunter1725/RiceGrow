@@ -102,7 +102,7 @@ public class CalendarUtils {
         Instant instant = Instant.ofEpochSecond(timestamp);
         LocalDateTime dateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
         // Format LocalDateTime in a specific format
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMMM");
         return dateTime.format(formatter);
     }
 }
