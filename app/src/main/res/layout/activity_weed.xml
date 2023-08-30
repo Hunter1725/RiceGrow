@@ -77,6 +77,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/geographical_distribution"
+                    app:drawableStartCompat="@drawable/ic_geo"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -96,6 +98,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/morphology"
+                    app:drawableStartCompat="@drawable/ic_mor"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -115,6 +119,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/ecology"
+                    app:drawableStartCompat="@drawable/ic_eco"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -134,6 +140,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/impacts"
+                    app:drawableStartCompat="@drawable/ic_impact"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -153,6 +161,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/control_methods"
+                    app:drawableStartCompat="@drawable/ic_treat"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -178,6 +188,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/specialized_pesticides"
+                    app:drawableStartCompat="@drawable/pesticide"
+                    android:drawableTint="@color/black"
+                    android:drawablePadding="5dp"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"

@@ -324,4 +324,12 @@
     <string name="searching_farming_activities">Searching farming activities</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="terms_conditions">Terms and Conditions</string>
+    <string name="supporter">Supporter</string>
+    <string name="connect_to_internet_to_see_the_term_and_policy">Connect to internet to see the term and policy!</string>
+    <string name="write_here">Write here</string>
+    <string name="connect_to_internet_to_use_chat_supporter">Connect to internet to use chat supporter!</string>
+    <string name="reset_the_conversation">Reset the conversation</string>
+    <string name="i_will_be_your_supporter_ask_me_something_that_you_need_to_know_3"><![CDATA[I will be your supporter! Ask me something that you need to know <3]]></string>
+    <string name="typing">"Typing... "</string>
+    <string name="failed_to_load_response_due_to">"Failed to load response due to "</string>
 </resources>

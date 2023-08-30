@@ -77,6 +77,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/symptoms"
+                    app:drawableStartCompat="@drawable/ic_symptom"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -96,6 +98,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/descriptions"
+                    app:drawableStartCompat="@drawable/ic_description"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -115,6 +119,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/prevention_methods"
+                    app:drawableStartCompat="@drawable/ic_treat"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -140,10 +146,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/specialized_pesticides"
+                    app:drawableStartCompat="@drawable/pesticide"
+                    android:drawablePadding="5dp"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    app:drawableTint="@color/black" />
 
                 <TextView
                     android:id="@+id/txtEmpty"
@@ -169,6 +178,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/possible_stages_of_disease_outbreaks"
+                    app:drawableStartCompat="@drawable/ic_stage"
+                    android:drawablePadding="5dp"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"

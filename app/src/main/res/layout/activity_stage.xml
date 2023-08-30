@@ -77,8 +77,10 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/descriptions"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_description" />
 
                 <TextView
                     android:id="@+id/txtDescription"
@@ -96,8 +98,10 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/duration_nodot"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_duration" />
 
                 <TextView
                     android:id="@+id/txtDuration"
@@ -115,8 +119,10 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/start_date_nodot"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/sowing_date" />
 
                 <TextView
                     android:id="@+id/txtStartDate"
@@ -134,8 +140,10 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/end_date"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/harvest_date" />
 
                 <TextView
                     android:id="@+id/txtEndDate"
@@ -160,9 +168,12 @@
                     android:layout_height="wrap_content"
                     android:text="@string/harmful_pests"
                     android:layout_marginTop="15dp"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/pest"
+                    app:drawableTint="@color/black" />
 
                 <TextView
                     android:id="@+id/txtEmpty"
@@ -189,9 +200,12 @@
                     android:layout_height="wrap_content"
                     android:text="@string/potential_diseases"
                     android:layout_marginTop="15dp"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/disease"
+                    app:drawableTint="@color/black" />
 
                 <TextView
                     android:id="@+id/txtEmpty2"
@@ -217,10 +231,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/relevant_activities"
+                    android:drawablePadding="5dp"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_activity"
+                    app:drawableTint="@color/black" />
 
                 <TextView
                     android:id="@+id/txtEmpty3"

@@ -77,6 +77,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/manufacturer"
+                    app:drawableStartCompat="@drawable/ic_manufracture"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -96,6 +98,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/composition"
+                    app:drawableStartCompat="@drawable/ic_composition"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -115,6 +119,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/instruction"
+                    app:drawableStartCompat="@drawable/ic_instruction"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -134,6 +140,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/recommended_usage"
+                    app:drawableStartCompat="@drawable/ic_use"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -158,6 +166,8 @@
                     android:id="@+id/using"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:drawableStartCompat="@drawable/ic_activity"
+                    android:drawablePadding="5dp"
                     android:text="@string/used_in_activities"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"

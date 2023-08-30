@@ -77,8 +77,10 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/category"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_category" />
 
                 <TextView
                     android:id="@+id/txtCategory"
@@ -96,8 +98,10 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/manufacturer"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_manufracture" />
 
                 <TextView
                     android:id="@+id/txtManufacturer"
@@ -115,8 +119,10 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/composition"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_composition" />
 
                 <TextView
                     android:id="@+id/txtComposition"
@@ -134,8 +140,10 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/instruction"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_instruction" />
 
                 <TextView
                     android:id="@+id/txtInstruction"
@@ -153,6 +161,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/dosage_per_use_16_liter_bottle"
+                    app:drawableStartCompat="@drawable/ic_use"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -172,6 +182,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/amount_of_water_sprayed"
+                    app:drawableStartCompat="@drawable/ic_humidity"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -197,6 +209,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/specializes_in_treating"
+                    app:drawableStartCompat="@drawable/ic_treat"
+                    android:drawablePadding="5dp"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
@@ -225,6 +239,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/can_be_used_in"
+                    app:drawableStartCompat="@drawable/ic_activity"
+                    android:drawablePadding="5dp"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"

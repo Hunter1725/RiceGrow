@@ -77,8 +77,10 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/descriptions"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_description" />
 
                 <TextView
                     android:id="@+id/txtDescription"
@@ -97,8 +99,10 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/duration_nodot"
+                    android:drawablePadding="5dp"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_duration" />
 
                 <TextView
                     android:id="@+id/txtDuration"
@@ -235,10 +239,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/recommended_pesticides_or_fertilizers"
+                    android:drawablePadding="5dp"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:layout_marginStart="8dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/pesticide"
+                    app:drawableTint="@color/black" />
 
                 <TextView
                     android:id="@+id/txtEmpty"

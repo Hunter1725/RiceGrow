@@ -324,4 +324,12 @@
     <string name="searching_farming_activities">Tìm kiếm hoạt động nông nghiệp</string>
     <string name="privacy_policy">Chính sách bảo mật</string>
     <string name="terms_conditions">Điều khoản và Điều kiện</string>
+    <string name="supporter">Người hỗ trợ</string>
+    <string name="connect_to_internet_to_see_the_term_and_policy">Kết nối với internet để xem điều khoản và chính sách!</string>
+    <string name="write_here">Viết ở đây</string>
+    <string name="connect_to_internet_to_use_chat_supporter">Kết nối với internet để sử dụng tính năng hỗ trợ trò chuyện!</string>
+    <string name="reset_the_conversation">Đặt lại cuộc trò chuyện</string>
+    <string name="i_will_be_your_supporter_ask_me_something_that_you_need_to_know_3">Tôi sẽ là người hỗ trợ bạn! Hãy hỏi tôi điều bạn cần biết !</string>
+    <string name="typing">Đang nhập...</string>
+    <string name="failed_to_load_response_due_to">"Không thể tải phản hồi do "</string>
 </resources>

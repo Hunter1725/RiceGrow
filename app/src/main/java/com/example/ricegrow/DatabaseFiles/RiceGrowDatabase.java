@@ -25,6 +25,7 @@ import com.example.ricegrow.DatabaseFiles.Dao.DiseasePesticideDao;
 import com.example.ricegrow.DatabaseFiles.Dao.DiseaseStageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.FertilizerCalculatingDao;
 import com.example.ricegrow.DatabaseFiles.Dao.FertilizerDao;
+import com.example.ricegrow.DatabaseFiles.Dao.MessageDao;
 import com.example.ricegrow.DatabaseFiles.Dao.NoteDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PestDao;
 import com.example.ricegrow.DatabaseFiles.Dao.PestPesticideDao;
@@ -56,6 +57,7 @@ import com.example.ricegrow.DatabaseFiles.Model.DiseasesPesticides;
 import com.example.ricegrow.DatabaseFiles.Model.DiseasesStages;
 import com.example.ricegrow.DatabaseFiles.Model.FertilizerCalculating;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
+import com.example.ricegrow.DatabaseFiles.Model.Message;
 import com.example.ricegrow.DatabaseFiles.Model.Notes;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
@@ -80,7 +82,7 @@ import java.util.concurrent.Executors;
         Fertilizers.class, Pesticides.class, Pests.class, PestsPesticides.class, PestsStages.class,
         PlanActivities.class, PlanStages.class, Stages.class,
         UserCrops.class, Users.class, Weeds.class, WeedsPesticides.class, FertilizerCalculating.class, DeficienciesToxicities.class, CropDeftox.class,
-        DeftoxFertilizer.class, DeftoxStage.class, Weather.class, Setting.class, Notes.class}, version = 1)
+        DeftoxFertilizer.class, DeftoxStage.class, Weather.class, Setting.class, Notes.class, Message.class}, version = 1)
 public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract ActivityDao activityDao();
 
@@ -143,6 +145,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract SettingDao settingDao();
 
     public abstract NoteDao noteDao();
+    public abstract MessageDao messageDao();
 
 
     private static RiceGrowDatabase instance;
@@ -478,7 +481,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Affected tiller inhibits the growth of leaves and fails to produce panicles\n" +
                             "deformed, wilted, and rolled leaf\n" +
                             "- Elongation of leaf sheaths also called onion leaf or silver shoot\n" +
-                            "plant stunting\n" +
+                            "- Plant stunting\n" +
                             "\n" +
                             "The rolled leaves can also be associated with the symptom caused by rice thrips. To confirm the cause of the problem, check for the presence of an insect. Particularly elongate-tubular eggs and maggot-like larvae feeding inside developing buds." +
                             "- Check for deadhearts. Dead hearts can also be caused by stemborer. To confirm the cause of damage, pull infected plants. In black bug damage, infected plants cannot be pulled at the bases. Heavy infestation and \"bug burn\" is usually visible after heading or maturing.",
@@ -487,7 +490,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "- Máy xới bị ảnh hưởng ức chế sự phát triển của lá và không thể tạo bông\n" +
                             "chiếc lá biến dạng, héo úa và cuộn lại\n" +
                             "- Bẹ lá kéo dài còn gọi là lá hành hay bẹ bạc\n" +
-                            "cây còi cọc\n" +
+                            "- Cây còi cọc\n" +
                             "\n" +
                             "Lá cuộn lại cũng có thể liên quan đến triệu chứng do bọ trĩ gây ra. Để xác định nguyên nhân của vấn đề, hãy kiểm tra sự hiện diện của côn trùng. Đặc biệt là trứng hình ống dài và ấu trùng giống giòi ăn bên trong các chồi đang phát triển." +
                             "- Kiểm tra tim chết. Tim chết cũng có thể do sâu đục thân gây ra. Để xác định nguyên nhân gây hại, hãy nhổ những cây bị nhiễm bệnh. Trong trường hợp bọ xít gây hại, không thể nhổ những cây bị nhiễm bệnh ở gốc. Nhiễm nặng và \"đốt bọ\" là thường xuất hiện sau khi trưởng thành hoặc trưởng thành.",
@@ -1835,7 +1838,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Đây là một loại cỏ dại nghiêm trọng và phổ biến trên lúa. Là vật chủ luân phiên của các bệnh Rhizoctonia solani, Thanatephorus cucumeris, và Xanthomonas campestris pv. oryzae, côn trùng Creatonotus gangis Linnaeus, Leptocorisa acuta (Thunberg), và Mythimna separata (Walker) và tuyến trùng Hirschmanniella sp. và Meloidogyne spp.",
                     "- Cultural control: hand cultivation.\n" +
                             "- Chemical control: postemergence application of MCPA and 2,4-D reported to be effective in rice. ",
-                    "- Kiểm soát văn hóa: canh tác thủ công.\n" +
+                    "- Kiểm soát truyền thống: canh tác thủ công.\n" +
                             "- Kiểm soát hóa học: ứng dụng MCPA và 2,4-D sau khi nảy mầm được báo cáo là có hiệu quả trên lúa.",
                     "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/weeds%2Ffimbristylis_miliacea.jpg?alt=media&token=38592891-39db-44c1-8c60-e384cc19db66");
             weeds.add(weeds4);
@@ -1863,7 +1866,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Một loại cỏ dại quan trọng và phổ biến ở Nam và Đông Nam Á. Vật chủ đẻ trứng của côn trùng Creatonotus gangis Linnaeus, Leptocorisa acuta (Thunberg), Marasmia exigua (Butler), Mythimna separata (Walker), Nilaparvata lugens (Stål), Nisia carolinensis Fennah, Pseudococcus saccharicola Takahashi, Recilia dorsalis (Motschulsky), Spodoptera mauritia acronyctoides (Guenee), và Stenchaetothrips biformis (Bagnall), các bệnh Pyricularia oryzae, Rhizoctonia solani, và Sarocladium oryzae, và tuyến trùng Circonemella onoensis, Hirschmanniella oryzae, và Pratylenchus indicus.",
                     "- Cultural control: hand weeding at an earlier stage of growth to prevent flowering and seed production; rotary weeding in transplanted rice during the seedling stage.\n" +
                             "- Chemical control: Butachlor or oxadiazon after harrowing and sowing of rice and chlorimuron, propanil, or MCPA after emergence.",
-                    "- Kiểm soát văn hóa: làm cỏ bằng tay ở giai đoạn đầu của quá trình sinh trưởng để ngăn chặn quá trình ra hoa và tạo hạt; làm cỏ quay vòng trên lúa cấy trong giai đoạn cây con.\n" +
+                    "- Kiểm soát truyền thống: làm cỏ bằng tay ở giai đoạn đầu của quá trình sinh trưởng để ngăn chặn quá trình ra hoa và tạo hạt; làm cỏ quay vòng trên lúa cấy trong giai đoạn cây con.\n" +
                             "- Kiểm soát bằng hóa chất: Butachlor hoặc oxadiazon sau khi bừa và gieo lúa và chlorimuron, propanil hoặc MCPA sau khi trổ.",
                     "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/weeds%2Fcyperus_iria.jpg?alt=media&token=77832e52-ae94-414d-8e07-f3a6d991e87b");
             weeds.add(weeds5);
@@ -1891,7 +1894,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                     "Một loại cỏ dại quan trọng và phổ biến ở Nam và Đông Nam Á. Vật chủ đẻ trứng của côn trùng Creatonotus gangis Linnaeus, Leptocorisa acuta (Thunberg), Marasmia exigua (Butler), Mythimna separata (Walker), Nilaparvata lugens (Stål), Nisia carolinensis Fennah, Pseudococcus saccharicola Takahashi, Recilia dorsalis (Motschulsky), Spodoptera mauritia acronyctoides (Guenee), và Stenchaetothrips biformis (Bagnall), các bệnh Pyricularia oryzae, Rhizoctonia solani, và Sarocladium oryzae, và tuyến trùng Circonemella onoensis, Hirschmanniella oryzae, và Pratylenchus indicus.",
                     "- Cultural control: cultivation and hand weeding.\n" +
                             "- Chemical control: preemergence application of oxadiazon or postemergence spraying of either 2,4-D or MCPA reported to be effective. ",
-                    "- Kiểm soát văn hóa: canh tác và làm cỏ bằng tay.\n" +
+                    "- Kiểm soát truyền thống: canh tác và làm cỏ bằng tay.\n" +
                             "- Kiểm soát hóa học: phun oxadiazon trước khi mọc hoặc phun sau khi mọc của 2,4-D hoặc MCPA được báo cáo là có hiệu quả.",
                     "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/weeds%2Feclipta_prostrata.jpg?alt=media&token=fe60cc81-541a-43b7-9cdf-4a4dc4f92423");
             weeds.add(weeds6);

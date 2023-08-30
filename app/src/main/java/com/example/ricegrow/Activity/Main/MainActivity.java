@@ -34,6 +34,7 @@ import android.widget.Toast;
 import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
 import com.example.ricegrow.Activity.Calculating.MainCalculating;
 import com.example.ricegrow.Activity.Calculating.PesticideCalculating.SelectPesticide;
+import com.example.ricegrow.Activity.ChatBot.ChatActivity;
 import com.example.ricegrow.Activity.Knowledge.MainKnowledge;
 import com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.ListDeftox;
 import com.example.ricegrow.Activity.Knowledge.Management.Disease.ListDisease;
@@ -245,11 +246,10 @@ public class MainActivity extends AppCompatActivity {
                 } else if (itemId == R.id.calculatorBottom) {
                     replaceFragment(new MainCalculating());
                 } else if (itemId == R.id.knowledge) {
-                    //Inflate fragment
                     replaceFragment(new MainKnowledge());
-
+                } else if (itemId == R.id.chat) {
+                    startActivity(new Intent(MainActivity.this, ChatActivity.class));
                 }
-
                 return true;
             }
         });

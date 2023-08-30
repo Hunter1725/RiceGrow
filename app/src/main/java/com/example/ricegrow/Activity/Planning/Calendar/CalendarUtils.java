@@ -1,10 +1,12 @@
 package com.example.ricegrow.Activity.Planning.Calendar;
 
 import java.time.DayOfWeek;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.YearMonth;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -86,5 +88,21 @@ public class CalendarUtils {
     public static String formattedFullWeek(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE");
         return date.format(formatter);
+    }
+
+    public static String formattedTime(long timestamp){
+        Instant instant = Instant.ofEpochSecond(timestamp);
+        LocalDateTime dateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        // Format LocalDateTime in a specific format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return dateTime.format(formatter);
+    }
+
+    public static String formattedMonthDay(long timestamp){
+        Instant instant = Instant.ofEpochSecond(timestamp);
+        LocalDateTime dateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        // Format LocalDateTime in a specific format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd");
+        return dateTime.format(formatter);
     }
 }
