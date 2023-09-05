@@ -6,6 +6,7 @@ import androidx.core.view.WindowCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ricegrow.Activity.Main.MainActivity;
+import com.example.ricegrow.Activity.Setting.ContextWrapper;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.CropStage;
 import com.example.ricegrow.DatabaseFiles.Model.Crops;
@@ -246,6 +248,18 @@ public class PlanGenerate extends AppCompatActivity {
             selectedColor = color;
             colorLayout.setBackgroundColor(selectedColor);
         });
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        RiceGrowDatabase db = RiceGrowDatabase.getInstance(this);
+        String lng = db.settingDao().getAll().getLanguage();
+        Locale locale;
+        locale = new Locale(lng);
+        Locale.setDefault(locale);
+
+        Context context = ContextWrapper.wrap(newBase, locale);
+        super.attachBaseContext(context);
     }
 
     private void initSelectStage() {
