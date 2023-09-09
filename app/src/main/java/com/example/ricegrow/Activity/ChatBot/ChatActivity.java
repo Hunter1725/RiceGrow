@@ -65,7 +65,7 @@ public class ChatActivity extends AppCompatActivity implements NetworkUtils.OnCo
             .readTimeout(60, TimeUnit.SECONDS)
             .build();
 
-    public static final String GUIDE_STRING = "I wanna you to act as a Agricultural Expert and answer the following question based on their language (limit to 60 words): \n";
+    public static final String GUIDE_STRING = "I wanna you to act as a Agricultural Expert and answer the following question based on their language (limit to 80 words): \n";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
