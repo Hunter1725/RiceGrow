@@ -1328,13 +1328,13 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
                             "Đất được san phẳng, loại bỏ cỏ dại và tàn dư cây trồng, đồng thời xới đất để tạo điều kiện cho rễ cây xâm nhập. Làm đất đúng cách giúp cải thiện khả năng thoát nước, cung cấp dinh dưỡng và kiểm soát cỏ dại, đảm bảo điều kiện tối ưu cho các giai đoạn sinh trưởng tiếp theo của cây lúa.",
                     "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fland.jpg?alt=media&token=a24a11dd-900b-4cbc-b796-84f660575465");
             stages.add(stages1);
-            Stages stages2 = new Stages("Planting", "Gieo xạ", 2, "Planting is a crucial stage in rice cultivation, where the prepared seedlings are transplanted into the rice field. It involves carefully placing the young rice plants in evenly spaced rows or broadcasting the seeds directly into the soil. \n" +
+            Stages stages2 = new Stages("Planting", "Gieo sạ", 2, "Planting is a crucial stage in rice cultivation, where the prepared seedlings are transplanted into the rice field. It involves carefully placing the young rice plants in evenly spaced rows or broadcasting the seeds directly into the soil. \n" +
                     "Proper planting ensures good establishment of the crop, allowing the roots to anchor in the soil and the shoots to emerge for further growth. This stage sets the foundation for the rice plants to develop and progress through subsequent growth stages.",
-                    "Gieo xạ là một giai đoạn quan trọng trong canh tác lúa, trong đó cây con đã chuẩn bị được cấy vào ruộng lúa. Nó liên quan đến việc cẩn thận đặt các cây lúa non thành hàng cách đều nhau hoặc gieo hạt trực tiếp vào đất. \n" +
+                    "Gieo sạ là một giai đoạn quan trọng trong canh tác lúa, trong đó cây con đã chuẩn bị được cấy vào ruộng lúa. Nó liên quan đến việc cẩn thận đặt các cây lúa non thành hàng cách đều nhau hoặc gieo hạt trực tiếp vào đất. \n" +
                             "Trồng đúng cách đảm bảo cây lúa hình thành tốt, cho phép rễ bám chặt vào đất và các chồi nhô lên để phát triển hơn nữa. Giai đoạn này tạo nền tảng cho cây lúa phát triển và tiến bộ qua các giai đoạn sinh trưởng tiếp theo.",
                     "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fplanting.jpg?alt=media&token=b987a412-a1a1-443a-8d53-1a926af22308");
             stages.add(stages2);
-            Stages stages3 = new Stages("Seeding", "Cây con", 3, "The seeding stage of the rice crop is when the seeds are planted in the field. They undergo germination, where the seed coat breaks open, and a root and shoot emerge. Seedlings rely on stored nutrients until they can photosynthesize. This stage is crucial for establishing a healthy crop stand and requires proper seedbed preparation, spacing, and weed control. Water supply and weed management are important factors for successful seedling growth.",
+            Stages stages3 = new Stages("Seedling", "Cây con", 3, "The seedling stage of the rice crop is when the seeds are planted in the field. They undergo germination, where the seed coat breaks open, and a root and shoot emerge. Seedlings rely on stored nutrients until they can photosynthesize. This stage is crucial for establishing a healthy crop stand and requires proper seedbed preparation, spacing, and weed control. Water supply and weed management are important factors for successful seedling growth.",
                     "Giai đoạn cây con của cây lúa là khi hạt giống được trồng trên ruộng. Chúng trải qua giai đoạn nảy mầm, khi lớp vỏ hạt mở ra, rễ và chồi xuất hiện. Cây con dựa vào chất dinh dưỡng dự trữ cho đến khi chúng có thể quang hợp. Giai đoạn này rất quan trọng để thiết lập một cây trồng khỏe mạnh và yêu cầu chuẩn bị luống gieo hạt, khoảng cách và kiểm soát cỏ dại thích hợp. Cung cấp nước và quản lý cỏ dại là những yếu tố quan trọng để cây con phát triển thành công.",
                     "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/stages%2Fseeding.jpg?alt=media&token=2a2f04dc-9b46-44a0-80f0-42239090c724");
             stages.add(stages3);
@@ -1393,7 +1393,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             //***OM 18***
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Seeding"), 10, false, "26th", "35th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Seedling"), 10, false, "26th", "35th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Tillering"), 35, false, "36th", "75th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Panicle initiation"), 15, false, "76th", "93th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Heading"), 8, false, "94th", "103th"));
@@ -1405,7 +1405,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             //***DT 08***
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Seeding"), 10, false, "26th", "35th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Seedling"), 10, false, "26th", "35th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Tillering"), 35, false, "36th", "75th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Panicle initiation"), 15, false, "76th", "93th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Heading"), 10, false, "94th", "103th"));
@@ -1417,7 +1417,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             //***OM 5451***
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Seeding"), 9, false, "26th", "34th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Seedling"), 9, false, "26th", "34th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Tillering"), 35, false, "35th", "74th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Panicle initiation"), 14, false, "75th", "88th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Heading"), 8, false, "89th", "96th"));
@@ -1430,7 +1430,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             //***IR 50404***
             cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Seeding"), 8, false, "26th", "33th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Seedling"), 8, false, "26th", "33th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Tillering"), 34, false, "34th", "72th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Panicle initiation"), 13, false, "73th", "85th"));
             cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Heading"), 8, false, "86th", "93th"));
@@ -1442,9 +1442,9 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
 
             //*****Stages-Pests****
             PestStageDao pestStageDao = db.pestStageDao();
-            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Seeding"), pestDao.getIdByName("Rice thrips")));
-            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Seeding"), pestDao.getIdByName("Stem borer")));
-            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Seeding"), pestDao.getIdByName("Rice gall midge")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Seedling"), pestDao.getIdByName("Rice thrips")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Seedling"), pestDao.getIdByName("Stem borer")));
+            pestStageDao.insert(new PestsStages(stageDao.getIdByName("Seedling"), pestDao.getIdByName("Rice gall midge")));
             pestStageDao.insert(new PestsStages(stageDao.getIdByName("Tillering"), pestDao.getIdByName("Stem borer")));
             pestStageDao.insert(new PestsStages(stageDao.getIdByName("Tillering"), pestDao.getIdByName("Rice leaffolder")));
             pestStageDao.insert(new PestsStages(stageDao.getIdByName("Tillering"), pestDao.getIdByName("Rice gall midge")));
@@ -1466,7 +1466,7 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
 
             //****Stages-Diseases****
             DiseaseStageDao diseaseStageDao = db.diseaseStageDao();
-            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Seeding"), diseaseDao.getIdByName("Blast")));
+            diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Seedling"), diseaseDao.getIdByName("Blast")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Tillering"), diseaseDao.getIdByName("Blast")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Tillering"), diseaseDao.getIdByName("Leaf Scald")));
             diseaseStageDao.insert(new DiseasesStages(stageDao.getIdByName("Tillering"), diseaseDao.getIdByName("Brown spot")));
@@ -1544,20 +1544,20 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             Activities activities7 = new Activities(stageDao.getIdByName("Planting"), "Transplanting", "Cấy lúa", "Transplanting is commonly practiced as a method of weed control for wet or puddled fields. It requires less seed but much more labor compared to direct seeding. Also, transplanted crops take longer to mature due to transplanting shock.",
                     "Cấy thường được thực hiện như một phương pháp kiểm soát cỏ dại trên những cánh đồng ẩm ướt hoặc vũng nước. Nó cần ít hạt giống hơn nhưng tốn nhiều công sức hơn so với gieo hạt trực tiếp. Ngoài ra, cây cấy mất nhiều thời gian hơn để trưởng thành do sốc khi cấy.", 1, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Ftransplanting.jpg?alt=media&token=ab52eecd-9eb4-4e61-82d2-24e339b22966");
             activities.add(activities7);
-            Activities activities8 = new Activities(stageDao.getIdByName("Planting"), "Direct seeding", "Xạ lúa", "Direct-seeded crops require less labour and tend to mature faster than transplanted crops. In this method, plants are not subjected to stresses such as being pulled from the soil and re-establishing fine rootlets. However, they have more competition from weeds.",
-                    "Xạ lúa đòi hỏi ít lao động hơn và có xu hướng trưởng thành nhanh hơn so với cây trồng cấy ghép. Theo phương pháp này, cây trồng không phải chịu áp lực như bị kéo khỏi đất và tái lập rễ con. Tuy nhiên, chúng phải chịu nhiều sự cạnh tranh hơn từ cỏ dại. ", 1, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fdirect_seeding.jpg?alt=media&token=d552f963-c5c8-4289-ae70-348961b9d4d4");
+            Activities activities8 = new Activities(stageDao.getIdByName("Planting"), "Direct seeding", "Sạ lúa", "Direct-seeded crops require less labour and tend to mature faster than transplanted crops. In this method, plants are not subjected to stresses such as being pulled from the soil and re-establishing fine rootlets. However, they have more competition from weeds.",
+                    "Sạ lúa đòi hỏi ít lao động hơn và có xu hướng trưởng thành nhanh hơn so với cây trồng cấy ghép. Theo phương pháp này, cây trồng không phải chịu áp lực như bị kéo khỏi đất và tái lập rễ con. Tuy nhiên, chúng phải chịu nhiều sự cạnh tranh hơn từ cỏ dại. ", 1, "https://firebasestorage.googleapis.com/v0/b/ricegrow-a469b.appspot.com/o/activities%2Fdirect_seeding.jpg?alt=media&token=d552f963-c5c8-4289-ae70-348961b9d4d4");
             activities.add(activities8);
-            Activities activities9 = new Activities(stageDao.getIdByName("Seeding"), "Spraying herbicide", "Phun thuốc diệt cỏ", "Spraying herbicides during the seeding stage of rice growth is beneficial for effective weed control and promoting healthy crop establishment. The key points are:\n" +
+            Activities activities9 = new Activities(stageDao.getIdByName("Seedling"), "Spraying herbicide", "Phun thuốc diệt cỏ", "Spraying herbicides during the seeding stage of rice growth is beneficial for effective weed control and promoting healthy crop establishment. The key points are:\n" +
                     "\n" +
                     "- Weed management: Herbicide application at this stage helps control weeds that compete with rice plants for resources and hinder their growth and productivity.\n" +
                     "\n" +
-                    "- Early intervention: Targeting weeds early during seeding prevents them from becoming established and competing with rice plants throughout the growth cycle.\n" +
+                    "- Early intervention: Targeting weeds early during seedling prevents them from becoming established and competing with rice plants throughout the growth cycle.\n" +
                     "\n" +
                     "- Resource utilization: Effective weed control ensures that rice plants have optimal access to water, nutrients, and sunlight, promoting their healthy growth and development.\n" +
                     "\n" +
                     "- Labor efficiency: Herbicide use reduces the need for manual weeding, saving time and labor during weed management.\n" +
                     "\n" +
-                    "- Uniform crop establishment: Weed-free fields during seeding promote uniform crop establishment, leading to consistent growth and better overall crop performance.",
+                    "- Uniform crop establishment: Weed-free fields during seedling promote uniform crop establishment, leading to consistent growth and better overall crop performance.",
                     "Phun thuốc diệt cỏ trong giai đoạn gieo hạt của quá trình sinh trưởng của lúa có lợi cho việc kiểm soát cỏ dại hiệu quả và thúc đẩy cây trồng phát triển khỏe mạnh. Các điểm chính là:\n" +
                             "\n" +
                             "- Quản lý cỏ dại: Sử dụng thuốc diệt cỏ ở giai đoạn này giúp kiểm soát cỏ dại cạnh tranh với cây lúa để lấy tài nguyên và cản trở sự phát triển cũng như năng suất của chúng.\n" +

@@ -111,7 +111,7 @@
     <string name="login_as_a_guest">Login as a Guest</string>
     <string name="register">Register</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
-    <string name="plan_calendar">Plan Calendar</string>
+    <string name="plan_calendar">Crop Calendar</string>
     <string name="science_name">Science name</string>
     <string name="lifecycle">Lifecycle</string>
     <string name="control_methods">Control methods</string>
@@ -175,7 +175,7 @@
     <string name="sowing_amount">Sowing Amount:</string>
     <string name="sowed_area">Sowed Area:</string>
     <string name="growth_period_dot">Growth Period:</string>
-    <string name="view_plan_calendar">View Plan Calendar</string>
+    <string name="view_plan_calendar">View Crop Calendar</string>
     <string name="the_amount_of_fertilizers_recommended_to_use_corresponds_to_the_plan">The amount of fertilizers recommended to use corresponds to the plan:</string>
     <string name="note_calculated_based_on_the_recommended_amount_of_n_p_k_is_80_30_40">Note: Calculated based on the recommended amount of N–P–K is 80–30–40.</string>
     <string name="recommended_pesticides">Recommended pesticides:</string>

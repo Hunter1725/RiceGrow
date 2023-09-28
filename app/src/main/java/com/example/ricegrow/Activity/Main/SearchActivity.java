@@ -102,6 +102,7 @@ public class SearchActivity extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
                     toolbarSearching.setNavigationIcon(null);
+                    searchView.setIconifiedByDefault(false);
                 } else {
                     toolbarSearching.setNavigationIcon(R.drawable.back);
                     searchView.setIconifiedByDefault(true);

@@ -268,6 +268,7 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
                         }
                     }
                     activityPlanAdapter.setActivities(setList);
+                    //Notes
                     notes = db.noteDao().getNotesByPlanActivityId(currentPlanActivity.getId(), selectDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli());
                     if( notes != null && notes.getDate().isEqual(selectDate)){
                         txtEmpty3.setVisibility(View.GONE);
