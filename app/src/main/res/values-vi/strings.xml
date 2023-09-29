@@ -136,10 +136,10 @@
     <string name="specializes_in_treating_dot">Chuyên về việc điều trị:</string>
     <string name="pesticide_calculator">Máy tính thuốc trừ sâu</string>
     <string name="new_plan_generator">Máy tạo kế hoạch mới</string>
-    <string name="enter_the_sowing_date_area_and_rice_variety_to_generate_customized_plans">Nhập ngày gieo, diện tích và giống lúa để tạo kế hoạch tùy chỉnh.</string>
+    <string name="enter_the_sowing_date_area_and_rice_variety_to_generate_customized_plans">Nhập ngày các thông tin cần thiết sau đây để tạo kế hoạch tùy chỉnh.</string>
     <string name="plan_name">Tên kế hoạch</string>
     <string name="name">Tên</string>
-    <string name="sowing_date">Ngày gieo</string>
+    <string name="sowing_date">Ngày bắt đầu</string>
     <string name="date">Ngày</string>
     <string name="select_stages">Chọn giai đoạn</string>
     <string name="hide_show_stages">Ẩn/Hiện Giai đoạn</string>
@@ -244,7 +244,7 @@
     <string name="lifecycle_dot">Chu kỳ phát triển:</string>
     <string name="category_dot">Giống cây trồng:</string>
     <string name="rice_variety_dot">Giống lúa:</string>
-    <string name="sowing_date_dot">Ngày Gieo trồng:</string>
+    <string name="sowing_date_dot">Ngày Bắt Đầu:</string>
     <string name="ecology_dot">Sinh thái:</string>
     <string name="impact_dot">Tác động:</string>
     <string name="must_be_greater_than_0">Phải lớn hơn 0</string>
@@ -296,11 +296,10 @@
     <string name="add">Thêm</string>
     <string name="pick_a_color">Chọn một màu</string>
     <string name="please_enter_the_plan_name">Vui lòng nhập tên kế hoạch!</string>
-    <string name="please_select_the_sowing_date">Vui lòng chọn ngày gieo hạt!</string>
+    <string name="please_select_the_sowing_date">Vui lòng chọn ngày bắt đầu!</string>
     <string name="please_select_the_rice_variety">Vui lòng chọn giống lúa gạo!</string>
     <string name="select_date">Chọn Ngày</string>
     <string name="delete_plan">Xóa kế hoạch</string>
-    <string name="are_you_sure_you_want_to_delete_this_plan_warning_you_can_undo_this_but_all_created_notes_will_be_deleted_forever">Bạn có chắc muốn xóa kế hoạch này?\nChú ý: Bạn có thể hoàn tác nhưng tất cả ghi chú đã tạo sẽ bị xóa vĩnh viễn</string>
     <string name="the_plan">"Kế hoạch "</string>
     <string name="was_removed">" đã bị xóa!"</string>
     <string name="day">\ ngày</string>
@@ -332,4 +331,9 @@
     <string name="i_will_be_your_supporter_ask_me_something_that_you_need_to_know_3">Tôi sẽ là người hỗ trợ bạn! Hãy hỏi tôi điều bạn cần biết !</string>
     <string name="typing">Đang nhập...</string>
     <string name="failed_to_load_response_due_to">"Không thể tải phản hồi do "</string>
+    <string name="are_you_sure_you_want_to_delete_the_plan">"Bạn có chắc chắn muốn xóa kế hoạch"</string>
+    <string name="nwarning_you_can_undo_this_but_all_created_notes_will_be_deleted_forever">\nCảnh báo: Bạn có thể hoàn tác việc này nhưng tất cả các ghi chú đã tạo sẽ bị xóa vĩnh viễn</string>
+    <string name="update_successfully_the_plan">"Cập nhật kế hoạch thành công "</string>
+    <string name="save_change">Lưu thay đổi</string>
+    <string name="change_the_following_information_to_edit_this_plans">Thay đổi thông tin sau để chỉnh sửa kế hoạch này.</string>
 </resources>

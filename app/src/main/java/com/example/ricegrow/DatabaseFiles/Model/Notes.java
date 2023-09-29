@@ -12,18 +12,18 @@ import com.example.ricegrow.DatabaseFiles.Converter.DateConverter;
 import java.time.LocalDate;
 
 @Entity(tableName = "notes",
-        foreignKeys = {@ForeignKey(entity = PlanActivities.class, parentColumns = "id", childColumns = "plan_activity_id", onDelete = ForeignKey.CASCADE)})
+        foreignKeys = {@ForeignKey(entity = PlanStages.class, parentColumns = "id", childColumns = "plan_stage_id", onDelete = ForeignKey.CASCADE)})
 @TypeConverters(DateConverter.class)
 public class Notes {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    @ColumnInfo(name = "plan_activity_id")
-    private int planActivityId;
+    @ColumnInfo(name = "plan_stage_id")
+    private int planStageId;
     private LocalDate date;
     private String content;
 
-    public Notes(int planActivityId, LocalDate date, String content) {
-        this.planActivityId = planActivityId;
+    public Notes(int planStageId, LocalDate date, String content) {
+        this.planStageId = planStageId;
         this.date = date;
         this.content = content;
     }
@@ -40,12 +40,12 @@ public class Notes {
         this.id = id;
     }
 
-    public int getPlanActivityId() {
-        return planActivityId;
+    public int getPlanStageId() {
+        return planStageId;
     }
 
-    public void setPlanActivityId(int planActivityId) {
-        this.planActivityId = planActivityId;
+    public void setPlanStageId(int planStageId) {
+        this.planStageId = planStageId;
     }
 
     public LocalDate getDate() {

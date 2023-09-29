@@ -59,7 +59,7 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
     private UserCrops incomingUserCrops;
     private RiceGrowDatabase db;
     private Stages stages;
-    private PlanActivities currentPlanActivity;
+    private PlanStages currentPlanStages;
     private Notes notes;
 
 
@@ -195,7 +195,7 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
                             textInputLayoutNote.setError(getString(R.string.please_enter_something));
                         }
                         else {
-                            db.noteDao().insert(new Notes(currentPlanActivity.getId(), selectDate, contentNote));
+                            db.noteDao().insert(new Notes(currentPlanStages.getId(), selectDate, contentNote));
                             setWeekView();
                         }
                     }
@@ -255,33 +255,44 @@ public class WeekView extends Fragment implements CalendarAdapter.OnItemListener
                 //Activities
                 ArrayList<PlanActivities> planActivities = (ArrayList<PlanActivities>) db.planActivityDao().getAllPlanActivitiesByPlanStageId(planStage.getId());
                 if(!planActivities.isEmpty()){
-                    activityListView.setVisibility(View.VISIBLE);
-                    txtEmpty2.setVisibility(View.GONE);
                     ActivityPlanAdapter activityPlanAdapter = new ActivityPlanAdapter(getActivity());
                     activityListView.setAdapter(activityPlanAdapter);
                     activityListView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     ArrayList<Activities> setList = new ArrayList<>();
                     for(PlanActivities planActivity : planActivities){
                         if(planActivity.getStartDate().isBefore(selectDate.plusDays(1)) && planActivity.getEndDate().isAfter(selectDate)){
-                            currentPlanActivity = planActivity;
+                            activityListView.setVisibility(View.VISIBLE);
+                            txtEmpty2.setVisibility(View.GONE);
                             setList.add(db.activityDao().getActivityById(planActivity.getActivityId()));
+                        } else {
+                            activityListView.setVisibility(View.GONE);
+                            txtEmpty2.setVisibility(View.VISIBLE);
                         }
                     }
-                    activityPlanAdapter.setActivities(setList);
-                    //Notes
-                    notes = db.noteDao().getNotesByPlanActivityId(currentPlanActivity.getId(), selectDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli());
-                    if( notes != null && notes.getDate().isEqual(selectDate)){
-                        txtEmpty3.setVisibility(View.GONE);
-                        btnAddNote.setVisibility(View.GONE);
-                        btnDeleteNote.setVisibility(View.VISIBLE);
-                        txtContentNote.setVisibility(View.VISIBLE);
-                        txtContentNote.setText(notes.getContent());
+                    if(setList.isEmpty()){
+                        activityListView.setVisibility(View.GONE);
+                        txtEmpty2.setVisibility(View.VISIBLE);
                     } else {
-                        txtEmpty3.setVisibility(View.VISIBLE);
-                        btnAddNote.setVisibility(View.VISIBLE);
-                        btnDeleteNote.setVisibility(View.GONE);
-                        txtContentNote.setVisibility(View.GONE);
+                        activityListView.setVisibility(View.VISIBLE);
+                        txtEmpty2.setVisibility(View.GONE);
+                        activityPlanAdapter.setActivities(setList);
                     }
+                }
+
+                //Notes
+                currentPlanStages = planStage;
+                notes = db.noteDao().getNotesByPlanActivityId(currentPlanStages.getId(), selectDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli());
+                if( notes != null && notes.getDate().isEqual(selectDate)){
+                    txtEmpty3.setVisibility(View.GONE);
+                    btnAddNote.setVisibility(View.GONE);
+                    btnDeleteNote.setVisibility(View.VISIBLE);
+                    txtContentNote.setVisibility(View.VISIBLE);
+                    txtContentNote.setText(notes.getContent());
+                } else {
+                    txtEmpty3.setVisibility(View.VISIBLE);
+                    btnAddNote.setVisibility(View.VISIBLE);
+                    btnDeleteNote.setVisibility(View.GONE);
+                    txtContentNote.setVisibility(View.GONE);
                 }
 
                 break;

@@ -21,4 +21,7 @@ public interface PlanStageDao {
 
     @Query("SELECT * FROM plan_stages WHERE id =:id")
     PlanStages getPlanStagesById(int id);
+
+    @Query("DELETE FROM plan_stages WHERE user_crop_id =:id")
+    void deletePlanStageByUserCropId(int id);
 }

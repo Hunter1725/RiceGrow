@@ -20,6 +20,9 @@
         android:theme="@style/Theme.RiceGrow"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.Planning.Plan.EditPlan"
+            android:exported="false" />
+        <activity
             android:name=".Activity.ChatBot.ChatActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />

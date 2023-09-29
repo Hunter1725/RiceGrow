@@ -5,6 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.ricegrow.DatabaseFiles.Model.Crops;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
@@ -28,4 +29,7 @@ public interface UserCropDao {
 
     @Query("SELECT * FROM user_crops WHERE id =:id")
     UserCrops getUserCropsById(int id);
+
+    @Update
+    void update (UserCrops userCrops);
 }

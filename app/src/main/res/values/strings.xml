@@ -139,10 +139,10 @@
     <string name="specializes_in_treating_dot">Specializes in treating:</string>
     <string name="pesticide_calculator">Pesticide calculator</string>
     <string name="new_plan_generator">New Plan Generator</string>
-    <string name="enter_the_sowing_date_area_and_rice_variety_to_generate_customized_plans">Enter the sowing date, area, and rice variety to generate customized plans.</string>
+    <string name="enter_the_sowing_date_area_and_rice_variety_to_generate_customized_plans">Enter the following necessary information to generate customized plans.</string>
     <string name="plan_name">Plan name</string>
     <string name="name">Name</string>
-    <string name="sowing_date">Sowing Date</string>
+    <string name="sowing_date">Starting Date</string>
     <string name="date">Date</string>
     <string name="select_stages">Select stages</string>
     <string name="hide_show_stages">Hide/Show Stages</string>
@@ -247,7 +247,7 @@
     <string name="lifecycle_dot">Lifecycle:</string>
     <string name="category_dot">Category:</string>
     <string name="rice_variety_dot">Rice variety:</string>
-    <string name="sowing_date_dot">Sowing Date:</string>
+    <string name="sowing_date_dot">Starting Date:</string>
     <string name="ecology_dot">Ecology:</string>
     <string name="impact_dot">Impact:</string>
     <string name="must_be_greater_than_0">Must be greater than 0</string>
@@ -299,11 +299,10 @@
     <string name="add">Add</string>
     <string name="pick_a_color">Pick a color</string>
     <string name="please_enter_the_plan_name">Please enter the plan name!</string>
-    <string name="please_select_the_sowing_date">Please select the sowing date!</string>
+    <string name="please_select_the_sowing_date">Please select the starting date!</string>
     <string name="please_select_the_rice_variety">Please select the rice variety!</string>
     <string name="select_date">Select Date</string>
     <string name="delete_plan">Delete plan</string>
-    <string name="are_you_sure_you_want_to_delete_this_plan_warning_you_can_undo_this_but_all_created_notes_will_be_deleted_forever">Are you sure you want to delete this plan?\nWarning: You can undo this but all created notes will be deleted forever</string>
     <string name="the_plan">"The plan "</string>
     <string name="was_removed">" was removed!"</string>
     <string name="day">\ day</string>
@@ -335,4 +334,9 @@
     <string name="i_will_be_your_supporter_ask_me_something_that_you_need_to_know_3">I will be your supporter! Ask me something that you need to know !</string>
     <string name="typing">"Typing... "</string>
     <string name="failed_to_load_response_due_to">"Failed to load response due to "</string>
+    <string name="are_you_sure_you_want_to_delete_the_plan">"Are you sure you want to delete the plan "</string>
+    <string name="nwarning_you_can_undo_this_but_all_created_notes_will_be_deleted_forever">\nWarning: You can undo this but all created notes will be deleted forever</string>
+    <string name="update_successfully_the_plan">"Update successfully the plan "</string>
+    <string name="save_change">Save change</string>
+    <string name="change_the_following_information_to_edit_this_plans">Change the following information to edit this plans.</string>
 </resources>

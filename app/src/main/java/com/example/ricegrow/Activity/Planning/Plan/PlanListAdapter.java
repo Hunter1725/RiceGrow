@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,7 +48,7 @@ public class PlanListAdapter extends RecyclerView.Adapter<PlanListAdapter.ViewHo
         holder.txtNamePlan.setText(userCrops.get(position).getName());
         holder.txtRiceVariety.setText(db.cropDao().getCropById(userCrops.get(position).getCropId()).getName());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.getDefault());
-        String dateString = userCrops.get(position).getSowingDate().format(formatter);
+        String dateString = userCrops.get(position).getStartingDate().format(formatter);
         holder.txtSowingDate.setText(dateString);
         holder.colorColumn.setBackgroundColor(userCrops.get(position).getColor());
         holder.parent.setOnClickListener(new View.OnClickListener() {

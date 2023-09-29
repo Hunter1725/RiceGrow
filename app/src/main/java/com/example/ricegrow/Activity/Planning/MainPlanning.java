@@ -106,7 +106,7 @@ public class MainPlanning extends Fragment {
                 deletedPlan = userCrops.get(position);
                 MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext(), R.style.ThemeOverlay_App_MaterialAlertDialog);
                 builder.setTitle(getString(R.string.delete_plan));
-                builder.setMessage(getString(R.string.are_you_sure_you_want_to_delete_this_plan_warning_you_can_undo_this_but_all_created_notes_will_be_deleted_forever));
+                builder.setMessage(getString(R.string.are_you_sure_you_want_to_delete_the_plan) + deletedPlan.getName() + "?" + getString(R.string.nwarning_you_can_undo_this_but_all_created_notes_will_be_deleted_forever));
                 builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

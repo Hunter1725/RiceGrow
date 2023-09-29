@@ -41,15 +41,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp"
+                android:layout_margin="4dp"
                 android:elevation="2dp"
-                android:layout_margin="4dp">
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <!-- Crop Icon -->
                     <ImageView
@@ -57,6 +56,8 @@
                         android:layout_width="38dp"
                         android:layout_height="38dp"
                         android:src="@drawable/weed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/button_bg" />
 
                     <!-- Crop Name -->
@@ -64,30 +65,41 @@
                         android:id="@+id/textCropName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rice Crop"
-                        android:textSize="22sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp"
+                        android:text="Rice Crop"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/cropIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </LinearLayout>
+                    <ImageView
+                        android:id="@+id/btnEdit"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:src="@drawable/ic_science_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/button_bg" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!-- Sowing Date -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textSowingDateLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/started_date"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"
                         android:drawablePadding="6dp"
+                        android:text="@string/started_date"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
                         android:textStyle="italic"
                         app:drawableStartCompat="@drawable/sowing_date" />
 
@@ -95,10 +107,10 @@
                         android:id="@+id/textSowingDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:text="15/05/2023"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:layout_marginStart="8dp"/>
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -106,17 +118,17 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textExpectedHarvestDateLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/expected_harvest"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"
                         android:drawablePadding="6dp"
+                        android:text="@string/expected_harvest"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
                         android:textStyle="italic"
                         app:drawableStartCompat="@drawable/harvest_date" />
 
@@ -124,10 +136,10 @@
                         android:id="@+id/textExpectedHarvestDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:text="30/09/2023"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:layout_marginStart="8dp"/>
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -135,17 +147,17 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textSowingAmountLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/sowing_amount"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"
                         android:drawablePadding="6dp"
+                        android:text="@string/sowing_amount"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
                         android:textStyle="italic"
                         app:drawableStartCompat="@drawable/sowing_amount" />
 
@@ -153,10 +165,10 @@
                         android:id="@+id/textSowingAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:text="50 kg"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:layout_marginStart="8dp"/>
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -164,17 +176,17 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textSowedAreaLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/sowed_area"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"
                         android:drawablePadding="6dp"
+                        android:text="@string/sowed_area"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
                         android:textStyle="italic"
                         app:drawableStartCompat="@drawable/sowing_area" />
 
@@ -182,10 +194,10 @@
                         android:id="@+id/textSowedArea"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:text="1000 sq. meters"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:layout_marginStart="8dp"/>
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -193,17 +205,17 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textGrowthPeriodLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/growth_period_dot"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"
                         android:drawablePadding="6dp"
+                        android:text="@string/growth_period_dot"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
                         android:textStyle="italic"
                         app:drawableStartCompat="@drawable/grown_period" />
 
@@ -211,10 +223,10 @@
                         android:id="@+id/textGrowthPeriod"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:text="120 days"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:layout_marginStart="8dp"/>
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -222,11 +234,11 @@
                     android:id="@+id/btnViewDetailPlanCalendar"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/button_bg"
                     android:text="@string/view_plan_calendar"
                     android:textColor="@color/white"
-                    android:layout_gravity="end"
-                    android:backgroundTint="@color/button_bg"
-                    android:layout_marginTop="16dp"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -235,8 +247,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    app:dividerThickness="3dp"
-                    app:dividerColor="#D9D9D9"/>
+                    app:dividerColor="#D9D9D9"
+                    app:dividerThickness="3dp" />
 
                 <RelativeLayout
                     android:id="@+id/resultLayout"
@@ -252,7 +264,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/the_amount_of_fertilizers_recommended_to_use_corresponds_to_the_plan"
                         android:textSize="19sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/resultCard"
@@ -260,9 +272,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/textResult"
                         android:layout_marginTop="10dp"
+                        app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="16dp"
-                        app:cardElevation="4dp"
-                        app:cardBackgroundColor="@color/white">
+                        app:cardElevation="4dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -273,25 +285,25 @@
                                 android:id="@+id/textRecommend"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="5dp"
                                 android:text="@string/recommended_amount"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginTop="5dp"/>
+                                app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
                                 android:id="@+id/textUrea"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Urea"
-                                android:textStyle="bold"
-                                android:textSize="20sp"
-                                app:layout_constraintTop_toBottomOf="@+id/textRecommend"
-                                app:layout_constraintStart_toStartOf="parent"
+                                android:layout_marginStart="10dp"
                                 android:layout_marginTop="15dp"
-                                android:layout_marginStart="10dp"/>
+                                android:text="Urea"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textRecommend" />
 
                             <TextView
                                 android:id="@+id/textDAP"
@@ -319,11 +331,11 @@
                                 android:id="@+id/txtUrea"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
                                 android:text="150 Kg"
                                 android:textSize="22sp"
-                                app:layout_constraintTop_toBottomOf="@+id/textUrea"
                                 app:layout_constraintStart_toStartOf="@+id/textUrea"
-                                android:layout_marginTop="10dp" />
+                                app:layout_constraintTop_toBottomOf="@+id/textUrea" />
 
                             <TextView
                                 android:id="@+id/txtDAP"
@@ -351,14 +363,14 @@
                                 android:id="@+id/btnViewDetailFertilizer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/view_detail"
-                                android:textSize="18sp"
-                                android:textColor="@color/button_bg"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/textRecommend"
                                 android:layout_marginTop="100dp"
                                 android:layout_marginEnd="10dp"
-                                android:backgroundTint="@color/login_background"/>
+                                android:backgroundTint="@color/login_background"
+                                android:text="@string/view_detail"
+                                android:textColor="@color/button_bg"
+                                android:textSize="18sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textRecommend" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -368,11 +380,11 @@
                         android:id="@+id/defaultNutrients"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/note_calculated_based_on_the_recommended_amount_of_n_p_k_is_80_30_40"
-                        android:textStyle="italic"
-                        android:textSize="15sp"
+                        android:layout_below="@+id/resultCard"
                         android:layout_marginTop="10dp"
-                        android:layout_below="@+id/resultCard"/>
+                        android:text="@string/note_calculated_based_on_the_recommended_amount_of_n_p_k_is_80_30_40"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
 
                 </RelativeLayout>
 
@@ -381,46 +393,46 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    app:dividerThickness="3dp"
-                    app:dividerColor="#D9D9D9"/>
+                    app:dividerColor="#D9D9D9"
+                    app:dividerThickness="3dp" />
 
                 <TextView
                     android:id="@+id/recommendFertilizer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recommended_fertilizers"
-                    android:layout_marginTop="10dp"
-                    android:textSize="18sp"
                     android:layout_marginStart="8dp"
-                    android:textStyle="bold"/>
+                    android:layout_marginTop="10dp"
+                    android:text="@string/recommended_fertilizers"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/fertilizerRecView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="9dp"/>
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="9dp" />
 
                 <TextView
                     android:id="@+id/recommendPesticide"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recommended_pesticides"
-                    android:layout_marginTop="15dp"
-                    android:textSize="18sp"
                     android:layout_marginStart="8dp"
-                    android:textStyle="bold"/>
+                    android:layout_marginTop="15dp"
+                    android:text="@string/recommended_pesticides"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/pesticideRecView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="9dp"/>
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="9dp" />
 
             </LinearLayout>
 

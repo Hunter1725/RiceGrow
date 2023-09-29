@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class StageCheckboxAdapter extends RecyclerView.Adapter<StageCheckboxAdapter.StageViewHolder>{
+public class StageCheckboxAdapter extends RecyclerView.Adapter<StageCheckboxAdapter.StageViewHolder> {
 
     private List<Stages> stages;
     private final Context context;
@@ -45,7 +45,7 @@ public class StageCheckboxAdapter extends RecyclerView.Adapter<StageCheckboxAdap
     @Override
     public void onBindViewHolder(@NonNull StageViewHolder holder, int position) {
         Stages stage = stages.get(position);
-        if(GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
+        if (GetCurrentLanguage.getCurrentLanguage(context).equals("en")) {
             holder.checkBoxStage.setText(stage.getNameEn());
         } else {
             holder.checkBoxStage.setText(stage.getNameVi());
@@ -61,7 +61,7 @@ public class StageCheckboxAdapter extends RecyclerView.Adapter<StageCheckboxAdap
         holder.checkBoxStage.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             if (isChecked && !selectedStageIds.contains(stage.getId())) {
                 selectedStageIds.add(stage.getId());
-            } else if(!isChecked && selectedStageIds.contains(stage.getId())){
+            } else if (!isChecked && selectedStageIds.contains(stage.getId())) {
                 selectedStageIds.remove((Integer) stage.getId());
             }
         });
@@ -88,6 +88,16 @@ public class StageCheckboxAdapter extends RecyclerView.Adapter<StageCheckboxAdap
                 selectedStageIds.add(stageId);
             } else if (!selectAll && selectedStageIds.contains(stageId)) {
                 selectedStageIds.remove((Integer) stageId);
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public void setStageChecked(List<Integer> stageInt) {
+        for (Stages stage : stages) {
+            if (stageInt.contains(stage.getId())){
+                stage.setSelected(true);
+                selectedStageIds.add(stage.getId());
             }
         }
         notifyDataSetChanged();

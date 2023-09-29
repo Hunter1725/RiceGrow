@@ -1,6 +1,7 @@
 package com.example.ricegrow.Activity.Planning.Plan;
 
 import static com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate.FER_CALCULATE_KEY;
+import static com.example.ricegrow.Activity.Planning.Plan.PlanGenerate.SHOW_FRAGMENT;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,8 +14,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.ViewFerCalculate;
 import com.example.ricegrow.Activity.Knowledge.Management.SupAdapter;
@@ -26,7 +27,6 @@ import com.example.ricegrow.DatabaseFiles.Model.FertilizerCalculating;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
-import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
@@ -50,6 +50,7 @@ public class ViewPlan extends AppCompatActivity {
     private RiceGrowDatabase db;
     private UserCrops incomingUserCrops;
     private FertilizerCalculating fertilizerCalculating;
+    private ImageView btnEdit;
 
     private SupAdapter fertilizerAdapter, pesticideAdapter;
 
@@ -74,7 +75,7 @@ public class ViewPlan extends AppCompatActivity {
                 Crops crops = db.cropDao().getCropById(incomingUserCrops.getCropId());
                 textCropName.setText(crops.getName());
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.getDefault());
-                textSowingDate.setText(incomingUserCrops.getSowingDate().format(formatter));
+                textSowingDate.setText(incomingUserCrops.getStartingDate().format(formatter));
                 textExpectedHarvestDate.setText(incomingUserCrops.getExpectedHarvestDate().format(formatter));
                 String amountString = incomingUserCrops.getSowingAmount() + " kg";
                 textSowingAmount.setText(amountString);
@@ -103,8 +104,6 @@ public class ViewPlan extends AppCompatActivity {
             }
         }
 
-        initListener();
-
         //Recommended fertilizers
         fertilizerAdapter = new SupAdapter(this);
         fertilizerRecView.setAdapter(fertilizerAdapter);
@@ -127,8 +126,8 @@ public class ViewPlan extends AppCompatActivity {
                 Integer i = idStage.get(index);
                 CropStage cropStage = db.cropStageDao().getCropStageByStageIdAndCropId(i, incomingUserCrops.getCropId());
                 if (endDate == null) {
-                    endDate = incomingUserCrops.getSowingDate().plusDays(cropStage.getDuration());
-                    db.planStageDao().insert(new PlanStages(incomingUserCrops.getId(), i, incomingUserCrops.getSowingDate(), endDate));
+                    endDate = incomingUserCrops.getStartingDate().plusDays(cropStage.getDuration());
+                    db.planStageDao().insert(new PlanStages(incomingUserCrops.getId(), i, incomingUserCrops.getStartingDate(), endDate));
                 } else {
                     // Check the gap between stages
                     if (i - idStage.get(index - 1) > 1) {
@@ -147,6 +146,8 @@ public class ViewPlan extends AppCompatActivity {
 
             }
         }
+
+        initListener();
 
     }
 
@@ -187,6 +188,14 @@ public class ViewPlan extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewPlan.this, EditPlan.class);
+                intent.putExtra(USERCROP_KEY, incomingUserCrops);
+                startActivity(intent);
+            }
+        });
     }
 
     private void calculatingFertilizer() {
@@ -220,6 +229,14 @@ public class ViewPlan extends AppCompatActivity {
         return ureaAmount;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(SHOW_FRAGMENT, "planFragment"); // Pass a unique identifier for the fragment
+        startActivity(intent);
+    }
+
     private void initView() {
         toolbarPlanning = findViewById(R.id.toolbarPlanning);
         textCropName = findViewById(R.id.textCropName);
@@ -235,6 +252,7 @@ public class ViewPlan extends AppCompatActivity {
         btnViewDetailFertilizer = findViewById(R.id.btnViewDetailFertilizer);
         fertilizerRecView = findViewById(R.id.fertilizerRecView);
         pesticideRecView = findViewById(R.id.pesticideRecView);
+        btnEdit = findViewById(R.id.btnEdit);
         db = RiceGrowDatabase.getInstance(this);
     }
 }

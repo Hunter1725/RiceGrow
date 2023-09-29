@@ -12,7 +12,7 @@ public interface NoteDao {
     @Insert
     void insert (Notes notes);
 
-    @Query("SELECT * FROM notes WHERE plan_activity_id =:id AND date =:dateInput")
+    @Query("SELECT * FROM notes WHERE plan_stage_id =:id AND date =:dateInput")
     Notes getNotesByPlanActivityId(int id, long dateInput);
 
     @Delete

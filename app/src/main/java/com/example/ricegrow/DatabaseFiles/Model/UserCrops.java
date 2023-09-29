@@ -14,7 +14,6 @@ import androidx.room.TypeConverters;
 import com.example.ricegrow.DatabaseFiles.Converter.DateConverter;
 import com.example.ricegrow.DatabaseFiles.Converter.IntegerListConverter;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +33,8 @@ public class UserCrops implements Parcelable {
     private int color;
     @ColumnInfo(name = "sowing_amount")
     private double sowingAmount;
-    @ColumnInfo(name = "sowing_date")
-    private LocalDate sowingDate;
+    @ColumnInfo(name = "starting_date")
+    private LocalDate startingDate;
     @ColumnInfo(name = "sowed_area")
     private double sowedArea;
     @ColumnInfo(name = "expected_harvest_date")
@@ -48,24 +47,24 @@ public class UserCrops implements Parcelable {
 
 
     @Ignore
-    public UserCrops(String userId, int cropId, String name, int color, double sowingAmount, LocalDate sowingDate, double sowedArea, LocalDate expectedHarvestDate, int growthPeriod) {
+    public UserCrops(String userId, int cropId, String name, int color, double sowingAmount, LocalDate startingDate, double sowedArea, LocalDate expectedHarvestDate, int growthPeriod) {
         this.userId = userId;
         this.cropId = cropId;
         this.name = name;
         this.color = color;
         this.sowingAmount = sowingAmount;
-        this.sowingDate = sowingDate;
+        this.startingDate = startingDate;
         this.sowedArea = sowedArea;
         this.expectedHarvestDate = expectedHarvestDate;
         this.growthPeriod = growthPeriod;
     }
 
-    public UserCrops(int cropId, String name, int color, double sowingAmount, LocalDate sowingDate, double sowedArea, LocalDate expectedHarvestDate, int growthPeriod, List<Integer> planStages) {
+    public UserCrops(int cropId, String name, int color, double sowingAmount, LocalDate startingDate, double sowedArea, LocalDate expectedHarvestDate, int growthPeriod, List<Integer> planStages) {
         this.cropId = cropId;
         this.name = name;
         this.color = color;
         this.sowingAmount = sowingAmount;
-        this.sowingDate = sowingDate;
+        this.startingDate = startingDate;
         this.sowedArea = sowedArea;
         this.expectedHarvestDate = expectedHarvestDate;
         this.growthPeriod = growthPeriod;
@@ -86,7 +85,7 @@ public class UserCrops implements Parcelable {
         sowingAmount = in.readDouble();
         sowedArea = in.readDouble();
         growthPeriod = in.readInt();
-        sowingDate = LocalDate.parse(in.readString()); // Convert String back to LocalDate
+        startingDate = LocalDate.parse(in.readString()); // Convert String back to LocalDate
         expectedHarvestDate = LocalDate.parse(in.readString()); // Convert String back to LocalDate
         planStages = new ArrayList<>();
         in.readList(planStages, Integer.class.getClassLoader());
@@ -154,12 +153,12 @@ public class UserCrops implements Parcelable {
         this.sowingAmount = sowingAmount;
     }
 
-    public LocalDate getSowingDate() {
-        return sowingDate;
+    public LocalDate getStartingDate() {
+        return startingDate;
     }
 
-    public void setSowingDate(LocalDate sowingDate) {
-        this.sowingDate = sowingDate;
+    public void setStartingDate(LocalDate startingDate) {
+        this.startingDate = startingDate;
     }
 
     public double getSowedArea() {
@@ -222,7 +221,7 @@ public class UserCrops implements Parcelable {
         dest.writeDouble(sowingAmount);
         dest.writeDouble(sowedArea);
         dest.writeInt(growthPeriod);
-        dest.writeString(sowingDate.toString()); // Convert LocalDate to String
+        dest.writeString(startingDate.toString()); // Convert LocalDate to String
         dest.writeString(expectedHarvestDate.toString()); // Convert LocalDate to String
         dest.writeList(planStages);
     }

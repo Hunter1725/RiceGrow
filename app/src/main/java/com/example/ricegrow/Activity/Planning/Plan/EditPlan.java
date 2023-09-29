@@ -1,5 +1,7 @@
 package com.example.ricegrow.Activity.Planning.Plan;
 
+import static com.example.ricegrow.Activity.Planning.Plan.ViewPlan.USERCROP_KEY;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.WindowCompat;
@@ -50,9 +52,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class PlanGenerate extends AppCompatActivity {
-
-    public static final String SHOW_FRAGMENT = "showFragment";
+public class EditPlan extends AppCompatActivity {
     private MaterialToolbar toolbarPlanning;
     private Button btnDecrease, btnIncrease, btnGenerate, btnColorPicker;
     private AutoCompleteTextView categoryAutoCompleteTextView;
@@ -71,12 +71,13 @@ public class PlanGenerate extends AppCompatActivity {
     private TextView txtWarningStage;
     private View colorLayout;
     private int selectedColor = Color.TRANSPARENT;
+    private UserCrops incomingUserCrops;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-        setContentView(R.layout.activity_plan_generate);
+        setContentView(R.layout.activity_edit_plan);
 
         initView();
 
@@ -98,7 +99,7 @@ public class PlanGenerate extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.home) {
-                    startActivity(new Intent(PlanGenerate.this, MainActivity.class));
+                    startActivity(new Intent(EditPlan.this, MainActivity.class));
                     return true;
                 }
                 return false; // Return false to indicate that the event has not been handled
@@ -240,6 +241,27 @@ public class PlanGenerate extends AppCompatActivity {
                 generating();
             }
         });
+
+        assignData();
+    }
+
+    private void assignData() {
+        Intent intent = getIntent();
+        if(intent != null) {
+            incomingUserCrops = intent.getParcelableExtra(USERCROP_KEY);
+            if (incomingUserCrops != null) {
+                toolbarPlanning.setTitle(incomingUserCrops.getName());
+                edtName.setText(incomingUserCrops.getName());
+                selectedColor = incomingUserCrops.getColor();
+                colorLayout.setBackgroundColor(selectedColor);
+                startingDate = incomingUserCrops.getStartingDate();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.getDefault());
+                editTextDate.setText(startingDate.format(formatter));
+                fieldAreaEditText.setText(String.valueOf(incomingUserCrops.getSowedArea()));
+                riceVariety = db.cropDao().getCropById(incomingUserCrops.getCropId()).getName();
+                stageCheckboxAdapter.setStageChecked(incomingUserCrops.getPlanStages());
+            }
+        }
     }
 
     private void showColorPickerDialog() {
@@ -263,9 +285,9 @@ public class PlanGenerate extends AppCompatActivity {
     }
 
     private void initSelectStage() {
-        stageCheckboxAdapter = new StageCheckboxAdapter(PlanGenerate.this);
+        stageCheckboxAdapter = new StageCheckboxAdapter(EditPlan.this);
         recyclerViewStages.setAdapter(stageCheckboxAdapter);
-        recyclerViewStages.setLayoutManager(new LinearLayoutManager(PlanGenerate.this));
+        recyclerViewStages.setLayoutManager(new LinearLayoutManager(EditPlan.this));
         List<Stages> stagesList = db.stageDao().getAllStagesWithOrder();
         stageCheckboxAdapter.setStages(stagesList);
     }
@@ -331,16 +353,24 @@ public class PlanGenerate extends AppCompatActivity {
                 expectedHarvestDate = expectedHarvestDate.minusDays(minusDay);
                 firstStage--;
             }
-            int idUserCrop = (int) db.userCropDao().insert(new UserCrops(crop.getId(), edtName.getText().toString(), selectedColor, sowingAmount, startingDate, area, expectedHarvestDate, crop.getGrowthPeriod(), stageCheckboxAdapter.getSelectedStageIds()));
-            UserCrops incomingUserCrops = db.userCropDao().getUserCropsById(idUserCrop);
-            //Create plan stages
-            if (db.planStageDao().getAllPlanStageByUserCropId(incomingUserCrops.getId()).isEmpty()) {
-                createPlan(incomingUserCrops);
-            }
+            //Update user crop
+            incomingUserCrops.setName(edtName.getText().toString());
+            incomingUserCrops.setColor(selectedColor);
+            incomingUserCrops.setSowingAmount(sowingAmount);
+            incomingUserCrops.setStartingDate(startingDate);
+            incomingUserCrops.setExpectedHarvestDate(expectedHarvestDate);
+            incomingUserCrops.setGrowthPeriod(crop.getGrowthPeriod());
+            incomingUserCrops.setPlanStages(stageCheckboxAdapter.getSelectedStageIds());
+            incomingUserCrops.setCropId(crop.getId());
+            db.userCropDao().update(incomingUserCrops);
+            //Update plan stages
+            updatePlan(incomingUserCrops);
             progressCalculate.setVisibility(View.GONE);
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra(SHOW_FRAGMENT, "planFragment"); // Pass a unique identifier for the fragment
+            Intent intent = new Intent(EditPlan.this, ViewPlan.class);
+            intent.putExtra(USERCROP_KEY, incomingUserCrops);
             startActivity(intent);
+            Toast.makeText(this, getString(R.string.update_successfully_the_plan) + incomingUserCrops.getName(), Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
     private void createPlanActivities(PlanStages planStages, int stageId, LocalDate startDate, LocalDate endDate) {
@@ -367,7 +397,8 @@ public class PlanGenerate extends AppCompatActivity {
         }
     }
 
-    private void createPlan(UserCrops incomingUserCrops) {
+    private void updatePlan(UserCrops incomingUserCrops) {
+        db.planStageDao().deletePlanStageByUserCropId(incomingUserCrops.getId());
         List<Integer> idStage = stageCheckboxAdapter.getSelectedStageIds();
         LocalDate endDate = null;
 
