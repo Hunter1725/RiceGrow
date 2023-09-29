@@ -4,8 +4,6 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.ricegrow.DatabaseFiles.Model.Crops;
-import com.example.ricegrow.DatabaseFiles.Model.Diseases;
 import com.example.ricegrow.DatabaseFiles.Model.Weeds;
 
 import java.util.List;

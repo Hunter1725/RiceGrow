@@ -1,19 +1,11 @@
 package com.example.ricegrow.Activity.Main.Weather;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.view.WindowCompat;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -24,31 +16,37 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
-import com.example.ricegrow.Activity.Planning.Calendar.CalendarUtils;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.view.WindowCompat;
+
 import com.example.ricegrow.Activity.Main.Weather.Model.DailyWeatherData;
 import com.example.ricegrow.Activity.Main.Weather.Model.DailyWeatherResponse;
+import com.example.ricegrow.Activity.Planning.Calendar.CalendarUtils;
 import com.example.ricegrow.Activity.Setting.ContextWrapper;
 import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Weather;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
+import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.Priority;
+import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.gms.common.api.ResolvableApiException;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.location.SettingsClient;
 
 import java.time.Instant;
 import java.time.LocalDate;

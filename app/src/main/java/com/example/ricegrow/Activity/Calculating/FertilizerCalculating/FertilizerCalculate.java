@@ -1,13 +1,5 @@
 package com.example.ricegrow.Activity.Calculating.FertilizerCalculating;
 
-import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity.FERTILIZER_KEY;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.WindowCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,16 +14,18 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.WindowCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.ricegrow.Activity.Knowledge.Management.SupAdapter;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.TreatingAdapter;
-import com.example.ricegrow.Activity.Knowledge.StageActivity.Activity.FarmingActivity;
 import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.DatabaseFiles.Model.DeficienciesToxicities;
 import com.example.ricegrow.DatabaseFiles.Model.FertilizerCalculating;
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
-import com.example.ricegrow.DatabaseFiles.Model.Pests;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;

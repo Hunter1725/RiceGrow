@@ -1,27 +1,22 @@
 package com.example.ricegrow.Activity.Start;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.WindowCompat;
-
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 
 import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.Activity.Setting.WebsiteActivity;
-import com.example.ricegrow.DatabaseFiles.Dao.SettingDao;
 import com.example.ricegrow.DatabaseFiles.Model.Setting;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;

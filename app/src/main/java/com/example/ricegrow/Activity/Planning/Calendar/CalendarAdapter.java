@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;

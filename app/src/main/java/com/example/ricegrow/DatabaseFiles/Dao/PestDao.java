@@ -4,7 +4,6 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.ricegrow.DatabaseFiles.Model.Crops;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
 
 import java.util.List;

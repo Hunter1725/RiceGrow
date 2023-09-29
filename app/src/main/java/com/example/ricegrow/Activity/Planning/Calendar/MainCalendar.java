@@ -3,24 +3,21 @@ package com.example.ricegrow.Activity.Planning.Calendar;
 import static com.example.ricegrow.Activity.Planning.Calendar.CalendarUtils.selectDate;
 import static com.example.ricegrow.Activity.Planning.Plan.ViewPlan.USERCROP_KEY;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.WindowCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.WindowCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.ricegrow.Activity.Main.MainActivity;
-import com.example.ricegrow.Activity.Planning.Plan.ViewPlan;
 import com.example.ricegrow.Activity.Setting.ContextWrapper;
 import com.example.ricegrow.DatabaseFiles.Model.Activities;
 import com.example.ricegrow.DatabaseFiles.Model.PlanActivities;

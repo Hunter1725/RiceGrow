@@ -2,12 +2,6 @@ package com.example.ricegrow.Activity.Planning.Plan;
 
 import static com.example.ricegrow.Activity.Planning.Plan.ViewPlan.USERCROP_KEY;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.WindowCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -24,6 +18,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.WindowCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.Activity.Setting.ContextWrapper;

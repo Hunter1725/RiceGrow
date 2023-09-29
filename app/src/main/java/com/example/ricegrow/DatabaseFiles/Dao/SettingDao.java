@@ -5,7 +5,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.ricegrow.DatabaseFiles.Model.FertilizerCalculating;
 import com.example.ricegrow.DatabaseFiles.Model.Setting;
 
 @Dao

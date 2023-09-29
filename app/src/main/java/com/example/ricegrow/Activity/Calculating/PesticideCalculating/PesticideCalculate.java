@@ -2,15 +2,6 @@ package com.example.ricegrow.Activity.Calculating.PesticideCalculating;
 
 import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity.PESTICIDE_KEY;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.WindowCompat;
-import androidx.palette.graphics.Palette;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -25,6 +16,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
+import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;

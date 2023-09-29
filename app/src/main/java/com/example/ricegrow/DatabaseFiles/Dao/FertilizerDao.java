@@ -5,7 +5,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
-import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 
 import java.util.List;
 

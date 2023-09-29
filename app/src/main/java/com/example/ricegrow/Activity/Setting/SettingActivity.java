@@ -1,12 +1,8 @@
 package com.example.ricegrow.Activity.Setting;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.WindowCompat;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +11,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 
 import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.DatabaseFiles.Model.Setting;

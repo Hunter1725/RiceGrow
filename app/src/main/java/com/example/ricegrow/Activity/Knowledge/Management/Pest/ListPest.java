@@ -1,5 +1,11 @@
 package com.example.ricegrow.Activity.Knowledge.Management.Pest;
 
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.WindowCompat;
@@ -7,14 +13,6 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-
-import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropAdapter;
-import com.example.ricegrow.DatabaseFiles.Model.Crops;
 import com.example.ricegrow.DatabaseFiles.Model.Pests;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;

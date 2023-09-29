@@ -2,20 +2,6 @@ package com.example.ricegrow.Activity.Main;
 
 import static com.example.ricegrow.Activity.Planning.Plan.PlanGenerate.SHOW_FRAGMENT;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.view.WindowCompat;
-import androidx.core.widget.NestedScrollView;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -30,6 +16,20 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
 import com.example.ricegrow.Activity.Calculating.MainCalculating;

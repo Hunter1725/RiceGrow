@@ -1,25 +1,18 @@
 package com.example.ricegrow.Activity.Setting;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.WindowCompat;
-
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.WindowCompat;
 
 import com.example.ricegrow.Activity.Main.NetworkUtils;
-import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-
-import java.util.Locale;
 
 public class WebsiteActivity extends AppCompatActivity implements NetworkUtils.OnConnectivityChangeListener {
     private WebView webView;

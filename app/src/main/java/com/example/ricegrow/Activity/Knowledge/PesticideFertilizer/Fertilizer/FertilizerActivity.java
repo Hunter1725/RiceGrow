@@ -1,5 +1,12 @@
 package com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,20 +17,12 @@ import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
-import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.UsingAdapter;
 import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;

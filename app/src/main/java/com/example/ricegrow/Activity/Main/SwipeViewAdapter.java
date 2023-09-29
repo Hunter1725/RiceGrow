@@ -9,13 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.ricegrow.Activity.Knowledge.Management.Crop.ListCrop;
 import com.example.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.ListDeftox;
 import com.example.ricegrow.Activity.Knowledge.Management.Disease.ListDisease;
 import com.example.ricegrow.Activity.Knowledge.Management.Pest.ListPest;
-import com.example.ricegrow.Activity.Knowledge.Management.Pest.PestActivity;
 import com.example.ricegrow.Activity.Knowledge.Management.Weed.ListWeed;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.ListFertilizer;
 import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.ListPesticide;

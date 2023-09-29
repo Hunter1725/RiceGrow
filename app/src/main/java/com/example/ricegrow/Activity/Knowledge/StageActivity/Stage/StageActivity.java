@@ -1,5 +1,12 @@
 package com.example.ricegrow.Activity.Knowledge.StageActivity.Stage;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,13 +16,6 @@ import androidx.core.widget.NestedScrollView;
 import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;

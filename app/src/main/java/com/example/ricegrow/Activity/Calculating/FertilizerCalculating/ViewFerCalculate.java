@@ -4,13 +4,13 @@ import static com.example.ricegrow.Activity.Calculating.FertilizerCalculating.Fe
 import static com.example.ricegrow.Activity.Knowledge.StageActivity.Activity.FarmingActivity.ACTIVITY_KEY;
 import static com.example.ricegrow.Activity.Knowledge.StageActivity.Stage.StageActivity.STAGE_KEY;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.WindowCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 
 import com.example.ricegrow.Activity.Knowledge.StageActivity.Activity.FarmingActivity;
 import com.example.ricegrow.Activity.Knowledge.StageActivity.Stage.StageActivity;

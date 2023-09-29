@@ -5,16 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
-import com.example.ricegrow.Activity.Calculating.PesticideCalculating.PesticideCalculate;
 import com.example.ricegrow.Activity.Calculating.PesticideCalculating.SelectPesticide;
-import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 

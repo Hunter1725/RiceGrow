@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity;
 import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.R;

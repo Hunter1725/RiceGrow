@@ -1,7 +1,6 @@
 package com.example.ricegrow.Activity.Knowledge.Management.Crop;
 
 import static com.example.ricegrow.Activity.Knowledge.Management.Crop.CropActivity.CROP_KEY;
-import static com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity.FERTILIZER_KEY;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,14 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerAdapter;
 import com.example.ricegrow.DatabaseFiles.Model.Crops;
 import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;

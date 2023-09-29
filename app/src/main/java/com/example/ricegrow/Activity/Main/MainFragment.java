@@ -1,10 +1,7 @@
 package com.example.ricegrow.Activity.Main;
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -13,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,11 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
+import com.example.ricegrow.Activity.Main.Weather.WeatherActivity;
 import com.example.ricegrow.Activity.Planning.Calendar.CalendarUtils;
 import com.example.ricegrow.Activity.Planning.Plan.PlanGenerate;
 import com.example.ricegrow.Activity.Planning.Plan.PlanListAdapter;
-import com.example.ricegrow.Activity.Main.Weather.WeatherActivity;
-import com.example.ricegrow.Activity.Setting.ContextWrapper;
 import com.example.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.Model.Weather;
@@ -37,7 +32,6 @@ import com.example.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class MainFragment extends Fragment implements NetworkUtils.OnConnectivityChangeListener {
     private MaterialCardView fertilizerCard, planCard, weatherCard;

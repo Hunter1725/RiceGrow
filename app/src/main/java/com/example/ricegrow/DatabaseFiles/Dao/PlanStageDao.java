@@ -6,8 +6,6 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.ricegrow.DatabaseFiles.Model.PlanStages;
-import com.example.ricegrow.DatabaseFiles.Model.Stages;
-import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 
 import java.util.List;
 

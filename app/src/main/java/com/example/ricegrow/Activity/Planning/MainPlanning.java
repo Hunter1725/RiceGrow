@@ -10,9 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,24 +22,17 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ricegrow.Activity.Authenticate.LoginNormal.LoginActivity;
-import com.example.ricegrow.Activity.Main.MainActivity;
 import com.example.ricegrow.Activity.Planning.Plan.PlanGenerate;
 import com.example.ricegrow.Activity.Planning.Plan.PlanListAdapter;
 import com.example.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthResult;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class MainPlanning extends Fragment {
     private TextView txtEmpty;

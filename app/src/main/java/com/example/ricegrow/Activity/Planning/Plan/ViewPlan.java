@@ -3,12 +3,6 @@ package com.example.ricegrow.Activity.Planning.Plan;
 import static com.example.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate.FER_CALCULATE_KEY;
 import static com.example.ricegrow.Activity.Planning.Plan.PlanGenerate.SHOW_FRAGMENT;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.WindowCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,6 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.WindowCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ricegrow.Activity.Calculating.FertilizerCalculating.ViewFerCalculate;
 import com.example.ricegrow.Activity.Knowledge.Management.SupAdapter;

@@ -1,6 +1,5 @@
 package com.example.ricegrow.Activity.Planning.Plan;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;

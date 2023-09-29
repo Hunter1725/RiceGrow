@@ -1,5 +1,12 @@
 package com.example.ricegrow.Activity.Knowledge.StageActivity.Stage;
 
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.WindowCompat;
@@ -7,25 +14,12 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.TextView;
-
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerAdapter;
-import com.example.ricegrow.DatabaseFiles.Model.Fertilizers;
-import com.example.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.example.ricegrow.DatabaseFiles.Model.Stages;
 import com.example.ricegrow.DatabaseFiles.RiceGrowDatabase;
 import com.example.ricegrow.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.search.SearchBar;
 import com.google.android.material.search.SearchView;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.List;

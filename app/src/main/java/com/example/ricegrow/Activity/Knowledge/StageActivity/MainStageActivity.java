@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.ListFertilizer;
-import com.example.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.ListPesticide;
 import com.example.ricegrow.Activity.Knowledge.StageActivity.Activity.ListActivity;
 import com.example.ricegrow.Activity.Knowledge.StageActivity.Stage.ListStage;
 import com.example.ricegrow.R;
