@@ -1391,54 +1391,54 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
             //*****Crops-Stages*****
             CropStageDao cropStageDao = db.cropStageDao();
             //***OM 18***
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Seedling"), 10, false, "26th", "35th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Tillering"), 35, false, "36th", "75th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Panicle initiation"), 15, false, "76th", "93th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Heading"), 8, false, "94th", "103th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Flowering"), 8, false, "104th", "113th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Milk"), 10, false, "114th", "123th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Dough"), 10, false, "124th", "133th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Mature"), 10, false, "134th", "143th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Harvesting"), 1, false, "144th", "144th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Land preparation"), 24, "1st", "24th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Planting"), 1, "25th", "25th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Seedling"), 10,"26th", "35th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Tillering"), 35,"36th", "75th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Panicle initiation"), 15,"76th", "93th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Heading"), 8, "94th", "103th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Flowering"), 8, "104th", "113th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Milk"), 10, "114th", "123th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Dough"), 10, "124th", "133th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Mature"), 10,"134th", "143th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 18"), stageDao.getIdByName("Harvesting"), 1, "144th", "144th"));
             //***DT 08***
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Seedling"), 10, false, "26th", "35th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Tillering"), 35, false, "36th", "75th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Panicle initiation"), 15, false, "76th", "93th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Heading"), 10, false, "94th", "103th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Flowering"), 10, false, "104th", "114th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Milk"), 10, false, "115th", "125th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Dough"), 11, false, "126th", "137th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Mature"), 10, false, "138th", "147th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Harvesting"), 1, false, "148th", "148th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Land preparation"), 24, "1st", "24th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Planting"), 1, "25th", "25th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Seedling"), 10, "26th", "35th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Tillering"), 35, "36th", "75th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Panicle initiation"), 15, "76th", "93th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Heading"), 10, "94th", "103th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Flowering"), 10, "104th", "114th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Milk"), 10,"115th", "125th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Dough"), 11, "126th", "137th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Mature"), 10, "138th", "147th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("DT 08"), stageDao.getIdByName("Harvesting"), 1, "148th", "148th"));
             //***OM 5451***
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Seedling"), 9, false, "26th", "34th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Tillering"), 35, false, "35th", "74th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Panicle initiation"), 14, false, "75th", "88th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Heading"), 8, false, "89th", "96th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Flowering"), 8, false, "97th", "104th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Milk"), 9, false, "105th", "113th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Dough"), 9, false, "114th", "122th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Mature"), 9, false, "123th", "132th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Harvesting"), 1, false, "133th", "133th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Land preparation"), 24, "1st", "24th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Planting"), 1, "25th", "25th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Seedling"), 9, "26th", "34th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Tillering"), 35, "35th", "74th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Panicle initiation"), 14, "75th", "88th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Heading"), 8, "89th", "96th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Flowering"), 8, "97th", "104th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Milk"), 9, "105th", "113th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Dough"), 9,"114th", "122th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Mature"), 9,"123th", "132th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("OM 5451"), stageDao.getIdByName("Harvesting"), 1, "133th", "133th"));
 
             //***IR 50404***
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Land preparation"), 24, false, "1st", "24th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Planting"), 1, false, "25th", "25th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Seedling"), 8, false, "26th", "33th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Tillering"), 34, false, "34th", "72th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Panicle initiation"), 13, false, "73th", "85th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Heading"), 8, false, "86th", "93th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Flowering"), 8, false, "94th", "101th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Milk"), 8, false, "102th", "109th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Dough"), 8, false, "110th", "117th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Mature"), 9, false, "118th", "126th"));
-            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Harvesting"), 1, false, "127th", "127th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Land preparation"), 24,"1st", "24th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Planting"), 1,"25th", "25th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Seedling"), 8, "26th", "33th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Tillering"), 34, "34th", "72th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Panicle initiation"), 13,"73th", "85th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Heading"), 8,"86th", "93th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Flowering"), 8, "94th", "101th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Milk"), 8, "102th", "109th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Dough"), 8,"110th", "117th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Mature"), 9,"118th", "126th"));
+            cropStageDao.insert(new CropStage(cropDao.getIdByName("IR 50404"), stageDao.getIdByName("Harvesting"), 1,"127th", "127th"));
 
             //*****Stages-Pests****
             PestStageDao pestStageDao = db.pestStageDao();

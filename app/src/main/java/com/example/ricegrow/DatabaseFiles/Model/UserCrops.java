@@ -19,14 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(tableName = "user_crops",
-        foreignKeys = {@ForeignKey(entity = Users.class, parentColumns = "id", childColumns = "user_id", onDelete = ForeignKey.CASCADE),
-                        @ForeignKey(entity =  Crops.class, parentColumns = "id", childColumns = "crop_id")})
+        foreignKeys = {@ForeignKey(entity =  Crops.class, parentColumns = "id", childColumns = "crop_id")})
 @TypeConverters({DateConverter.class, IntegerListConverter.class})
 public class UserCrops implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    @ColumnInfo(name = "user_id")
-    private String userId;
     @ColumnInfo(name = "crop_id")
     private int cropId;
     private String name;
@@ -45,19 +42,6 @@ public class UserCrops implements Parcelable {
     private List<Integer> planStages;
 
 
-
-    @Ignore
-    public UserCrops(String userId, int cropId, String name, int color, double sowingAmount, LocalDate startingDate, double sowedArea, LocalDate expectedHarvestDate, int growthPeriod) {
-        this.userId = userId;
-        this.cropId = cropId;
-        this.name = name;
-        this.color = color;
-        this.sowingAmount = sowingAmount;
-        this.startingDate = startingDate;
-        this.sowedArea = sowedArea;
-        this.expectedHarvestDate = expectedHarvestDate;
-        this.growthPeriod = growthPeriod;
-    }
 
     public UserCrops(int cropId, String name, int color, double sowingAmount, LocalDate startingDate, double sowedArea, LocalDate expectedHarvestDate, int growthPeriod, List<Integer> planStages) {
         this.cropId = cropId;
@@ -78,7 +62,6 @@ public class UserCrops implements Parcelable {
     @Ignore
     protected UserCrops(Parcel in) {
         id = in.readInt();
-        userId = in.readString();
         cropId = in.readInt();
         name = in.readString();
         color = in.readInt();
@@ -127,14 +110,6 @@ public class UserCrops implements Parcelable {
 
     public void setColor(int color) {
         this.color = color;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public int getCropId() {
@@ -197,7 +172,6 @@ public class UserCrops implements Parcelable {
     public String toString() {
         return "UserCrops{" +
                 "id=" + id +
-                ", user_id=" + userId +
                 ", crop_id=" + cropId +
                 ", planting_volume=" + sowingAmount +
                 ", planted_area=" + sowedArea +
@@ -214,7 +188,6 @@ public class UserCrops implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(id);
-        dest.writeString(userId);
         dest.writeInt(cropId);
         dest.writeString(name);
         dest.writeInt(color);
