@@ -94,7 +94,7 @@
         app:headerLayout="@layout/header_navigation_drawer"
         app:menu="@menu/navigation_drawer_menu"
         android:backgroundTint="@color/login_background"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="35dp"/>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

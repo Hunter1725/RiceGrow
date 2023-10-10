@@ -30,7 +30,7 @@ public class StartActivity extends AppCompatActivity {
     private MaterialCardView cardView, cardView2;
     private Button btnAccept;
     private RiceGrowDatabase db;
-    private String langCode;
+    private String langCode = "en";
     private Setting setting;
 
     @Override
