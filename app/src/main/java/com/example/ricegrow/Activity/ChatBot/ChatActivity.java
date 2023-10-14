@@ -198,7 +198,7 @@ public class ChatActivity extends AppCompatActivity implements NetworkUtils.OnCo
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/chat/completions")
-                .header("Authorization","Bearer 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")
+                .header("Authorization","Bearer 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")
                 .post(body)
                 .build();
 
