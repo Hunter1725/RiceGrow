@@ -81,7 +81,7 @@ import java.util.concurrent.Executors;
         CropPests.class, Crops.class, CropWeeds.class, CropStage.class, Diseases.class, DiseasesPesticides.class, DiseasesStages.class,
         Fertilizers.class, Pesticides.class, Pests.class, PestsPesticides.class, PestsStages.class,
         PlanActivities.class, PlanStages.class, Stages.class,
-        UserCrops.class, Users.class, Weeds.class, WeedsPesticides.class, FertilizerCalculating.class, DeficienciesToxicities.class, CropDeftox.class,
+        UserCrops.class, Weeds.class, WeedsPesticides.class, FertilizerCalculating.class, DeficienciesToxicities.class, CropDeftox.class,
         DeftoxFertilizer.class, DeftoxStage.class, Weather.class, Setting.class, Notes.class, Message.class}, version = 1)
 public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract ActivityDao activityDao();
@@ -123,8 +123,6 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
     public abstract StageDao stageDao();
 
     public abstract UserCropDao userCropDao();
-
-    public abstract UserDao userDao();
 
     public abstract WeedDao weedDao();
 
@@ -176,10 +174,6 @@ public abstract class RiceGrowDatabase extends RoomDatabase {
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
             RiceGrowDatabase db = RiceGrowDatabase.getInstance(appContext);
-
-            //****Guest User****
-            UserDao userDao = db.userDao();
-            userDao.insert(new Users("qoF4h2xcXfOwFbCZPypG1hmwKPb2", "Guest", "1234567", "ricegrowguest@gmail.com", "The Earth", "guest", "123456789", "default_avatar"));
 
             //****Crops****
             CropDao cropDao = db.cropDao();
