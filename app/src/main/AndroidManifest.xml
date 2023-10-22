@@ -160,18 +160,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Authenticate.LoginNormal.ForgotActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activity.Authenticate.LoginNormal.LoginActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activity.Authenticate.LoginNormal.RegisterActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Activity.Main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
