@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
-        android:name=".Activity.Notification.RiceGrow"
+        android:name="com.hunter.ricegrow.Activity.Notification.RiceGrow"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,20 +20,20 @@
         android:theme="@style/Theme.RiceGrow"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.Planning.Plan.EditPlan"
+            android:name="com.hunter.ricegrow.Activity.Planning.Plan.EditPlan"
             android:exported="false" />
         <activity
-            android:name=".Activity.ChatBot.ChatActivity"
+            android:name="com.hunter.ricegrow.Activity.ChatBot.ChatActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".Activity.Setting.WebsiteActivity"
+            android:name="com.hunter.ricegrow.Activity.Setting.WebsiteActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Start.IntroActivity"
+            android:name="com.hunter.ricegrow.Activity.Start.IntroActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.Start.StartActivity"
+            android:name="com.hunter.ricegrow.Activity.Start.StartActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -43,130 +43,130 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.Setting.SettingActivity"
+            android:name="com.hunter.ricegrow.Activity.Setting.SettingActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Main.Weather.WeatherActivity"
+            android:name="com.hunter.ricegrow.Activity.Main.Weather.WeatherActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Main.SearchActivity"
+            android:name="com.hunter.ricegrow.Activity.Main.SearchActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Planning.Calendar.WeekView"
+            android:name="com.hunter.ricegrow.Activity.Planning.Calendar.WeekView"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Planning.Calendar.MainCalendar"
+            android:name="com.hunter.ricegrow.Activity.Planning.Calendar.MainCalendar"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Planning.Plan.ViewPlan"
+            android:name="com.hunter.ricegrow.Activity.Planning.Plan.ViewPlan"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Planning.Plan.PlanGenerate"
+            android:name="com.hunter.ricegrow.Activity.Planning.Plan.PlanGenerate"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Calculating.PesticideCalculating.SelectPesticide"
+            android:name="com.hunter.ricegrow.Activity.Calculating.PesticideCalculating.SelectPesticide"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Calculating.PesticideCalculating.PesticideCalculate"
+            android:name="com.hunter.ricegrow.Activity.Calculating.PesticideCalculating.PesticideCalculate"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.Management.DeficienciesToxicities.DeftoxActivity"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.DeftoxActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.Management.DeficienciesToxicities.ListDeftox"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.ListDeftox"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Calculating.FertilizerCalculating.ViewFerCalculate"
+            android:name="com.hunter.ricegrow.Activity.Calculating.FertilizerCalculating.ViewFerCalculate"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Calculating.FertilizerCalculating.FertilizerCalculate"
+            android:name="com.hunter.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
-            android:name=".Activity.Knowledge.StageActivity.Stage.StageActivity"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.StageActivity.Stage.StageActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.StageActivity.Stage.ListStage"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.StageActivity.Stage.ListStage"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.StageActivity.Activity.FarmingActivity"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.StageActivity.Activity.FarmingActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.StageActivity.Activity.ListActivity"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.StageActivity.Activity.ListActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.Management.Weed.WeedActivity"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.Management.Weed.WeedActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.Management.Pest.PestActivity"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.Management.Pest.PestActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.Management.Disease.DiseaseActivity"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.Management.Disease.DiseaseActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.Management.Crop.CropActivity"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.Management.Crop.CropActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.FertilizerActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.PesticideActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.Management.Weed.ListWeed"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.Management.Weed.ListWeed"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.Management.Disease.ListDisease"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.Management.Disease.ListDisease"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.Management.Pest.ListPest"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.Management.Pest.ListPest"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.Management.Crop.ListCrop"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.Management.Crop.ListCrop"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.PesticideFertilizer.Fertilizer.ListFertilizer"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.ListFertilizer"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Knowledge.PesticideFertilizer.Pesticide.ListPesticide"
+            android:name="com.hunter.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.ListPesticide"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.Main.MainActivity"
+            android:name="com.hunter.ricegrow.Activity.Main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
 
-        <receiver android:name=".Activity.Notification.AlarmReceiver" />
+        <receiver android:name="com.hunter.ricegrow.Activity.Notification.AlarmReceiver" />
 
-        <service android:name=".Activity.Notification.NotificationService" />
+        <service android:name="com.hunter.ricegrow.Activity.Notification.NotificationService" />
     </application>
 
 </manifest>

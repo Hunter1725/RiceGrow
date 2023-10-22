@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:layout_marginBottom="30dp"
-    tools:context=".Activity.Knowledge.StageActivity.Stage.StageActivity">
+    tools:context="com.hunter.ricegrow.Activity.Knowledge.StageActivity.Stage.StageActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator"

@@ -10,7 +10,7 @@
     android:backgroundTint="@color/login_background"
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp"
-    tools:context=".Activity.Knowledge.Management.SupAdapter">
+    tools:context="com.hunter.ricegrow.Activity.Knowledge.Management.SupAdapter">
 
     <RelativeLayout
         android:layout_width="match_parent"

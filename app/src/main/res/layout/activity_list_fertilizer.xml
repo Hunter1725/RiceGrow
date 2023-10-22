@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Knowledge.PesticideFertilizer.Fertilizer.ListFertilizer">
+    tools:context="com.hunter.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.ListFertilizer">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"

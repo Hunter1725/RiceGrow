@@ -10,7 +10,7 @@
     android:backgroundTint="@color/login_background"
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp"
-    tools:context=".Activity.Knowledge.PesticideFertilizer.Pesticide.TreatingAdapter">
+    tools:context="com.hunter.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.TreatingAdapter">
 
     <RelativeLayout
         android:layout_width="match_parent"
