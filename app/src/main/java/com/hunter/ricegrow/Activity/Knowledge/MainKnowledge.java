@@ -13,7 +13,7 @@ import com.hunter.ricegrow.Activity.Knowledge.Management.MainManagement;
 import com.hunter.ricegrow.Activity.Knowledge.PesticideFertilizer.MainPestFer;
 import com.hunter.ricegrow.Activity.Knowledge.StageActivity.MainStageActivity;
 import com.hunter.ricegrow.Activity.Main.MainActivity;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 

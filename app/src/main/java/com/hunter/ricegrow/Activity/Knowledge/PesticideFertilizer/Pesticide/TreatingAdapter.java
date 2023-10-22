@@ -23,7 +23,7 @@ import com.hunter.ricegrow.DatabaseFiles.Model.DeficienciesToxicities;
 import com.hunter.ricegrow.DatabaseFiles.Model.Diseases;
 import com.hunter.ricegrow.DatabaseFiles.Model.Pests;
 import com.hunter.ricegrow.DatabaseFiles.Model.Weeds;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.imageview.ShapeableImageView;
 

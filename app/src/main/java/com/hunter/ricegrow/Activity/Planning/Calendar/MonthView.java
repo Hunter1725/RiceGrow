@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hunter.ricegrow.DatabaseFiles.Model.UserCrops;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

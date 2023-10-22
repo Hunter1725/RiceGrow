@@ -15,7 +15,7 @@ import com.hunter.ricegrow.Activity.Knowledge.Management.DeficienciesToxicities.
 import com.hunter.ricegrow.Activity.Knowledge.Management.Disease.ListDisease;
 import com.hunter.ricegrow.Activity.Knowledge.Management.Pest.ListPest;
 import com.hunter.ricegrow.Activity.Knowledge.Management.Weed.ListWeed;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 

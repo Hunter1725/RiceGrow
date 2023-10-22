@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 
 public class ThirdScreen extends Fragment {
 

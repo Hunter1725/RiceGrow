@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class ColorPickerDialog {

@@ -19,7 +19,7 @@ import com.hunter.ricegrow.Activity.Main.MainActivity;
 import com.hunter.ricegrow.DatabaseFiles.Model.Setting;
 import com.hunter.ricegrow.DatabaseFiles.Model.Weather;
 import com.hunter.ricegrow.DatabaseFiles.RiceGrowDatabase;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;

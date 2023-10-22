@@ -19,7 +19,7 @@ import com.hunter.ricegrow.Activity.Main.MainActivity;
 import com.hunter.ricegrow.Activity.Setting.WebsiteActivity;
 import com.hunter.ricegrow.DatabaseFiles.Model.Setting;
 import com.hunter.ricegrow.DatabaseFiles.RiceGrowDatabase;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.imageview.ShapeableImageView;
 

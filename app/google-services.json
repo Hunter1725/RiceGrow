@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:623342135730:android:3b64108c79b3671f24dcab",
         "android_client_info": {
-          "package_name": "com.example.ricegrow"
+          "package_name": "com.hunter.ricegrow"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "623342135730-u3uckodj8rbo7t8ialsh8rd0h28sa86b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.ricegrow",
+            "package_name": "com.hunter.ricegrow",
             "certificate_hash": "458623412b07bf480c3c0bb3bfd04ebb7ff8e5bc"
           }
         },

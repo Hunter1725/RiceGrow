@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.hunter.ricegrow.Activity.Knowledge.StageActivity.Activity.ListActivity;
 import com.hunter.ricegrow.Activity.Knowledge.StageActivity.Stage.ListStage;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 

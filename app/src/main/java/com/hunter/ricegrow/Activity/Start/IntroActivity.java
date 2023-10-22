@@ -21,7 +21,7 @@ import com.hunter.ricegrow.Activity.Start.Onboarding.Screens.SecondScreen;
 import com.hunter.ricegrow.Activity.Start.Onboarding.Screens.ThirdScreen;
 import com.hunter.ricegrow.Activity.Start.Onboarding.ViewPagerAdapter;
 import com.hunter.ricegrow.DatabaseFiles.RiceGrowDatabase;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 
 import java.util.ArrayList;
 import java.util.Locale;

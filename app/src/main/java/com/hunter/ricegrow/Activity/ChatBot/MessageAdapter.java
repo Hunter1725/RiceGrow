@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hunter.ricegrow.Activity.Planning.Calendar.CalendarUtils;
 import com.hunter.ricegrow.DatabaseFiles.Model.Message;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 
 import java.util.List;
 

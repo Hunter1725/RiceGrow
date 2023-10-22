@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.hunter.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.hunter.ricegrow.DatabaseFiles.Model.Weeds;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.imageview.ShapeableImageView;
 

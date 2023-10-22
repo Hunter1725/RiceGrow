@@ -1,4 +1,4 @@
-//package com.example.ricegrow.Activity.Authenticate.LoginNormal;
+//package com.hunter.ricegrow.Activity.Authenticate.LoginNormal;
 //
 //import android.content.Intent;
 //import android.os.Bundle;
@@ -12,7 +12,7 @@
 //import androidx.appcompat.app.AppCompatActivity;
 //import androidx.core.view.WindowCompat;
 //
-//import com.example.ricegrow.R;
+//import com.hunter.ricegrow.R;
 //import com.google.android.gms.tasks.OnCompleteListener;
 //import com.google.android.gms.tasks.Task;
 //import com.google.android.material.textfield.TextInputEditText;

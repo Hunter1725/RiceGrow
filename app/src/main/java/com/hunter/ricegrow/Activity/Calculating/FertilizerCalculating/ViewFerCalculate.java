@@ -18,7 +18,7 @@ import com.hunter.ricegrow.DatabaseFiles.Model.Activities;
 import com.hunter.ricegrow.DatabaseFiles.Model.FertilizerCalculating;
 import com.hunter.ricegrow.DatabaseFiles.Model.Stages;
 import com.hunter.ricegrow.DatabaseFiles.RiceGrowDatabase;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
 public class ViewFerCalculate extends AppCompatActivity {

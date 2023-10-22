@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.ricegrow'
+    namespace 'com.hunter.ricegrow'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.ricegrow"
+        applicationId "com.hunter.ricegrow"
         minSdk 28
         targetSdk 33
         versionCode 1

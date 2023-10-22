@@ -26,7 +26,7 @@ import com.hunter.ricegrow.Activity.Planning.Plan.PlanGenerate;
 import com.hunter.ricegrow.Activity.Planning.Plan.PlanListAdapter;
 import com.hunter.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.hunter.ricegrow.DatabaseFiles.RiceGrowDatabase;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;

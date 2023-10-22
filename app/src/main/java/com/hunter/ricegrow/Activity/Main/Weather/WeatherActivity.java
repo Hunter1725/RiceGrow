@@ -30,7 +30,7 @@ import com.hunter.ricegrow.Activity.Setting.ContextWrapper;
 import com.hunter.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.hunter.ricegrow.DatabaseFiles.Model.Weather;
 import com.hunter.ricegrow.DatabaseFiles.RiceGrowDatabase;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;

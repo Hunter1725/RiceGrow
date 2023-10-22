@@ -17,7 +17,7 @@ import com.hunter.ricegrow.Activity.Knowledge.Management.Pest.ListPest;
 import com.hunter.ricegrow.Activity.Knowledge.Management.Weed.ListWeed;
 import com.hunter.ricegrow.Activity.Knowledge.PesticideFertilizer.Fertilizer.ListFertilizer;
 import com.hunter.ricegrow.Activity.Knowledge.PesticideFertilizer.Pesticide.ListPesticide;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.imageview.ShapeableImageView;
 

@@ -29,7 +29,7 @@ import com.hunter.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.hunter.ricegrow.DatabaseFiles.Model.Pests;
 import com.hunter.ricegrow.DatabaseFiles.Model.Stages;
 import com.hunter.ricegrow.DatabaseFiles.RiceGrowDatabase;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;

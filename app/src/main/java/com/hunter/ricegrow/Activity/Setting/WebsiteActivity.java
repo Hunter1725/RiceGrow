@@ -11,7 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.WindowCompat;
 
 import com.hunter.ricegrow.Activity.Main.NetworkUtils;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
 public class WebsiteActivity extends AppCompatActivity implements NetworkUtils.OnConnectivityChangeListener {

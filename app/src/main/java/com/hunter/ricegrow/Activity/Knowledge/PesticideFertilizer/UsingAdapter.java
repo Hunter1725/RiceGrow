@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.hunter.ricegrow.Activity.Knowledge.StageActivity.Activity.FarmingActivity;
 import com.hunter.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.hunter.ricegrow.DatabaseFiles.Model.Activities;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.imageview.ShapeableImageView;
 

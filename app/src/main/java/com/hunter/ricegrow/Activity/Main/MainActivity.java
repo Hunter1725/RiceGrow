@@ -52,7 +52,7 @@ import com.hunter.ricegrow.DatabaseFiles.Model.PlanStages;
 import com.hunter.ricegrow.DatabaseFiles.Model.Setting;
 import com.hunter.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.hunter.ricegrow.DatabaseFiles.RiceGrowDatabase;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.checkbox.MaterialCheckBox;

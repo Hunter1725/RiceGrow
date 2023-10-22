@@ -22,7 +22,7 @@ import com.hunter.ricegrow.Activity.Setting.GetCurrentLanguage;
 import com.hunter.ricegrow.DatabaseFiles.Model.Fertilizers;
 import com.hunter.ricegrow.DatabaseFiles.Model.Pesticides;
 import com.hunter.ricegrow.DatabaseFiles.Model.Stages;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.imageview.ShapeableImageView;
 

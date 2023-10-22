@@ -19,7 +19,7 @@ import com.hunter.ricegrow.DatabaseFiles.Model.PlanStages;
 import com.hunter.ricegrow.DatabaseFiles.Model.Stages;
 import com.hunter.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.hunter.ricegrow.DatabaseFiles.RiceGrowDatabase;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

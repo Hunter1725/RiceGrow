@@ -21,7 +21,7 @@ import com.hunter.ricegrow.Activity.Main.NetworkUtils;
 import com.hunter.ricegrow.Activity.Setting.ContextWrapper;
 import com.hunter.ricegrow.DatabaseFiles.Model.Message;
 import com.hunter.ricegrow.DatabaseFiles.RiceGrowDatabase;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import org.json.JSONArray;

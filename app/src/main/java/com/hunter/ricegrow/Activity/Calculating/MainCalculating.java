@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.hunter.ricegrow.Activity.Calculating.FertilizerCalculating.FertilizerCalculate;
 import com.hunter.ricegrow.Activity.Calculating.PesticideCalculating.SelectPesticide;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 import com.google.android.material.card.MaterialCardView;
 
 public class MainCalculating extends Fragment {

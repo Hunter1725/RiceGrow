@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hunter.ricegrow.DatabaseFiles.Model.UserCrops;
 import com.hunter.ricegrow.DatabaseFiles.RiceGrowDatabase;
-import com.example.ricegrow.R;
+import com.hunter.ricegrow.R;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
