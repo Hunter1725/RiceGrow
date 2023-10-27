@@ -11,15 +11,15 @@ android {
         applicationId "com.hunter.ricegrow"
         minSdk 28
         targetSdk 33
-        versionCode 4
-        versionName "1.0"
+        versionCode 6
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

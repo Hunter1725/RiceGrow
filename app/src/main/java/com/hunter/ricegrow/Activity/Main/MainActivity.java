@@ -380,7 +380,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        content.remove(content.size() - 1);
+        if(content.size() - 1 >= 0) {
+            content.remove(content.size() - 1);
+        }
         StringBuilder stringBuilder = new StringBuilder();
         for (String cropStageString : content) {
             stringBuilder.append(cropStageString);

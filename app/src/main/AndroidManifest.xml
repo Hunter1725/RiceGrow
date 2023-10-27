@@ -55,10 +55,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.hunter.ricegrow.Activity.Planning.Calendar.WeekView"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.hunter.ricegrow.Activity.Planning.Calendar.MainCalendar"
             android:exported="false"
             android:screenOrientation="portrait" />
