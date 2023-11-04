@@ -292,6 +292,7 @@ public class PlanGenerate extends AppCompatActivity {
     }
 
     private void generating() {
+        double area = Double.parseDouble(fieldAreaEditText.getText().toString());
         if (edtName.getText().toString().isEmpty()){
             textInputLayoutName.setError(getString(R.string.please_enter_the_plan_name));
             Toast.makeText(this, getString(R.string.please_enter_the_plan_name), Toast.LENGTH_SHORT).show();
@@ -305,10 +306,13 @@ public class PlanGenerate extends AppCompatActivity {
         } else if (riceVariety.isEmpty()) {
             categoryDropdown.setError(getString(R.string.please_select_the_rice_variety));
             Toast.makeText(this, getString(R.string.please_select_the_rice_variety), Toast.LENGTH_SHORT).show();
-        }  else {
+        } else if (fieldAreaInputLayout.getSuffixText().equals("ha") && area > 1000){
+            fieldAreaInputLayout.setError(getString(R.string.must_be_equal_or_lower_than_1000_ha));
+        } else if (fieldAreaInputLayout.getSuffixText().equals("m²") && area > 10000000) {
+            fieldAreaInputLayout.setError(getString(R.string.must_be_equal_or_lower_than_10000000_m));
+        } else {
             txtWarningStage.setVisibility(View.GONE);
             progressCalculate.setVisibility(View.VISIBLE);
-            double area = Double.parseDouble(fieldAreaEditText.getText().toString());
             if (fieldAreaInputLayout.getSuffixText().equals("m²")) {
                 area = area / 10000;
             }

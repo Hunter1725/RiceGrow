@@ -334,39 +334,46 @@ public class PesticideCalculate extends AppCompatActivity {
     }
 
     private void calculating() {
-        imageEmpty.setVisibility(View.GONE);
-        progressCalculate.setVisibility(View.VISIBLE);
-
         //Calculating
         double area = Double.parseDouble(fieldAreaEditText.getText().toString());
-        if (fieldAreaInputLayout.getSuffixText().equals("m²")){
-            area = area/10000;
+        if(fieldAreaInputLayout.getSuffixText().equals("ha") && area > 1000){
+            fieldAreaInputLayout.setError(getString(R.string.must_be_equal_or_lower_than_1000_ha));
+        } else if (fieldAreaInputLayout.getSuffixText().equals("m²") && area > 10000000) {
+            fieldAreaInputLayout.setError(getString(R.string.must_be_equal_or_lower_than_10000000_m));
+        } else {
+            imageEmpty.setVisibility(View.GONE);
+            progressCalculate.setVisibility(View.VISIBLE);
+            fieldAreaInputLayout.setError(null);
+
+            if (fieldAreaInputLayout.getSuffixText().equals("m²")) {
+                area = area / 10000;
+            }
+            double waterPerHectare = incomingPesticide.getWaterPerHectare();
+            double totalWater = waterPerHectare * area;
+
+            double pesticidePerBottle = incomingPesticide.getPesticidePerBottle() * capacity / 16;
+            double totalBottle = Math.round(totalWater / capacity);
+            double totalPesticide = totalBottle * pesticidePerBottle;
+
+            //Data assignment
+            progressCalculate.setVisibility(View.GONE);
+            resultLayout.setVisibility(View.VISIBLE);
+
+            String stringCapacity = capacity + getString(R.string.liters);
+            txtCapacity.setText(stringCapacity);
+
+            String stringAmountPest = String.format(Locale.getDefault(), getString(R.string._1f_ml_or_grams), pesticidePerBottle);
+            txtAmountPest.setText(stringAmountPest);
+
+            String stringTotalPest = String.format(Locale.getDefault(), getString(R.string._2f_liters_or_kg), totalPesticide / 1000);
+            txtTotalAmount.setText(stringTotalPest);
+
+            String stringTotalWater = String.format(Locale.getDefault(), getString(R.string._2f_liters), totalWater);
+            txtTotalWater.setText(stringTotalWater);
+
+            String stringTotalBottle = String.format(Locale.getDefault(), getString(R.string._0f_spray_bottles), totalBottle);
+            txtTotalBottle.setText(stringTotalBottle);
         }
-        double waterPerHectare = incomingPesticide.getWaterPerHectare();
-        double totalWater = waterPerHectare * area;
-
-        double pesticidePerBottle = incomingPesticide.getPesticidePerBottle() * capacity / 16;
-        double totalBottle = Math.round(totalWater / capacity);
-        double totalPesticide = totalBottle * pesticidePerBottle;
-
-        //Data assignment
-        progressCalculate.setVisibility(View.GONE);
-        resultLayout.setVisibility(View.VISIBLE);
-
-        String stringCapacity = capacity + getString(R.string.liters);
-        txtCapacity.setText(stringCapacity);
-
-        String stringAmountPest = String.format(Locale.getDefault(), getString(R.string._1f_ml_or_grams), pesticidePerBottle);
-        txtAmountPest.setText(stringAmountPest);
-
-        String stringTotalPest = String.format(Locale.getDefault(), getString(R.string._2f_liters_or_kg), totalPesticide / 1000);
-        txtTotalAmount.setText(stringTotalPest);
-
-        String stringTotalWater = String.format(Locale.getDefault(), getString(R.string._2f_liters), totalWater);
-        txtTotalWater.setText(stringTotalWater);
-
-        String stringTotalBottle = String.format(Locale.getDefault(), getString(R.string._0f_spray_bottles), totalBottle);
-        txtTotalBottle.setText(stringTotalBottle);
     }
 
     private void initView() {

@@ -117,6 +117,8 @@ public class FertilizerCalculate extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     validateInput(fieldAreaInputLayout, fieldAreaEditText);
+                } else {
+                    fieldAreaInputLayout.setError(null);
                 }
             }
         });
@@ -242,33 +244,40 @@ public class FertilizerCalculate extends AppCompatActivity {
     }
 
     private void calculating() {
-        imageEmpty.setVisibility(View.GONE);
-        progressCalculate.setVisibility(View.VISIBLE);
-
-        String nText = nutrientNEditText.getText().toString();
-        String pText = nutrientPEditText.getText().toString();
-        String kText = nutrientKEditText.getText().toString();
-
         double area = Double.parseDouble(fieldAreaEditText.getText().toString());
+        if(fieldAreaInputLayout.getSuffixText().equals("ha") && area > 1000){
+            fieldAreaInputLayout.setError(getString(R.string.must_be_equal_or_lower_than_1000_ha));
 
-        int dapAmount = calculateAmount(pText, area, 0.46);
-        int ureaAmount = calculateUreaAmount(nText, dapAmount, area, 0.18, 0.463);
-        int mopAmount = calculateAmount(kText, area, 0.6);
+        } else if (fieldAreaInputLayout.getSuffixText().equals("m²") && area > 10000000) {
+            fieldAreaInputLayout.setError(getString(R.string.must_be_equal_or_lower_than_10000000_m));
+        } else {
+            imageEmpty.setVisibility(View.GONE);
+            progressCalculate.setVisibility(View.VISIBLE);
+            fieldAreaInputLayout.setError(null);
 
-        fertilizerCalculating.setId(db.fertilizerCalculatingDao().getAll().getId());
-        fertilizerCalculating.setNRatio(!nText.isEmpty() ? Integer.parseInt(nText) : 0);
-        fertilizerCalculating.setPRatio(!pText.isEmpty() ? Integer.parseInt(pText) : 0);
-        fertilizerCalculating.setKRatio(!kText.isEmpty() ? Integer.parseInt(kText) : 0);
-        fertilizerCalculating.setArea(area);
-        fertilizerCalculating.setUreaAmount(ureaAmount);
-        fertilizerCalculating.setDapAmount(dapAmount);
-        fertilizerCalculating.setMopAmount(mopAmount);
-        db.fertilizerCalculatingDao().updateFertilizerCalculating(fertilizerCalculating);
+            String nText = nutrientNEditText.getText().toString();
+            String pText = nutrientPEditText.getText().toString();
+            String kText = nutrientKEditText.getText().toString();
 
-        progressCalculate.setVisibility(View.GONE);
-        resultLayout.setVisibility(View.VISIBLE);
-        dataAssignment();
 
+            int dapAmount = calculateAmount(pText, area, 0.46);
+            int ureaAmount = calculateUreaAmount(nText, dapAmount, area, 0.18, 0.463);
+            int mopAmount = calculateAmount(kText, area, 0.6);
+
+            fertilizerCalculating.setId(db.fertilizerCalculatingDao().getAll().getId());
+            fertilizerCalculating.setNRatio(!nText.isEmpty() ? Integer.parseInt(nText) : 0);
+            fertilizerCalculating.setPRatio(!pText.isEmpty() ? Integer.parseInt(pText) : 0);
+            fertilizerCalculating.setKRatio(!kText.isEmpty() ? Integer.parseInt(kText) : 0);
+            fertilizerCalculating.setArea(area);
+            fertilizerCalculating.setUreaAmount(ureaAmount);
+            fertilizerCalculating.setDapAmount(dapAmount);
+            fertilizerCalculating.setMopAmount(mopAmount);
+            db.fertilizerCalculatingDao().updateFertilizerCalculating(fertilizerCalculating);
+
+            progressCalculate.setVisibility(View.GONE);
+            resultLayout.setVisibility(View.VISIBLE);
+            dataAssignment();
+        }
     }
 
     // Method to calculate amount based on the nutrient text, area, and conversion factor

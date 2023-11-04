@@ -339,4 +339,6 @@
     <string name="update_successfully_the_plan">"Update successfully the plan "</string>
     <string name="save_change">Save change</string>
     <string name="change_the_following_information_to_edit_this_plans">Change the following information to edit this plans.</string>
+    <string name="must_be_equal_or_lower_than_1000_ha">Must be equal or lower than 1000 ha</string>
+    <string name="must_be_equal_or_lower_than_10000000_m">Must be equal or lower than 10000000 m²</string>
 </resources>
