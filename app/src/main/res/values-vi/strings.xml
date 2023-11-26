@@ -336,4 +336,6 @@
     <string name="update_successfully_the_plan">"Cập nhật kế hoạch thành công "</string>
     <string name="save_change">Lưu thay đổi</string>
     <string name="change_the_following_information_to_edit_this_plans">Thay đổi thông tin sau để chỉnh sửa kế hoạch này.</string>
+    <string name="must_be_equal_or_lower_than_1000_ha">Phải bằng hoặc nhỏ hơn 1000 ha</string>
+    <string name="must_be_equal_or_lower_than_10000000_m">Phải bằng hoặc nhỏ hơn 10000000 m2</string>
 </resources>

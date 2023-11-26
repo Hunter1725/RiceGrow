@@ -36,9 +36,9 @@ public class FertilizerCalculateTest {
         Espresso.onView(ViewMatchers.withId(R.id.resultLayout)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 
         // Check the calculated values
-        Espresso.onView(ViewMatchers.withId(R.id.txtUrea)).check(ViewAssertions.matches(ViewMatchers.withText("148 Kg"))); // Replace 'X' with the expected value
-        Espresso.onView(ViewMatchers.withId(R.id.txtDAP)).check(ViewAssertions.matches(ViewMatchers.withText("65 Kg"))); // Replace 'Y' with the expected value
-        Espresso.onView(ViewMatchers.withId(R.id.txtMOP)).check(ViewAssertions.matches(ViewMatchers.withText("67 Kg"))); // Replace 'Z' with the expected value
+        Espresso.onView(ViewMatchers.withId(R.id.txtUrea)).check(ViewAssertions.matches(ViewMatchers.withText("148 Kg")));
+        Espresso.onView(ViewMatchers.withId(R.id.txtDAP)).check(ViewAssertions.matches(ViewMatchers.withText("65 Kg")));
+        Espresso.onView(ViewMatchers.withId(R.id.txtMOP)).check(ViewAssertions.matches(ViewMatchers.withText("67 Kg")));
     }
 
     @Test

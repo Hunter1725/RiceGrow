@@ -196,9 +196,10 @@ public class ChatActivity extends AppCompatActivity implements NetworkUtils.OnCo
             e.printStackTrace();
         }
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
+        //Replace API_KEY with actual key because cannot publish an API KEY on Github
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/chat/completions")
-                .header("Authorization","Bearer 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")
+                .header("Authorization","Bearer sk-API_KEY")
                 .post(body)
                 .build();
 
